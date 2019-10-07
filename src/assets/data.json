@@ -1,0 +1,519 @@
+[
+  {
+    "productName": "ANSWEAR - BLOUSE",
+    "description": "The shirt from the Answear collection. The model is made of patterned fabric.\n      - Free style.\n      - Lowered shoulder line.\n      - Unfastening sleeves.\n      - Fastens on buttons.\n      - Thin inelastic fabric.\n      - Armpit width: 55 cm.\n      - Length: 80.5 cm.\n      - Sleeve length (from collar): 70.5 cm.\n      - The parameters are specified for size: S / M.\n\n      Pattern: patterned\n      Sleeve: long\n      Casual: casual\n      Composition: 5% Cotton, 95% Polyester",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000", "#fffff", "#b32d24"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": ["blouse_1_1.jpg",
+          "blouse_1_2.jpg",
+          "blouse_1_3.jpg",
+          "blouse_1_4.jpg"]
+      },
+      {
+        "value": "#fffff",
+        "url": ["blouse_2_1.jpg",
+          "blouse_2_2.jpg",
+          "blouse_2_3.jpg",
+          "blouse_2_4.jpg"]
+      },
+      {
+        "value": "#b32d24",
+        "url": ["blouse_3_1.jpg",
+          "blouse_3_2.jpg",
+          "blouse_3_3.jpg",
+          "blouse_3_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "blouse",
+    "sex": "female",
+    "season": ["spring", "fall", "summer", "winter"],
+    "quantity": 10,
+    "price": 799
+  },
+  {
+    "productName": "ANSWEAR - BLOUSE",
+    "description": "The shirt from the Answear collection. The model is made of patterned fabric.\n      - Free style.\n      - Lowered shoulder line.\n      - Unfastening sleeves.\n      - Fastens on buttons.\n      - Thin inelastic fabric.\n      - Armpit width: 55 cm.\n      - Length: 80.5 cm.\n      - Sleeve length (from collar): 70.5 cm.\n      - The parameters are specified for size: S / M.\n\n      Pattern: patterned\n      Sleeve: long\n      Casual: casual\n      Composition: 5% Cotton, 95% Polyester",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l"],
+    "colors": ["#f5c33b"],
+    "images": [
+      {
+        "value": "#f5c33b",
+        "url": ["blouse_4_1.jpg",
+          "blouse_4_2.jpg",
+          "blouse_4_3.jpg",
+          "blouse_4_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "blouse",
+    "sex": "female",
+    "season": ["spring", "fall", "summer", "winter"],
+    "quantity": 12,
+    "price": 60
+  },
+  {
+    "productName": "ANSWEAR - BLOUSE",
+    "description": "Shirt from the Medicine collection. The model is made of smooth fabric. Has a classic collar.\n      - Direct style.\n      - Fastens on buttons.\n      - Pockets on the chest.\n      - Lowered shoulder line.\n      - Smooth fabric.\n      - Armpit width: 51 cm.\n      - Sleeve length (from collar): 78 cm.\n      - Length: 68 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Cut: regular\n      Sleeve: long\n      Collar: Classic\n      Casual: casual\n      Composition:\n      100% Viscose",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "color": ["#edfcfb", "#fffff", "#debb47"],
+    "images": [
+      {
+        "value": "#edfcfb",
+        "url": ["blouse_5_1.jpg",
+          "blouse_5_2.jpg",
+          "blouse_5_3.jpg",
+          "blouse_5_4.jpg"]
+      },
+      {
+        "value": "#fffff",
+        "url": ["blouse_6_1.jpg",
+          "blouse_6_2.jpg",
+          "blouse_6_3.jpg",
+          "blouse_6_4.jpg"]
+      },
+      {
+        "value": "#debb47",
+        "url": ["blouse_7_1.jpg",
+          "blouse_7_2.jpg",
+          "blouse_7_3.jpg",
+          "blouse_7_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "blouse",
+    "sex": "female",
+    "season": ["spring", "fall", "summer", "winter"],
+    "quantity": 10,
+    "price": 799
+  },
+  {
+    "productName": "MANGO - BLOUSE",
+    "description": "Blouse from the Mango Collection. The model is made of smooth fabric. Has a neckline on the strap..\n    - Model with a viscous.\n    - Fastens on buttons.\n    - Free model.\n    - Smooth fabric.\n    \n    Pattern: solid\n    Sleeve: long\n    Neckline: binding\n    Neckline: fastened\n    Composition:\n    100% Polyester",
+    "brand": "Mango",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#edfcfb", "#fffff"],
+    "images": [
+      {
+        "value": "#edfcfb",
+        "url": ["blouse_8_1.jpg",
+          "blouse_8_2.jpg",
+          "blouse_8_3.jpg",
+          "blouse_8_4.jpg"]
+      },
+      {
+        "value": "#fffff",
+        "url": ["blouse_9_1.jpg",
+          "blouse_9_2.jpg",
+          "blouse_9_3.jpg",
+          "blouse_9_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "blouse",
+    "sex": "female",
+    "season": ["spring", "fall", "summer", "winter"],
+    "quantity": 10,
+    "price": 899
+  },
+  {
+    "productName": "ANSWEAR - BLOUSE",
+    "description": "Blouse from the Answear collection. The model is made of smooth fabric. Has a V-neck.\n      - Free style.\n      - V-neck.\n      - Lowered shoulder line.\n      - Three-quarter sleeve.\n      - Smooth fabric.\n      - Armpit width: 60 cm.\n      - Front length: 67 cm.\n      - Rear length: 76 cm.\n      - The parameters are specified for size: S.\n\n      Pattern: solid\n      Neckline: V-neck\n      Sleeve: three quarters\n      Composition:\n      50% Viscose, 50% Terrylene",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#edfcfb"],
+    "images": [
+      {
+        "value": "#edfcfb",
+        "url": ["blouse_10_1.jpg",
+          "blouse_10_2.jpg",
+          "blouse_10_3.jpg",
+          "blouse_10_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "blouse",
+    "sex": "female",
+    "season": ["spring", "fall", "summer", "winter"],
+    "quantity": 10,
+    "price": 469
+  },
+  {
+    "productName": "ANSWEAR - BLOUSE",
+    "description": "Blouse from the Answear collection. The model is made of smooth fabric. Has a V-neck.\n      - Free style.\n      - V-neck.\n      - Lowered shoulder line.\n      - Three-quarter sleeve.\n      - Smooth fabric.\n      - Armpit width: 60 cm.\n      - Front length: 67 cm.\n      - Rear length: 76 cm.\n      - The parameters are specified for size: S.\n\n      Pattern: solid\n      Neckline: V-neck\n      Sleeve: three quarters\n      Composition:\n      100% Viscose",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": ["blouse_11_1.jpg",
+          "blouse_11_2.jpg",
+          "blouse_11_3.jpg",
+          "blouse_11_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "blouse",
+    "sex": "female",
+    "season": ["spring", "fall", "summer", "winter"],
+    "quantity": 10,
+    "price": 569
+  },
+  {
+    "productName": "Mango - BLOUSE",
+    "description": "Pepe Jeans blouse. The model is made of smooth fabric. Has a neckline tied in the area.\n    - Free style.\n    - Model with a viscous.\n    - Fastens on buttons.\n    - Thin inelastic fabric.\n    - Armpit width: 55 cm.\n    - Sleeve length (from the neck): 69.5 cm.\n    - Length: 61 cm.\n    - The parameters are specified for size: S.\n\n    Pattern: solid\n    Sleeve: long\n    Neckline: binding\n    Legs: biuro\n    Composition:\n    100% Polyester",
+    "brand": "Mango",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#edfcfb", "#fffff"],
+    "images": [
+      {
+        "value": "#edfcfb",
+        "url": ["blouse_12_1.jpg",
+          "blouse_12_2.jpg",
+          "blouse_12_3.jpg",
+          "blouse_12_4.jpg"]
+      },
+      {
+        "value": "#fffff",
+        "url": ["blouse_13_1.jpg",
+          "blouse_13_2.jpg",
+          "blouse_13_3.jpg",
+          "blouse_13_4.jpg"]
+      }
+    ],
+    "video": "blouse_12_v.mp4",
+    "sex": "female",
+    "category": "blouse",
+    "season": ["spring", "fall", "summer", "winter"],
+    "quantity": 10,
+    "price": 899
+  },
+  {
+    "productName": "PEPE JEANS - SUI SHIRT",
+    "description": "Pepe Jeans blouse. The model is made of smooth fabric. Has a neckline tied in the area.\n    - Model with stand.\n    - Sleeves with tie.\n    - Textured material.\n    - Smooth material.\n    - There is a zipper in the back.\n    - Sleeve length: 61 cm.\n    - Length: 60 cm.\n    - Armpit width: 44 cm.\n    - The parameters are specified for size: 34.\n\n    Pattern: solid\n    Sleeve: long\n    Neckline: with stand\n    Legs: biuro\n    Composition:\n    3% Elastane, 97% Polyester",
+    "brand": "Pepe Jeans",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ffffff", "#125fc9"],
+    "images": [
+      {
+        "value": "#ffffff",
+        "url": ["blouse_14_1.jpg",
+          "blouse_14_2.jpg",
+          "blouse_14_3.jpg",
+          "blouse_14_4.jpg"]
+      },
+      {
+        "value": "#125fc9",
+        "url": ["blouse_15_1.jpg",
+          "blouse_15_2.jpg",
+          "blouse_15_3.jpg",
+          "blouse_15_4.jpg"]
+      }
+    ],
+    "video": "blouse_14_v.mp4",
+    "category": "blouse",
+    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "female",
+    "quantity": 10,
+    "price": 1199
+  },
+  {
+    "productName": "ONLY - SHIRT",
+    "description": "The model is made of smooth fabric. Has a neckline tied in the area.\n    - Model with stand.\n    - Sleeves with tie.\n    - Textured material.\n    - Smooth material.\n    - There is a zipper in the back.\n    - Sleeve length: 61 cm.\n    - Length: 60 cm.\n    - Armpit width: 44 cm.\n    - The parameters are specified for size: 34.\n\n    Pattern: solid\n    Sleeve: long\n    Neckline: with stand\n    Legs: biuro\n    Composition:\n    3% Elastane, 97% PolyesterThe model is made of smooth fabric. Has a neckline tied in the area.\n    - Model with stand.\n    - Sleeves with tie.\n    - Textured material.\n    - Smooth material.\n    - There is a zipper in the back.\n    - Sleeve length: 61 cm.\n    - Length: 60 cm.\n    - Armpit width: 44 cm.\n    - The parameters are specified for size: 34.\n\n    Pattern: solid\n    Sleeve: long\n    Neckline: with stand\n    Legs: biuro\n    Composition:\n    3% Elastane, 97% Polyester",
+    "brand": "Only",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#426d52", "#125fc9"],
+    "images": [
+      {
+        "value": "#426d52",
+        "url": ["blouse_16_1.jpg",
+          "blouse_16_2.jpg",
+          "blouse_16_3.jpg",
+          "blouse_16_4.jpg"]
+      },
+      {
+        "value": "#125fc9",
+        "url": ["blouse_17_1.jpg",
+          "blouse_17_2.jpg",
+          "blouse_17_3.jpg",
+          "blouse_17_4.jpg"]
+      }
+    ],
+    "video": "blouse_16_v.mp4",
+    "category": "blouse",
+    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "female",
+    "quantity": 10,
+    "price": 999
+  },
+  {
+    "productName": "ONLY - SHIRT",
+    "description": "Blouse from the collection Medicine. The model is made of knitwear. Has a suggested cutout.\n      - Free style.\n      - Three-quarter sleeve.\n      - Finish in the form of tie.\n      - Smell cutout.\n      - Smooth knitwear.\n      - Armpit width: 57 cm.\n      - Length: 66.5 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Neckline: V-neck\n      Sleeve: three quarters\n      Composition:\n      55% Modal, 45% Polyester",
+    "brand": "ONLY",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": ["blouse_19_1.jpg",
+          "blouse_19_2.jpg",
+          "blouse_19_3.jpg",
+          "blouse_19_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "blouse",
+    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "female",
+    "quantity": 10,
+    "price": 799
+  },
+  {
+    "productName": "ANSWEAR - SKIRT",
+    "description": "Skirt from the Answear collection. The pencil cut model is made of artificial leather.\n      - Style pencil.\n      - Closed lightning.\n      - Excessive waist.\n      - Belt width: 33.5 cm.\n      - Length: 63.5 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Material: fabric\n      Casual: casual\n      Style: pencil\n      Legs: biuro\n      Composition:\n      55% Polyester, 45% Polyurethane",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": ["skirt_20_1.jpg",
+          "skirt_20_2.jpg",
+          "skirt_20_3.jpg",
+          "skirt_20_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "season": ["spring", "fall", "winter"],
+    "sex": "female",
+    "quantity": 10,
+    "price": 799
+  },
+  {
+    "productName": "ANSWEAR - SKIRT",
+    "description": "Skirt from the Answear collection. The pencil cut model is made of artificial leather.\n      - Style pencil.\n      - Slit pockets.\n      - Excessive waist.\n      - Fastens on a button and a zipper.\n      - Denim with decorative scuffs.\n      - Belt width: 32.5 cm.\n      - Length: 47.5 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Material: fabric\n      Material: jeans\n      Material: cotton\n      Casual: casual\n      Style: pencil\n      Composition:\n      100% Cotton",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#36558b"],
+    "images": [
+      {
+        "value": "#36558b",
+        "url": ["skirt_21_1.jpg",
+          "skirt_21_2.jpg",
+          "skirt_21_3.jpg",
+          "skirt_21_4.jpg"]
+      }
+    ],
+    "video": "skirt_21_v.mp4",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["summer"],
+    "quantity": 10,
+    "price": 799
+  },
+  {
+    "productName": "ANSWEAR - SKIRT",
+    "description": "Skirt from the Answear collection. The pencil cut model is made of artificial leather.\n      - Flared style.\n      - Excessive waist.\n      - Gum in the belt.\n      - Thin inelastic fabric.\n      - Model on the backing.\n      - Pleated model.\n      - Belt width: 29 cm.\n      - Length: 75.5 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: patterned\n      Material: fabric\n      Casual: casual\n      Style: bumblebee",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ffffff"],
+    "images": [
+      {
+        "value": "#ffffff",
+        "url": ["skirt_22_1.jpg",
+          "skirt_22_2.jpg",
+          "skirt_22_3.jpg",
+          "skirt_22_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["spring", "summer"],
+    "quantity": 10,
+    "price": 699
+  },
+  {
+    "productName": "MEDICINE - MANIFESTO SKIRT",
+    "description": "Skirt from the Answear collection. The pencil cut model is made of artificial leather.\n      - Style pencil.\n      - Slit pockets.\n      - Excessive waist.\n      - Fastens on a button and a zipper.\n      - Denim with decorative scuffs.\n      - Belt width: 34 cm.\n      - Length: 43 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Material: fabric\n      Material: jeans\n      Material: cotton\n      Casual: casual\n      Style: pencil\n      Composition:\n      100% Cotton",
+    "brand": "MEDICINE",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#94979c"],
+    "images": [
+      {
+        "value": "#94979c",
+        "url": ["skirt_23_1.jpg",
+          "skirt_23_2.jpg",
+          "skirt_23_3.jpg",
+          "skirt_23_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["spring", "summer"],
+    "quantity": 10,
+    "price": 699
+  },
+  {
+    "productName":  "ANSWEAR - SKIRT",
+    "description": "Skirt from the Answear collection. The pencil cut model is made of artificial leather.\n      - Lying top and loose bottom.\n      - Closed lightning.\n      - Thin inelastic fabric.\n      - Belt width: 33 cm.\n      - Length: 83 cm.\n      - The parameters are specified for size: 170 cm.\n      \n      Pattern: solid\n      Material: fabric\n      Casual: casual",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#f0efce"],
+    "images": [
+      {
+        "value": "#f0efce",
+        "url": ["skirt_24_1.jpg",
+          "skirt_24_2.jpg",
+          "skirt_24_3.jpg",
+          "skirt_24_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["spring", "summer"],
+    "quantity": 10,
+    "price": 799
+  },
+  {
+    "productName":  "LEVI'S - JEAN SKIRTT",
+    "description": "Levi's skirt. The straight cut model is made of denim.\n      - Direct style.\n      - Fastens on buttons.\n      - Slit pockets.\n      - With a cut.\n      - Model with decorative torn edge.\n      - Denim with decorative scuffs.\n      - Belt width: 37 cm.\n      - Length: 65 cm.\n      - The parameters are specified for size: 27.\n      \n      Pattern: solid\n      Material: fabric\n      Material: jeans\n      Material: cotton\n      Casual: casual\n      Style: straight\n      Composition:\n      100% Cotton",
+    "brand": "LEVI'S",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#325fab"],
+    "images": [
+      {
+        "value": "#325fab",
+        "url": ["skirt_25_1.jpg",
+          "skirt_25_2.jpg",
+          "skirt_25_3.jpg",
+          "skirt_25_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["spring", "summer"],
+    "quantity": 10,
+    "price": 799
+  },
+  {
+    "productName": "Answear - SKIRT",
+    "description": "Skirt from the Answear collection. The flared cut model is made of smooth fabric.\n      - Flared style.\n      - Excessive waist.\n      - Gum in the belt.\n      - Thin inelastic fabric.\n      - Pleated model.\n      - Belt width: 35 cm.\n      - Length: 84.5 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Material: fabric\n      Casual: casual\n      Style: bumblebee\n      Composition: Polyester 100%",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#8a230c", "#1f472b", "#8f8f8f"],
+    "images": [
+      {
+        "value": "#8a230c",
+        "url": ["skirt_26_1.jpg",
+          "skirt_26_2.jpg",
+          "skirt_26_3.jpg",
+          "skirt_26_4.jpg"]
+      },
+      {
+        "value": "#1f472b",
+        "url": ["skirt_27_1.jpg",
+          "skirt_27_2.jpg",
+          "skirt_27_3.jpg",
+          "skirt_27_4.jpg"]
+      },
+      {
+        "value": "#8f8f8f",
+        "url": ["skirt_28_1.jpg",
+          "skirt_28_2.jpg",
+          "skirt_28_3.jpg",
+          "skirt_28_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["spring", "fall", "summer"],
+    "quantity": 10,
+    "price": 999
+  }, 
+  {
+    "productName": "Answear - SKIRT",
+    "description": "Skirt from the Answear collection. The straight cut model is made of smooth knitwear.\n      - Direct style.\n      - Excessive waist.\n      - Gum in the belt.\n      - Thin, stretchy knitwear.\n      - Textured material.\n      - Belt width: 39 cm.\n      - Length: 87 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Material: knitwear\n      Style: straight\n      Composition:\n      100% Acrylic",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#666464", "#000000"],
+    "images": [
+      {
+        "value": "#666464",
+        "url": ["skirt_29_1.jpg",
+          "skirt_29_2.jpg",
+          "skirt_29_3.jpg",
+          "skirt_29_4.jpg"]
+      },
+      {
+        "value": "#000000",
+        "url": ["skirt_30_1.jpg",
+          "skirt_30_2.jpg",
+          "skirt_30_3.jpg",
+          "skirt_30_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["fall", "winter"],
+    "quantity": 10,
+    "price": 999
+  },
+  {
+    "productName": "ANSWEAR - SKIRT",
+    "description": "Skirt from the Answear collection. The flared cut model is made of patterned fabric.\n      - Gum in the belt.\n      - Pleated model.\n      - Patterned fabric.\n      - Belt width: 27 cm.\n      - Length: 76 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: patterned\n      Material: fabric\n      Style: bumblebee\n      Composition:\n      100% Terylene",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#d0c23b"],
+    "images": [
+      {
+        "value": "#d0c23b",
+        "url": ["skirt_31_1.jpg",
+          "skirt_31_2.jpg",
+          "skirt_31_3.jpg",
+          "skirt_31_4.jpg"]
+      }
+    ],
+    "video": "skirt_31_v.mp4",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["spring", "summer"],
+    "quantity": 10,
+    "price": 999
+  },
+  {
+    "productName": "MANGO - SOFT SKIRT",
+    "description": "Mango skirt. The straight cut model is made of denim.\n      - Direct style.\n      - Slit pockets.\n      - Excessive waist.\n      - Fastens on buttons.\n      \n      Pattern: solid\n      Material: fabric\n      Material: jeans\n      Material: cotton\n      Casual: casual\n      Style: straight\n      Composition:\n      Main Material: 100% Cotton",
+    "brand": "Answear",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#4e7ed0"],
+    "images": [
+      {
+        "value": "#4e7ed0",
+        "url": ["skirt_32_1.jpg",
+          "skirt_32_2.jpg",
+          "skirt_32_3.jpg",
+          "skirt_32_4.jpg"]
+      }
+    ],
+    "video": "",
+    "category": "skirt",
+    "sex": "female",
+    "season": ["spring", "summer"],
+    "quantity": 10,
+    "price": 999
+  }
+]
