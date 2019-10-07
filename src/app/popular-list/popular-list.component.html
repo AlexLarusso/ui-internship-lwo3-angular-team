@@ -2,10 +2,9 @@
   <div class="content__container popular__wrapper">
     <h2 class="content__title">Popular Now</h2>
     <ul class="filter__panel col-8">
-      <li class="filter__item">Trending</li>
-      <li class="filter__item">Bestsellers</li>
-      <li class="filter__item">New</li>
-      <li class="filter__item">On Sale</li>
+      <li *ngFor="let item of filterItems" class="filter__item">
+        {{ item }}
+      </li>
     </ul>
     <div class="col-12 product__container">
       <app-product-item

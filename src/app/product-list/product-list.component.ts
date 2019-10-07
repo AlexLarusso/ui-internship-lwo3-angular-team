@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
-import { Product } from '../product';
+import { ProductShortInfoService } from '../product-short-info.service';
+import { IProductShortInfo } from '../product-short-info';
 
 @Component({
   selector: 'app-product-list',
@@ -8,13 +8,19 @@ import { Product } from '../product';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+  public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
+  public aboutProductsText = `Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
+    lacinia eget consectetur sed, convallis at tellus.`;
+  public productData: Array<IProductShortInfo>;
 
-  productData: Product[];
-
-  constructor(private httpService: HttpService) { }
-
-  ngOnInit() {
-    this.httpService.getData().subscribe((data: Product[]) => this.productData = data);
+  constructor(private productList: ProductShortInfoService) {
   }
 
+  public ngOnInit(): void {
+    this.productList.getShortInfo()
+      .subscribe((data) => this.productData = data);
+  }
 }
+
+
+

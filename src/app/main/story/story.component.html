@@ -4,13 +4,8 @@
     <div class="story__article__wrapper">
       <h2 class="content__title">Story Behind</h2>
       <div  class="col-10 story__article">
-        <app-main-logo [color]="'accent'"></app-main-logo>
-        <p>
-          Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ac diam
-          amet quam vehicula elementum sed sit amet dui. Vivamus suscipit tortor eget felis
-          porttitor volutpat. Accumsan id imperdiet et, porttitor at sem.
-          Vestibulum ac diam sit amet quam vehisuscipit tortor eget felis.
-        </p>
+        <app-main-logo [logoColor]="'accent'"></app-main-logo>
+        <p>{{ storyText }}</p>
         <app-button>Contact us</app-button>
       </div>
     </div>

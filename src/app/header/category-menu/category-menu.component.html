@@ -1,16 +1,15 @@
 <div class="content__container">
   <div class="col-12 menu">
     <ul class="col-4 menu__container">
-      <li><a href="#">Woman</a></li>
-      <li><a href="#">Man</a></li>
-      <li><a href="#">Collection</a></li>
+      <li *ngFor="let category of categories">
+        <a>{{ category }}</a>
+      </li>
     </ul>
-    <app-main-logo [color]="'dark'" class="logo col-4"></app-main-logo>
+    <app-main-logo [logoColor]="'dark'" class="logo col-4"></app-main-logo>
     <ul class="col-4 menu__container">
-      <li><a href="#">Spring</a></li>
-      <li><a href="#">Sammer</a></li>
-      <li><a href="#">Fail</a></li>
-      <li><a href="#">Winter</a></li>
+      <li *ngFor="let season of seasons">
+        <a>{{ season }}</a>
+      </li>
     </ul>
   </div>
 </div>

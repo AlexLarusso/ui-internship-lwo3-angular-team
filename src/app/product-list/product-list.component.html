@@ -4,15 +4,13 @@
       <h2 class="col-12 content__title">From Our Collection</h2>
       <div class="product__navigation">
         <p class="col-5">
-          Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
-          lacinia eget consectetur sed, convallis at tellus.
+          {{ aboutProductsText }}
         </p>
         <div class="col-7">
           <div class="navigation__panel">
-            <app-button [class]="'button_navigation'">Trending</app-button>
-            <app-button [class]="'button_navigation'">Bestsellers</app-button>
-            <app-button [class]="'button_navigation'">New</app-button>
-            <app-button [class]="'button_navigation'">On Sale</app-button>
+            <app-button *ngFor="let item of filterItems" [buttonClass]="'button_navigation'">
+              {{ item }}
+            </app-button>
           </div>
         </div>
       </div>
@@ -20,9 +18,9 @@
     <div class="product__container">
       <app-product-item *ngFor="let product of productData"
         class="product__item"
-        [src]="product.images[0].url[0]" 
-        [title]="product.productName"
-        [price]="product.price + ' uah'">
+        [src]="product.imgUrl" 
+        [title]="product.title"
+        [price]="product.price">
       </app-product-item>
     </div>
   </div>

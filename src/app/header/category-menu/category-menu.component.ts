@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-category-menu',
@@ -6,11 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-menu.component.scss']
 })
 
-export class CategoryMenuComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class CategoryMenuComponent {
+  public categories = ['Woman', 'Man', 'Collection'];
+  public seasons = ['Spring', 'Summer', 'Fail', 'Winter'];
 }

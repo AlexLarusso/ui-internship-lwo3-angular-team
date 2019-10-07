@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
-import { Product } from '../product';
+import { ProductShortInfoService } from '../product-short-info.service';
+import { IProductShortInfo } from '../product-short-info';
 
 @Component({
   selector: 'app-popular-list',
@@ -8,11 +8,14 @@ import { Product } from '../product';
   styleUrls: ['./popular-list.component.scss']
 })
 export class PopularListComponent implements OnInit {
-  productData: Product[];
+  public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
+  public productData: Array<IProductShortInfo>;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private productList: ProductShortInfoService) {
+  }
 
-  ngOnInit() {
-    this.httpService.getData().subscribe((data: Product[]) => this.productData = data);
+  public ngOnInit(): void {
+    this.productList.getShortInfo()
+      .subscribe((data) => this.productData = data);
   }
 }
