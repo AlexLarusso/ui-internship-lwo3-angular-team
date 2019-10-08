@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ui-internship-lwo3-angular-team';
+  public title = 'ui-internship-lwo3-angular-team';
 }

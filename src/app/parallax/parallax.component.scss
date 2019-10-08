@@ -1,0 +1,7 @@
+.parallax {
+  &__container {
+    height: 700px;
+    background: url('../../assets/img/beauty-casual-curly.jpg') top right / cover no-repeat;
+    background-attachment: fixed;
+  }
+}

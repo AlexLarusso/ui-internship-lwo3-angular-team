@@ -1,0 +1,13 @@
+@import '../../styles/_variables.scss';
+
+.promo {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    background-color: $bgColorDark;
+    color: $accentColor;
+  }
+}
