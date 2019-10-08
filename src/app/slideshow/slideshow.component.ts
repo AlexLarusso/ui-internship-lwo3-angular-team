@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { fromEvent, merge } from "rxjs";
+import { Component, OnInit, ViewChild, AfterContentInit, OnChanges } from "@angular/core";
+import { fromEvent, merge, timer } from "rxjs";
 import { map, scan, startWith } from "rxjs/operators";
 import { slideshowAnimation } from "./slideshow.animations";
 
@@ -25,18 +25,22 @@ export class SlideshowComponent implements OnInit {
   currentIndex = 0;
   currentDirection = "left";
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
-    const prev$ = fromEvent(this.getNativeElement(this.previous), "click").pipe(
-      map(event => ({ shift: -1, direction: "right" }))
+    const prevModified = fromEvent(this.getNativeElement(this.previous), "click").pipe(
+      map(el => ({ shift: -1, direction: "right" }))
     );
 
-    const next$ = fromEvent(this.getNativeElement(this.next), "click").pipe(
-      map(event => ({ shift: +1, direction: "left" }))
+    const nextModified = fromEvent(this.getNativeElement(this.next), "click").pipe(
+      map(el => ({ shift: 1, direction: "left" }))
     );
 
-    merge(prev$, next$)
+    const TIMER = timer(4000, 4000).pipe(map(el => ({ shift: 1, direction: "left" }))
+    );
+
+    merge(prevModified, nextModified, TIMER)
       .pipe(
         startWith({ index: 0 } as any),
         scan((acc, curr) => {
@@ -56,6 +60,11 @@ export class SlideshowComponent implements OnInit {
         this.currentIndex = event.index;
         this.currentDirection = event.direction;
       });
+  }
+
+  public setSlide(slideNumber: number): void {
+    this.currentDirection = slideNumber < this.currentIndex ? 'right' : 'left';
+    this.currentIndex = slideNumber;
   }
 
   getNativeElement(element) {
