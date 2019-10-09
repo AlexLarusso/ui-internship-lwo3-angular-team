@@ -22,6 +22,8 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
+import { JoinUsComponent } from './join-us/join-us.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,13 +42,15 @@ import { ProductShortInfoService } from './product-short-info.service';
     ProductListComponent,
     MainMenuComponent,
     ParallaxComponent,
-    PopularListComponent
+    PopularListComponent,
+    JoinUsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [HttpService,
     ProductShortInfoService],
