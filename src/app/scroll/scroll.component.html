@@ -1,5 +1,5 @@
 <nav class="scroll">
-  <ul *ngIf="pageComponents">
+  <ul>
     <li 
       *ngFor="let component of pageComponents"
       class="menu"
@@ -10,14 +10,16 @@
         *ngSwitchCase="'app-header'"
         [icon]="toHeaderIcon"
         class="icon"
+        [class.disabled]="component.selector === activeElement?.selector"
       ></fa-icon>
       <fa-icon 
         *ngSwitchCase="'app-footer'"
         [icon]="toFooterIcon"
         class="icon"
+        [class.disabled]="component.selector === activeElement?.selector"
       ></fa-icon>
       <span *ngSwitchDefault class="item"
-        [class.active]="component.selector===activeElement?.selector"
+        [class.active]="component.selector === activeElement?.selector"
       >
         <span class="item__text">{{component.title}}</span>
       </span> 

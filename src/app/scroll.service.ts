@@ -1,6 +1,6 @@
-import { Injectable, ElementRef, EventEmitter } from '@angular/core';
+import { Injectable, ElementRef, EventEmitter, AfterViewChecked } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, debounceTime, throttleTime } from 'rxjs/operators';
 
 export interface IPageAnchor {
   title: string,
@@ -18,7 +18,9 @@ interface IAnchorOffset {
 })
 export class ScrollService {
   public activeAnchor = new EventEmitter();
+  public pageAnchors = new EventEmitter();
   
+  private isListening: boolean = false;
   private pageAnchorRefs: ElementRef[] = [];
   private pageAnchorOffsets: IAnchorOffset[] = [];
   private scrollOptions = { 
@@ -27,31 +29,12 @@ export class ScrollService {
     inline: 'nearest'
   };
 
-  constructor() {
-    fromEvent(window, 'scroll').pipe(
-      map(_ => window.pageYOffset))
-        .subscribe(position => {
-          setTimeout(() => {
-            this.onScrollCallback(position);
-          }, 0); 
-        });
-  }
   public addAnchor(elRef: ElementRef) {  
-    setTimeout(() => {
-      this.pageAnchorRefs.push(elRef); 
-      const anchor = 
-      this.pageAnchorOffsets.push({
-        positionTop: elRef.nativeElement.getBoundingClientRect().top
-          + window.pageYOffset,
-        positionBottom: elRef.nativeElement.getBoundingClientRect().bottom
-          + window.pageYOffset,
-        pageAnchor: {
-          selector: elRef.nativeElement.localName,
-          title: elRef.nativeElement.title
-        }
-      });
-      this.pageAnchorOffsets.sort((a, b) => a.positionTop - b.positionTop);
-    }, 0);
+    this.pageAnchorRefs.push(elRef); 
+    this.pageAnchors.emit( { 
+        selector: elRef.nativeElement.localName,
+        title: elRef.nativeElement.title
+    });
   }
 
   public resetAnchors() {
@@ -59,7 +42,7 @@ export class ScrollService {
     this.pageAnchorOffsets = [];
   }
 
-  public getPageAnchors() {    
+  public getPageAnchors() {
     return this.pageAnchorRefs.map(elRef => ({ 
       selector: elRef.nativeElement.localName,
       title: elRef.nativeElement.title
@@ -77,10 +60,10 @@ export class ScrollService {
     );
   }
 
-  private onScrollCallback(position: number) {
+  private onScrollCallback(position: number) {  
     const anchorsCount = this.pageAnchorOffsets.length;
 
-    for (let i = 0; i < anchorsCount - 1; i++) {
+    for (let i = 0; i < anchorsCount - 2; i++) {
       if(position >= this.pageAnchorOffsets[i].positionTop
         && position < this.pageAnchorOffsets[i + 1].positionTop) {
           const active = {
@@ -91,13 +74,54 @@ export class ScrollService {
           return;
         }
     }
-    const active = {
-      title: this.pageAnchorOffsets[anchorsCount - 1]
-        .pageAnchor.title,
-      selector: this.pageAnchorOffsets[anchorsCount - 1]
-        .pageAnchor.selector
-    };
+    let active;
+    console.log('BOttom:', this.pageAnchorOffsets[anchorsCount - 1].positionBottom);
+    console.log('position:', position);
+    console.log('height', window.innerHeight);
+    
+    
+    if (this.pageAnchorOffsets[anchorsCount - 1].positionBottom
+      - position <= window.innerHeight + 10) {
+       active = {
+          title: this.pageAnchorOffsets[anchorsCount - 1]
+            .pageAnchor.title,
+          selector: this.pageAnchorOffsets[anchorsCount - 1]
+            .pageAnchor.selector
+      };
+    } else {
+      active = {
+        title: this.pageAnchorOffsets[anchorsCount - 2]
+          .pageAnchor.title,
+        selector: this.pageAnchorOffsets[anchorsCount - 2]
+          .pageAnchor.selector
+      };
+    }
+
+    
 
     this.activeAnchor.emit(active);
+  }
+
+  public initScrollListening() {
+    const offsets = this.pageAnchorRefs.map(elRef => ({
+      positionTop: elRef.nativeElement.getBoundingClientRect().top
+        + window.pageYOffset,
+      positionBottom: elRef.nativeElement.getBoundingClientRect().bottom
+        + window.pageYOffset,
+      pageAnchor: {
+        selector: elRef.nativeElement.localName,
+        title: elRef.nativeElement.title
+      }
+    }));
+    offsets.sort((a, b) => a.positionTop - b.positionTop);
+    this.pageAnchorOffsets = offsets;
+    
+    if (!this.isListening) {
+      this.isListening = true;
+      fromEvent(window, 'scroll').pipe(map(_ => window.pageYOffset))
+      // throttleTime(100))
+        .subscribe(position =>
+          this.onScrollCallback(position));
+      }
   }
 }

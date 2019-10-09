@@ -1,5 +1,5 @@
-$item-size: 18px;
-$item-spacing: 20px;
+$item-size: 22px;
+$item-spacing: 26px;
 $item-color: rgba(211, 153, 95, 0.7);
 $decoration-color: rgba(192, 192, 192, 0.8);;
 $menu-color: rgba(0, 0, 0, 0.7);
@@ -23,6 +23,7 @@ $text-color: white;
         border-radius: $item-size / 2;
         background-color: $item-color;
         box-shadow: 2px 2px 2px 0px $menu-color;
+        transition: all 600ms ease-in-out;
         cursor: pointer;
         
         &.active {
@@ -31,25 +32,24 @@ $text-color: white;
         }
         
         &__text {
-            display: none;
-            text-align: left;
-            font-size: 0.7rem;
+            visibility: hidden;
+            display: block;
+            font-size: 1rem;
             color: $text-color;
             text-align: center;
-        }
-
-        &__id {
-            display: none;
+            opacity: 0;
+            transition: opacity .6s;
+            transition-delay: 300ms;
         }
 
         &:hover {
             background-color: $menu-color;
             transform: translateX(calc(-100% + #{$item-size}));
             width: 100px;
-            transition: 200ms;
             
             .item__text {
-                display: block;
+                visibility: visible;
+                opacity: 1;
             }
         }
     }
@@ -65,6 +65,9 @@ $text-color: white;
             transform: scale(1.5);
             color: $menu-color;
             stroke: $decoration-color;
+        }
+        &.disabled {
+            visibility: hidden;
         }
     }
 }

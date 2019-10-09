@@ -11,20 +11,25 @@ export class ScrollComponent {
   activeElement: IPageAnchor;
   toHeaderIcon: IconDefinition = faChevronUp;
   toFooterIcon: IconDefinition = faChevronDown;
-  pageComponents: IPageAnchor[];
+  pageComponents: IPageAnchor[] = [];
 
   constructor(private scrollService: ScrollService) {
-    setTimeout(_ => {
-      this.pageComponents = this.scrollService.getPageAnchors();
-      console.log(this.pageComponents);
-      
-      this.scrollService.activeAnchor
-        .subscribe((anchor: IPageAnchor) =>
-          this.activeElement = anchor);
-    }, 100);  
+    this.scrollService.activeAnchor
+      .subscribe((anchor: IPageAnchor) => {
+        console.log(anchor.selector);
+        
+        this.activeElement = anchor
+      });
+    this.scrollService.pageAnchors
+      .subscribe((anchor: IPageAnchor) =>
+        this.pageComponents.push(anchor));
   }
 
   onItemSelect(anchor: IPageAnchor): void {  
     this.scrollService.moveTo(anchor);
+  }
+
+  ngAfterViewChecked() {
+    this.scrollService.initScrollListening();
   }
 }
