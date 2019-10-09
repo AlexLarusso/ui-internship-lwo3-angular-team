@@ -1,14 +1,17 @@
-import { Component, OnInit, ViewChild, AfterContentInit, OnChanges } from "@angular/core";
-import { fromEvent, merge, timer } from "rxjs";
-import { map, scan, startWith } from "rxjs/operators";
+import { Component, OnInit, ViewChild, AfterContentInit, OnChanges, EventEmitter, ElementRef } from "@angular/core";
+import { fromEvent, merge, timer, of, pipe } from "rxjs";
+import { map, scan, startWith, tap, takeUntil, switchMap, takeWhile } from "rxjs/operators";
 import { slideshowAnimation } from "./slideshow.animations";
+import '../../assets/img/beauty-casual-curly.jpg'
+import '../../assets/img/blazers-daytime-dress.jpg'
+import '../../assets/img/bored-boredom-casual.jpg'
+import '../../assets/img/city-daylight-diversity.jpg'
 
 const images: string[] = [
-  "https://www.w3schools.com/howto/img_nature_wide.jpg",
-  "https://www.w3schools.com/howto/img_snow_wide.jpg",
-  "https://www.w3schools.com/howto/img_lights_wide.jpg",
-  "https://www.w3schools.com/howto/img_mountains_wide.jpg",
-  "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/model/aventador/aventador-s/Restyling/design-left.jpg"
+  "../../assets/img/beauty-casual-curly.jpg",
+  "../../assets/img/blazers-daytime-dress.jpg",
+  "../../assets/img/bored-boredom-casual.jpg",
+  "../../assets/img/city-daylight-diversity.jpg"
 ];
 
 @Component({
@@ -18,30 +21,70 @@ const images: string[] = [
   animations: [slideshowAnimation]
 })
 export class SlideshowComponent implements OnInit {
-  @ViewChild("previous", { static: true }) previous;
-  @ViewChild("next", { static: true }) next;
-  position: any;
-  images: any[] = images;
+  @ViewChild("previous", { static: true }) previous: ElementRef;
+  @ViewChild("next", { static: true }) next: ElementRef;
+  @ViewChild("slider", { static: true }) sliderEl: ElementRef;
+  @ViewChild("bullet", { static: true }) bullet: ElementRef;
+  images: Array<any> = images;
   currentIndex = 0;
-  currentDirection = "left";
+  currentDirection = "right";
+  private isOnSlider = new EventEmitter<boolean>();
+  private timerSub: any;
+  private isClicked = new EventEmitter<boolean>();
 
   constructor() {
   }
 
   ngOnInit() {
-    const prevModified = fromEvent(this.getNativeElement(this.previous), "click").pipe(
-      map(el => ({ shift: -1, direction: "right" }))
+
+    const prevModified$ = fromEvent(this.getNativeElement(this.previous), "click").pipe(
+      map(() => ({ shift: -1, direction: "right" }))
     );
 
-    const nextModified = fromEvent(this.getNativeElement(this.next), "click").pipe(
-      map(el => ({ shift: 1, direction: "left" }))
+    const nextModified$ = fromEvent(this.getNativeElement(this.next), "click").pipe(
+      map(() => ({ shift: 1, direction: "left" }))
     );
 
-    const TIMER = timer(4000, 4000).pipe(map(el => ({ shift: 1, direction: "left" }))
-    );
-
-    merge(prevModified, nextModified, TIMER)
+    this.timerSub = this.isOnSlider
       .pipe(
+        switchMap(isOnSlider => 
+          timer(2000, 2000).pipe(
+            tap(() => console.log('TAP')),
+            takeWhile(() => isOnSlider),
+            map(() => ({ shift: 1, direction: "left" })),
+          ))
+        )
+
+    fromEvent(this.getNativeElement(this.sliderEl), "mouseover")
+    .subscribe(() => {
+      this.isOnSlider.emit(false);
+    });
+
+    fromEvent(this.getNativeElement(this.sliderEl), "mouseout")
+    .subscribe(() => {
+      this.isOnSlider.emit(true);
+    });
+
+    // fromEvent(this.getNativeElement(this.previous), "click")
+    // .subscribe(() => {
+    //   this.isClicked.emit(false);
+    // });
+
+    // fromEvent(this.getNativeElement(this.next), "click")
+    // .subscribe(() => {
+    //   this.isClicked.emit(false);
+    // });
+
+    // fromEvent(this.getNativeElement(this.bullet), "click")
+    // .subscribe(() => {
+    //   this.isClicked.emit(false);
+    // });
+
+    
+
+    merge(prevModified$, nextModified$, this.timerSub)
+      .pipe(
+        tap(() => console.log('TAP_CLICK')),
         startWith({ index: 0 } as any),
         scan((acc, curr) => {
           const projectedIndex = acc.index + curr.shift;
@@ -57,6 +100,7 @@ export class SlideshowComponent implements OnInit {
         })
       )
       .subscribe(event => {
+        console.log('SUBSCRIBE');
         this.currentIndex = event.index;
         this.currentDirection = event.direction;
       });

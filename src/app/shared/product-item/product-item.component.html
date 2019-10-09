@@ -1,0 +1,14 @@
+<div class="col-3 product-item__container">
+  <div class="product-item__picture__container">
+    <img class="product-item__picture"
+      class="product-item__picture"
+      [alt]="title"
+      [src]="src"
+    />
+    <button class="wish__btn">
+      <fa-icon [icon]="faHeart" class="wish__icon"></fa-icon>
+    </button>
+  </div>
+  <h4 class="product-item__title">{{ title }}</h4>
+  <p class="product-item__price">{{ price }}</p>
+</div>

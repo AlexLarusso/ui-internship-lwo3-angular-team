@@ -1,0 +1,69 @@
+@import '../../styles/variables';
+
+.promo {
+  &__container {
+    display: flex;
+    justify-content: center;
+    height: 450px;
+    background-color: $bgColorMedium;
+  }
+
+  &__content {
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-between;
+    height: 320px;
+    color: $fontColorLight;
+  }
+
+  &__header {
+    font-family: $mainFontBold;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+
+    &_accent {
+      font-size: 3rem;
+      color: $accentColor;
+    }
+  }
+}
+
+.image {
+  &__container {
+    position: relative;
+    height: inherit;
+    // background:  url('../../../assets/img/bored-boredom-casual.jpg') no-repeat;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .promo {
+    &__content {
+      height: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    &__container {
+      height: 550px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .promo {
+    &__container {
+      height: 500px;
+    }
+
+    &__content {
+      width: 80%;
+      height: 250px;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+* {
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $bgColorLight;
+  font-family: $mainFontRegular;
+}
+
+a {
+  text-decoration: none;
+  color: $bgColorDark;
+}
+
+button,
+select,
+li,
+a,
+i,
+fa-icon {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+li,
+a,
+i {
+  list-style: none;
+
+  &:hover {
+    color: $accentColor;
+  }
+}
