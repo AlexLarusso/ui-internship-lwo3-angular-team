@@ -22,6 +22,7 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
+import { ScrollAnchorDirective } from './scroll-anchor.directive';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ProductShortInfoService } from './product-short-info.service';
     ProductListComponent,
     MainMenuComponent,
     ParallaxComponent,
-    PopularListComponent
+    PopularListComponent,
+    ScrollAnchorDirective
   ],
   imports: [
     BrowserModule,
