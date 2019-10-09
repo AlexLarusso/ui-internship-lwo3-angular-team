@@ -13,4 +13,5 @@ export interface IProduct {
   season: Array<string>;
   quantity: number;
   price: number;
+  id: number;
 }
