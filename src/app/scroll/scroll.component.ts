@@ -13,18 +13,18 @@ export class ScrollComponent {
   toFooterIcon: IconDefinition = faChevronDown;
   pageComponents: IPageAnchor[];
 
-  constructor(private scrollService: ScrollService) {}
-
-  onItemSelect(anchor: IPageAnchor): void {    
-    this.scrollService.moveTo(anchor);
-  }
-
-  ngOnInit() {
+  constructor(private scrollService: ScrollService) {
     setTimeout(_ => {
       this.pageComponents = this.scrollService.getPageAnchors();
+      console.log(this.pageComponents);
+      
       this.scrollService.activeAnchor
         .subscribe((anchor: IPageAnchor) =>
           this.activeElement = anchor);
-    }, 0);
+    }, 100);  
+  }
+
+  onItemSelect(anchor: IPageAnchor): void {  
+    this.scrollService.moveTo(anchor);
   }
 }

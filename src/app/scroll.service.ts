@@ -59,7 +59,7 @@ export class ScrollService {
     this.pageAnchorOffsets = [];
   }
 
-  public getPageAnchors() {
+  public getPageAnchors() {    
     return this.pageAnchorRefs.map(elRef => ({ 
       selector: elRef.nativeElement.localName,
       title: elRef.nativeElement.title
