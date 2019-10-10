@@ -20,6 +20,7 @@ export class ProductShortInfoService {
           title: item.productName,
           imgUrl: item.images[0].url[0],
           price: item.price + ' uah',
+          id: item.id,
         })
       ))));
   }

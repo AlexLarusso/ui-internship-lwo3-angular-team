@@ -8,11 +8,11 @@ import { ProductDetailsPageComponent } from './pages/product-details-page/produc
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',         component: HomeComponent, data: { title: 'Home' } },
-  { path: 'products',     component: ProductListPageComponent, data: { title: 'Product List' } },
-  { path: 'products/:id', component: ProductDetailsPageComponent, data: { title: 'Product Item' } },
-  { path: '404',          component: NotFoundComponent, data: { title: 'Not Found' }},
-  { path: '**',           redirectTo: '/404'},
+  { path: 'home',         component: HomeComponent },
+  { path: 'woman',        component: ProductListPageComponent },
+  { path: 'products/:id', component: ProductDetailsPageComponent },
+  { path: '404',          component: NotFoundComponent },
+  { path: '**',           redirectTo: '/404' },
 ]
 
 @NgModule({
