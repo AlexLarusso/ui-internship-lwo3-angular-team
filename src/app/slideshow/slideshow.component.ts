@@ -1,11 +1,24 @@
-import { Component, OnInit, ViewChild, AfterContentInit, OnChanges, EventEmitter, ElementRef } from "@angular/core";
-import { fromEvent, merge, timer, of, pipe } from "rxjs";
-import { map, scan, startWith, tap, takeUntil, switchMap, takeWhile } from "rxjs/operators";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  EventEmitter,
+  ElementRef
+} from "@angular/core";
+import { fromEvent, merge, timer } from "rxjs";
+import {
+  map,
+  scan,
+  startWith,
+  tap,
+  switchMap,
+  takeWhile
+} from "rxjs/operators";
 import { slideshowAnimation } from "./slideshow.animations";
-import '../../assets/img/beauty-casual-curly.jpg'
-import '../../assets/img/blazers-daytime-dress.jpg'
-import '../../assets/img/bored-boredom-casual.jpg'
-import '../../assets/img/city-daylight-diversity.jpg'
+import "../../assets/img/beauty-casual-curly.jpg";
+import "../../assets/img/blazers-daytime-dress.jpg";
+import "../../assets/img/bored-boredom-casual.jpg";
+import "../../assets/img/city-daylight-diversity.jpg";
 
 const images: string[] = [
   "../../assets/img/beauty-casual-curly.jpg",
@@ -21,70 +34,56 @@ const images: string[] = [
   animations: [slideshowAnimation]
 })
 export class SlideshowComponent implements OnInit {
-  @ViewChild("previous", { static: true }) previous: ElementRef;
-  @ViewChild("next", { static: true }) next: ElementRef;
+  @ViewChild("previous", { static: true }) previousEl: ElementRef;
+  @ViewChild("next", { static: true }) nextEl: ElementRef;
   @ViewChild("slider", { static: true }) sliderEl: ElementRef;
-  @ViewChild("bullet", { static: true }) bullet: ElementRef;
-  images: Array<any> = images;
-  currentIndex = 0;
-  currentDirection = "right";
+  public images: Array<any> = images;
+  public currentIndex = 0;
+  public currentDirection = "left";
   private isOnSlider = new EventEmitter<boolean>();
   private timerSub: any;
-  private isClicked = new EventEmitter<boolean>();
+  private clicked: boolean = false;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-
-    const prevModified$ = fromEvent(this.getNativeElement(this.previous), "click").pipe(
+  public ngOnInit() {
+    const prevModified$ = fromEvent(
+      this.getNativeElement(this.previousEl), "click").pipe(
+      tap(() => this.stopTimer()),
       map(() => ({ shift: -1, direction: "right" }))
     );
 
-    const nextModified$ = fromEvent(this.getNativeElement(this.next), "click").pipe(
+    const nextModified$ = fromEvent(
+      this.getNativeElement(this.nextEl),
+      "click"
+    ).pipe(
+      tap(() => this.stopTimer()),
       map(() => ({ shift: 1, direction: "left" }))
     );
 
-    this.timerSub = this.isOnSlider
-      .pipe(
-        switchMap(isOnSlider => 
-          timer(2000, 2000).pipe(
-            tap(() => console.log('TAP')),
-            takeWhile(() => isOnSlider),
-            map(() => ({ shift: 1, direction: "left" })),
-          ))
+    this.timerSub = this.isOnSlider.pipe(
+      switchMap(isOnSlider =>
+        timer(4000, 4000).pipe(
+          takeWhile(() => isOnSlider && !this.clicked),
+          map(() => ({ shift: 1, direction: "left" }))
         )
+      )
+    );
 
-    fromEvent(this.getNativeElement(this.sliderEl), "mouseover")
-    .subscribe(() => {
-      this.isOnSlider.emit(false);
-    });
+    fromEvent(this.getNativeElement(this.sliderEl), "mouseover").subscribe(
+      () => {
+        this.isOnSlider.emit(false);
+      }
+    );
 
-    fromEvent(this.getNativeElement(this.sliderEl), "mouseout")
-    .subscribe(() => {
-      this.isOnSlider.emit(true);
-    });
-
-    // fromEvent(this.getNativeElement(this.previous), "click")
-    // .subscribe(() => {
-    //   this.isClicked.emit(false);
-    // });
-
-    // fromEvent(this.getNativeElement(this.next), "click")
-    // .subscribe(() => {
-    //   this.isClicked.emit(false);
-    // });
-
-    // fromEvent(this.getNativeElement(this.bullet), "click")
-    // .subscribe(() => {
-    //   this.isClicked.emit(false);
-    // });
-
-    
+    fromEvent(this.getNativeElement(this.sliderEl), "mouseout").subscribe(
+      () => {
+        this.isOnSlider.emit(true);
+      }
+    );
 
     merge(prevModified$, nextModified$, this.timerSub)
       .pipe(
-        tap(() => console.log('TAP_CLICK')),
         startWith({ index: 0 } as any),
         scan((acc, curr) => {
           const projectedIndex = acc.index + curr.shift;
@@ -100,18 +99,26 @@ export class SlideshowComponent implements OnInit {
         })
       )
       .subscribe(event => {
-        console.log('SUBSCRIBE');
         this.currentIndex = event.index;
         this.currentDirection = event.direction;
       });
   }
 
+  public ngAfterViewInit() {
+    let event = new MouseEvent("mouseout", { bubbles: true });
+    this.getNativeElement(this.sliderEl).dispatchEvent(event);
+  }
+
   public setSlide(slideNumber: number): void {
-    this.currentDirection = slideNumber < this.currentIndex ? 'right' : 'left';
+    this.currentDirection = slideNumber < this.currentIndex ? "right" : "left";
     this.currentIndex = slideNumber;
   }
 
-  getNativeElement(element) {
+  public getNativeElement(element) {
     return element.nativeElement;
+  }
+
+  public stopTimer() {
+    this.clicked = true;
   }
 }

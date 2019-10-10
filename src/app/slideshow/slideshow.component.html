@@ -1,14 +1,11 @@
-<div class="slide-wrapper"  #slider>
+<div [@slideAnimation]="currentIndex"  #slider>
   <button class="prev" #previous>&#10094;</button>
   <button class="next" #next>&#10095;</button>
   <div 
-    *ngFor="let image of images; let i = index"
-
-    >
+    *ngFor="let image of images; let i = index">
     <div
       class="slide"
       *ngIf="i === currentIndex"
-      [@slideAnimation]="currentDirection"
       [style.background-image]="'url(' + image + ')'">
     </div>
   </div>
@@ -17,7 +14,7 @@
       #bullet
       *ngFor="let image of images; let i = index"
       [ngClass]="{ active: i === currentIndex }"
-      (click)="setSlide(i)">
+      (click)="setSlide(i); stopTimer()">
     </li>
   </ul>
   <ng-content></ng-content>
