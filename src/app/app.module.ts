@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,6 +23,10 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderService } from './loader.service';
+import { LoaderInterceptor } from './loader.interceptor';
+import { MatSpinner } from './shared/loader/progress-spinner/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -40,16 +45,21 @@ import { ProductShortInfoService } from './product-short-info.service';
     ProductListComponent,
     MainMenuComponent,
     ParallaxComponent,
-    PopularListComponent
+    PopularListComponent,
+    LoaderComponent,
+    MatSpinner
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [HttpService,
-    ProductShortInfoService],
+    ProductShortInfoService,
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
