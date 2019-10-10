@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import '../styles/variables';
 
 .promo {
   &__container {
@@ -35,7 +35,7 @@
   &__container {
     position: relative;
     height: inherit;
-    background:  url('../../../assets/img/bored-boredom-casual.jpg') no-repeat;
+    background:  url('../../assets/img/bored-boredom-casual.jpg') no-repeat;
   }
 }
 
