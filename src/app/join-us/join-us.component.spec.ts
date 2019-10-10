@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule }                      from '@angular/forms';
 
 import { JoinUsComponent }                  from './join-us.component';
+import { ButtonComponent } from '../shared/button/button.component';
 
 describe('JoinUsComponent', () => {
   let component: JoinUsComponent;
@@ -10,7 +11,7 @@ describe('JoinUsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule,],
-      declarations: [JoinUsComponent],
+      declarations: [JoinUsComponent, ButtonComponent],
     })
       .compileComponents();
   }));
