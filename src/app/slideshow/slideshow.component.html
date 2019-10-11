@@ -9,12 +9,12 @@
       [style.background-image]="'url(' + image + ')'">
     </div>
   </div>
-  <ul>
-    <li
-      #bullet
+  <ul #bullet>
+    <li class="pagination"
       *ngFor="let image of images; let i = index"
       [ngClass]="{ active: i === currentIndex }"
-      (click)="setSlide(i); stopTimer()">
+      (click)="toggleSlide(i); stopTimer()"
+      >
     </li>
   </ul>
   <ng-content></ng-content>

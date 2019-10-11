@@ -5,41 +5,41 @@ import {
   trigger,
   group,
   query
-} from "@angular/animations";
+} from '@angular/animations';
 
 export const slideshowAnimation = trigger('slideAnimation', [
   transition(
-    ":increment, 3 => 0",
+    ':increment, 3 => 0',
     group([
-      query(":enter", [
+      query(':enter', [
         style({
-          transform: "translateX(100%)"
+          transform: 'translateX(100%)'
         }),
-        animate("500ms ease-in-out")
+        animate('500ms ease-in-out')
       ]),
-      query(":leave", [
+      query(':leave', [
         animate(
-          "500ms ease-in-out"),
+          '500ms ease-in-out'),
           style({
-            transform: "translateX(-100%)"
+            transform: 'translateX(-100%)'
           })
       ])
     ])
   ),
   transition(
-    ":decrement, 0 => 3",
+    ':decrement, 0 => 3',
     group([
-      query(":enter", [
+      query(':enter', [
         style({
-          transform: "translateX(-100%)"
+          transform: 'translateX(-100%)'
         }),
-        animate("500ms ease-in-out")
+        animate('500ms ease-in-out')
       ]),
-      query(":leave", [
+      query(':leave', [
         animate(
-          "500ms ease-in-out"),
+          '500ms ease-in-out'),
           style({
-            transform: "translateX(100%)"
+            transform: 'translateX(100%)'
           })
       ])
     ])

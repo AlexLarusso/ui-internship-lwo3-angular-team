@@ -3,80 +3,85 @@ import {
   OnInit,
   ViewChild,
   EventEmitter,
-  ElementRef
-} from "@angular/core";
-import { fromEvent, merge, timer } from "rxjs";
+  ElementRef,
+  AfterViewInit
+} from '@angular/core';
+import { fromEvent, merge, timer} from 'rxjs';
 import {
   map,
   scan,
   startWith,
   tap,
   switchMap,
-  takeWhile
-} from "rxjs/operators";
-import { slideshowAnimation } from "./slideshow.animations";
-import "../../assets/img/beauty-casual-curly.jpg";
-import "../../assets/img/blazers-daytime-dress.jpg";
-import "../../assets/img/bored-boredom-casual.jpg";
-import "../../assets/img/city-daylight-diversity.jpg";
+  takeWhile,
+} from 'rxjs/operators';
+import { slideshowAnimation } from './slideshow.animations';
+
+import '../../assets/img/beauty-casual-curly.jpg';
+import '../../assets/img/blazers-daytime-dress.jpg';
+import '../../assets/img/bored-boredom-casual.jpg';
+import '../../assets/img/city-daylight-diversity.jpg';
 
 const images: string[] = [
-  "../../assets/img/beauty-casual-curly.jpg",
-  "../../assets/img/blazers-daytime-dress.jpg",
-  "../../assets/img/bored-boredom-casual.jpg",
-  "../../assets/img/city-daylight-diversity.jpg"
+  '../../assets/img/beauty-casual-curly.jpg',
+  '../../assets/img/blazers-daytime-dress.jpg',
+  '../../assets/img/bored-boredom-casual.jpg',
+  '../../assets/img/city-daylight-diversity.jpg'
 ];
 
 @Component({
-  selector: "app-slideshow",
-  templateUrl: "./slideshow.component.html",
-  styleUrls: ["./slideshow.component.scss"],
+  selector: 'app-slideshow',
+  templateUrl: './slideshow.component.html',
+  styleUrls: ['./slideshow.component.scss'],
   animations: [slideshowAnimation]
 })
-export class SlideshowComponent implements OnInit {
-  @ViewChild("previous", { static: true }) previousEl: ElementRef;
-  @ViewChild("next", { static: true }) nextEl: ElementRef;
-  @ViewChild("slider", { static: true }) sliderEl: ElementRef;
+export class SlideshowComponent implements OnInit, AfterViewInit {
+  @ViewChild('previous', { static: true }) previousEl: ElementRef;
+  @ViewChild('next', { static: true }) nextEl: ElementRef;
+  @ViewChild('slider', { static: true }) sliderEl: ElementRef;
+  @ViewChild('bullet', { static: true }) bulletEl: ElementRef;
   public images: Array<any> = images;
   public currentIndex = 0;
-  public currentDirection = "left";
+  public currentDirection = 'left';
   private isOnSlider = new EventEmitter<boolean>();
-  private timerSub: any;
-  private clicked: boolean = false;
+  public timerSub: any;
+  public clicked = false;
 
   constructor() {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     const prevModified$ = fromEvent(
-      this.getNativeElement(this.previousEl), "click").pipe(
+      this.previousEl.nativeElement,
+      'click'
+    ).pipe(
       tap(() => this.stopTimer()),
-      map(() => ({ shift: -1, direction: "right" }))
+      map(() => ({ shift: -1, direction: 'right' }))
     );
 
     const nextModified$ = fromEvent(
-      this.getNativeElement(this.nextEl),
-      "click"
+      this.nextEl.nativeElement,
+      'click'
     ).pipe(
       tap(() => this.stopTimer()),
-      map(() => ({ shift: 1, direction: "left" }))
+      map(() => ({ shift: 1, direction: 'left' }))
     );
 
     this.timerSub = this.isOnSlider.pipe(
       switchMap(isOnSlider =>
         timer(4000, 4000).pipe(
           takeWhile(() => isOnSlider && !this.clicked),
-          map(() => ({ shift: 1, direction: "left" }))
+          map(() => ({ shift: 1, direction: 'left' }))
         )
       )
     );
 
-    fromEvent(this.getNativeElement(this.sliderEl), "mouseover").subscribe(
+    fromEvent(this.sliderEl.nativeElement, 'mouseover').subscribe(
       () => {
         this.isOnSlider.emit(false);
       }
     );
 
-    fromEvent(this.getNativeElement(this.sliderEl), "mouseout").subscribe(
+    fromEvent(this.sliderEl.nativeElement, 'mouseout').subscribe(
       () => {
         this.isOnSlider.emit(true);
       }
@@ -104,21 +109,17 @@ export class SlideshowComponent implements OnInit {
       });
   }
 
-  public ngAfterViewInit() {
-    let event = new MouseEvent("mouseout", { bubbles: true });
-    this.getNativeElement(this.sliderEl).dispatchEvent(event);
+  public ngAfterViewInit(): void {
+    const event = new MouseEvent('mouseout', { bubbles: true });
+    this.sliderEl.nativeElement.dispatchEvent(event);
   }
 
-  public setSlide(slideNumber: number): void {
-    this.currentDirection = slideNumber < this.currentIndex ? "right" : "left";
-    this.currentIndex = slideNumber;
+  public toggleSlide(num: number): void {
+    this.currentDirection = num < this.currentIndex ? 'right' : 'left';
+    this.currentIndex = num;
   }
 
-  public getNativeElement(element) {
-    return element.nativeElement;
-  }
-
-  public stopTimer() {
+  public stopTimer(): void {
     this.clicked = true;
   }
 }
