@@ -71,6 +71,11 @@ button {
       }
     }
   }
+
+  .right,
+  .left {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 576px) {

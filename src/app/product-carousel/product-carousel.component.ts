@@ -39,13 +39,14 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public canMoveToNext = true;
   public canMoveToPrev = false;
   public productContainer: HTMLElement;
-  public itemWidth: number;
-  public visibleNum: number;
-  public position = 0;
   public productData: Array<IProductShortInfo>;
   public productArray: Array<IProductShortInfo>;
+  public itemWidth: number;
+  public visibleNum: number;
   public pageWidth: number;
-  public additionalScroll: number;
+  public position = 0;
+  public additionalScroll = 0;
+  public containerScroll = 0;
 
   constructor(private productList: ProductShortInfoService) { }
 
@@ -53,23 +54,31 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public onResize(): void {
     this.pageWidth = window.innerWidth;
 
+    this.resetPositionValue();
     this.toggleButtonsState();
     this.indicateViewNumber();
   }
 
-  @HostListener('touchstart', [])
   @HostListener('touchend', [])
-  @HostListener('touchcancel', [])
   public handleTouch(): void {
-    this.additionalScroll = this.productsContainer.nativeElement.scrollLeft;
+    this.additionalScroll = this.productsContainer.nativeElement.scrollLeft % this.itemWidth;
+
+    if (this.additionalScroll) {
+      this.productsContainer.nativeElement.scrollLeft > this.containerScroll
+        ? this.moveTo('next')
+        : this.moveTo('prev');
+    }
+
+    this.containerScroll = this.productsContainer.nativeElement.scrollLeft;
 
     this.toggleButtonsState();
-    this.indicateViewNumber();
   }
 
   public ngOnInit(): void {
     this.productList.getShortInfo()
       .subscribe((data) => this.productData = data);
+
+    this.pageWidth = window.innerWidth;
   }
 
   public ngAfterViewInit(): void {
@@ -81,8 +90,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public toggleButtonsState(): void {
     const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
 
-    this.canMoveToPrev = this.position + this.additionalScroll !== 0;
-    this.canMoveToNext = this.position - this.additionalScroll !== maxPosition;
+    this.canMoveToPrev = this.position !== 0;
+    this.canMoveToNext = this.position !== maxPosition;
   }
 
   public moveTo(direction: string): void {
@@ -110,13 +119,9 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     if (this.productArray.length) {
       this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
     }
-
-    this.additionalScroll = this.productsContainer.nativeElement.scrollLeft % this.itemWidth;
   }
 
   public indicateViewNumber(): void {
-    this.pageWidth = window.innerWidth;
-
     switch (true) {
       case this.pageWidth > BREAK_POINTS.laptop_S.width:
         this.visibleNum = BREAK_POINTS.laptop_S.slideNum;
@@ -130,5 +135,11 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
       default:
         this.visibleNum = BREAK_POINTS.mobile.slideNum;
     }
+  }
+
+  public resetPositionValue(): void {
+    this.position = 0;
+    this.productContainer.style.marginLeft = 0 + 'px';
+    this.productsContainer.nativeElement.scrollLeft = 0;
   }
 }
