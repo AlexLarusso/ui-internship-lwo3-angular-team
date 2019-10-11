@@ -5,14 +5,14 @@ import { IProductShortInfo } from '../product-short-info';
 
 const BREAK_POINTS = {
   mobile: {
-    width: 576,
+    width: 575,
     slideNum: 1
   },
   tablet_S: {
     width: 576,
     slideNum: 2
   },
-  tablet_L: {
+  tablet_M: {
     width: 768,
     slideNum: 3
   },
@@ -62,6 +62,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   @HostListener('touchcancel', [])
   public handleTouch(): void {
     this.additionalScroll = this.productsContainer.nativeElement.scrollLeft;
+
     this.toggleButtonsState();
     this.indicateViewNumber();
   }
@@ -78,23 +79,23 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   }
 
   public toggleButtonsState(): void {
-    const maxPossition = -this.itemWidth * (this.productArray.length - this.visibleNum);
+    const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
 
     this.canMoveToPrev = this.position + this.additionalScroll !== 0;
-    this.canMoveToNext = this.position - this.additionalScroll !== maxPossition;
+    this.canMoveToNext = this.position - this.additionalScroll !== maxPosition;
   }
 
   public moveTo(direction: string): void {
     if (direction === 'next') {
       const newPosition = this.position - this.itemWidth * this.visibleNum;
-      const posiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
-      this.position = newPosition >= posiblePosition ? newPosition : posiblePosition;
+      const possiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
+      this.position = newPosition >= possiblePosition ? newPosition : possiblePosition;
     }
 
     if (direction === 'prev') {
       const newPosition = this.position + this.itemWidth * this.visibleNum;
-      const posiblePosition = 0;
-      this.position = newPosition >= posiblePosition ? posiblePosition : newPosition;
+      const possiblePosition = 0;
+      this.position = newPosition >= possiblePosition ? possiblePosition : newPosition;
     }
 
     this.productContainer.style.marginLeft = this.position + this.additionalScroll + 'px';
@@ -120,8 +121,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
       case this.pageWidth > BREAK_POINTS.laptop_S.width:
         this.visibleNum = BREAK_POINTS.laptop_S.slideNum;
         break;
-      case this.pageWidth > BREAK_POINTS.tablet_L.width:
-        this.visibleNum = BREAK_POINTS.tablet_L.slideNum;
+      case this.pageWidth > BREAK_POINTS.tablet_M.width:
+        this.visibleNum = BREAK_POINTS.tablet_M.slideNum;
         break;
       case this.pageWidth > BREAK_POINTS.tablet_S.width:
         this.visibleNum = BREAK_POINTS.tablet_S.slideNum;
