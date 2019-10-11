@@ -1,6 +1,6 @@
-import { Injectable, ElementRef, EventEmitter, AfterViewChecked } from '@angular/core';
+import { Injectable, ElementRef, EventEmitter } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { map, debounceTime, throttleTime } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export interface IPageAnchor {
   title: string,
@@ -75,10 +75,6 @@ export class ScrollService {
         }
     }
     let active;
-    console.log('BOttom:', this.pageAnchorOffsets[anchorsCount - 1].positionBottom);
-    console.log('position:', position);
-    console.log('height', window.innerHeight);
-    
     
     if (this.pageAnchorOffsets[anchorsCount - 1].positionBottom
       - position <= window.innerHeight + 10) {
@@ -96,8 +92,6 @@ export class ScrollService {
           .pageAnchor.selector
       };
     }
-
-    
 
     this.activeAnchor.emit(active);
   }

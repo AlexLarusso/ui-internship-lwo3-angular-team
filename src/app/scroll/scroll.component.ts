@@ -16,8 +16,6 @@ export class ScrollComponent {
   constructor(private scrollService: ScrollService) {
     this.scrollService.activeAnchor
       .subscribe((anchor: IPageAnchor) => {
-        console.log(anchor.selector);
-        
         this.activeElement = anchor
       });
     this.scrollService.pageAnchors
@@ -29,7 +27,7 @@ export class ScrollComponent {
     this.scrollService.moveTo(anchor);
   }
 
-  ngAfterViewChecked() {
+  ngAfterViewChecked(): void {
     this.scrollService.initScrollListening();
   }
 }
