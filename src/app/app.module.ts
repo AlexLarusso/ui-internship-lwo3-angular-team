@@ -29,48 +29,42 @@ import { ProductListPageComponent } from './pages/product-list-page/product-list
 import { ProductDetailsComponent }  from './product-details/product-details.component';
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 
-const IMPORTS = [
-  BrowserModule,
-  BrowserAnimationsModule,
-  HttpClientModule,
-  FontAwesomeModule,
-  AppRoutingModule
-];
-
-const DECLARATIONS = [
-  AppComponent,
-  HeaderComponent,
-  ButtonComponent,
-  MainLogoComponent,
-  ProductItemComponent,
-  PromoComponent,
-  CategoryMenuComponent,
-  LineBarComponent,
-  FooterComponent,
-  SaleBannerComponent,
-  MainComponent,
-  StoryComponent,
-  ProductListComponent,
-  MainMenuComponent,
-  ParallaxComponent,
-  PopularListComponent,
-  NotFoundComponent,
-  HomeComponent,
-  ProductListPageComponent,
-  ProductDetailsComponent,
-  ProductDetailsPageComponent
-];
-
-const PROVIDERS = [
-  HttpService,
-  ProductShortInfoService
-];
-
 @NgModule({
-  declarations: [...DECLARATIONS],
-  imports:      [...IMPORTS],
-  providers:    [...PROVIDERS],
-  bootstrap:    [AppComponent]
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ButtonComponent,
+    MainLogoComponent,
+    ProductItemComponent,
+    PromoComponent,
+    CategoryMenuComponent,
+    LineBarComponent,
+    FooterComponent,
+    SaleBannerComponent,
+    MainComponent,
+    StoryComponent,
+    ProductListComponent,
+    MainMenuComponent,
+    ParallaxComponent,
+    PopularListComponent,
+    NotFoundComponent,
+    HomeComponent,
+    ProductListPageComponent,
+    ProductDetailsComponent,
+    ProductDetailsPageComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    AppRoutingModule
+  ],
+  providers: [
+    HttpService,
+    ProductShortInfoService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 
