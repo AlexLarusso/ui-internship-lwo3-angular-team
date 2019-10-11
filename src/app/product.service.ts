@@ -1,28 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { IProductShortInfo } from './product-short-info';
 import { IProduct } from './product';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  public productData: Array<IProductShortInfo>;
-  endpoint = 0;
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(
-   private http: HttpClient) { }
+  constructor(private HttpService: HttpService){}
 
   public getProduct(id: number): Observable<IProduct> {
-    const url = `${this.productsUrl}/${id}`;
-    return this.http.get<IProduct>(url);
+    return this.HttpService.getData().pipe(map(products => products[id-1]));
   }
-
-  private productsUrl = 'api/products';
-
 }

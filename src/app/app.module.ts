@@ -28,6 +28,7 @@ import { HomeComponent }           from './pages/home/home.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { ProductDetailsComponent }  from './product-details/product-details.component';
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
+import { ProductResolver }         from './product.resolver';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ProductDetailsPageComponent } from './pages/product-details-page/produc
   ],
   providers: [
     HttpService,
-    ProductShortInfoService
+    ProductShortInfoService,
+    ProductResolver
   ],
   bootstrap: [AppComponent]
 })
