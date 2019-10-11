@@ -38,4 +38,8 @@ describe('JoinUsComponent', () => {
     expect(component.ngOnInit()).toBeFalsy();
   });
 
+  it('onBlur should transform remove class', () => {
+    component.onBlur()
+    expect(this.invalid === false).toBeTruthy();
+  });
 });
