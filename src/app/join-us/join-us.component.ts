@@ -18,13 +18,17 @@ export class JoinUsComponent implements OnInit {
     unsubscribe: 'Unsubscribe',
     message: 'Subscribe to Newsletter:'
   };
-  
   private emailRegEx = /^(?=^.{6,25}$)(\D)+(\w)*((\.(\w)+)?)+@(\D)+(\w)*((\.(\D)+(\w)*)+)?(\.)[a-z]{2,4}$/;
 
   constructor(private localStorageService: LocalStorageService){}
 
   ngOnInit() {
     this.localStorageService.onRefresh('userEmail');
+  }
+
+  public onBlur(){
+    this.localStorageService.userEmail = '';
+    this.invalid = false;
   }
 
   public onValidate(value?: string) {
