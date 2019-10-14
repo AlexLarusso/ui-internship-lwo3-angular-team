@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef } from '@angular/core';
-import { ProductShortInfoService } from '../product-short-info.service';
+import { ProductShortInfoService } from '../../product-short-info.service';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { IProductShortInfo } from '../product-short-info';
+import { IProductShortInfo } from '../../product-short-info';
 
 const BREAK_POINTS = {
   mobile: {
@@ -65,8 +65,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
 
     if (this.additionalScroll) {
       this.productsContainer.nativeElement.scrollLeft > this.containerScroll
-        ? this.moveTo('next')
-        : this.moveTo('prev');
+        ? this.moveToNext()
+        : this.moveToPrev();
     }
 
     this.containerScroll = this.productsContainer.nativeElement.scrollLeft;
@@ -94,19 +94,19 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.canMoveToNext = this.position !== maxPosition;
   }
 
-  public moveTo(direction: string): void {
-    if (direction === 'next') {
-      const newPosition = this.position - this.itemWidth * this.visibleNum;
-      const possiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
-      this.position = newPosition >= possiblePosition ? newPosition : possiblePosition;
-    }
+  public moveToNext(): void {
+    const newPosition = this.position - this.itemWidth * this.visibleNum;
+    const possiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
+    this.position = newPosition >= possiblePosition ? newPosition : possiblePosition;
+    this.productContainer.style.marginLeft = this.position + this.additionalScroll + 'px';
 
-    if (direction === 'prev') {
-      const newPosition = this.position + this.itemWidth * this.visibleNum;
-      const possiblePosition = 0;
-      this.position = newPosition >= possiblePosition ? possiblePosition : newPosition;
-    }
+    this.toggleButtonsState();
+  }
 
+  public moveToPrev(): void {
+    const newPosition = this.position + this.itemWidth * this.visibleNum;
+    const possiblePosition = 0;
+    this.position = newPosition >= possiblePosition ? possiblePosition : newPosition;
     this.productContainer.style.marginLeft = this.position + this.additionalScroll + 'px';
 
     this.toggleButtonsState();
@@ -115,6 +115,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public ngAfterViewChecked(): void {
     const [_, ...rest] = this.products.nativeElement.childNodes;
     this.productArray = [...rest];
+
+    console.log(this.products.nativeElement.childNodes);
 
     if (this.productArray.length) {
       this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;

@@ -2,11 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from '../http.service';
+import { HttpService } from '../../http.service';
 
 import { ProductCarouselComponent } from './product-carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ProductItemComponent } from '../shared/product-item/product-item.component';
+import { ProductItemComponent } from '../product-item/product-item.component';
 
 describe('ProductCarouselComponent', () => {
   let component: ProductCarouselComponent;
@@ -61,8 +61,8 @@ describe('ProductCarouselComponent', () => {
     component.productArray.length = 20;
     component.itemWidth = 260;
 
-    component.moveTo('next');
-    component.moveTo('prev');
+    component.moveToNext();
+    component.moveToPrev();
 
     expect(!component.canMoveToPrev)
       .toBeTruthy();

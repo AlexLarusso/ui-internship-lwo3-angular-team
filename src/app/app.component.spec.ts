@@ -21,7 +21,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
-import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -51,8 +51,7 @@ describe('AppComponent', () => {
         HttpClientModule,
         FontAwesomeModule
       ],
-      providers: [HttpService,
-      ],
+      providers: [HttpService],
     }).compileComponents();
   }));
 
