@@ -8,10 +8,10 @@ import { LoaderService } from '../../loader.service';
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
-  color = 'accent';
-  mode = 'indeterminate';
-  value = 50;
-  isLoading: Subject<boolean> = this.loaderService.isLoading;
+  public color = 'accent';
+  public mode = 'indeterminate';
+  public value = 50;
+  public isLoading: Subject<boolean> = this.loaderService.isLoading;
 
   constructor(private loaderService: LoaderService) {
   }
