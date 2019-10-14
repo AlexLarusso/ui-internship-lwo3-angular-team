@@ -29,7 +29,7 @@ export class ScrollService {
     inline: 'nearest'
   };
 
-  public addAnchor(elRef: ElementRef) {  
+  public addAnchor(elRef: ElementRef): void {  
     this.pageAnchorRefs.push(elRef); 
     this.pageAnchors.emit( { 
         selector: elRef.nativeElement.localName,
@@ -37,85 +37,87 @@ export class ScrollService {
     });
   }
 
-  public resetAnchors() {
+  public resetAnchors(): void {
     this.pageAnchorRefs = [];
     this.pageAnchorOffsets = [];
   }
 
-  public getPageAnchors() {
+  public getPageAnchors(): Array<IPageAnchor> {
     return this.pageAnchorRefs.map(elRef => ({ 
       selector: elRef.nativeElement.localName,
       title: elRef.nativeElement.title
     }));
   }
 
-  public moveTo(anchor: IPageAnchor) {
+  public moveTo(anchor: IPageAnchor): void {
     this.selectRef(anchor)
       .nativeElement.scrollIntoView(this.scrollOptions);
   }
 
-  private selectRef(anchor: IPageAnchor) {
+  private selectRef(anchor: IPageAnchor): ElementRef {
     return this.pageAnchorRefs.find(el =>
       el.nativeElement.localName === anchor.selector
     );
   }
 
-  private onScrollCallback(position: number) {  
+  private findActive(position: number): IPageAnchor {
     const anchorsCount = this.pageAnchorOffsets.length;
+    const lastBeforeFooter = this.pageAnchorOffsets[anchorsCount - 2];
+    const footer = this.pageAnchorOffsets[anchorsCount - 1];
+    const footerExtraGap = 10;
 
     for (let i = 0; i < anchorsCount - 2; i++) {
-      if(position >= this.pageAnchorOffsets[i].positionTop
-        && position < this.pageAnchorOffsets[i + 1].positionTop) {
-          const active = {
-              title: this.pageAnchorOffsets[i].pageAnchor.title,
-              selector: this.pageAnchorOffsets[i].pageAnchor.selector
-          };
-          this.activeAnchor.emit(active);
-          return;
-        }
-    }
-    let active;
-    
-    if (this.pageAnchorOffsets[anchorsCount - 1].positionBottom
-      - position <= window.innerHeight + 10) {
-       active = {
-          title: this.pageAnchorOffsets[anchorsCount - 1]
-            .pageAnchor.title,
-          selector: this.pageAnchorOffsets[anchorsCount - 1]
-            .pageAnchor.selector
-      };
-    } else {
-      active = {
-        title: this.pageAnchorOffsets[anchorsCount - 2]
-          .pageAnchor.title,
-        selector: this.pageAnchorOffsets[anchorsCount - 2]
-          .pageAnchor.selector
-      };
-    }
+      const currentEl = this.pageAnchorOffsets[i];
+      const nextEl = this.pageAnchorOffsets[i + 1];
 
-    this.activeAnchor.emit(active);
+      if(position >= currentEl.positionTop && position < nextEl.positionTop) {
+        return {
+          title: currentEl.pageAnchor.title,
+          selector: currentEl.pageAnchor.selector
+        };
+      }
+    }
+    
+    return footer.positionBottom - position <= window.innerHeight + footerExtraGap
+      ? {
+          title: footer.pageAnchor.title,
+          selector: footer.pageAnchor.selector
+        }
+      : {
+          title: lastBeforeFooter.pageAnchor.title,
+          selector: lastBeforeFooter.pageAnchor.selector
+        }; 
+  } 
+
+  private onScrollCallback(position: number): void {  
+    this.activeAnchor.emit(this.findActive(position));
+  }
+    
+
+  public initScrollListening(): void {
+    this.pageAnchorOffsets = this.getElementsOffsets();
+   
+    if (!this.isListening) {
+      this.isListening = true;
+      fromEvent(window, 'scroll').pipe(map(() => window.pageYOffset))
+        .subscribe(position =>
+          this.onScrollCallback(position));
+    }
   }
 
-  public initScrollListening() {
+  private getElementsOffsets(): Array<IAnchorOffset> {
+    const scrollPositionY = window.pageYOffset;
     const offsets = this.pageAnchorRefs.map(elRef => ({
       positionTop: elRef.nativeElement.getBoundingClientRect().top
-        + window.pageYOffset,
+        + scrollPositionY,
       positionBottom: elRef.nativeElement.getBoundingClientRect().bottom
-        + window.pageYOffset,
+        + scrollPositionY,
       pageAnchor: {
         selector: elRef.nativeElement.localName,
         title: elRef.nativeElement.title
       }
     }));
-    offsets.sort((a, b) => a.positionTop - b.positionTop);
-    this.pageAnchorOffsets = offsets;
-    
-    if (!this.isListening) {
-      this.isListening = true;
-      fromEvent(window, 'scroll').pipe(map(_ => window.pageYOffset))
-      // throttleTime(100))
-        .subscribe(position =>
-          this.onScrollCallback(position));
-      }
+
+    return offsets.sort((a, b) => a.positionTop - b.positionTop);
   }
 }

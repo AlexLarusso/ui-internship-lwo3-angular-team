@@ -5,6 +5,7 @@ import { ScrollService } from './scroll.service';
 describe('ScrollService', () => {
   const ANCHORS_NUMBER = 10;
   let service: ScrollService;
+
   beforeEach(() => TestBed.configureTestingModule({ }).compileComponents());
   beforeEach(() => {
     service = TestBed.get(ScrollService);
@@ -30,6 +31,7 @@ describe('ScrollService', () => {
   it('should add anchors', () => {
     const additionalAnchors = 10;
     const elRef: ElementRef = new ElementRef('div');
+
     for(let i = 0; i < additionalAnchors; i++) {
       service.addAnchor(elRef); 
     }
