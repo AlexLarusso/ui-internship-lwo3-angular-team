@@ -10,6 +10,7 @@ export class LoaderInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // TODO: rewrite in an apropriate way
     this.loaderService.show();
 
     return next.handle(req).pipe(
