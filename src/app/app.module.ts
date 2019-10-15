@@ -22,7 +22,7 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
-import { JoinUsComponent } from './join-us/join-us.component';
+import { JoinUs } from './join-us/join-us';
 import { FormsModule } from '@angular/forms';
 import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 
@@ -44,7 +44,7 @@ import { ProductCarouselComponent } from './shared/product-carousel/product-caro
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
-    JoinUsComponent,
+    JoinUs,
     ProductCarouselComponent,
   ],
   imports: [

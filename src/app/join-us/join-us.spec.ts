@@ -1,24 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
-import { JoinUsComponent } from './join-us.component';
+import { JoinUs } from './join-us';
 import { ButtonComponent } from '../shared/button/button.component';
+
+//FYI: We will rewrite unit tests
 
   describe('JoinUsComponent', () => {
     const subscribed = false;
-    let component: JoinUsComponent;
-    let fixture: ComponentFixture<JoinUsComponent>;
+    let component: JoinUs;
+    let fixture: ComponentFixture<JoinUs>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule,],
-      declarations: [JoinUsComponent, ButtonComponent],
+      declarations: [JoinUs, ButtonComponent],
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JoinUsComponent);
+    fixture = TestBed.createComponent(JoinUs);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

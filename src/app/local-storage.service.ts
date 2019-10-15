@@ -6,25 +6,30 @@ import { Injectable } from '@angular/core';
 
 export class LocalStorageService {
   //TODO: move it from here
-  public subscribed = false;
   public userEmail = '';
 
-  public onRefresh(item: string) {
-    if (localStorage.getItem(item) !== null) {
-     return this.subscribed = true;
-    }
+  public get email() {
+    return this.userEmail;
+  }
+
+  public setEmail(userEmail: string) {
+    this.userEmail = userEmail;
+  }
+
+  public clearEmail(): void {
+    this.userEmail = '';
+  }
+
+  public getItem(property: string): any {
+    return localStorage.getItem(property)
   }
 
   public localStorageAdd(item: string) {
     localStorage.setItem(item, this.userEmail);
-
-    return this.subscribed = true;
   };
 
   public localStorageDelete(item: string) {
     localStorage.removeItem(item);
-
-    return this.subscribed = false;
   };
 
 }

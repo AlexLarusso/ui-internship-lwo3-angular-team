@@ -24,7 +24,7 @@ import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
 import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 import { FormsModule } from '@angular/forms';
-import { JoinUsComponent } from './join-us/join-us.component';
+import { JoinUs } from './join-us/join-us';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -53,7 +53,7 @@ describe('AppComponent', () => {
         MainMenuComponent,
         ParallaxComponent,
         PopularListComponent,
-        JoinUsComponent,
+        JoinUs,
         ProductCarouselComponent,
       ],
       providers: [HttpService, ProductShortInfoService],
