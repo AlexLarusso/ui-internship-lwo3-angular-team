@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { AppComponent } from './app.component';
@@ -24,6 +25,9 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderService } from './loader.service';
+import { LoaderInterceptor } from './loader.interceptor';
 import { ScrollAnchorDirective } from './scroll-anchor.directive';
 import { ScrollComponent } from './scroll/scroll.component';
 import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
@@ -69,6 +73,7 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductDetailsPage,
     ProductCarouselComponent,
+    LoaderComponent,
     ScrollAnchorDirective,
     ScrollComponent,
     
@@ -84,7 +89,10 @@ const routes: Routes = [
   providers: [
     HttpService,
     ProductShortInfoService,
-    ProductResolver
+    ProductResolver,
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  
   ],
   exports: [RouterModule],
   bootstrap: [AppComponent]

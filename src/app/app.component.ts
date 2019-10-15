@@ -10,7 +10,7 @@ import { ScrollAnchorDirective } from './scroll-anchor.directive';
 export class AppComponent implements AfterViewInit  {
   @ViewChildren(ScrollAnchorDirective)
     private pageAnchors: QueryList<ScrollAnchorDirective>;
- 
+
   constructor(private scrollService: ScrollService) { }
 
   public ngAfterViewInit(): void {
