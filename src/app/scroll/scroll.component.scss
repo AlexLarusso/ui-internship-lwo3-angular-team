@@ -71,3 +71,9 @@ $text-color: white;
         }
     }
 }
+
+@media screen and (max-width: 576px) {
+    .scroll {
+        display: none;
+    }
+}
