@@ -116,8 +116,6 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     const [_, ...rest] = this.products.nativeElement.childNodes;
     this.productArray = [...rest];
 
-    console.log(this.products.nativeElement.childNodes);
-
     if (this.productArray.length) {
       this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
     }
