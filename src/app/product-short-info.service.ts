@@ -8,8 +8,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductShortInfoService {
-  public productData: Array<IProductShortInfo>;
-
   constructor(private httpService: HttpService) { }
 
   public getShortInfo(): Observable<Array<IProductShortInfo>> {

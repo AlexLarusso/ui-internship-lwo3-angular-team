@@ -29,6 +29,7 @@ import { ProductListPage }         from './pages/product-list-page/product-list-
 import { ProductDetailsComponent }  from './product-details/product-details.component';
 import { ProductDetailsPage }      from './pages/product-details-page/product-details-page';
 import { ProductResolver }         from './product.resolver';
+import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -61,7 +62,8 @@ const routes: Routes = [
     Home,
     ProductListPage,
     ProductDetailsComponent,
-    ProductDetailsPage
+    ProductDetailsPage,
+    ProductCarouselComponent
   ],
   imports: [
     BrowserModule,
