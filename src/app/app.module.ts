@@ -38,6 +38,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { ProductResolver } from './product.resolver';
 import { Routes, RouterModule } from '@angular/router';
+import { JoinUs } from './join-us/join-us';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -73,6 +74,7 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductDetailsPageComponent,
     ProductCarouselComponent,
+    JoinUs,
     LoaderComponent,
     ScrollAnchorDirective,
     ScrollComponent,
@@ -84,7 +86,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [
     HttpService,
