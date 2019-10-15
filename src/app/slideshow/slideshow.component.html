@@ -1,0 +1,21 @@
+<div [@slideAnimation]="currentIndex"  #slider>
+  <button class="prev" #previous>&#10094;</button>
+  <button class="next" #next>&#10095;</button>
+  <div 
+    *ngFor="let image of images; let i = index">
+    <div
+      class="slide"
+      *ngIf="i === currentIndex"
+      [style.background-image]="'url(' + image + ')'">
+    </div>
+  </div>
+  <ul #bullet>
+    <li class="pagination"
+      *ngFor="let image of images; let i = index"
+      [ngClass]="{ active: i === currentIndex }"
+      (click)="toggleSlide(i); stopTimer()"
+      >
+    </li>
+  </ul>
+  <ng-content></ng-content>
+</div>

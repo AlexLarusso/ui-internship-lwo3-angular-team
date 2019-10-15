@@ -1,11 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { SlideshowComponent } from './slideshow/slideshow.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './shared/button/button.component';
@@ -26,10 +28,14 @@ import { ProductShortInfoService } from './product-short-info.service';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { LoaderService } from './loader.service';
 import { LoaderInterceptor } from './loader.interceptor';
+import { ScrollAnchorDirective } from './scroll-anchor.directive';
+import { ScrollComponent } from './scroll/scroll.component';
+import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SlideshowComponent,
     HeaderComponent,
     ButtonComponent,
     MainLogoComponent,
@@ -45,11 +51,15 @@ import { LoaderInterceptor } from './loader.interceptor';
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
-    LoaderComponent
+    LoaderComponent,
+    ScrollAnchorDirective,
+    ScrollComponent,
+    ProductCarouselComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     FontAwesomeModule,
   ],

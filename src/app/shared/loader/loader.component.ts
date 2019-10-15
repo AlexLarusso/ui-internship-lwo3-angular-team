@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, AfterContentInit } from '@angular/core';
 import { LoaderService } from '../../loader.service';
 
 @Component({
@@ -7,8 +6,14 @@ import { LoaderService } from '../../loader.service';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss']
 })
-export class LoaderComponent {
-  public isLoading: Subject<boolean> = this.loaderService.isLoading;
+export class LoaderComponent implements AfterContentInit {
+  public isLoading = true;
 
   constructor(private loaderService: LoaderService) { }
+
+  public ngAfterContentInit() {
+    this.loaderService.isLoading.subscribe(
+      (result) => this.isLoading = result
+    );
+  }
 }
