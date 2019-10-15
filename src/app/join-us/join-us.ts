@@ -13,8 +13,8 @@ export class JoinUs implements OnInit {
   public buttonDisabled = true;
   public emailValid = false;
   public invalid = false;
-  public isSubscribed = this.subscribed;
-  public inputText = this.localStorageService.userEmail;
+  public isSubscribed = false;
+  public inputText = '';
   public formText = {
     success: 'You have successfully subscribed to our newsletter',
     subscribe: 'Subscribe',
@@ -30,31 +30,30 @@ export class JoinUs implements OnInit {
   }
 
   public onBlur(): void {
-    this.localStorageService.clearEmail();
     this.invalid = false;
   }
 
   public onRefresh(item: string) {
     if (this.localStorageService.getItem(item) !== null) {
-     return this.subscribed = true;
+     return this.isSubscribed = true;
     }
   }
 
   public saveUser(): void {
+    this.localStorageService.setEmail(this.inputText);
     this.localStorageService.localStorageAdd('userEmail');
-    this.subscribed = true;
+    this.isSubscribed = true;
   }
 
   public deleteUser(): void {
     this.localStorageService.localStorageDelete('userEmail');
-    this.subscribed = false;
+    this.isSubscribed = false;
   }
 
   public onValidate(value?: string): void {
-    const isValid = this.emailRegEx.test(value || this.localStorageService.userEmail);
-console.log(this.localStorageService.userEmail);
-
-    this.buttonDisabled = isValid;
-    this.invalid = isValid;
+    const isValid = this.emailRegEx.test(value || this.inputText);
+    this.localStorageService.setEmail(this.inputText);    
+    this.buttonDisabled = !isValid;
+    this.invalid = !isValid;
     };
 }

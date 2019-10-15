@@ -16,10 +16,6 @@ export class LocalStorageService {
     this.userEmail = userEmail;
   }
 
-  public clearEmail(): void {
-    this.userEmail = '';
-  }
-
   public getItem(property: string): any {
     return localStorage.getItem(property)
   }
@@ -31,5 +27,4 @@ export class LocalStorageService {
   public localStorageDelete(item: string) {
     localStorage.removeItem(item);
   };
-
 }

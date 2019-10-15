@@ -1,10 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { SlideshowComponent } from './slideshow/slideshow.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './shared/button/button.component';
@@ -22,13 +24,15 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
-import { JoinUs } from './join-us/join-us';
-import { FormsModule } from '@angular/forms';
+import { ScrollAnchorDirective } from './scroll-anchor.directive';
+import { ScrollComponent } from './scroll/scroll.component';
 import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
+import { JoinUs } from './join-us/join-us';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SlideshowComponent,
     HeaderComponent,
     ButtonComponent,
     MainLogoComponent,
@@ -45,11 +49,14 @@ import { ProductCarouselComponent } from './shared/product-carousel/product-caro
     ParallaxComponent,
     PopularListComponent,
     JoinUs,
+    ScrollAnchorDirective,
+    ScrollComponent,
     ProductCarouselComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     FontAwesomeModule,
     FormsModule
