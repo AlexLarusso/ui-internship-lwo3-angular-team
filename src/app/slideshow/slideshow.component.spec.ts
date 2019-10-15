@@ -49,12 +49,14 @@ describe('SlideshowComponent', () => {
 
   it('click on the next arrow button should change slide to the left', () => {
     const fakeNextClick = new MouseEvent('click', { bubbles: true });
+
     component.nextEl.nativeElement.dispatchEvent(fakeNextClick);
     expect(component.currentIndex).toBe(1);
   });
 
   it('click on the previous arrow button should change slide to the right', () => {
     const fakePrevClick = new MouseEvent('click', { bubbles: true });
+    
     component.previousEl.nativeElement.dispatchEvent(fakePrevClick);
     expect(component.currentIndex).toBe(3);
   });

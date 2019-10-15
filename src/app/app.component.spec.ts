@@ -1,12 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { AppComponent } from './app.component';
