@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $bgColorMedium;
+  background-color: $bgColorLight;
 
   &__title {
     margin: 10px 0;
@@ -17,8 +17,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-		align-items: center;
-		padding: 30px;
+    align-items: center;
+    padding: 30px;
   }
 
   &__wrapper {
@@ -50,13 +50,19 @@
   }
 }
 
-@media (max-width: 481px) {
-  .join-us__wrapper {
-    flex-direction: column;
-    height: auto;
-  }
+@media screen and (max-width: 576px) {
+  .join-us {
+    &__title {
+      font-size: 1rem;
+    }
 
-  .email_input {
-    width: 150px;
+    &__wrapper {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .email_input {
+      width: 150px;
+    }
   }
 }
