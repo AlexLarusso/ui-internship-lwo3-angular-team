@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit  {
  
   constructor(private scrollService: ScrollService) { }
 
-  ngAfterViewInit () {
+  public ngAfterViewInit(): void {
     this.pageAnchors.forEach(el =>
       this.scrollService.addAnchor(el.elementReference));
   }
