@@ -9,9 +9,9 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class ProductService {
-  constructor(private httpService: HttpService){}
+  constructor(private httpService: HttpService) { }
 
   public getProduct(id: number): Observable<IProduct> {
-    return this.httpService.getData().pipe(map(products => products[id-1]));
+    return this.httpService.getData().pipe(map(products => products[id - 1]));
   }
 }

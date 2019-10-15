@@ -5,7 +5,7 @@ import { Directive, ElementRef } from '@angular/core';
 })
 export class ScrollAnchorDirective {
   public elementReference: ElementRef;
-  
+
   constructor(elr: ElementRef) {
     this.elementReference = elr;
   }

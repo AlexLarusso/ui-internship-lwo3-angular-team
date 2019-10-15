@@ -31,22 +31,22 @@ import { LoaderInterceptor } from './loader.interceptor';
 import { ScrollAnchorDirective } from './scroll-anchor.directive';
 import { ScrollComponent } from './scroll/scroll.component';
 import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
-import { NotFound }                from './pages/not-found/not-found';
-import { Home }                    from './pages/home/home';
-import { ProductListPage }         from './pages/product-list-page/product-list-page';
-import { ProductDetailsComponent }  from './product-details/product-details.component';
-import { ProductDetailsPage }      from './pages/product-details-page/product-details-page';
-import { ProductResolver }         from './product.resolver';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
+import { ProductResolver } from './product.resolver';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: Home },
-  { path: 'woman', component: ProductListPage },
-  { path: 'products/:id', component: ProductDetailsPage, resolve: { products: ProductResolver } },
-  { path: '404', component: NotFound },
+  { path: 'home', component: HomeComponent },
+  { path: 'woman', component: ProductListPageComponent },
+  { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
+  { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
-]
+];
 
 @NgModule({
   declarations: [
@@ -67,16 +67,16 @@ const routes: Routes = [
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
-    NotFound,
-    Home,
-    ProductListPage,
+    NotFoundComponent,
+    HomeComponent,
+    ProductListPageComponent,
     ProductDetailsComponent,
-    ProductDetailsPage,
+    ProductDetailsPageComponent,
     ProductCarouselComponent,
     LoaderComponent,
     ScrollAnchorDirective,
     ScrollComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -92,7 +92,7 @@ const routes: Routes = [
     ProductResolver,
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
-  
+
   ],
   exports: [RouterModule],
   bootstrap: [AppComponent]

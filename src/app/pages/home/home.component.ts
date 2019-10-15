@@ -6,14 +6,14 @@ import { ScrollAnchorDirective } from 'src/app/scroll-anchor.directive';
   selector: 'app-home',
   templateUrl: './home.html',
 })
-export class Home {
+export class HomeComponent {
   @ViewChildren(ScrollAnchorDirective)
     private pageAnchors: QueryList<ScrollAnchorDirective>;
-    
+
   constructor(private scrollService: ScrollService) {}
 
-  ngAfterViewInit () {
-    this.pageAnchors.forEach(el => 
+  public ngAfterViewInit(): void {
+    this.pageAnchors.forEach(el =>
       this.scrollService.addAnchor(el.elementReference)
     );
   }

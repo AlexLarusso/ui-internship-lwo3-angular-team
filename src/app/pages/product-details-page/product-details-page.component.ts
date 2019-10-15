@@ -6,5 +6,5 @@ import { ProductResolver } from '../../product.resolver';
   templateUrl: './product-details-page.html',
   providers: [ProductResolver]
 })
-export class ProductDetailsPage {
+export class ProductDetailsPageComponent {
 }

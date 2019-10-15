@@ -10,6 +10,5 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsComponent {
   public id = Number(this.route.snapshot.paramMap.get('id'));
 
- constructor(private route: ActivatedRoute ){}
+  constructor(private route: ActivatedRoute) { }
 }
-

@@ -4,8 +4,8 @@ import { ScrollAnchorDirective } from './scroll-anchor.directive';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html', // TODO: delete component from file name
+  styleUrls: ['./app.component.scss'] // TODO: delete component from file name
 })
 export class AppComponent implements AfterViewInit  {
   @ViewChildren(ScrollAnchorDirective)
