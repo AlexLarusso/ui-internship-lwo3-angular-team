@@ -26,7 +26,6 @@ import { ProductShortInfoService } from './product-short-info.service';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { LoaderService } from './loader.service';
 import { LoaderInterceptor } from './loader.interceptor';
-import { MatSpinner } from './shared/loader/progress-spinner/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -46,8 +45,7 @@ import { MatSpinner } from './shared/loader/progress-spinner/progress-spinner';
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
-    LoaderComponent,
-    MatSpinner
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
