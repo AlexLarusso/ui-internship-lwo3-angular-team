@@ -24,6 +24,7 @@ import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
 import { ScrollAnchorDirective } from './scroll-anchor.directive';
 import { ScrollComponent } from './scroll/scroll.component';
+import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ScrollComponent } from './scroll/scroll.component';
     ParallaxComponent,
     PopularListComponent,
     ScrollAnchorDirective,
-    ScrollComponent
+    ScrollComponent,
+    ProductCarouselComponent,
   ],
   imports: [
     BrowserModule,
