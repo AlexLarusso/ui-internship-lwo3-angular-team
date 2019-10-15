@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule }        from '@angular/common/http';
 import { HttpService }             from './http.service';
 import { FontAwesomeModule }       from '@fortawesome/angular-fontawesome';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent }            from './app.component';
 import { HeaderComponent }         from './header/header.component';
@@ -22,13 +23,21 @@ import { MainMenuComponent }       from './header/main-menu/main-menu.component'
 import { ParallaxComponent }       from './parallax/parallax.component';
 import { PopularListComponent }    from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
-import { NotFoundComponent }       from './pages/not-found/not-found.component';
-import { AppRoutingModule }        from './app-routing.module';
-import { HomeComponent }           from './pages/home/home.component';
-import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { NotFound }                from './pages/not-found/not-found';
+import { Home }                    from './pages/home/home';
+import { ProductListPage }         from './pages/product-list-page/product-list-page';
 import { ProductDetailsComponent }  from './product-details/product-details.component';
-import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
+import { ProductDetailsPage }      from './pages/product-details-page/product-details-page';
 import { ProductResolver }         from './product.resolver';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: Home },
+  { path: 'woman', component: ProductListPage },
+  { path: 'products/:id', component: ProductDetailsPage, resolve: { products: ProductResolver } },
+  { path: '404', component: NotFound },
+  { path: '**', redirectTo: '/404' },
+]
 
 @NgModule({
   declarations: [
@@ -48,24 +57,25 @@ import { ProductResolver }         from './product.resolver';
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
-    NotFoundComponent,
-    HomeComponent,
-    ProductListPageComponent,
+    NotFound,
+    Home,
+    ProductListPage,
     ProductDetailsComponent,
-    ProductDetailsPageComponent
+    ProductDetailsPage
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FontAwesomeModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes)
   ],
   providers: [
     HttpService,
     ProductShortInfoService,
     ProductResolver
   ],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {

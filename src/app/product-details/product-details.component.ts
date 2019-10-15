@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent {
- id = Number(this.route.snapshot.paramMap.get('id'));
+  public id = Number(this.route.snapshot.paramMap.get('id'));
 
  constructor(private route: ActivatedRoute ){}
 }

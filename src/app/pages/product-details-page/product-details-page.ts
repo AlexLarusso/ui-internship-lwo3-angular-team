@@ -3,8 +3,8 @@ import { ProductResolver } from '../../product.resolver';
 
 @Component({
   selector: 'app-product-details-page',
-  templateUrl: './product-details-page.component.html',
+  templateUrl: './product-details-page.html',
   providers: [ProductResolver]
 })
-export class ProductDetailsPageComponent {
+export class ProductDetailsPage {
 }

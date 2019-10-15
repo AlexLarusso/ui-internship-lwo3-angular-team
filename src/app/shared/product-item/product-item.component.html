@@ -1,12 +1,8 @@
 <div class="col-3 product-item__container">
   <div class="product-item__picture__container">
     <a routerLink="/products/{{ id }}">
-    <img class="product-item__picture"
-      class="product-item__picture"
-      [alt]="title"
-      [src]="src"
-    />
-  </a>
+      <img class="product-item__picture" [alt]="title" [src]="src"/>
+    </a>
     <button class="wish__btn">
       <fa-icon [icon]="faHeart" class="wish__icon"></fa-icon>
     </button>
