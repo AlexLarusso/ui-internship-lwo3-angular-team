@@ -1,11 +1,6 @@
 @import '../../styles/_variables.scss';
 
 .button {
-  &_decline {
-    border: 2px solid $bgColorDark;
-    background-color: $bgColorDark;
-  }
-
   &_default {
     margin: 10px;
     border: 4px solid $accentColor;
@@ -22,8 +17,8 @@
     }
 
     &:disabled {
-      border: 1px solid rgb(211, 186, 170);
-      background-color: rgb(211, 186, 170);
+      border: 1px solid $inputBorderColor;
+      background-color: $inputBorderColor;
       cursor: not-allowed;
     }
   }
