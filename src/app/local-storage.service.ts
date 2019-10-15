@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class LocalStorageService {
+  //TODO: move it from here
   public subscribed = false;
   public userEmail = '';
 
@@ -14,13 +15,13 @@ export class LocalStorageService {
     }
   }
 
-  private localStorageAdd(item: string) {
+  public localStorageAdd(item: string) {
     localStorage.setItem(item, this.userEmail);
 
     return this.subscribed = true;
   };
 
-  private localStorageDelete(item: string) {
+  public localStorageDelete(item: string) {
     localStorage.removeItem(item);
 
     return this.subscribed = false;

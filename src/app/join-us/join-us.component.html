@@ -4,28 +4,28 @@
         <h4 class="join-us__title">{{ formText.message }}</h4>
 
         <input 
-        [(ngModel)]="localStorageService.userEmail" 
-        class="email_input" 
-        [class.error]="invalid" 
-        type="text" 
-        (input)="onValidate()"
-        (blur)="onBlur()"
-        placeholder="Your eMail">
+          type="text" 
+          class="email_input" 
+          placeholder="Your eMail"
+          [(ngModel)]="localStorageService.userEmail" 
+          [class.error]="invalid" 
+          (input)="onValidate()"
+          (blur)="onBlur()">
 
         <app-button 
-        [buttonClass]="'button_accent'"  
-        [disabled]="buttonDisabled" 
-        (click)="localStorageService.localStorageAdd('userEmail')">
-        {{ formText.subscribe }}           
+          [buttonClass]="'button_accent'"  
+          [disabled]="buttonDisabled" 
+          (click)="saveUser()">
+          {{ formText.subscribe }}
         </app-button>
 
     </div>
     <div class="join-us__collapse" *ngIf="localStorageService.subscribed"> 
         <h4 class="join-us__title">{{ formText.success }}</h4>
         <app-button 
-        [buttonClass]="'button_accent'" 
-        (click)="localStorageService.localStorageDelete('userEmail')">
-        {{ formText.unsubscribe }}
+          [buttonClass]="'button_accent'" 
+          (click)="deleteUser()">
+          {{ formText.unsubscribe }}
         </app-button>
     </div>
 </div>

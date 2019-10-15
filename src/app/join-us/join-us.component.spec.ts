@@ -1,12 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule }                      from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
-import { JoinUsComponent }                  from './join-us.component';
+import { JoinUsComponent } from './join-us.component';
 import { ButtonComponent } from '../shared/button/button.component';
 
-describe('JoinUsComponent', () => {
-  let component: JoinUsComponent;
-  let fixture: ComponentFixture<JoinUsComponent>;
+  describe('JoinUsComponent', () => {
+    const subscribed = false;
+    let component: JoinUsComponent;
+    let fixture: ComponentFixture<JoinUsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -35,11 +36,12 @@ describe('JoinUsComponent', () => {
   });
 
   it('onInit should be invalid', () => {
-    expect(component.ngOnInit()).toBeFalsy();
+    component.ngOnInit()
+    expect(!subscribed).toBeTruthy();
   });
 
   it('onBlur should transform remove class', () => {
     component.onBlur()
-    expect(this.invalid === false).toBeTruthy();
+    expect(!component.invalid).toBeTruthy();
   });
 });

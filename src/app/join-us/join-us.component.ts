@@ -22,16 +22,24 @@ export class JoinUsComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService){}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.localStorageService.onRefresh('userEmail');
   }
 
-  public onBlur(){
+  public onBlur(): void {
     this.localStorageService.userEmail = '';
     this.invalid = false;
   }
+  
+  public saveUser(): void {
+    this.localStorageService.localStorageAdd('userEmail')
+  }
 
-  public onValidate(value?: string) {
+  public deleteUser(): void {
+    this.localStorageService.localStorageDelete('userEmail')
+  }
+
+  public onValidate(value?: string): void {
     if (this.emailRegEx.test(value || this.localStorageService.userEmail)) {
       this.buttonDisabled = false;
       this.invalid = false;
