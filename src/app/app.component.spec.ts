@@ -1,14 +1,11 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { JoinUsComponent } from '../app/join-us/join-us.component';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { TestBed, async } from '@angular/core/testing';
+import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './shared/button/button.component';
 import { MainLogoComponent } from './shared/main-logo/main-logo.component';
@@ -25,17 +22,20 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
+import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
+import { FormsModule } from '@angular/forms';
+import { JoinUsComponent } from './join-us/join-us.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    FormsModule
- ],
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FontAwesomeModule,
+        FormsModule
+      ],
       declarations: [
         AppComponent,
         HeaderComponent,
@@ -53,10 +53,10 @@ describe('AppComponent', () => {
         MainMenuComponent,
         ParallaxComponent,
         PopularListComponent,
-        JoinUsComponent
+        JoinUsComponent,
+        ProductCarouselComponent,
       ],
-      providers: [HttpService,
-      ProductShortInfoService],
+      providers: [HttpService, ProductShortInfoService],
     }).compileComponents();
   }));
 
@@ -66,16 +66,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ui-internship-lwo3-angular-team'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ui-internship-lwo3-angular-team');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ui-internship-lwo3-angular-team app is running!');
-  });
 });

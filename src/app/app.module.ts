@@ -24,6 +24,7 @@ import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
 import { JoinUsComponent } from './join-us/join-us.component';
 import { FormsModule } from '@angular/forms';
+import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { FormsModule } from '@angular/forms';
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
-    JoinUsComponent
+    JoinUsComponent,
+    ProductCarouselComponent,
   ],
   imports: [
     BrowserModule,
