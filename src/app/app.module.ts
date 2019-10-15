@@ -31,6 +31,7 @@ import { LoaderInterceptor } from './loader.interceptor';
 import { ScrollAnchorDirective } from './scroll-anchor.directive';
 import { ScrollComponent } from './scroll/scroll.component';
 import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
+import { JoinUs } from './join-us/join-us';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ProductCarouselComponent } from './shared/product-carousel/product-caro
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
+    JoinUs,
     LoaderComponent,
     ScrollAnchorDirective,
     ScrollComponent,
@@ -62,6 +64,7 @@ import { ProductCarouselComponent } from './shared/product-carousel/product-caro
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule
   ],
   providers: [HttpService,
     ProductShortInfoService,
