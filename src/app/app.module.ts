@@ -6,7 +6,6 @@ import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +24,7 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
 import { ProductShortInfoService } from './product-short-info.service';
+import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,8 @@ import { ProductShortInfoService } from './product-short-info.service';
     ProductListComponent,
     MainMenuComponent,
     ParallaxComponent,
-    PopularListComponent
+    PopularListComponent,
+    ProductCarouselComponent,
   ],
   imports: [
     BrowserModule,
