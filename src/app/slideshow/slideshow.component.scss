@@ -36,7 +36,7 @@
 }
 
 .next {
-  right: 0;
+  right: 5%;
   border-radius: 4px 0 0 4px;
 }
 
@@ -75,5 +75,11 @@ ul {
 @media screen and (max-width: 576px) {
   .prev, .next {
     display: none;
+  }
+  ul {
+    li {
+      height: 20px;
+      width: 20px;
+    }
   }
 }

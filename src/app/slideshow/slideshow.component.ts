@@ -4,12 +4,13 @@ import {
   ViewChild,
   EventEmitter,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
+  HostListener
 } from '@angular/core';
 import {
   fromEvent,
   merge,
-  timer,
+  interval,
   ObservableInput
 } from 'rxjs';
 import {
@@ -46,14 +47,17 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   public currentDirection = 'left';
   public timerSub: ObservableInput<unknown>;
   public clicked = false;
+  public isDesktop: boolean;
 
   private isOnSlider = new EventEmitter<boolean>();
 
+  @HostListener('window:resize', [])
+  public onResize(): void {
+    this.deviceCheck();
+  }
+
   public ngOnInit(): void {
-    const prevModified$ = fromEvent(
-      this.previousEl.nativeElement,
-      'click'
-    ).pipe(
+    const prevModified$ = fromEvent(this.previousEl.nativeElement, 'click').pipe(
       tap(() => this.stopTimer()),
       map(() => ({ shift: -1, direction: 'right' }))
     );
@@ -65,7 +69,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
     this.timerSub = this.isOnSlider.pipe(
       switchMap(isOnSlider =>
-        timer(4000, 4000).pipe(
+        interval(4000).pipe(
           takeWhile(() => isOnSlider && !this.clicked),
           map(() => ({ shift: 1, direction: 'left' }))
         )
@@ -103,6 +107,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
     const event = new MouseEvent('mouseout', { bubbles: true });
 
     this.sliderEl.nativeElement.dispatchEvent(event);
+    this.deviceCheck();
   }
 
   public toggleSlide(slideNumber: number): void {
@@ -112,5 +117,10 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   public stopTimer(): void {
     this.clicked = true;
+  }
+
+  private deviceCheck(): void {
+    this.isDesktop = !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    this.isOnSlider.emit(this.isDesktop);
   }
 }
