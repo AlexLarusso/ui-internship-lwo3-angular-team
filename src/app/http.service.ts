@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class HttpService {
   private URL = '../assets/server-data/data.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getData(): Observable<Array<IProduct>> {
     return this.http.get<Array<IProduct>>(this.URL);

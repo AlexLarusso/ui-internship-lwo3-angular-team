@@ -13,7 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './shared/button/button.component';
 import { MainLogoComponent } from './shared/main-logo/main-logo.component';
 import { ProductItemComponent } from './shared/product-item/product-item.component';
-import { PromoComponent } from './header/promo/promo.component';
+import { PromoComponent } from './promo/promo.component';
 import { CategoryMenuComponent } from './header/category-menu/category-menu.component';
 import { LineBarComponent } from './header/line-bar/line-bar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -31,7 +31,23 @@ import { LoaderInterceptor } from './loader.interceptor';
 import { ScrollAnchorDirective } from './scroll-anchor.directive';
 import { ScrollComponent } from './scroll/scroll.component';
 import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
+import { ProductResolver } from './product.resolver';
+import { Routes, RouterModule } from '@angular/router';
 import { JoinUs } from './join-us/join-us';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'woman', component: ProductListPageComponent },
+  { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
+];
 
 @NgModule({
   declarations: [
@@ -52,11 +68,17 @@ import { JoinUs } from './join-us/join-us';
     MainMenuComponent,
     ParallaxComponent,
     PopularListComponent,
+    NotFoundComponent,
+    HomeComponent,
+    ProductListPageComponent,
+    ProductDetailsComponent,
+    ProductDetailsPageComponent,
+    ProductCarouselComponent,
     JoinUs,
     LoaderComponent,
     ScrollAnchorDirective,
     ScrollComponent,
-    ProductCarouselComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,13 +86,18 @@ import { JoinUs } from './join-us/join-us';
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
+    RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [HttpService,
+  providers: [
+    HttpService,
     ProductShortInfoService,
+    ProductResolver,
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+
   ],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {

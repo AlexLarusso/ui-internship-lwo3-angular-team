@@ -3,14 +3,14 @@ import { fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface IPageAnchor {
-  title: string,
-  selector: string
+  title: string;
+  selector: string;
 }
 
 interface IAnchorOffset {
-  positionTop: number,
-  positionBottom: number,
-  pageAnchor: IPageAnchor
+  positionTop: number;
+  positionBottom: number;
+  pageAnchor: IPageAnchor;
 }
 
 @Injectable({
@@ -19,21 +19,21 @@ interface IAnchorOffset {
 export class ScrollService {
   public activeAnchor = new EventEmitter();
   public pageAnchors = new EventEmitter();
-  
-  private isListening: boolean = false;
+
+  private isListening = false;
   private pageAnchorRefs: ElementRef[] = [];
   private pageAnchorOffsets: IAnchorOffset[] = [];
-  private scrollOptions = { 
+  private scrollOptions = {
     behavior: 'smooth',
     block: 'start',
     inline: 'nearest'
   };
 
-  public addAnchor(elRef: ElementRef): void {  
-    this.pageAnchorRefs.push(elRef); 
-    this.pageAnchors.emit( { 
-        selector: elRef.nativeElement.localName,
-        title: elRef.nativeElement.title
+  public addAnchor(elRef: ElementRef): void {
+    this.pageAnchorRefs.push(elRef);
+    this.pageAnchors.emit({
+      selector: elRef.nativeElement.localName,
+      title: elRef.nativeElement.title
     });
   }
 
@@ -43,7 +43,7 @@ export class ScrollService {
   }
 
   public getPageAnchors(): Array<IPageAnchor> {
-    return this.pageAnchorRefs.map(elRef => ({ 
+    return this.pageAnchorRefs.map(elRef => ({
       selector: elRef.nativeElement.localName,
       title: elRef.nativeElement.title
     }));
@@ -70,33 +70,33 @@ export class ScrollService {
       const currentEl = this.pageAnchorOffsets[i];
       const nextEl = this.pageAnchorOffsets[i + 1];
 
-      if(position >= currentEl.positionTop && position < nextEl.positionTop) {
+      if (position >= currentEl.positionTop && position < nextEl.positionTop) {
         return {
           title: currentEl.pageAnchor.title,
           selector: currentEl.pageAnchor.selector
         };
       }
     }
-    
+
     return footer.positionBottom - position <= window.innerHeight + footerExtraGap
       ? {
-          title: footer.pageAnchor.title,
-          selector: footer.pageAnchor.selector
-        }
+        title: footer.pageAnchor.title,
+        selector: footer.pageAnchor.selector
+      }
       : {
-          title: lastBeforeFooter.pageAnchor.title,
-          selector: lastBeforeFooter.pageAnchor.selector
-        }; 
-  } 
+        title: lastBeforeFooter.pageAnchor.title,
+        selector: lastBeforeFooter.pageAnchor.selector
+      };
+  }
 
-  private onScrollCallback(position: number): void {  
+  private onScrollCallback(position: number): void {
     this.activeAnchor.emit(this.findActive(position));
   }
-    
+
 
   public initScrollListening(): void {
     this.pageAnchorOffsets = this.getElementsOffsets();
-   
+
     if (!this.isListening) {
       this.isListening = true;
       fromEvent(window, 'scroll').pipe(map(() => window.pageYOffset))

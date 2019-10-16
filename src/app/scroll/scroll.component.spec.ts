@@ -9,15 +9,15 @@ describe('ScrollComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScrollComponent ],
-      imports: [ FontAwesomeModule ]
+      declarations: [ScrollComponent],
+      imports: [FontAwesomeModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ScrollComponent);
     component = fixture.componentInstance;
-    for(let i = 0; i < ITEMS_NUMBER; i++) {
+    for (let i = 0; i < ITEMS_NUMBER; i++) {
       component.pageComponents.push({
         selector: i.toString(),
         title: i.toString()
@@ -32,15 +32,15 @@ describe('ScrollComponent', () => {
 
   it('should render the correct number of items', () => {
     const items = [...fixture.debugElement.nativeElement.querySelectorAll('li')];
-    
+
     expect(items.length).toEqual(ITEMS_NUMBER);
   });
 
   it('Item clicks should call onSelect method', () => {
-    const fakeClick = new MouseEvent('click', {bubbles: true});
+    const fakeClick = new MouseEvent('click', { bubbles: true });
     const items = [...fixture.debugElement.nativeElement.querySelectorAll('li')];
     const spy = spyOn(component, 'onItemSelect');
-  
+
     items.forEach(item => {
       item.dispatchEvent(fakeClick);
     });

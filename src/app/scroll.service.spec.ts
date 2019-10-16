@@ -6,11 +6,11 @@ describe('ScrollService', () => {
   const ANCHORS_NUMBER = 10;
   let service: ScrollService;
 
-  beforeEach(() => TestBed.configureTestingModule({ }).compileComponents());
+  beforeEach(() => TestBed.configureTestingModule({}).compileComponents());
   beforeEach(() => {
     service = TestBed.get(ScrollService);
     service.resetAnchors();
-    for(let i = 0; i < ANCHORS_NUMBER; i++) {
+    for (let i = 0; i < ANCHORS_NUMBER; i++) {
       service.addAnchor(new ElementRef('div'));
     }
   });
@@ -32,11 +32,11 @@ describe('ScrollService', () => {
     const additionalAnchors = 10;
     const elRef: ElementRef = new ElementRef('div');
 
-    for(let i = 0; i < additionalAnchors; i++) {
-      service.addAnchor(elRef); 
+    for (let i = 0; i < additionalAnchors; i++) {
+      service.addAnchor(elRef);
     }
     expect(service.getPageAnchors().length ===
       ANCHORS_NUMBER + additionalAnchors)
-        .toBeTruthy('yes');
+      .toBeTruthy('yes');
   });
-})
+});

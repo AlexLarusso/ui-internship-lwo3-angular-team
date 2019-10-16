@@ -7,7 +7,7 @@ import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-so
   templateUrl: './scroll.component.html',
   styleUrls: ['./scroll.component.scss']
 })
-export class ScrollComponent implements OnInit, AfterViewChecked{  
+export class ScrollComponent implements OnInit, AfterViewChecked {
   public pageComponents: IPageAnchor[] = [];
 
   private activeElement: IPageAnchor;
@@ -16,15 +16,15 @@ export class ScrollComponent implements OnInit, AfterViewChecked{
 
   constructor(private scrollService: ScrollService) { }
 
-  public onItemSelect(anchor: IPageAnchor): void {  
+  public onItemSelect(anchor: IPageAnchor): void {
     this.scrollService.moveTo(anchor);
   }
 
   public ngOnInit(): void {
     this.scrollService.activeAnchor
       .subscribe((anchor: IPageAnchor) => {
-        this.activeElement = anchor
-    });
+        this.activeElement = anchor;
+      });
     this.scrollService.pageAnchors
       .subscribe((anchor: IPageAnchor) =>
         this.pageComponents.push(anchor));
