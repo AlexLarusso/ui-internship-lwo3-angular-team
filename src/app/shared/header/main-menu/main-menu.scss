@@ -1,0 +1,101 @@
+@import '../../../styles/variables';
+
+.menu {
+  height: 60px;
+  background: $bgColorDark;
+  color: $fontColorLight;
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__item {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__input {
+    &__container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__search {
+    width: 80%;
+    padding-left: 10px;
+
+    &__container {
+      display: flex;
+      height: 30px;
+    }
+
+    &__btn {
+      width: 20%;
+      border: none;
+      background: $accentColor;
+    }
+  }
+
+  &__cart {
+    width: 70%;
+    background: $bgColorLight;
+
+    &__container {
+      display: flex;
+      height: 30px;
+    }
+
+    &__btn {
+      width: 30%;
+      background: $accentColor;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .menu {
+    &__container {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    height: 100px;
+
+    &__container {
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100px;
+    }
+
+    &__input {
+      &__container {
+        width: 100%;
+      }
+    }
+
+    &__list {
+      width: 100%;
+    }
+  }
+}
+
+fa-icon {
+  color: $fontColorLight;
+}

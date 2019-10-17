@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, Input } from '@angular/core';
-import { ProductShortInfoService } from '../../product-short-info.service';
+import { ProductShortInfoService } from '../services/product-short-info.service';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { IProductShortInfo } from '../../product-short-info';
+import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
 
 const BREAK_POINTS = {
   mobile: {
@@ -26,8 +26,8 @@ const MARGIN = 10;
 
 @Component({
   selector: 'app-product-carousel',
-  templateUrl: './product-carousel.component.html',
-  styleUrls: ['./product-carousel.component.scss']
+  templateUrl: './product-carousel.html',
+  styleUrls: ['./product-carousel.scss']
 })
 export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked {
   public faArrowLeft = faArrowLeft;
