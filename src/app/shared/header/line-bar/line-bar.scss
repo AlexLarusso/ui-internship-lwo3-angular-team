@@ -1,0 +1,88 @@
+@import '../../../styles/variables';
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  font-size: 0.8rem;
+
+  &__container {
+    background: $bgColorDark;
+    color: $fontColorLight;
+  }
+
+  &__link {
+    color: $fontColorLight;
+  }
+}
+
+.contact {
+  &__container {
+    display: flex;
+  }
+} 
+
+.link {
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__item {
+    padding: 0 5px;
+
+    &:hover {
+      color: $accentColor;
+    }
+  }
+}
+
+.login {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+a {
+  &:hover {
+    color: $accentColor;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact {
+    &__container {
+      width: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .bar {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60px;
+  }
+
+  .contact,
+  .login {
+    &__container {
+      width: 100%;
+      justify-content: space-around;
+
+      p,
+      a {
+        text-align: center;
+      }
+    }
+  }
+
+  .link__container,
+  .bar__link {  
+    justify-content: center;
+    width: 33%;
+  }
+}
