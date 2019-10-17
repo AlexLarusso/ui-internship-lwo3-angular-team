@@ -11,6 +11,7 @@ import { StoryComponent } from '../../components/story/story.component';
 import { ScrollComponent } from '../../components/scroll/scroll.component';
 import { SlideshowComponent } from '../../components/slideshow/slideshow.component';
 import { JoinUsComponent } from '../../components/join-us/join-us.component';
+import { RecentlyViewedComponent } from '../../components/recently-viewed/recently-viewed.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { JoinUsComponent } from '../../components/join-us/join-us.component';
     SlideshowComponent,
     ScrollAnchorDirective,
     JoinUsComponent,
+    RecentlyViewedComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { JoinUsComponent } from '../../components/join-us/join-us.component';
     ScrollComponent,
     ScrollAnchorDirective,
     JoinUsComponent,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RecentlyViewedComponent
   ]
 })
 

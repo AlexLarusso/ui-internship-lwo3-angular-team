@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { IProduct } from 'src/app/interfaces/product.interface';
-
+import { LocalStorageService } from '../services/local-storage.service';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.html',
@@ -16,4 +16,11 @@ export class ProductItemComponent {
   @Input() public title = 'Product Title';
   @Input() public price = 0;
   @Input() public productId = 1;
+
+  constructor(private localStorageService: LocalStorageService ){}
+  
+  
+  public OnClick(key: string, value: number){
+    this.localStorageService.saveViewedHistory(key, value)
+  }
 }
