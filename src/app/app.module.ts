@@ -11,12 +11,16 @@ import { ProductDetailsPageModule } from './pages/product-details-page/product-d
 import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
 import { SharedModule } from './shared/shared.module';
 
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './store/reducers/counter.reducer';
+
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { CounterComponent } from './components/counter/counter.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,7 +38,8 @@ const routes: Routes = [
     NotFoundComponent,
     ProductListPageComponent,
     ProductDetailsPageComponent,
-    LoaderComponent
+    LoaderComponent,
+    CounterComponent
   ],
   imports: [
     HomeModule,
@@ -43,7 +48,8 @@ const routes: Routes = [
     ProductListPageModule,
     SharedModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ count: counterReducer })
   ],
   providers: [
     HttpService,
