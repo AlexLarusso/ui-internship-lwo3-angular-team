@@ -1,10 +1,10 @@
 import { Component, AfterContentInit } from '@angular/core';
-import { LoaderService } from '../../loader.service';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-loader',
-  templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  templateUrl: './loader.html',
+  styleUrls: ['./loader.scss']
 })
 export class LoaderComponent implements AfterContentInit {
   public isLoading = true;

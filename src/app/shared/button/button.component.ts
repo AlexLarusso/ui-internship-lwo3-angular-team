@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  templateUrl: './button.html',
+  styleUrls: ['./button.scss']
 })
 
 export class ButtonComponent {
-  @Input() public buttonClass: string; 
-  @Input() public disabled: boolean; 
+  @Input() public buttonClass: string;
+  @Input() public isDisabled: boolean;
 }
