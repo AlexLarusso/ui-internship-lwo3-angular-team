@@ -12,8 +12,7 @@ export class LoaderComponent implements AfterContentInit {
   constructor(private loaderService: LoaderService) { }
 
   public ngAfterContentInit() {
-    this.loaderService.isLoading.subscribe(
-      (result) => this.isLoading = result
-    );
+    this.loaderService.isLoading
+      .subscribe(result => this.isLoading = result);
   }
 }

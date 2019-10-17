@@ -10,7 +10,7 @@ import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-so
 export class ScrollComponent implements OnInit, AfterViewChecked {
   public pageComponents: IPageAnchor[] = [];
 
-  private activeElement: IPageAnchor;
+  private activeElement: IPageAnchor; // TODO: You use it in html, should be public. Check everywhere
   private toHeaderIcon: IconDefinition = faChevronUp;
   private toFooterIcon: IconDefinition = faChevronDown;
 

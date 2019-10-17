@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class ProductResolver implements Resolve<IProduct> {
-
+  // TODO: remove private route: ActivatedRoute
   constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<IProduct> {

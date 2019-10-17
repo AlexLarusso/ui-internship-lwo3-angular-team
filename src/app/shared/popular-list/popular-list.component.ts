@@ -16,6 +16,6 @@ export class PopularListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.productList.getShortInfo()
-      .subscribe((data) => this.productData = data);
+      .subscribe(data => this.productData = data);
   }
 }
