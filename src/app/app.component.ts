@@ -1,11 +1,10 @@
 import { Component, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
-import { ScrollService } from './scroll.service';
-import { ScrollAnchorDirective } from './scroll-anchor.directive';
+import { ScrollService } from './shared/services/scroll.service';
+import { ScrollAnchorDirective } from './shared/directives/scroll-anchor.directive';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.html'
 })
 export class AppComponent implements AfterViewInit  {
   @ViewChildren(ScrollAnchorDirective)

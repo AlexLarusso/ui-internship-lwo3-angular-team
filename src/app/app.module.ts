@@ -1,78 +1,59 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpService } from './http.service';
-import { HttpClientModule } from '@angular/common/http';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './shared/services/loader.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LoaderService } from './shared/services/loader.service';
+import { Routes, RouterModule } from '@angular/router';
+import { ProductResolver } from './shared/services/product.resolver';
+import { HttpService } from './shared/services/http.service';
+import { HomeModule } from './pages/home/home.module';
+import { NotFoundModule } from './pages/not-found/not-found.module';
+import { ProductDetailsPageModule } from './pages/product-details-page/product-details-page.module';
+import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
+import { SharedModule } from './shared/shared.module';
 
-import { SlideshowComponent } from './slideshow/slideshow.component';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ButtonComponent } from './shared/button/button.component';
-import { MainLogoComponent } from './shared/main-logo/main-logo.component';
-import { ProductItemComponent } from './shared/product-item/product-item.component';
-import { PromoComponent } from './header/promo/promo.component';
-import { CategoryMenuComponent } from './header/category-menu/category-menu.component';
-import { LineBarComponent } from './header/line-bar/line-bar.component';
-import { FooterComponent } from './footer/footer.component';
-import { SaleBannerComponent } from './shared/sale-banner/sale-banner.component';
-import { MainComponent } from './main/main.component';
-import { StoryComponent } from './main/story/story.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { MainMenuComponent } from './header/main-menu/main-menu.component';
-import { ParallaxComponent } from './parallax/parallax.component';
-import { PopularListComponent } from './popular-list/popular-list.component';
-import { ProductShortInfoService } from './product-short-info.service';
 import { LoaderComponent } from './shared/loader/loader.component';
-import { LoaderService } from './loader.service';
-import { LoaderInterceptor } from './loader.interceptor';
-import { ScrollAnchorDirective } from './scroll-anchor.directive';
-import { ScrollComponent } from './scroll/scroll.component';
-import { ProductCarouselComponent } from './shared/product-carousel/product-carousel.component';
-import { JoinUs } from './join-us/join-us';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'woman', component: ProductListPageComponent },
+  { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SlideshowComponent,
-    HeaderComponent,
-    ButtonComponent,
-    MainLogoComponent,
-    ProductItemComponent,
-    PromoComponent,
-    CategoryMenuComponent,
-    LineBarComponent,
-    FooterComponent,
-    SaleBannerComponent,
-    MainComponent,
-    StoryComponent,
-    ProductListComponent,
-    MainMenuComponent,
-    ParallaxComponent,
-    PopularListComponent,
-    JoinUs,
-    LoaderComponent,
-    ScrollAnchorDirective,
-    ScrollComponent,
-    ProductCarouselComponent,
+    HomeComponent,
+    NotFoundComponent,
+    ProductListPageComponent,
+    ProductDetailsPageComponent,
+    LoaderComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    FormsModule
+    HomeModule,
+    NotFoundModule,
+    ProductDetailsPageModule,
+    ProductListPageModule,
+    SharedModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
-  providers: [HttpService,
-    ProductShortInfoService,
+  providers: [
+    HttpService,
     LoaderService,
+    ProductResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
-export class AppModule {
 
-}
+export class AppModule { }

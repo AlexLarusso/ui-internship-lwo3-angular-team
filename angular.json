@@ -87,10 +87,8 @@
             "main": "src/test.ts",
             "codeCoverage": true ,
             "polyfills": "src/polyfills.ts",
-            "codeCoverage": true ,
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "codeCoverage": true ,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -106,8 +104,7 @@
           "options": {
             "tsConfig": [
               "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
