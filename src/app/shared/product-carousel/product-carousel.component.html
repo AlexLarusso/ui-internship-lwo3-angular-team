@@ -6,9 +6,10 @@
     <div class="products__container" #productsContainer>
       <div class="products" #products>
         <app-product-item *ngFor="let product of productData"
-          [src]="product.imgUrl" 
-          [title]="product.productName"
-          [price]="product.price">
+          [src]="product.imgUrl"
+          [title]="product.title"
+          [price]="product.price + ' uah'"
+          [productId]="product.id">
         </app-product-item>
       </div>
     </div>

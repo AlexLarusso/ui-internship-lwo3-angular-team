@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, Input } from '@angular/core';
 import { ProductShortInfoService } from '../../product-short-info.service';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { IProductShortInfo } from '../../product-short-info';
@@ -33,6 +33,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public faArrowLeft = faArrowLeft;
   public faArrowRight = faArrowRight;
 
+  @Input() category: string;
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
 
@@ -75,7 +76,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   }
 
   public ngOnInit(): void {
-    this.productList.getShortInfo()
+    this.productList.getShortInfo(this.category)
       .subscribe((data) => this.productData = data);
 
     this.pageWidth = window.innerWidth;

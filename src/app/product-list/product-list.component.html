@@ -18,9 +18,9 @@
     <div class="product__container">
       <app-product-item *ngFor="let product of productData"
         class="product__item"
-        [src]="product.imgUrl" 
+        [src]="product.imgUrl"
         [title]="product.title"
-        [price]="product.price"
+        [price]="product.price +' uah'"
         [productId]="product.id">
       </app-product-item>
     </div>
