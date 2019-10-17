@@ -6,5 +6,6 @@ import { ProductResolver } from '../../shared/services/product.resolver';
   templateUrl: './product-details-page.html',
   providers: [ProductResolver]
 })
+
 export class ProductDetailsPageComponent {
 }
