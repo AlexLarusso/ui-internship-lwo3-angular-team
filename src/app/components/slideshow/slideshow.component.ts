@@ -23,7 +23,7 @@ import {
 } from 'rxjs/operators';
 import { slideshowAnimation } from './slideshow.animations';
 
-const images: string[] = [
+const images: string[] = [ // TODO: Use syntax Array<string> check everywhere
   '../../assets/img/beauty-casual-curly.jpg',
   '../../assets/img/blazers-daytime-dress.jpg',
   '../../assets/img/bored-boredom-casual.jpg',
