@@ -8,6 +8,7 @@ import { LoaderService } from '../services/loader.service';
 })
 export class LoaderComponent implements AfterContentInit {
   public isLoading = true;
+  public bulletsArray = new Array(12).fill('');
 
   constructor(private loaderService: LoaderService) { }
 

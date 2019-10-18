@@ -9,10 +9,9 @@ import { IProduct } from 'src/app/interfaces/product.interface';
   styleUrls: ['./product-item.scss']
 })
 export class ProductItemComponent {
-  @Input() public src = '../../../assets/server-data/images/image-not-found.png'; 
-  // TODO: Inputs and another decorators should go before other properties
-  @Input() public title = 'Product Title';
-  @Input() public price = 0;
+  @Input() public imgUrl = '../../../assets/server-data/images/image-not-found.png';
+  @Input() public productTitle = 'Product Title';
+  @Input() public productPrice = 0;
   @Input() public productId = 1;
 
   public faHeart = faHeart;

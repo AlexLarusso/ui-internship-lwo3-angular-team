@@ -4,7 +4,7 @@
   &__container{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     margin: 5px;
     width: 250px;
@@ -14,7 +14,7 @@
   }
 
   &__picture {
-    margin: 5px 0;
+    margin: 20px 0 5px;
     height: 320px;
     background: $bgColorMedium;
     overflow: hidden;

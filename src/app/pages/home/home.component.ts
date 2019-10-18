@@ -8,7 +8,7 @@ import { ScrollAnchorDirective } from 'src/app/shared/directives/scroll-anchor.d
 })
 export class HomeComponent implements AfterViewInit {
   @ViewChildren(ScrollAnchorDirective)
-    private pageAnchors: QueryList<ScrollAnchorDirective>;
+  private pageAnchors: QueryList<ScrollAnchorDirective>;
 
   constructor(private scrollService: ScrollService) {}
 

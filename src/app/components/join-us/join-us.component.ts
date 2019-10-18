@@ -13,7 +13,7 @@ export class JoinUsComponent implements OnInit {
   public buttonDisabled = true;
   public emailValid = false; // TODO: please name it properly, isEmailValid. Check everewhere in app
   public invalid = false; // TODO: Same... you have emailValid already.. Or isInvalid or remove
-  public isSubscribed = false; 
+  public isSubscribed = false;
   public inputText = '';
   public formText = {
     success: 'You have successfully subscribed to our newsletter',

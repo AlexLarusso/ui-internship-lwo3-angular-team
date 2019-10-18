@@ -1,11 +1,11 @@
-import { 
-  Component, AfterViewInit, QueryList, ViewChildren, OnInit, OnDestroy 
+import {
+  Component, AfterViewInit, QueryList, ViewChildren, OnInit, OnDestroy
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators'
-import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
+import { filter } from 'rxjs/operators';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { ScrollService } from './shared/services/scroll.service';
 import { ScrollAnchorDirective } from './shared/directives/scroll-anchor.directive';
@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy  {
   @ViewChildren(ScrollAnchorDirective)
     private pageAnchors: QueryList<ScrollAnchorDirective>;
 
-  constructor(private scrollService: ScrollService, private router: Router) { 
+  constructor(private scrollService: ScrollService, private router: Router) {
   }
 
   public isHomePage: boolean;
@@ -30,10 +30,9 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy  {
       filter(event => event instanceof NavigationEnd)
     )
     .subscribe(() => {
-      this.isHomePage = window.location.pathname === '/home'
+      this.isHomePage = window.location.pathname === '/home';
     });
   }
-  
 
   public ngAfterViewInit(): void {
     this.pageAnchors.forEach(el =>

@@ -1,20 +1,6 @@
 <div *ngIf="isLoading" class="overlay">
     <div class="lds-css ng-scope">
-    <!-- TODO: Rewrite with *ngFor
-      HINT: new Array(12).fill('');
-    -->
     <div class="lds-spinner">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div *ngFor="let bullet of bulletsArray"></div>
     </div>
 </div>

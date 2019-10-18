@@ -10,12 +10,8 @@
           [class.error]="invalid" 
           (input)="onValidate()"
           (blur)="onBlur()">
-          <!-- TODO:
-            You don't need to use binding if you send string. Check everywhere in app
-          [buttonClass]="'button_accent'" -> buttonClass="button_accent" 
-          -->
         <app-button 
-          [buttonClass]="'button_accent'" 
+          buttonClass="button_accent" 
           [isDisabled]="buttonDisabled" 
           (click)="saveUser()">
           {{ formText.subscribe }}
@@ -24,7 +20,7 @@
     <div class="join-us__collapse" *ngIf="isSubscribed"> 
         <h4 class="join-us__title">{{ formText.success }}</h4>
         <app-button 
-          [buttonClass]="'button_accent'" 
+          buttonClass="button_accent" 
           (click)="deleteUser()">
           {{ formText.unsubscribe }}
         </app-button>

@@ -1,4 +1,8 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, OnDestroy } from '@angular/core';
+
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Subscription } from 'rxjs';
+
 import { ProductShortInfoService } from '../services/product-short-info.service';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
@@ -24,18 +28,19 @@ const BREAK_POINTS = {
 
 const MARGIN = 10;
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.html',
   styleUrls: ['./product-carousel.scss']
 })
-export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked {
-  public faArrowLeft = faArrowLeft;
-  public faArrowRight = faArrowRight;
-
+export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
 
+  public faArrowLeft = faArrowLeft;
+  public faArrowRight = faArrowRight;
+  public getProducts: Subscription;
   public canMoveToNext = true;
   public canMoveToPrev = false;
   public productContainer: HTMLElement;
@@ -47,8 +52,6 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public position = 0;
   public additionalScroll = 0;
   public containerScroll = 0;
-
-  constructor(private productList: ProductShortInfoService) { }
 
   @HostListener('window:resize', [])
   public onResize(): void {
@@ -65,8 +68,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
 
     if (this.additionalScroll) {
       this.productsContainer.nativeElement.scrollLeft > this.containerScroll
-        ? this.moveToNext()
-        : this.moveToPrev();
+      ? this.moveToNext()
+      : this.moveToPrev();
     }
 
     this.containerScroll = this.productsContainer.nativeElement.scrollLeft;
@@ -74,8 +77,10 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
+  constructor(private productList: ProductShortInfoService) { }
+
   public ngOnInit(): void {
-    this.productList.getShortInfo()
+    this.getProducts = this.productList.getShortInfo()
       .subscribe((data) => this.productData = data);
 
     this.pageWidth = window.innerWidth;
@@ -85,6 +90,15 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.productContainer = this.products.nativeElement;
 
     this.indicateViewNumber();
+  }
+
+  public ngAfterViewChecked(): void {
+    const [_, ...rest] = this.products.nativeElement.childNodes;
+    this.productArray = [...rest];
+
+    if (this.productArray.length) {
+      this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
+    }
   }
 
   public toggleButtonsState(): void {
@@ -112,15 +126,6 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
-  public ngAfterViewChecked(): void {
-    const [_, ...rest] = this.products.nativeElement.childNodes;
-    this.productArray = [...rest];
-
-    if (this.productArray.length) {
-      this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
-    }
-  }
-
   public indicateViewNumber(): void {
     switch (true) {
       case this.pageWidth > BREAK_POINTS.laptop_S.width:
@@ -142,4 +147,6 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.productContainer.style.marginLeft = 0 + 'px';
     this.productsContainer.nativeElement.scrollLeft = 0;
   }
+
+  public ngOnDestroy() {}
 }

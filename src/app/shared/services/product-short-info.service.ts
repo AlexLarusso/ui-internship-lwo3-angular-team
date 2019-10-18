@@ -15,10 +15,10 @@ export class ProductShortInfoService {
       .getData()
       .pipe(map(data =>
         data.map((item => ({
-          title: item.productName,
+          productTitle: item.productName,
           imgUrl: item.images[0].url[0],
-          price: item.price + ' uah',
-          id: item.id,
+          productPrice: item.price + ' uah',
+          productId: item.id,
         })
       ))));
   }
