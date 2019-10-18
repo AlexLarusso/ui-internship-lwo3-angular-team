@@ -1,79 +1,80 @@
+@import '../../styles/variables';
+
 $item-size: 22px;
 $item-spacing: 26px;
-$item-color: rgba(211, 153, 95, 0.7);
-$decoration-color: rgba(192, 192, 192, 0.8);;
-$menu-color: rgba(0, 0, 0, 0.7);
-$text-color: white;
+$item-hover-color: rgba(0, 0, 0, 0.2);
+$item-color: rgb(180, 180, 180);
+$item-shadow-color: rgb(100, 100, 100);
+$item-border-color: rgb(160, 160, 160);
+$item-active-color: $accentColor;
+$item-text-color: white;
 
 .scroll {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    left: 95%;
-    top: 50%;
-    transform: translateY(-50%);
-    
-    .item {
-        display: block;
-        margin: $item-spacing 0;
-        width: $item-size;
-        height: $item-size;
-        list-style: none;
-        border: 1px solid $menu-color;
-        border-radius: $item-size / 2;
-        background-color: $item-color;
-        box-shadow: 2px 2px 2px 0px $menu-color;
-        transition: all 600ms ease-in-out;
-        cursor: pointer;
-        
-        &.active {
-            transform: scale(1.2);
-            background-color: $decoration-color;
-        }
-        
-        &__text {
-            visibility: hidden;
-            display: block;
-            font-size: 1rem;
-            color: $text-color;
-            text-align: center;
-            opacity: 0;
-            transition: opacity .6s;
-            transition-delay: 300ms;
-        }
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 95%;
+  top: 50%;
+  transform: translateY(-50%);
 
-        &:hover {
-            background-color: $menu-color;
-            transform: translateX(calc(-100% + #{$item-size}));
-            width: 100px;
-            
-            .item__text {
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-    }
-    .icon {
-        display: block;
-        margin: $item-spacing auto;
-        font-size: $item-size * 1.2;
-        color: $item-color;
-        stroke: $menu-color;
-        stroke-width: 30;
+  .item {
+    display: block;
+    margin: $item-spacing 0;
+    width: $item-size;
+    height: $item-size;
+    list-style: none;
+    border-radius: $item-size / 2;
+    background-color: $item-color;
+    box-shadow: 2px 2px 2px 0px $item-shadow-color;
+    transition: all 600ms ease-in-out;
+    cursor: pointer;
 
-        &:hover {
-            transform: scale(1.5);
-            color: $menu-color;
-            stroke: $decoration-color;
-        }
-        &.disabled {
-            visibility: hidden;
-        }
+    &.active {
+      transform: scale(1.2);
+      background-color: $item-active-color;
     }
+
+    &__text {
+      visibility: hidden;
+      display: block;
+      font-size: 1rem;
+      color: $item-text-color;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.6s;
+      transition-delay: 300ms;
+    }
+
+    &:hover {
+      background-color: $item-hover-color;
+      transform: translateX(calc(-100% + #{$item-size}));
+      width: 100px;
+
+      .item__text {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+  .icon {
+    display: block;
+    margin: $item-spacing auto;
+    font-size: $item-size * 1.2;
+    color: $item-color;
+
+    &:hover {
+      transform: scale(1.5);
+      color: $item-hover-color;
+    }
+
+    &.disabled {
+      visibility: hidden;
+    }
+  }
 }
 
 @media screen and (max-width: 576px) {
-    .scroll {
-        display: none;
-    }
+  .scroll {
+    display: none;
+  }
 }

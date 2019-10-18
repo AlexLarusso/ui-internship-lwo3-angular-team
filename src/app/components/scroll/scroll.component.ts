@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ScrollService, IPageAnchor } from '../../shared/services/scroll.service';
 import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,12 +7,11 @@ import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-so
   templateUrl: './scroll.html',
   styleUrls: ['./scroll.scss']
 })
-export class ScrollComponent implements OnInit, AfterViewChecked {
+export class ScrollComponent implements OnInit {
   public pageComponents: IPageAnchor[] = [];
-
-  private activeElement: IPageAnchor; // TODO: You use it in html, should be public. Check everywhere
-  private toHeaderIcon: IconDefinition = faChevronUp;
-  private toFooterIcon: IconDefinition = faChevronDown;
+  public activeElement: number;
+  public toHeaderIcon: IconDefinition = faChevronUp;
+  public toFooterIcon: IconDefinition = faChevronDown;
 
   constructor(private scrollService: ScrollService) { }
 
@@ -21,16 +20,9 @@ export class ScrollComponent implements OnInit, AfterViewChecked {
   }
 
   public ngOnInit(): void {
-    this.scrollService.activeAnchor
-      .subscribe((anchor: IPageAnchor) => {
-        this.activeElement = anchor;
-      });
-    this.scrollService.pageAnchors
-      .subscribe((anchor: IPageAnchor) =>
-        this.pageComponents.push(anchor));
-  }
-
-  public ngAfterViewChecked(): void {
-    this.scrollService.initScrollListening();
+    this.scrollService.anchors.subscribe((anchors: IPageAnchor[]) =>
+      this.pageComponents = anchors);
+    this.scrollService.activeAnchor.subscribe((index: number) =>
+      this.activeElement = index);
   }
 }
