@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 
 export class ButtonComponent {
   @Input() public buttonClass: string;
-  @Input() public disabled: boolean;
+  @Input() public isDisabled: boolean;
 }
