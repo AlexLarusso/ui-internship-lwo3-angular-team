@@ -11,7 +11,8 @@ import {
   fromEvent,
   merge,
   interval,
-  ObservableInput
+  ObservableInput,
+  Subscription
 } from 'rxjs';
 import {
   map,
@@ -21,6 +22,7 @@ import {
   switchMap,
   takeWhile
 } from 'rxjs/operators';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { slideshowAnimation } from './slideshow.animations';
 
 const images: string[] = [ // TODO: Use syntax Array<string> check everywhere
@@ -30,6 +32,7 @@ const images: string[] = [ // TODO: Use syntax Array<string> check everywhere
   '../../assets/img/city-daylight-diversity.jpg'
 ];
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.html',
@@ -48,6 +51,8 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   public timerSub: ObservableInput<unknown>;
   public clicked = false;
   public isDesktop: boolean;
+  public mouseOverSub: Subscription;
+  public mouseOutSub: Subscription;
 
   private isOnSlider = new EventEmitter<boolean>();
 
@@ -76,8 +81,10 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       )
     );
 
-    fromEvent(this.sliderEl.nativeElement, 'mouseover').subscribe(() => this.isOnSlider.emit(false));
-    fromEvent(this.sliderEl.nativeElement, 'mouseout').subscribe(() => this.isOnSlider.emit(true));
+    this.mouseOverSub = fromEvent(this.sliderEl.nativeElement, 'mouseover')
+      .subscribe(() => this.isOnSlider.emit(false));
+    this.mouseOutSub = fromEvent(this.sliderEl.nativeElement, 'mouseout')
+      .subscribe(() => this.isOnSlider.emit(true));
 
     merge(prevModified$, nextModified$, this.timerSub)
       .pipe(
@@ -109,6 +116,8 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
     this.sliderEl.nativeElement.dispatchEvent(event);
     this.deviceCheck();
   }
+
+  public ngOnDestroy(): void { }
 
   public toggleSlide(slideNumber: number): void {
     this.currentDirection = slideNumber < this.currentIndex ? 'right' : 'left';

@@ -1,6 +1,10 @@
 import { Component, AfterContentInit } from '@angular/core';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Subscription } from 'rxjs';
+
 import { LoaderService } from '../services/loader.service';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.html',
@@ -9,11 +13,14 @@ import { LoaderService } from '../services/loader.service';
 export class LoaderComponent implements AfterContentInit {
   public isLoading = true;
   public bulletsArray = new Array(12).fill('');
+  public loaderSub: Subscription;
 
   constructor(private loaderService: LoaderService) { }
 
   public ngAfterContentInit() {
-    this.loaderService.isLoading
+    this.loaderSub = this.loaderService.isLoading
       .subscribe(result => this.isLoading = result);
   }
+
+  public ngOnDestroy(): void { }
 }
