@@ -22,5 +22,6 @@ export class ProductItemComponent {
   
   public OnClick(key: string, value: number){
     this.localStorageService.saveViewedHistory(key, value)
+    
   }
 }

@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 export class ProductShortInfoService {
   constructor(private httpService: HttpService) { }
 
-  public getShortInfo(): Observable<Array<IProductShortInfo>> {
+  public getShortInfo(category = 'all'): Observable<Array<IProductShortInfo>> {
+    switch (category) {
+      case 'all':
     return this.httpService
       .getData()
       .pipe(map(data =>
@@ -21,5 +23,8 @@ export class ProductShortInfoService {
           id: item.id,
         })
       ))));
+      case 'allrecentItems':
+        
   }
+}
 }

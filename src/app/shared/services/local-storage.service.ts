@@ -9,15 +9,15 @@ export class LocalStorageService {
   // TODO: move it from here
   public userEmail = '';
   public ViewedItems = '';
-  private storageSub= new Subject<boolean>();
+  private storageSub= new Subject<string>();
 
   watchStorage(): Observable<any> {
     return this.storageSub.asObservable();
   }
 
   saveViewedHistory(key: string, data: any) {
-    localStorage.setItem(key, data);
-    this.storageSub.next();
+    localStorage.setItem(key, JSON.stringify(data));
+    this.storageSub.next(key);
   }
 
   public get email() {

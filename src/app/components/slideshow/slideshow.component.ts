@@ -19,7 +19,10 @@ import {
   startWith,
   tap,
   switchMap,
-  takeWhile
+  takeWhile,
+  debounce,
+  debounceTime,
+  throttleTime
 } from 'rxjs/operators';
 import { slideshowAnimation } from './slideshow.animations';
 
@@ -58,13 +61,15 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   public ngOnInit(): void {
     const prevModified$ = fromEvent(this.previousEl.nativeElement, 'click').pipe(
+      throttleTime(500),
       tap(() => this.stopTimer()),
-      map(() => ({ shift: -1, direction: 'right' }))
+      map(() => ({ shift: -1, direction: 'right' })),
     );
 
     const nextModified$ = fromEvent(this.nextEl.nativeElement, 'click').pipe(
+      throttleTime(500),
       tap(() => this.stopTimer()),
-      map(() => ({ shift: 1, direction: 'left' }))
+      map(() => ({ shift: 1, direction: 'left' })),
     );
 
     this.timerSub = this.isOnSlider.pipe(
