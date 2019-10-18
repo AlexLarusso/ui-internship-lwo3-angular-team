@@ -10,7 +10,6 @@ import { LineBarComponent } from './header/line-bar/line-bar.component';
 import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { PopularListComponent } from './popular-list/popular-list.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import { ButtonComponent } from './button/button.component';
 import { MainLogoComponent } from './main-logo/main-logo.component';
@@ -24,7 +23,6 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     PopularListComponent,
-    ProductDetailsComponent,
     ProductCarouselComponent,
     ButtonComponent,
     MainLogoComponent,
@@ -47,7 +45,6 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     PopularListComponent,
-    ProductDetailsComponent,
     ProductCarouselComponent,
     ButtonComponent,
     MainLogoComponent,

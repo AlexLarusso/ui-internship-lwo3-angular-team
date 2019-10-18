@@ -37,4 +37,18 @@
   &_navigation {
     width: 110px;
   }
+
+  &_dark {
+    border: none;
+    background-color: $bgColorDark;
+    color: $accentColor;
+  }
+
+  &_full-width {
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
 }
