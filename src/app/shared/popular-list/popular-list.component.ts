@@ -25,5 +25,5 @@ export class PopularListComponent implements OnInit, OnDestroy {
       .subscribe(data => this.productData = data);
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy(): void {}
 }

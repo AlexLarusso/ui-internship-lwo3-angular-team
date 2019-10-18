@@ -1,5 +1,5 @@
 import {
-  Component, AfterViewInit, QueryList, ViewChildren, OnInit, OnDestroy
+  Component, QueryList, ViewChildren, OnInit, OnDestroy
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { ScrollAnchorDirective } from './shared/directives/scroll-anchor.directi
   selector: 'app-root',
   templateUrl: './app.html'
 })
-export class AppComponent implements AfterViewInit, OnInit, OnDestroy  {
+export class AppComponent implements OnInit, OnDestroy {
   @ViewChildren(ScrollAnchorDirective)
     private pageAnchors: QueryList<ScrollAnchorDirective>;
 
@@ -30,14 +30,13 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy  {
       filter(event => event instanceof NavigationEnd)
     )
     .subscribe(() => {
+      this.scrollService.resetAnchors();
+      this.pageAnchors.forEach(el =>
+        this.scrollService.addAnchor(el.elementReference));
       this.isHomePage = window.location.pathname === '/home';
     });
   }
 
-  public ngAfterViewInit(): void {
-    this.pageAnchors.forEach(el =>
-      this.scrollService.addAnchor(el.elementReference));
+  public ngOnDestroy(): void {
   }
-
-  public ngOnDestroy() {}
 }

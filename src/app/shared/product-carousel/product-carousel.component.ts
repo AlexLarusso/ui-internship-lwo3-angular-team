@@ -148,5 +148,5 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.productsContainer.nativeElement.scrollLeft = 0;
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy(): void {}
 }
