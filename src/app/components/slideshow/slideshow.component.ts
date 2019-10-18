@@ -21,12 +21,13 @@ import {
   startWith,
   tap,
   switchMap,
-  takeWhile
+  takeWhile,
+  throttleTime
 } from 'rxjs/operators';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { slideshowAnimation } from './slideshow.animations';
 
-const images: string[] = [ // TODO: Use syntax Array<string> check everywhere
+const images: Array<string> = [
   '../../assets/img/beauty-casual-curly.jpg',
   '../../assets/img/blazers-daytime-dress.jpg',
   '../../assets/img/bored-boredom-casual.jpg',
@@ -46,7 +47,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('slider', { static: true }) sliderEl: ElementRef;
   @ViewChild('bullet', { static: true }) bulletEl: ElementRef;
 
-  public images: Array<any> = images;
+  public images: Array<string> = images;
   public currentIndex = 0;
   public currentDirection = 'left';
   public timerSub: ObservableInput<unknown>;
@@ -54,6 +55,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
   public isDesktop: boolean;
   public mouseOverSub: Subscription;
   public mouseOutSub: Subscription;
+  public mergeSlideshowActions: Subscription;
 
   private isOnSlider = new EventEmitter<boolean>();
 
@@ -64,11 +66,13 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public ngOnInit(): void {
     const prevModified$ = fromEvent(this.previousEl.nativeElement, 'click').pipe(
+      throttleTime(500),
       tap(() => this.stopTimer()),
       map(() => ({ shift: -1, direction: 'right' }))
     );
 
     const nextModified$ = fromEvent(this.nextEl.nativeElement, 'click').pipe(
+      throttleTime(500),
       tap(() => this.stopTimer()),
       map(() => ({ shift: 1, direction: 'left' }))
     );
@@ -87,7 +91,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mouseOutSub = fromEvent(this.sliderEl.nativeElement, 'mouseout')
       .subscribe(() => this.isOnSlider.emit(true));
 
-    merge(prevModified$, nextModified$, this.timerSub)
+    this.mergeSlideshowActions = merge(prevModified$, nextModified$, this.timerSub)
       .pipe(
         startWith({ index: 0 } as any),
         scan((acc, curr) => {
@@ -118,8 +122,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
     this.deviceCheck();
   }
 
-  public ngOnDestroy(): void { }
-
   public toggleSlide(slideNumber: number): void {
     this.currentDirection = slideNumber < this.currentIndex ? 'right' : 'left';
     this.currentIndex = slideNumber;
@@ -133,4 +135,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isDesktop = !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     this.isOnSlider.emit(this.isDesktop);
   }
+
+  public ngOnDestroy(): void { }
 }

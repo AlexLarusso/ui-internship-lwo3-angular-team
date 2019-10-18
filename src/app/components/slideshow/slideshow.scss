@@ -73,9 +73,14 @@ ul {
 }
 
 @media screen and (max-width: 576px) {
+  .slide {
+    background-position: center;
+  }
+
   .prev, .next {
     display: none;
   }
+  
   ul {
     li {
       height: 20px;
