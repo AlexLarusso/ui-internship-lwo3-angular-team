@@ -1,4 +1,4 @@
-import { Component, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit, OnDestroy } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Subscription } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { LoaderService } from '../services/loader.service';
   templateUrl: './loader.html',
   styleUrls: ['./loader.scss']
 })
-export class LoaderComponent implements AfterContentInit {
+export class LoaderComponent implements AfterContentInit, OnDestroy {
   public isLoading = true;
   public bulletsArray = new Array(12).fill('');
   public loaderSub: Subscription;

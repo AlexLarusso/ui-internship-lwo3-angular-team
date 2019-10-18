@@ -5,7 +5,8 @@ import {
   EventEmitter,
   ElementRef,
   AfterViewInit,
-  HostListener
+  HostListener,
+  OnDestroy
 } from '@angular/core';
 import {
   fromEvent,
@@ -39,7 +40,7 @@ const images: string[] = [ // TODO: Use syntax Array<string> check everywhere
   styleUrls: ['./slideshow.scss'],
   animations: [slideshowAnimation]
 })
-export class SlideshowComponent implements OnInit, AfterViewInit {
+export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('previous', { static: true }) previousEl: ElementRef;
   @ViewChild('next', { static: true }) nextEl: ElementRef;
   @ViewChild('slider', { static: true }) sliderEl: ElementRef;
