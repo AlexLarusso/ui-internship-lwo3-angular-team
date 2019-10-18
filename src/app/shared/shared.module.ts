@@ -16,6 +16,7 @@ import { MainLogoComponent } from './main-logo/main-logo.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { SaleBannerComponent } from './sale-banner/sale-banner.component';
+import { AccordeonComponent } from './accordeon/accordeon.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     SaleBannerComponent,
     CategoryMenuComponent,
     LineBarComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    AccordeonComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { FormsModule } from '@angular/forms';
     ProductListComponent,
     SaleBannerComponent,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    AccordeonComponent
   ]
 })
 
