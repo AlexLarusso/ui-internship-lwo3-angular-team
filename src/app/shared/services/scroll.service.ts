@@ -73,12 +73,13 @@ export class ScrollService implements OnDestroy {
   }
 
   private insertElementRef(newElementRef: ElementRef) {
-    const length = this.anchorRefs.length;
+    const acnhorRefsLength = this.anchorRefs.length;
 
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < acnhorRefsLength; i++) {
       if (this.getRefPosition(newElementRef) <
         this.getRefPosition(this.anchorRefs[i])) {
           this.anchorRefs.splice(i, 0, newElementRef);
+
           return;
       }
     }
