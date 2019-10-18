@@ -5,6 +5,8 @@
     </button>
     <div class="products__container" #productsContainer>
       <div class="products" #products>
+        <!-- TODO: Please don't use src and title, rename to imgUrl and  productTitle, 
+           because src and title are reserved attributes, and could confuse -->
         <app-product-item *ngFor="let product of productData"
           [src]="product.imgUrl"
           [title]="product.title"
