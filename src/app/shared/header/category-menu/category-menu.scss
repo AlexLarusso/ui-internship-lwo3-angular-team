@@ -1,6 +1,7 @@
 @import '../../../styles/variables';
 
 .menu {
+  position: sticky;
   display: flex;
   justify-content: space-between;
 

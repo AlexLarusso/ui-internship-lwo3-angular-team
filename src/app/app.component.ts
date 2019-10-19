@@ -19,8 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
   @ViewChildren(ScrollAnchorDirective)
     private pageAnchors: QueryList<ScrollAnchorDirective>;
 
-  constructor(private scrollService: ScrollService, private router: Router) {
-  }
+  constructor(private scrollService: ScrollService, private router: Router) { }
 
   public isHomePage: boolean;
   public routerSub: Subscription;
@@ -37,6 +36,5 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  public ngOnDestroy(): void {
-  }
+  public ngOnDestroy(): void { }
 }

@@ -2,8 +2,6 @@
 
 .carousel {
   position: relative;
-  display: flex;
-  justify-content: space-between;
   
   &__wrapper {
     display: flex;
@@ -19,7 +17,6 @@
   transition: margin-left 500ms;
 
   &__container {
-    width: 1040px;
     overflow-x: hidden;
   }
 }
@@ -52,18 +49,9 @@ button {
   right: 5%;
 }
 
-@media screen and (max-width: 992px) {
-  .products {  
-    &__container {
-      width: 780px;
-    }
-  }
-}
-
 @media screen and (max-width: 768px) {
   .products {  
     &__container {
-      width: 520px;
       overflow: auto;
 
       &::-webkit-scrollbar {
@@ -75,13 +63,5 @@ button {
   .right,
   .left {
     display: none;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .products {  
-    &__container {
-      width: 260px;
-    }
   }
 }

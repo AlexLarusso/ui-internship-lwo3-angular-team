@@ -1,5 +1,5 @@
 import { Injectable, ElementRef, OnDestroy } from '@angular/core';
-import { fromEvent, BehaviorSubject, Observable } from 'rxjs';
+import { fromEvent, BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
@@ -16,6 +16,7 @@ export class ScrollService implements OnDestroy {
   public anchors: BehaviorSubject<IPageAnchor[]>;
   public scrollListener$: Observable<number>;
   public activeAnchor: BehaviorSubject<number>;
+  public scrollYOffsetSub: Subscription;
 
   private anchorRefs: ElementRef[] = [];
   private scrollOptions = {
@@ -30,8 +31,9 @@ export class ScrollService implements OnDestroy {
     this.scrollListener$ = fromEvent(window, 'scroll').pipe(
       map(() => window.pageYOffset)
     );
-    this.scrollListener$.subscribe(position =>
-      this.activeAnchor.next(this.detectActive(position)));
+    this.scrollYOffsetSub = this.scrollListener$
+      .subscribe(position => this.activeAnchor
+        .next(this.detectActive(position)));
   }
 
   public ngOnDestroy(): void { }
