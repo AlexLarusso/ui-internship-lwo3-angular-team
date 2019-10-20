@@ -1,0 +1,27 @@
+@import 'src/app/styles/variables';
+
+$buttons-spacing: 15px;
+$button-size: 20px;
+$section-size: 40px;
+
+.select-color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $inputBorderColor;
+  background-color: $bgColorMedium;
+  height: $section-size;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .colorBtn {
+    width: $button-size;
+    height: $button-size;
+    border: 1px solid $fontColorDark;
+    box-shadow: 2px 2px 2px 0 rgba(104,104,104,0.8);
+    margin: 0 $buttons-spacing;
+  }
+}
