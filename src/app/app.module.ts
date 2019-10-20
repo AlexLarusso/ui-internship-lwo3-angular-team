@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LoaderService } from './shared/services/loader.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductResolver } from './shared/services/product.resolver';
 import { HttpService } from './shared/services/http.service';
@@ -12,7 +11,7 @@ import { ProductListPageModule } from './pages/product-list-page/product-list-pa
 import { SharedModule } from './shared/shared.module';
 
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './store/reducers/counter.reducer';
+import * as fromApp from './store/reducers/app.reducer';
 
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
@@ -49,11 +48,10 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    StoreModule.forRoot({ count: counterReducer })
+    StoreModule.forRoot(fromApp.appReducer)
   ],
   providers: [
     HttpService,
-    LoaderService,
     ProductResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
