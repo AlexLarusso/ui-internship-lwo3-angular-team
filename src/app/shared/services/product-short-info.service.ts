@@ -12,8 +12,8 @@ import { ProductFilterService } from '../services/product-filter.service';
 export class ProductShortInfoService {
   public similarProducts = [];
   public similarOptions = {
-    sex: 'female',
-    category: 'blouse',
+    sex: '',
+    category: '',
     id: 1
   };
 

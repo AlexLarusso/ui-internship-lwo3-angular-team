@@ -18,12 +18,13 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.productService
-      .getProduct(Number(this.route.snapshot.paramMap.get('id')))
+      .getProduct(this.route.snapshot.paramMap.get('id'))
       .pipe(map(data => ({
         sex: data.sex,
         category: data.category,
         id: data.id
-      })))
+      })
+    ))
       .subscribe(data => this.shortInfoService.similarOptions = data);
   }
 
