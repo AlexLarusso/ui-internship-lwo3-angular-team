@@ -8,7 +8,7 @@
   font-size: 0.8rem;
 
   &__container {
-    background: $bgColorDark;
+    background: rgba($color: $bgColorDark, $alpha: 0.9);
     color: $fontColorLight;
   }
 
