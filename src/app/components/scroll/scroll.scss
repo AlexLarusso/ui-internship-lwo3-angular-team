@@ -16,6 +16,7 @@ $item-text-color: white;
   left: 95%;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 6;
 
   .item {
     display: block;

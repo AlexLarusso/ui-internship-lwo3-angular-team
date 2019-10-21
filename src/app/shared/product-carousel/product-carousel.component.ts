@@ -22,6 +22,10 @@ const BREAK_POINTS = {
   },
   laptop_S: {
     width: 992,
+    slideNum: 3
+  },
+  laptop_M: {
+    width: 1200,
     slideNum: 4
   }
 };
@@ -56,6 +60,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   @HostListener('window:resize', [])
   public onResize(): void {
     this.pageWidth = window.innerWidth;
+    this.productsContainer.nativeElement.style.width = this.itemWidth * this.visibleNum + 'px';
 
     this.resetPositionValue();
     this.toggleButtonsState();
@@ -99,6 +104,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     if (this.productArray.length) {
       this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
     }
+
+    this.productsContainer.nativeElement.style.width = this.itemWidth * this.visibleNum + 'px';
   }
 
   public toggleButtonsState(): void {
@@ -128,6 +135,9 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
 
   public indicateViewNumber(): void {
     switch (true) {
+      case this.pageWidth > BREAK_POINTS.laptop_M.width:
+        this.visibleNum = BREAK_POINTS.laptop_M.slideNum;
+        break;
       case this.pageWidth > BREAK_POINTS.laptop_S.width:
         this.visibleNum = BREAK_POINTS.laptop_S.slideNum;
         break;
