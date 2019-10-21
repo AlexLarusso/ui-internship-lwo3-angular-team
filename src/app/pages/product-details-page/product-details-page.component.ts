@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { map } from 'rxjs/operators';
 
-import { ProductResolver } from '../../shared/services/product.resolver';
-import { IProduct } from '../../interfaces/product.interface';
+import { ProductResolver } from 'src/app/shared/services/product.resolver';
+import { IProduct } from 'src/app/interfaces/product.interface';
+import { ProductShortInfoService } from 'src/app/shared/services/product-short-info.service';
+import { ProductService } from 'src/app/shared/services/product.service';
+
 
 const PRODUCT_MOCK = {
   "productName": "ANSWEAR - BLOUSE",
@@ -41,6 +46,7 @@ const PRODUCT_MOCK = {
   "price": 799
 };
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-product-details-page',
   templateUrl: './product-details-page.html',
@@ -52,10 +58,21 @@ export class ProductDetailsPageComponent {
 
   private productID: number;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+    private shortInfoService: ProductShortInfoService,
+    private route: ActivatedRoute) { }
 
-  
+
   public ngOnInit(): void {
+    this.productService
+      .getProduct(this.route.snapshot.paramMap.get('id'))
+      .pipe(map(data => ({
+        sex: data.sex,
+        category: data.category,
+        id: data.id
+      })
+    ))
+      .subscribe(data => this.shortInfoService.similarOptions = data);
     this.productID = Number(this.route.snapshot.paramMap.get('id'));
     this.product = this.getData(this.productID);
   }
@@ -65,4 +82,5 @@ export class ProductDetailsPageComponent {
     return JSON.parse(JSON.stringify(PRODUCT_MOCK));
   }
 
+  public ngOnDestroy(): void { }
 }

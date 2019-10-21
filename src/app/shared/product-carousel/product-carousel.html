@@ -1,16 +1,15 @@
-<div class="carousel__wrapper">
+<div class="carousel__wrapper content__container">
   <div class="carousel">
     <button (click)="moveToPrev()" class="left" [disabled]="!canMoveToPrev">
       <fa-icon [icon]="faArrowLeft" class="arrow-icon"></fa-icon>
     </button>
     <div class="products__container" #productsContainer>
       <div class="products" #products>
-        <!-- TODO: Please don't use src and title, rename to imgUrl and  productTitle, 
-           because src and title are reserved attributes, and could confuse -->
         <app-product-item *ngFor="let product of productData"
-          [src]="product.imgUrl"
-          [title]="product.title"
-          [price]="product.price">
+          [imgUrl]="product.imgUrl"
+          [productTitle]="product.productTitle"
+          [productPrice]="product.productPrice"
+          [productId]="product.productId">
         </app-product-item>
       </div>
     </div>

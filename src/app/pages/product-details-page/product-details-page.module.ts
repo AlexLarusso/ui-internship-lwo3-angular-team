@@ -25,5 +25,3 @@ import { ProductPreviewComponent } from 'src/app/components/product-preview/prod
 })
 
 export class ProductDetailsPageModule { }
-
-

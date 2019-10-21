@@ -21,7 +21,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.productDetails.description.detail);
-    
+
     this.addDescriptionNote('Detail',
       this.productDetails.description.detail);
     this.addDescriptionNote('Style',

@@ -11,7 +11,11 @@ import { HttpService } from './http.service';
 export class ProductService {
   constructor(private httpService: HttpService) { }
 
-  public getProduct(id: number): Observable<IProduct> {
-    return this.httpService.getData().pipe(map(products => products[id - 1]));
+  public getProduct(id): Observable<IProduct> {
+    return this.httpService.getData().pipe(map(products =>
+      products.find(product => {
+        console.log(product);
+        return product.id === id;
+      })));
   }
 }
