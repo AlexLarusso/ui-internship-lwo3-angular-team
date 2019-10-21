@@ -20,7 +20,7 @@ export class ProductItemComponent {
   constructor(private localStorageService: LocalStorageService ){}
   
   
-  public OnClick(key: string, value: number){
+  public OnClick(key: number, value: number){
     this.localStorageService.saveViewedHistory(key, value)
     
   }

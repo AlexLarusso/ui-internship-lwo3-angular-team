@@ -1,5 +1,5 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { Component } from '@angular/core';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-recently-viewed',
@@ -7,17 +7,14 @@ import { LocalStorageService } from '../../shared/services/local-storage.service
   styleUrls: ['recently-viewed.scss']
 })
 
-export class RecentlyViewedComponent implements OnInit, OnChanges {
-public recentItems = 'recentItems';
+export class RecentlyViewedComponent {
+  public products = 'allrecentItems';
+  constructor(private localStorageService: LocalStorageService) {}
 
-constructor(private localStorageService: LocalStorageService ) {
+  public arrOfProducts = this.localStorageService.recentlyViewed;
+
+  public ngOnInit(): void {
+    this.arrOfProducts = this.localStorageService.getItem('recentlyView')
+  }
 }
 
-public ngOnInit(): void {
-}
-
-public ngOnChanges(): void {
-  this.localStorageService.watchStorage().subscribe((key: string) => {
-    console.log(JSON.parse(this.localStorageService.getItem(key)))
-})
-}}
