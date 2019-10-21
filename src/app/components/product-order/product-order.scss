@@ -7,12 +7,7 @@ $section-spacing: 25px;
   grid-template-columns: 500px 1fr;
   grid-gap: $section-spacing;
   padding: $section-spacing 0;
-
-  .heartIcon {
-    color: white;
-    stroke: $accentColor;
-    stroke-width: 10%;
-  }
+  min-height: 680px;
 
   .product-options {
     display: flex;
@@ -30,5 +25,23 @@ $section-spacing: 25px;
     }
   }
 
-} 
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: $section-spacing 0;
+
+    & > :first-child {
+      width: 85%;
+    }
+
+    .heartIcon {
+      color: white;
+      font-size: 1.4rem;
+      stroke: $itemShadowColor;
+      stroke-width: 10%;
+    }
+  }
+}
 

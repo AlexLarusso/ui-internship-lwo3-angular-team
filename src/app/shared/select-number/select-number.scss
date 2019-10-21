@@ -8,7 +8,7 @@ $number-select-width: 60px;
   display: flex;
   align-items: center;
   position: relative;
-  border: 2px solid $inputBorderColor;
+  border: 1px solid $accentColor;
   height: $number-select-height;
   min-width: $number-select-width;
   padding: 0 $number-select-spacing;
@@ -36,5 +36,5 @@ $number-select-width: 60px;
 }
 
 .value-limit {
-  border-color: $inputWarningColor;
+  border: 1px solid $inputWarningColor;
 }

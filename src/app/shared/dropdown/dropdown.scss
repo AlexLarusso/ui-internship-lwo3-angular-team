@@ -3,20 +3,20 @@
 $dropdown-spacing: 20px;
 $dropdown-height: 40px;
 $dropdown-width: 100px;
-$dropdown-border-width: 2px;
+$dropdown-border-width: 1px;
 
 .dropdown {
   display: flex;
   align-items: center;
   position: relative;
-  border: $dropdown-border-width solid $inputBorderColor;
+  border: $dropdown-border-width solid $accentColor;
   height: $dropdown-height;
   padding: 0 $dropdown-spacing * 2 0 $dropdown-spacing;
-  background-color: $bgColorMedium;
+  background-color: white;
   min-width: $dropdown-width;
   cursor: pointer;
-
-  
+  outline: none;
+  z-index: 1;
 
   &__selected {
     text-transform: uppercase;
@@ -29,7 +29,7 @@ $dropdown-border-width: 2px;
     position: absolute;
     top: 100%;
     left: -$dropdown-border-width;
-    border: $dropdown-border-width solid $inputBorderColor;
+    border: $dropdown-border-width solid $accentColor;
     width: $dropdown-width;
     background-color: inherit;
 

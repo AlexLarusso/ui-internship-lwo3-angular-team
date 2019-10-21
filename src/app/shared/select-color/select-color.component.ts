@@ -8,12 +8,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class SelectColorComponent {
   @Input() public colors: Array<number>;
   @Output() colorSelect: EventEmitter<number> = new EventEmitter<number>();
+  selectedColorID: number;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.selectedColorID = 0;
+   }
 
   onSelect(i: number) {
-    this.colorSelect.emit(i);
+    this.selectedColorID = i;
+    this.colorSelect.emit(this.colors[this.selectedColorID]);
   }
 }

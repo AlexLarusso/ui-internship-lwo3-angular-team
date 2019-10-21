@@ -1,37 +1,39 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IProductDetails } from 'src/app/interfaces/product-details.interface';
-import { IProductOptions } from 'src/app/interfaces/product-options.interface';
-import { IProductDescription } from 'src/app/interfaces/product-description.interface';
-import { throwError } from 'rxjs';
+import { Component, OnInit, Input } from "@angular/core";
+import { IProductDetails } from "src/app/interfaces/product-details.interface";
+import { IProductOptions } from "src/app/interfaces/product-options.interface";
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.html',
-  styleUrls: ['./product-details.scss']
+  selector: "app-product-details",
+  templateUrl: "./product-details.html",
+  styleUrls: ["./product-details.scss"]
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() private productDetails: IProductDetails;
 
   public productOptions: IProductOptions;
-  public productDescription: {title: string, text: string}[] = [];
-  public currentCurrency = 'UAH';
+  public productDescription: {
+    title: string;
+    text: string;
+  }[] = [];
+  public currentCurrency = "UAH";
 
-  constructor() { } 
+  constructor() {}
 
   ngOnInit() {
-    if (this.productDetails) {
-      this.productOptions = this.productDetails.options;
-      for (const key in this.productDetails.description) {
-        this.productDescription.push({
-          title: key,
-          text: this.productDetails.description[key]
-        });
-      }
-    }
+    console.log(this.productDetails.description.detail);
+    
+    this.addDescriptionNote('Detail',
+      this.productDetails.description.detail);
+    this.addDescriptionNote('Style',
+      this.productDetails.description.style);
+    this.addDescriptionNote('Delivery',
+      this.productDetails.description.delivery);
+  }
 
-    console.log(this.productOptions);
-    console.log(this.productDescription);
-    
-    
+  private addDescriptionNote(title: string, text: string) {
+    this.productDescription.push({
+      title: title,
+      text: text
+    });
   }
 }

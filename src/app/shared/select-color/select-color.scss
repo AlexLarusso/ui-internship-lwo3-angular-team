@@ -1,16 +1,16 @@
 @import 'src/app/styles/variables';
 
 $buttons-spacing: 15px;
-$button-size: 20px;
-$section-size: 40px;
+$button-size: 22px;
+$select-color-height: 40px;
+$item-shadow-color: rgb(100, 100, 100, 0.4);
 
 .select-color {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid $inputBorderColor;
-  background-color: $bgColorMedium;
-  height: $section-size;
+  background-color: white;
+  height: $select-color-height;
 
   &__wrapper {
     display: flex;
@@ -20,8 +20,12 @@ $section-size: 40px;
   .colorBtn {
     width: $button-size;
     height: $button-size;
-    border: 1px solid $fontColorDark;
-    box-shadow: 2px 2px 2px 0 rgba(104,104,104,0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 3px 3px $item-shadow-color;
     margin: 0 $buttons-spacing;
+
+    &.selected {
+      box-shadow: 0 0 3px 3px $accentColor;
+    }
   }
 }

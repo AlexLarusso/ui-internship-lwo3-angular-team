@@ -1,21 +1,26 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { ProductDetailsComponent } from 'src/app/components/product-details/product-details.component';
+import { ProductOrderComponent } from 'src/app/components/product-order/product-order.component';
+import { ProductPreviewComponent } from 'src/app/components/product-preview/product-preview.component';
 
-import { ProductDetailsComponent } from '../../components/product-details/product-details.component';
-import { ProductOrderComponent } from '../../components/product-order/product-order.component';
 @NgModule({
   declarations: [
     ProductDetailsComponent,
-    ProductOrderComponent
+    ProductOrderComponent,
+    ProductPreviewComponent
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    BrowserModule
   ],
   providers: [
   ],
   exports: [
     ProductDetailsComponent,
-    ProductOrderComponent
+    ProductOrderComponent,
+    ProductPreviewComponent
   ]
 })
 

@@ -1,0 +1,11 @@
+<div *ngIf="imagesSource.length" class="product-preview">
+  <img class="img_preview"
+    [src]="imagesSource[selectedImageID]"
+    alt="{{ title }}"
+    title="{{ title }}">
+  <img *ngFor="let url of imagesSource; let i = index" class="img_small"
+    [src]="url"
+    alt="{{ title }}"
+    (click)="onImageSelect(i)"
+    [class.selected]="i === selectedImageID">
+</div>

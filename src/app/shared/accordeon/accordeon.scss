@@ -1,17 +1,17 @@
 @import 'src/app/styles/variables';
 
 $accordeon-spacing: 15px;
-$max-text-height: 120px;
+$text-number-of-lines: 5;
+$text-line-height: 1.4rem;
 
 .topic {
-  position: absolute;
   width: 100%;
   padding: 0 $accordeon-spacing;
 
   &__header {
     display: flex;
     justify-content: space-between;
-    margin: $accordeon-spacing 0;     
+    margin: $accordeon-spacing 0;
     padding: $accordeon-spacing 0;
     border-bottom: 1px solid $accentColor;
     cursor: pointer;
@@ -23,11 +23,13 @@ $max-text-height: 120px;
 
   &__text {
     display: none;
-    font-style: italic;
+    margin: 0 $accordeon-spacing * 2 0 $accordeon-spacing;
+    max-height: $text-line-height * $text-number-of-lines;
     overflow-y: auto;
-    max-height: $max-text-height;
-    margin: 0 10px;
+    font-style: italic;
     font-size: 0.9rem;
+    line-height: $text-line-height;
+    white-space: pre-line;
   }
 
   &[aria-expanded="true"] {

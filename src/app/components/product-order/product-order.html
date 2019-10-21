@@ -1,14 +1,19 @@
 <div class="product-order content__container">
-  <div  class="producr-order__image-preview">TODO: Image Preview</div>
-  <!-- <app-image-preview
-    [urls]="product.images[selectedColor].url">
-  </app-image-preview> -->
+  <div  class="producr-order__image-preview">
+      <app-product-preview
+        [productImages]="productImages"
+        [productColorSelected]="selectedColor"
+      >
+    </app-product-preview>
+  </div>
+
   <app-product-details [productDetails]="productDetails">
     <div class="product-options">
       <app-dropdown
         class="option"
         [default]="'Size'"
-        [options]="productDetails.options.sizes">
+        [options]="productDetails.options.sizes"
+        (itemSelect)="handleSizeSelect($event)">
       </app-dropdown>
       <app-select-number
         class="option"
@@ -17,19 +22,23 @@
       </app-select-number>
       <app-select-color
         class="option"
-        [colors]="productDetails.options.colors">
+        [colors]="productDetails.options.colors"
+        (colorSelect)="handleColorSelect($event)">
         <span class="option__label">Color</span>
       </app-select-color>
     </div>
-    <app-button buttonClass="button_dark button_full-width">
-      Buy this item
-    </app-button>
-    <app-button buttonClass="button_full-width">
-      <fa-icon
-        class="heartIcon"
-        [icon]="iconWhishlistBtn">
-      </fa-icon>
-      Add to whishlist
-    </app-button>
+    <div class="buttons-container">
+      <app-button
+        buttonClass="button_dark button_full-width">
+        Buy this item
+      </app-button>
+      <app-button
+        buttonClass="button_square">
+        <fa-icon
+          class="heartIcon"
+          [icon]="iconWhishlistBtn">
+        </fa-icon>
+      </app-button>
+    </div>
   </app-product-details>
 </div>
