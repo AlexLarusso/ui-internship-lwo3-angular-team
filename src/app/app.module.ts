@@ -12,7 +12,7 @@ import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module
 import { SharedModule } from './shared/shared.module';
 
 import { StoreModule } from '@ngrx/store';
-import * as fromApp from './store/reducers/app.reducer';
+import { appReducer } from './store/app.store';
 
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
@@ -53,7 +53,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    StoreModule.forRoot(fromApp.appReducer)
+    StoreModule.forRoot(appReducer)
   ],
   providers: [
     HttpService,

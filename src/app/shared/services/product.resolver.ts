@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 import { Resolve } from '@angular/router';
 import { ActivatedRouteSnapshot } from '@angular/router';

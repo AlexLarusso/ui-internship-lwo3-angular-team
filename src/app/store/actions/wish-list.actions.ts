@@ -6,13 +6,15 @@ export enum WishListActionTypes {
 }
 
 export class AddToWishList implements Action {
-  readonly type = WishListActionTypes.Add;
+  public static readonly TYPE = WishListActionTypes.Add;
+  public type = AddToWishList.TYPE;
 
   constructor(public product) { }
 }
 
 export class RemoveFromWishList implements Action {
-  readonly type = WishListActionTypes.Remove;
+  public static readonly TYPE = WishListActionTypes.Remove;
+  public type = RemoveFromWishList.TYPE;
 
   constructor(public product) { }
 }

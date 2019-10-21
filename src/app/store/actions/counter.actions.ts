@@ -7,15 +7,18 @@ export enum CounterActionTypes {
 }
 
 export class Increment implements Action {
-  readonly type = CounterActionTypes.Increment;
+  public static readonly TYPE = CounterActionTypes.Increment;
+  public type = Increment.TYPE;
 }
 
 export class Decrement implements Action {
-  readonly type = CounterActionTypes.Decrement;
+  public static readonly TYPE = CounterActionTypes.Decrement;
+  public type = Decrement.TYPE;
 }
 
 export class Reset implements Action {
-  readonly type = CounterActionTypes.Reset;
+  public static readonly TYPE = CounterActionTypes.Reset;
+  public type = Reset.TYPE;
 }
 
 export type CounterActions = Increment | Decrement | Reset;

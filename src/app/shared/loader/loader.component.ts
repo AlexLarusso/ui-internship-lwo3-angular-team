@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import * as fromApp from '../../store/reducers/app.reducer';
 import { Store } from '@ngrx/store';
+import { IAppState } from '../../store/app.store';
+import { getLoadingStatus } from '../../store/selectors/loader.selectors';
 
 @Component({
   selector: 'app-loader',
@@ -13,9 +13,9 @@ export class LoaderComponent implements OnInit {
   public bulletsArray = new Array(12).fill('');
   public loader$: Observable<boolean>;
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit() {
-    this.loader$ = this.store.select('loader').pipe(map(loader => loader.isLoading));
+    this.loader$ = this.store.select(getLoadingStatus);
   }
 }
