@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import * as counterActions from '../../store/actions/counter.actions';
-import * as fromApp from '../../store/reducers/app.reducer';
+import { IAppState } from '../../store/app.store';
+import { Increment, Decrement, Reset } from '../../store/actions/counter.actions';
+import { getCount } from '../../store/selectors/counter.selectors';
 
 @Component({
   selector: 'app-counter',
@@ -13,21 +13,21 @@ import * as fromApp from '../../store/reducers/app.reducer';
 export class CounterComponent implements OnInit {
   public count$: Observable<number>;
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
-    this.count$ = this.store.select('counter').pipe(map(counter => counter.count));
+    this.count$ = this.store.select(getCount);
   }
 
-  public increment() {
-    this.store.dispatch(new counterActions.Increment());
+  public increment(): void {
+    this.store.dispatch(new Increment());
   }
 
-  public decrement() {
-    this.store.dispatch(new counterActions.Decrement());
+  public decrement(): void {
+    this.store.dispatch(new Decrement());
   }
 
-  public reset() {
-    this.store.dispatch(new counterActions.Reset());
+  public reset(): void {
+    this.store.dispatch(new Reset());
   }
 }

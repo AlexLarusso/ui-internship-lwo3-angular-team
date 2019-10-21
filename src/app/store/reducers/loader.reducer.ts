@@ -1,22 +1,22 @@
-import { LoaderActions, LoaderActionTypes } from '../actions/loader.actions';
+import { LoaderActions, LoaderShow, LoaderHide } from '../actions/loader.actions';
 
-export interface State {
+export interface IState {
   isLoading: boolean;
 }
 
-const initialState: State = {
+const initialState: IState = {
   isLoading: false
 };
 
-export function loaderReducer(state = initialState, action: LoaderActions): State {
+export function loaderReducer(state = initialState, action: LoaderActions): IState {
   switch (action.type) {
-    case LoaderActionTypes.Show:
+    case LoaderShow.TYPE:
       return {
         ...state,
         isLoading: true
       };
 
-    case LoaderActionTypes.Hide:
+    case LoaderHide.TYPE:
       return {
         ...state,
         isLoading: false

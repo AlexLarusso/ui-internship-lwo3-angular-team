@@ -6,11 +6,13 @@ export enum LoaderActionTypes {
 }
 
 export class LoaderShow implements Action {
-  readonly type = LoaderActionTypes.Show;
+  public static readonly TYPE = LoaderActionTypes.Show;
+  public type = LoaderShow.TYPE;
 }
 
 export class LoaderHide implements Action {
-  readonly type = LoaderActionTypes.Hide;
+  public static readonly TYPE = LoaderActionTypes.Hide;
+  public type = LoaderHide.TYPE;
 }
 
 export type LoaderActions = LoaderShow | LoaderHide;

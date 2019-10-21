@@ -1,28 +1,28 @@
-import { CounterActions, CounterActionTypes } from '../actions/counter.actions';
+import { Increment, Decrement, Reset, CounterActions } from '../actions/counter.actions';
 
-export interface State {
+export interface IState {
   count: number;
 }
 
-export const initialState: State = {
+export const initialState: IState = {
   count: 0
 };
 
-export function counterReducer(state = initialState, action: CounterActions): State {
+export function counterReducer(state = initialState, action: CounterActions): IState {
   switch (action.type) {
-    case CounterActionTypes.Increment:
+    case Increment.TYPE:
       return {
         ...state,
         count: state.count + 1
       };
 
-    case CounterActionTypes.Decrement:
+    case Decrement.TYPE:
       return {
         ...state,
         count: state.count - 1
       };
 
-    case CounterActionTypes.Reset:
+    case Reset.TYPE:
       return {
         ...state,
         count: 0
