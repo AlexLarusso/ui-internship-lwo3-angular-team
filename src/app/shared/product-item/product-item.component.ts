@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/reducers/app.reducer';
+import * as wishListActions from '../../store/actions/wish-list.actions';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { IProduct } from 'src/app/interfaces/product.interface';
@@ -16,4 +19,16 @@ export class ProductItemComponent {
 
   public faHeart = faHeart;
   public product: IProduct;
+  public isLiked = false;
+
+  constructor(private store: Store<fromApp.AppState>) { }
+
+  public toggleLike() {
+    this.isLiked = !this.isLiked;
+    console.log(this.isLiked);
+
+    this.isLiked ?
+      this.store.dispatch(new wishListActions.AddToWishList(this.productId))
+      : this.store.dispatch(new wishListActions.RemoveFromWishList(this.productId));
+  }
 }

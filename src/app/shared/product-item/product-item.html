@@ -3,8 +3,8 @@
     <a routerLink="/products/{{ productId }}">
       <img class="product-item__picture" [alt]="productTitle" [src]="imgUrl"/>
     </a>
-    <button class="wish__btn">
-      <fa-icon [icon]="faHeart" class="wish__icon"></fa-icon>
+    <button class="wish__btn" (click)="toggleLike()">
+      <fa-icon [icon]="faHeart" class="wish__icon" [ngClass]="{'wish__icon_active': isLiked}"></fa-icon>
     </button>
   </div>
   <h4 class="product-item__title">{{ productTitle }}</h4>

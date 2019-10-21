@@ -50,8 +50,8 @@
     right: 20px;
     font-size: 1.3rem;
     color: $fontColorLight;
-  
-    &:hover {
+
+    &_active {
       color: $wishHeartColor;
     }
   }
