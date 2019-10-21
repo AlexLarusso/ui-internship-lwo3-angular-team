@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, OnDestroy, Input } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Subscription } from 'rxjs';
@@ -39,6 +39,7 @@ const MARGIN = 10;
   styleUrls: ['./product-carousel.scss']
 })
 export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
+  @Input() category: string;
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
 
@@ -85,7 +86,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   constructor(private productList: ProductShortInfoService) { }
 
   public ngOnInit(): void {
-    this.getProductsSub = this.productList.getShortInfo()
+    this.getProductsSub = this.productList.getShortInfo(this.category)
       .subscribe((data) => this.productData = data);
 
     this.pageWidth = window.innerWidth;
