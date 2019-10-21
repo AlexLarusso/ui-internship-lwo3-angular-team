@@ -1,7 +1,7 @@
 import { LoaderActions, LoaderActionTypes } from '../actions/loader.actions';
 
 export interface State {
-  isLoading: boolean
+  isLoading: boolean;
 }
 
 const initialState: State = {
@@ -9,18 +9,18 @@ const initialState: State = {
 };
 
 export function loaderReducer(state = initialState, action: LoaderActions): State {
-  switch(action.type) {
+  switch (action.type) {
     case LoaderActionTypes.Show:
       return {
         ...state,
         isLoading: true
-      }
-      
+      };
+
     case LoaderActionTypes.Hide:
       return {
         ...state,
-        isLoading: false  
-      }
+        isLoading: false
+      };
 
     default:
       return state;
