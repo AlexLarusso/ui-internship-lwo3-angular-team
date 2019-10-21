@@ -5,13 +5,15 @@ import {
   EventEmitter,
   ElementRef,
   AfterViewInit,
-  HostListener
+  HostListener,
+  OnDestroy
 } from '@angular/core';
 import {
   fromEvent,
   merge,
   interval,
-  ObservableInput
+  ObservableInput,
+  Subscription
 } from 'rxjs';
 import {
   map,
@@ -20,37 +22,40 @@ import {
   tap,
   switchMap,
   takeWhile,
-  debounce,
-  debounceTime,
   throttleTime
 } from 'rxjs/operators';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { slideshowAnimation } from './slideshow.animations';
 
-const images: string[] = [
+const images: Array<string> = [
   '../../assets/img/beauty-casual-curly.jpg',
   '../../assets/img/blazers-daytime-dress.jpg',
   '../../assets/img/bored-boredom-casual.jpg',
   '../../assets/img/city-daylight-diversity.jpg'
 ];
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.html',
   styleUrls: ['./slideshow.scss'],
   animations: [slideshowAnimation]
 })
-export class SlideshowComponent implements OnInit, AfterViewInit {
+export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('previous', { static: true }) previousEl: ElementRef;
   @ViewChild('next', { static: true }) nextEl: ElementRef;
   @ViewChild('slider', { static: true }) sliderEl: ElementRef;
   @ViewChild('bullet', { static: true }) bulletEl: ElementRef;
 
-  public images: Array<any> = images;
+  public images: Array<string> = images;
   public currentIndex = 0;
   public currentDirection = 'left';
   public timerSub: ObservableInput<unknown>;
   public clicked = false;
   public isDesktop: boolean;
+  public mouseOverSub: Subscription;
+  public mouseOutSub: Subscription;
+  public mergeSlideshowActions: Subscription;
 
   private isOnSlider = new EventEmitter<boolean>();
 
@@ -81,10 +86,12 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       )
     );
 
-    fromEvent(this.sliderEl.nativeElement, 'mouseover').subscribe(() => this.isOnSlider.emit(false));
-    fromEvent(this.sliderEl.nativeElement, 'mouseout').subscribe(() => this.isOnSlider.emit(true));
+    this.mouseOverSub = fromEvent(this.sliderEl.nativeElement, 'mouseover')
+      .subscribe(() => this.isOnSlider.emit(false));
+    this.mouseOutSub = fromEvent(this.sliderEl.nativeElement, 'mouseout')
+      .subscribe(() => this.isOnSlider.emit(true));
 
-    merge(prevModified$, nextModified$, this.timerSub)
+    this.mergeSlideshowActions = merge(prevModified$, nextModified$, this.timerSub)
       .pipe(
         startWith({ index: 0 } as any),
         scan((acc, curr) => {
@@ -128,4 +135,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
     this.isDesktop = !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     this.isOnSlider.emit(this.isDesktop);
   }
+
+  public ngOnDestroy(): void { }
 }

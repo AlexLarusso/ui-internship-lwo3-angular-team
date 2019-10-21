@@ -11,8 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class ProductResolver implements Resolve<IProduct> {
-
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private productService: ProductService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<IProduct> {
     return this.productService.getProduct(Number(route.paramMap.get('id')))

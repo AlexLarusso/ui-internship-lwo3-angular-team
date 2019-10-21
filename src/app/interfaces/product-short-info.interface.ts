@@ -1,6 +1,6 @@
 export interface IProductShortInfo {
-  title: string;
+  productTitle: string;
   imgUrl: string;
-  price: string;
-  id: number;
+  productPrice: string;
+  productId: number;
 }
