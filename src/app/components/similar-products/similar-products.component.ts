@@ -3,14 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-similar-products',
   templateUrl: './similar-products.html',
-  styleUrls: []
 })
-export class SimilarProductsComponent implements OnInit {
+export class SimilarProductsComponent {
   public category = 'similar';
-
-  constructor() { }
-
- public ngOnInit() {
-
-  }
 }

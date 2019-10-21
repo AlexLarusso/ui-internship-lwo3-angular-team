@@ -1,8 +1,11 @@
 @import '../../../styles/variables';
 
 .menu {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   height: 60px;
-  background: $bgColorDark;
+  background: rgba($color: $bgColorDark, $alpha: 0.9);
   color: $fontColorLight;
 
   &__wrapper {

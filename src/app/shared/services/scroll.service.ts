@@ -1,52 +1,53 @@
-import { Injectable, ElementRef, EventEmitter } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { Injectable, ElementRef, OnDestroy } from '@angular/core';
+import { fromEvent, BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 export interface IPageAnchor {
   title: string;
   selector: string;
 }
 
-interface IAnchorOffset {
-  positionTop: number;
-  positionBottom: number;
-  pageAnchor: IPageAnchor;
-}
-
+@AutoUnsubscribe()
 @Injectable({
   providedIn: 'root'
 })
-export class ScrollService {
-  public activeAnchor = new EventEmitter();
-  public pageAnchors = new EventEmitter();
+export class ScrollService implements OnDestroy {
+  public anchors: BehaviorSubject<IPageAnchor[]>;
+  public scrollListener$: Observable<number>;
+  public activeAnchor: BehaviorSubject<number>;
+  public scrollYOffsetSub: Subscription;
 
-  private isListening = false;
-  private pageAnchorRefs: ElementRef[] = [];
-  private pageAnchorOffsets: IAnchorOffset[] = [];
+  private anchorRefs: ElementRef[] = [];
   private scrollOptions = {
     behavior: 'smooth',
     block: 'start',
     inline: 'nearest'
   };
 
+  constructor() {
+    this.anchors = new BehaviorSubject<IPageAnchor[]>([]);
+    this.activeAnchor = new BehaviorSubject<number>(-1);
+    this.scrollListener$ = fromEvent(window, 'scroll').pipe(
+      map(() => window.pageYOffset)
+    );
+    this.scrollYOffsetSub = this.scrollListener$
+      .subscribe(position => this.activeAnchor
+        .next(this.detectActive(position)));
+  }
+
+  public ngOnDestroy(): void { }
+
   public addAnchor(elRef: ElementRef): void {
-    this.pageAnchorRefs.push(elRef);
-    this.pageAnchors.emit({
-      selector: elRef.nativeElement.localName,
-      title: elRef.nativeElement.title
-    });
+    const firstActive = this.detectActive(window.pageYOffset);
+
+    this.insertElementRef(elRef);
+    this.anchors.next(this.anchorRefs.map(ref => this.getAnchor(ref)));
+    this.activeAnchor.next(firstActive);
   }
 
   public resetAnchors(): void {
-    this.pageAnchorRefs = [];
-    this.pageAnchorOffsets = [];
-  }
-
-  public getPageAnchors(): Array<IPageAnchor> {
-    return this.pageAnchorRefs.map(elRef => ({
-      selector: elRef.nativeElement.localName,
-      title: elRef.nativeElement.title
-    }));
+    this.anchorRefs = [];
   }
 
   public moveTo(anchor: IPageAnchor): void {
@@ -54,70 +55,60 @@ export class ScrollService {
       .nativeElement.scrollIntoView(this.scrollOptions);
   }
 
+  private getAnchor(elRef: ElementRef): IPageAnchor {
+    return {
+      selector: elRef.nativeElement.localName,
+      title: elRef.nativeElement.title
+    };
+  }
+
   private selectRef(anchor: IPageAnchor): ElementRef {
-    return this.pageAnchorRefs.find(el =>
+    return this.anchorRefs.find(el =>
       el.nativeElement.localName === anchor.selector
     );
   }
 
-  private findActive(position: number): IPageAnchor {
-    const anchorsCount = this.pageAnchorOffsets.length;
-    const lastBeforeFooter = this.pageAnchorOffsets[anchorsCount - 2];
-    const footer = this.pageAnchorOffsets[anchorsCount - 1];
-    const footerExtraGap = 10;
-
-    for (let i = 0; i < anchorsCount - 2; i++) {
-      const currentEl = this.pageAnchorOffsets[i];
-      const nextEl = this.pageAnchorOffsets[i + 1];
-
-      if (position >= currentEl.positionTop && position < nextEl.positionTop) {
-        return {
-          title: currentEl.pageAnchor.title,
-          selector: currentEl.pageAnchor.selector
-        };
-      }
-    }
-
-    return footer.positionBottom - position <= window.innerHeight + footerExtraGap
-      ? {
-        title: footer.pageAnchor.title,
-        selector: footer.pageAnchor.selector
-      }
-      : {
-        title: lastBeforeFooter.pageAnchor.title,
-        selector: lastBeforeFooter.pageAnchor.selector
-      };
-  }
-
-  private onScrollCallback(position: number): void {
-    this.activeAnchor.emit(this.findActive(position));
-  }
-
-
-  public initScrollListening(): void {
-    this.pageAnchorOffsets = this.getElementsOffsets();
-
-    if (!this.isListening) {
-      this.isListening = true;
-      fromEvent(window, 'scroll').pipe(map(() => window.pageYOffset))
-        .subscribe(position =>
-          this.onScrollCallback(position));
-    }
-  }
-
-  private getElementsOffsets(): Array<IAnchorOffset> {
+  private getRefPosition(elRef: ElementRef): number {
     const scrollPositionY = window.pageYOffset;
-    const offsets = this.pageAnchorRefs.map(elRef => ({
-      positionTop: elRef.nativeElement.getBoundingClientRect().top
-        + scrollPositionY,
-      positionBottom: elRef.nativeElement.getBoundingClientRect().bottom
-        + scrollPositionY,
-      pageAnchor: {
-        selector: elRef.nativeElement.localName,
-        title: elRef.nativeElement.title
-      }
-    }));
 
-    return offsets.sort((a, b) => a.positionTop - b.positionTop);
+    return elRef.nativeElement.getBoundingClientRect().top + scrollPositionY;
+  }
+
+  private insertElementRef(newElementRef: ElementRef) {
+    const acnhorRefsLength = this.anchorRefs.length;
+
+    for (let i = 0; i < acnhorRefsLength; i++) {
+      if (this.getRefPosition(newElementRef) <
+        this.getRefPosition(this.anchorRefs[i])) {
+          this.anchorRefs.splice(i, 0, newElementRef);
+
+          return;
+      }
+    }
+
+    this.anchorRefs.push(newElementRef);
+  }
+
+  private detectActive(position: number) {
+    if (this.anchorRefs.length) {
+      const lastNumber = this.anchorRefs.length - 1;
+      const lastElementBottomPosition = this.anchorRefs[lastNumber]
+        .nativeElement.getBoundingClientRect().bottom + window.pageYOffset;
+
+      if (lastElementBottomPosition === window.innerHeight + position) {
+        return lastNumber;
+      }
+
+      for (let i = 0; i < lastNumber; i++) {
+        if (this.getRefPosition(this.anchorRefs[i]) <= position
+          && this.getRefPosition(this.anchorRefs[i + 1]) > position) {
+            return i;
+        }
+      }
+
+      return lastNumber;
+    }
+
+    return -1;
   }
 }

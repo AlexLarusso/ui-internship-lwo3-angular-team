@@ -8,7 +8,7 @@
         </p>
         <div class="col-7">
           <div class="navigation__panel">
-            <app-button *ngFor="let item of filterItems" [buttonClass]="'button_navigation'">
+            <app-button *ngFor="let item of filterItems" buttonClass="button_navigation">
               {{ item }}
             </app-button>
           </div>
@@ -18,10 +18,10 @@
     <div class="product__container">
       <app-product-item *ngFor="let product of productData"
         class="product__item"
-        [src]="product.imgUrl"
-        [title]="product.title"
-        [price]="product.price"
-        [productId]="product.id">
+        [imgUrl]="product.imgUrl"
+        [productTitle]="product.productTitle"
+        [productPrice]="product.productPrice"
+        [productId]="product.productId">
       </app-product-item>
     </div>
   </div>

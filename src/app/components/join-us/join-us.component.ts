@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { EnumRegExp } from '../../app.enum';
 
 @Component({
   selector: 'app-join-us',
@@ -9,10 +10,9 @@ import { LocalStorageService } from '../../shared/services/local-storage.service
 })
 
 export class JoinUsComponent implements OnInit {
-  public subscribed = false;
   public buttonDisabled = true;
-  public emailValid = false;
-  public invalid = false;
+  public isEmailValid = false;
+  public isInvalid = false;
   public isSubscribed = false;
   public inputText = '';
   public formText = {
@@ -21,7 +21,7 @@ export class JoinUsComponent implements OnInit {
     unsubscribe: 'Unsubscribe',
     message: 'Subscribe to Newsletter:'
   };
-  private emailRegEx = /^(?=^.{6,25}$)(\D)+(\w)*((\.(\w)+)?)+@(\D)+(\w)*((\.(\D)+(\w)*)+)?(\.)[a-z]{2,4}$/;
+  private emailRegExp = new RegExp(EnumRegExp.EMAIL_REGEXP);
 
   constructor(private localStorageService: LocalStorageService) { }
 
@@ -30,12 +30,12 @@ export class JoinUsComponent implements OnInit {
   }
 
   public onBlur(): void {
-    this.invalid = false;
+    this.isInvalid = false;
   }
 
-  public onRefresh(item: string) {
+  public onRefresh(item: string): void {
     if (this.localStorageService.getItem(item) !== null) {
-     return this.isSubscribed = true;
+      this.isSubscribed = true;
     }
   }
 
@@ -51,9 +51,10 @@ export class JoinUsComponent implements OnInit {
   }
 
   public onValidate(value?: string): void {
-    const isValid = this.emailRegEx.test(value || this.inputText);
+    const isValid = this.emailRegExp.test(value || this.inputText);
+
     this.localStorageService.setEmail(this.inputText);
     this.buttonDisabled = !isValid;
-    this.invalid = !isValid;
+    this.isInvalid = !isValid;
     }
 }
