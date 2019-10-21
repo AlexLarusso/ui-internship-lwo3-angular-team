@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LoaderService } from './shared/services/loader.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductResolver } from './shared/services/product.resolver';
 import { HttpService } from './shared/services/http.service';
@@ -11,12 +10,16 @@ import { ProductDetailsPageModule } from './pages/product-details-page/product-d
 import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
 import { SharedModule } from './shared/shared.module';
 
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store/app.store';
+
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { CounterComponent } from './components/counter/counter.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,7 +37,8 @@ const routes: Routes = [
     NotFoundComponent,
     ProductListPageComponent,
     ProductDetailsPageComponent,
-    LoaderComponent
+    LoaderComponent,
+    CounterComponent
   ],
   imports: [
     HomeModule,
@@ -43,11 +47,11 @@ const routes: Routes = [
     ProductListPageModule,
     SharedModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(appReducer)
   ],
   providers: [
     HttpService,
-    LoaderService,
     ProductResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
