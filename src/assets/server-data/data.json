@@ -9,23 +9,23 @@
       {
         "value": "#000000",
         "url": ["./assets/server-data/images/blouse_1_1.jpg",
-          "blouse_1_2.jpg",
-          "blouse_1_3.jpg",
-          "blouse_1_4.jpg"]
+          "./assets/server-data/images/blouse_1_2.jpg",
+          "./assets/server-data/images/blouse_1_3.jpg",
+          "./assets/server-data/images/blouse_1_4.jpg"]
       },
       {
         "value": "#fffff",
-        "url": ["blouse_2_1.jpg",
-          "blouse_2_2.jpg",
-          "blouse_2_3.jpg",
-          "blouse_2_4.jpg"]
+        "url": ["./assets/server-data/images/blouse_2_1.jpg",
+          "./assets/server-data/images/blouse_2_2.jpg",
+          "./assets/server-data/images/blouse_2_3.jpg",
+          "./assets/server-data/images/blouse_2_4.jpg"]
       },
       {
         "value": "#b32d24",
-        "url": ["blouse_3_1.jpg",
-          "blouse_3_2.jpg",
-          "blouse_3_3.jpg",
-          "blouse_3_4.jpg"]
+        "url": ["./assets/server-data/images/blouse_3_1.jpg",
+          "./assets/server-data/images/blouse_3_2.jpg",
+          "./assets/server-data/images/blouse_3_3.jpg",
+          "./assets/server-data/images/blouse_3_4.jpg"]
       }
     ],
     "video": "",
@@ -34,7 +34,7 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 799,
-    "id" : 1
+    "id": "f58bcf13"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -46,9 +46,9 @@
       {
         "value": "#f5c33b",
         "url": ["./assets/server-data/images/blouse_4_1.jpg",
-          "blouse_4_2.jpg",
-          "blouse_4_3.jpg",
-          "blouse_4_4.jpg"]
+          "./assets/server-data/images/blouse_4_2.jpg",
+          "./assets/server-data/images/blouse_4_3.jpg",
+          "./assets/server-data/images/blouse_4_4.jpg"]
       }
     ],
     "video": "",
@@ -57,7 +57,7 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 12,
     "price": 600,
-    "id" : 2
+    "id": "f13b82bb"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -69,23 +69,23 @@
       {
         "value": "#edfcfb",
         "url": ["./assets/server-data/images/blouse_5_1.jpg",
-          "blouse_5_2.jpg",
-          "blouse_5_3.jpg",
-          "blouse_5_4.jpg"]
+          "./assets/server-data/images/blouse_5_2.jpg",
+          "./assets/server-data/images/blouse_5_3.jpg",
+          "./assets/server-data/images/blouse_5_4.jpg"]
       },
       {
         "value": "#fffff",
-        "url": ["blouse_6_1.jpg",
-          "blouse_6_2.jpg",
-          "blouse_6_3.jpg",
-          "blouse_6_4.jpg"]
+        "url": ["./assets/server-data/images/blouse_6_1.jpg",
+          "./assets/server-data/images/blouse_6_2.jpg",
+          "./assets/server-data/images/blouse_6_3.jpg",
+          "./assets/server-data/images/blouse_6_4.jpg"]
       },
       {
         "value": "#debb47",
-        "url": ["blouse_7_1.jpg",
-          "blouse_7_2.jpg",
-          "blouse_7_3.jpg",
-          "blouse_7_4.jpg"]
+        "url": ["./assets/server-data/images/blouse_7_1.jpg",
+          "./assets/server-data/images/blouse_7_2.jpg",
+          "./assets/server-data/images/blouse_7_3.jpg",
+          "./assets/server-data/images/blouse_7_4.jpg"]
       }
     ],
     "video": "",
@@ -94,7 +94,7 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 799,
-    "id": 3
+    "id": "f40912a8"
   },
   {
     "productName": "MANGO - BLOUSE",
@@ -106,16 +106,16 @@
       {
         "value": "#edfcfb",
         "url": ["./assets/server-data/images/blouse_8_1.jpg",
-          "blouse_8_2.jpg",
-          "blouse_8_3.jpg",
-          "blouse_8_4.jpg"]
+          "./assets/server-data/images/blouse_8_2.jpg",
+          "./assets/server-data/images/blouse_8_3.jpg",
+          "./assets/server-data/images/blouse_8_4.jpg"]
       },
       {
         "value": "#fffff",
         "url": ["blouse_9_1.jpg",
-          "blouse_9_2.jpg",
-          "blouse_9_3.jpg",
-          "blouse_9_4.jpg"]
+          "./assets/server-data/images/blouse_9_2.jpg",
+          "./assets/server-data/images/blouse_9_3.jpg",
+          "./assets/server-data/images/blouse_9_4.jpg"]
       }
     ],
     "video": "",
@@ -124,7 +124,7 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 899,
-    "id": 4
+    "id": "f50f0b7d"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -136,9 +136,9 @@
       {
         "value": "#edfcfb",
         "url": ["./assets/server-data/images/blouse_10_1.jpg",
-          "blouse_10_2.jpg",
-          "blouse_10_3.jpg",
-          "blouse_10_4.jpg"]
+          "./assets/server-data/images/blouse_10_2.jpg",
+          "./assets/server-data/images/blouse_10_3.jpg",
+          "./assets/server-data/images/blouse_10_4.jpg"]
       }
     ],
     "video": "",
@@ -147,7 +147,7 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 469,
-    "id": 5
+    "id": "f1d8fe27"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -159,9 +159,9 @@
       {
         "value": "#000000",
         "url": ["./assets/server-data/images/blouse_11_1.jpg",
-          "blouse_11_2.jpg",
-          "blouse_11_3.jpg",
-          "blouse_11_4.jpg"]
+          "./assets/server-data/images/blouse_11_2.jpg",
+          "./assets/server-data/images/blouse_11_3.jpg",
+          "./assets/server-data/images/blouse_11_4.jpg"]
       }
     ],
     "video": "",
@@ -170,7 +170,7 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 569,
-    "id": 6
+    "id": "f283f965"
   },
   {
     "productName": "Mango - BLOUSE",
@@ -182,9 +182,9 @@
       {
         "value": "#edfcfb",
         "url": ["./assets/server-data/images/blouse_12_1.jpg",
-          "blouse_12_2.jpg",
-          "blouse_12_3.jpg",
-          "blouse_12_4.jpg"]
+          "./assets/server-data/images/blouse_12_2.jpg",
+          "./assets/server-data/images/blouse_12_3.jpg",
+          "./assets/server-data/images/blouse_12_4.jpg"]
       },
       {
         "value": "#fffff",
@@ -194,13 +194,13 @@
           "blouse_13_4.jpg"]
       }
     ],
-    "video": "blouse_12_v.mp4",
+    "video": "./assets/server-data/video/blouse_12_v.mp4",
     "sex": "female",
     "category": "blouse",
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 899,
-    "id": 7
+    "id": "f128e77c"
   },
   {
     "productName": "PEPE JEANS - SUI SHIRT",
@@ -212,25 +212,25 @@
       {
         "value": "#ffffff",
         "url": ["./assets/server-data/images/blouse_14_1.jpg",
-          "blouse_14_2.jpg",
-          "blouse_14_3.jpg",
-          "blouse_14_4.jpg"]
+          "./assets/server-data/images/blouse_14_2.jpg",
+          "./assets/server-data/images/blouse_14_3.jpg",
+          "./assets/server-data/images/blouse_14_4.jpg"]
       },
       {
         "value": "#125fc9",
-        "url": ["blouse_15_1.jpg",
-          "blouse_15_2.jpg",
-          "blouse_15_3.jpg",
-          "blouse_15_4.jpg"]
+        "url": ["./assets/server-data/images/blouse_15_1.jpg",
+          "./assets/server-data/images/blouse_15_2.jpg",
+          "./assets/server-data/images/blouse_15_3.jpg",
+          "./assets/server-data/images/blouse_15_4.jpg"]
       }
     ],
-    "video": "blouse_14_v.mp4",
+    "video": "./assets/server-data/video/blouse_14_v.mp4",
     "category": "blouse",
     "season": ["spring", "fall", "summer", "winter"],
     "sex": "female",
     "quantity": 10,
     "price": 1199,
-    "id": 8
+    "id": "f5189d22"
   },
   {
     "productName": "ONLY - SHIRT",
@@ -242,25 +242,25 @@
       {
         "value": "#426d52",
         "url": ["./assets/server-data/images/blouse_16_1.jpg",
-          "blouse_16_2.jpg",
-          "blouse_16_3.jpg",
-          "blouse_16_4.jpg"]
+          "./assets/server-data/images/blouse_16_2.jpg",
+          "./assets/server-data/images/blouse_16_3.jpg",
+          "./assets/server-data/images/blouse_16_4.jpg"]
       },
       {
         "value": "#125fc9",
-        "url": ["blouse_17_1.jpg",
-          "blouse_17_2.jpg",
-          "blouse_17_3.jpg",
-          "blouse_17_4.jpg"]
+        "url": ["./assets/server-data/images/blouse_17_1.jpg",
+          "./assets/server-data/images/blouse_17_2.jpg",
+          "./assets/server-data/images/blouse_17_3.jpg",
+          "./assets/server-data/images/blouse_17_4.jpg"]
       }
     ],
-    "video": "blouse_16_v.mp4",
+    "video": "./assets/server-data/video/blouse_16_v.mp4",
     "category": "blouse",
     "season": ["spring", "fall", "summer", "winter"],
     "sex": "female",
     "quantity": 10,
     "price": 999,
-    "id": 9
+    "id": "f8ebd8b"
   },
   {
     "productName": "ONLY - SHIRT",
@@ -272,9 +272,9 @@
       {
         "value": "#000000",
         "url": ["./assets/server-data/images/blouse_19_1.jpg",
-          "blouse_19_2.jpg",
-          "blouse_19_3.jpg",
-          "blouse_19_4.jpg"]
+          "./assets/server-data/images/blouse_19_2.jpg",
+          "./assets/server-data/images/blouse_19_3.jpg",
+          "./assets/server-data/images/blouse_19_4.jpg"]
       }
     ],
     "video": "",
@@ -283,7 +283,7 @@
     "sex": "female",
     "quantity": 10,
     "price": 799,
-    "id": 10
+    "id": "fe68153"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -295,9 +295,9 @@
       {
         "value": "#000000",
         "url": ["./assets/server-data/images/skirt_20_1.jpg",
-          "skirt_20_2.jpg",
-          "skirt_20_3.jpg",
-          "skirt_20_4.jpg"]
+          "./assets/server-data/images/skirt_20_2.jpg",
+          "./assets/server-data/images/skirt_20_3.jpg",
+          "./assets/server-data/images/skirt_20_4.jpg"]
       }
     ],
     "video": "",
@@ -306,7 +306,7 @@
     "sex": "female",
     "quantity": 10,
     "price": 799,
-    "id": 11
+    "id": "f1c9a09f"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -318,18 +318,18 @@
       {
         "value": "#36558b",
         "url": ["./assets/server-data/images/skirt_21_1.jpg",
-          "skirt_21_2.jpg",
-          "skirt_21_3.jpg",
-          "skirt_21_4.jpg"]
+          "./assets/server-data/images/skirt_21_2.jpg",
+          "./assets/server-data/images/skirt_21_3.jpg",
+          "./assets/server-data/images/skirt_21_4.jpg"]
       }
     ],
-    "video": "skirt_21_v.mp4",
+    "video": "./assets/server-data/video/skirt_21_v.mp4",
     "category": "skirt",
     "sex": "female",
     "season": ["summer"],
     "quantity": 10,
     "price": 799,
-    "id": 12
+    "id": "f5bb4ec3"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -341,9 +341,9 @@
       {
         "value": "#ffffff",
         "url": ["./assets/server-data/images/skirt_22_1.jpg",
-          "skirt_22_2.jpg",
-          "skirt_22_3.jpg",
-          "skirt_22_4.jpg"]
+          "./assets/server-data/images/skirt_22_2.jpg",
+          "./assets/server-data/images/skirt_22_3.jpg",
+          "./assets/server-data/images/skirt_22_4.jpg"]
       }
     ],
     "video": "",
@@ -352,7 +352,7 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 699,
-    "id": 13
+    "id": "f4a9dddd"
   },
   {
     "productName": "MEDICINE - MANIFESTO SKIRT",
@@ -364,9 +364,9 @@
       {
         "value": "#94979c",
         "url": ["./assets/server-data/images/skirt_23_1.jpg",
-          "skirt_23_2.jpg",
-          "skirt_23_3.jpg",
-          "skirt_23_4.jpg"]
+          "./assets/server-data/images/skirt_23_2.jpg",
+          "./assets/server-data/images/skirt_23_3.jpg",
+          "./assets/server-data/images/skirt_23_4.jpg"]
       }
     ],
     "video": "",
@@ -375,7 +375,7 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 699,
-    "id": 14
+    "id": "f10c1d1f"
   },
   {
     "productName":  "ANSWEAR - SKIRT",
@@ -387,9 +387,9 @@
       {
         "value": "#f0efce",
         "url": ["./assets/server-data/images/skirt_24_1.jpg",
-          "skirt_24_2.jpg",
-          "skirt_24_3.jpg",
-          "skirt_24_4.jpg"]
+          "./assets/server-data/images/skirt_24_2.jpg",
+          "./assets/server-data/images/skirt_24_3.jpg",
+          "./assets/server-data/images/skirt_24_4.jpg"]
       }
     ],
     "video": "",
@@ -398,7 +398,7 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 799,
-    "id": 15
+    "id": "fab8d95"
   },
   {
     "productName":  "LEVI'S - JEAN SKIRTT",
@@ -410,9 +410,9 @@
       {
         "value": "#325fab",
         "url": ["./assets/server-data/images/skirt_25_1.jpg",
-          "skirt_25_2.jpg",
-          "skirt_25_3.jpg",
-          "skirt_25_4.jpg"]
+          "./assets/server-data/images/skirt_25_2.jpg",
+          "./assets/server-data/images/skirt_25_3.jpg",
+          "./assets/server-data/images/skirt_25_4.jpg"]
       }
     ],
     "video": "",
@@ -421,7 +421,7 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 799,
-    "id": 16
+    "id": "f2aac67c"
   },
   {
     "productName": "Answear - SKIRT",
@@ -433,23 +433,23 @@
       {
         "value": "#8a230c",
         "url": ["./assets/server-data/images/skirt_26_1.jpg",
-          "skirt_26_2.jpg",
-          "skirt_26_3.jpg",
-          "skirt_26_4.jpg"]
+          "./assets/server-data/images/skirt_26_2.jpg",
+          "./assets/server-data/images/skirt_26_3.jpg",
+          "./assets/server-data/images/skirt_26_4.jpg"]
       },
       {
         "value": "#1f472b",
-        "url": ["skirt_27_1.jpg",
-          "skirt_27_2.jpg",
-          "skirt_27_3.jpg",
-          "skirt_27_4.jpg"]
+        "url": ["./assets/server-data/images/skirt_27_1.jpg",
+          "./assets/server-data/images/skirt_27_2.jpg",
+          "./assets/server-data/images/skirt_27_3.jpg",
+          "./assets/server-data/images/skirt_27_4.jpg"]
       },
       {
         "value": "#8f8f8f",
-        "url": ["skirt_28_1.jpg",
-          "skirt_28_2.jpg",
-          "skirt_28_3.jpg",
-          "skirt_28_4.jpg"]
+        "url": ["./assets/server-data/images/skirt_28_1.jpg",
+          "./assets/server-data/images/skirt_28_2.jpg",
+          "./assets/server-data/images/skirt_28_3.jpg",
+          "./assets/server-data/images/skirt_28_4.jpg"]
       }
     ],
     "video": "",
@@ -458,7 +458,7 @@
     "season": ["spring", "fall", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": 17
+    "id": "f229e000"
   }, 
   {
     "productName": "Answear - SKIRT",
@@ -470,16 +470,16 @@
       {
         "value": "#666464",
         "url": ["./assets/server-data/images/skirt_29_1.jpg",
-          "skirt_29_2.jpg",
-          "skirt_29_3.jpg",
-          "skirt_29_4.jpg"]
+          "./assets/server-data/images/skirt_29_2.jpg",
+          "./assets/server-data/images/skirt_29_3.jpg",
+          "./assets/server-data/images/skirt_29_4.jpg"]
       },
       {
         "value": "#000000",
-        "url": ["skirt_30_1.jpg",
-          "skirt_30_2.jpg",
-          "skirt_30_3.jpg",
-          "skirt_30_4.jpg"]
+        "url": ["./assets/server-data/images/skirt_30_1.jpg",
+          "./assets/server-data/images/skirt_30_2.jpg",
+          "./assets/server-data/images/skirt_30_3.jpg",
+          "./assets/server-data/images/skirt_30_4.jpg"]
       }
     ],
     "video": "",
@@ -488,7 +488,7 @@
     "season": ["fall", "winter"],
     "quantity": 10,
     "price": 999,
-    "id": 18
+    "id": "f542629c"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -500,18 +500,18 @@
       {
         "value": "#d0c23b",
         "url": ["./assets/server-data/images/skirt_31_1.jpg",
-          "skirt_31_2.jpg",
-          "skirt_31_3.jpg",
-          "skirt_31_4.jpg"]
+          "./assets/server-data/images/skirt_31_2.jpg",
+          "./assets/server-data/images/skirt_31_3.jpg",
+          "./assets/server-data/images/skirt_31_4.jpg"]
       }
     ],
-    "video": "skirt_31_v.mp4",
+    "video": "./assets/server-data/video/skirt_31_v.mp4",
     "category": "skirt",
     "sex": "female",
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": 19
+    "id": "f3f7fa23"
   },
   {
     "productName": "MANGO - SOFT SKIRT",
@@ -523,9 +523,9 @@
       {
         "value": "#4e7ed0",
         "url": ["./assets/server-data/images/skirt_32_1.jpg",
-          "skirt_32_2.jpg",
-          "skirt_32_3.jpg",
-          "skirt_32_4.jpg"]
+          "./assets/server-data/images/skirt_32_2.jpg",
+          "./assets/server-data/images/skirt_32_3.jpg",
+          "./assets/server-data/images/skirt_32_4.jpg"]
       }
     ],
     "video": "",
@@ -534,6 +534,2095 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": 20
+    "id": "f67e5e3"
+  },
+  {
+    "productName": "Tommy Jeans Shirt",
+    "description": "Shirt from the Tommy Jeans collection. The model is made of smooth fabric. Has a classic collar.\n      - Regular cut.\n      - Soft classic Kent collar.\n      - Button fastening.\n      - Thin, inflexible fabric.\n      - Collar circumference: 40.5 cm.\n      - Sleeve length: 67 cm.\n      - Length: 78 cm.\n      - Armpit width: 54 cm.\n      - Shoulder width: 42.5 cm.\n      - Dimensions for size: M.\n\n      Pattern: smooth\n      Cut: slim\n      Cut: regular\n      Material: cotton\n      Collar: classic\n      Collar: soft\n      Occasions: casual\n      Composition: 100% Cotton",
+    "brand": "Tommy Jeans",
+    "sizes": [
+      "s", "m", "l", "xl"],
+    "colors": ["#a8c8e0", "#ffffff", "#012961"],
+    "images": [
+      {
+        "value": "#a8c8e0",
+        "url": [
+          "./assets/server-data/images/tommy-blue-1.1.jpg",
+          "./assets/server-data/images/tommy-blue-1.2.jpg",
+          "./assets/server-data/images/tommy-blue-1.3.jpg",
+          "./assets/server-data/images/tommy-blue-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/tommy-white-1.1.jpg",
+          "./assets/server-data/images/tommy-white-1.2.jpg",
+          "./assets/server-data/images/tommy-white-1.3.jpg",
+          "./assets/server-data/images/tommy-white-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#012961",
+        "url": [
+          "./assets/server-data/images/tommy-darkblue-1.1.jpg",
+          "./assets/server-data/images/tommy-darkblue-1.2.jpg",
+          "./assets/server-data/images/tommy-darkblue-1.3.jpg",
+          "./assets/server-data/images/tommy-darkblue-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/tommy-all.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 10,
+    "price": 69,
+    "id": "f2680ab8"
+  },
+  {
+    "productName": "Armani Exchange - Jeans Shirt",
+    "description": "Shirt from the Armani Exchange collection. The model is made of smooth fabric. Has an Italian collar.\n\n    - Simple cut.\n    - Button fastening.\n    - Sleeves with buttoned cuffs.\n    - Smooth fabric.\n\n    Pattern: smooth\n    Cut: regular\n    Collar: soft\n    Occasions: casual\n    Collar: Italian",
+    "brand": "Armani Exchange",
+    "sizes": ["s", "m", "l", "xl"
+    ],
+    "colors": ["#445d80"],
+    "images": [
+      {
+        "value": "#445d80",
+        "url": [
+          "./assets/server-data/images/armani-jeansblue-1.1.jpg",
+          "./assets/server-data/images/armani-jeansblue-1.2.jpg",
+          "./assets/server-data/images/armani-jeansblue-1.3.jpg",
+          "./assets/server-data/images/armani-jeansblue-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "sex": "man",
+    "category": "shirt",
+    "season": [
+      "fall",
+      "spring"
+    ],
+    "quantity": 10,
+    "price": 79,
+    "id": "f15368e4"
+  },
+  {
+    "productName": "Camel Active Shirt",
+    "description": "Shirt from the Camel Active collection. The model is made of smooth fabric. It has a classic, soft collar.\n\n    - Regular cut.\n    - Soft classic Kent collar.\n    - Chest pocket.\n    - Sleeves with buttoned cuffs.\n    - Smooth fabric.\n    - Collar circumference: 41 cm.\n    - Armpit width: 56 cm.\n    - Shoulder width: 45 cm.\n    - Sleeve length: 67 cm.\n    - Length: 75 cm.\n    - Dimensions for size: M.\n\n    Pattern: smooth\n    Cut: regular\n    Material: cotton\n    Collar: classic\n    Collar: soft\n    Occasions: casual\n    Composition: 100% Cotton",
+    "brand": "Camel Active",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#8c8068"],
+    "images": [
+      {
+        "value": "#8c8068",
+        "url": [
+          "./assets/server-data/images/camel-active-1.1.jpg",
+          "./assets/server-data/images/camel-active-1.2.jpg",
+          "./assets/server-data/images/camel-active-1.3.jpg",
+          "./assets/server-data/images/camel-active-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/camel-active.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 10,
+    "price": 74,
+    "id": "f4784ed5"
+  },
+  {
+    "productName": "Polo Ralph Lauren (smooth)",
+    "description": "Shirt from the Polo Ralph Lauren collection. The model is made of smooth fabric.\n        - Slim cut.\n        - Sleeves with buttoned cuffs.\n        - Soft button-down collar.\n        - Button fastening.\n        - Smooth fabric.\n        - Sleeve length: 66 cm.\n        - Length: 76 cm.\n        - Armpit width: 52 cm.\n        - Shoulder width: 43 cm.\n        - Dimensions for size: M.\n\n        Pattern: smooth\n        Cut: slim\n        Material: cotton\n        Collar: soft\n        Occasions: casual\n        Collar: with a button\n        Composition:100% Cotton.",
+    "brand": "Polo Ralph Lauren",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000","#ffffff","#00064d"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/polo-rl-black-1.1.jpg",
+          "./assets/server-data/images/polo-rl-black-1.2.jpg",
+          "./assets/server-data/images/polo-rl-black-1.3.jpg",
+          "./assets/server-data/images/polo-rl-black-1.4.jpg"
+        ],
+        "video": "./assets/server-data/video/polo-rl-black.mp4"
+      },
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/polo-rl-white-1.1.jpg",
+          "./assets/server-data/images/polo-rl-white-1.2.jpg",
+          "./assets/server-data/images/polo-rl-white-1.3.jpg",
+          "./assets/server-data/images/polo-rl-white-1.4.jpg"
+        ],
+        "video": "./assets/server-data/video/polo-rl-white.mp4"
+      },
+      {
+        "value": "#00064d",
+        "url": [
+          "./assets/server-data/images/polo-rl-blue-1.1.jpg",
+          "./assets/server-data/images/polo-rl-blue-1.2.jpg",
+          "./assets/server-data/images/polo-rl-blue-1.3.jpg",
+          "./assets/server-data/images/polo-rl-blue-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/polo-rl-blue.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 8,
+    "price": 129,
+    "id": "f5bbc2e2"
+  },
+  {
+    "productName": "SCOTCH & SODA - Shirt",
+    "description": "Shirt from the Scotch & Soda collection. The model is made of patterned fabric. It has a classic, soft collar.\n      - Regular cut.\n      - Soft classic Kent collar.\n      - Sleeves with buttoned cuffs.\n      - Chest pocket.\n      - Patterned fabric.\n      - Armpit width: 50 cm.\n      - Collar circumference: 41 cm.\n      - Shoulder width: 43 cm.\n      - Sleeve length: 67 cm.\n      - Length: 71 cm.\n      - Dimensions for size: M.\n      \n      Cut: regular\n      Pattern: small pattern\n      Material: cotton\n      Collar: classic\n      Collar: soft\n      Occasions: casual\n\n      Composition: 100% Cotton.",
+    "brand": "SCOTCH & SODA",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#013005", "#000000", "#3d3d3d"],
+    "images": [
+      {
+        "value": "#013005",
+        "url": [
+          "./assets/server-data/images/scotch-soda-green-1.1.jpg",
+          "./assets/server-data/images/scotch-soda-green-1.2.jpg",
+          "./assets/server-data/images/scotch-soda-green-1.3.jpg",
+          "./assets/server-data/images/scotch-soda-green-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/scotch-soda-black-1.1.jpg",
+          "./assets/server-data/images/scotch-soda-black-1.2.jpg",
+          "./assets/server-data/images/scotch-soda-black-1.3.jpg",
+          "./assets/server-data/images/scotch-soda-black-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#3d3d3d",
+        "url": [
+          "./assets/server-data/images/scotch-soda-grey-1.1.jpg",
+          "./assets/server-data/images/scotch-soda-grey-1.2.jpg",
+          "./assets/server-data/images/scotch-soda-grey-1.3.jpg",
+          "./assets/server-data/images/scotch-soda-grey-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/scotch-soda-green.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 8,
+    "price": 109,
+    "id": "f285b9ae"
+  },
+  {
+    "productName": "LEVI`S - Shirt",
+    "description": "Shirt from the Levi's collection. The model is made of smooth fabric.\n    - Soft classic Kent collar.\n    - Button fastening.\n    - Soft cuffs.\n    - Thick, elastic fabric.\n    - Smooth material.\n    - Collar circumference: 42 cm.\n    - Length: 70 cm.\n    - Armpit width: 54 cm.\n    - Shoulder width: 46 cm.\n    - Dimensions for size: M.\n\n    Composition: 100% Cotton",
+    "brand": "LEVI`S",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#023d0b"],
+    "images": [
+      {
+        "value": "#023d0b",
+        "url": [
+          "./assets/server-data/images/levis-sol-green-1.1.jpg",
+          "./assets/server-data/images/levis-sol-green-1.2.jpg",
+          "./assets/server-data/images/levis-sol-green-1.3.jpg",
+          "./assets/server-data/images/levis-sol-green-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/levis-sol-green.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 15,
+    "price": 79,
+    "id": "f19a4a97"
+  },
+  {
+    "productName": "LEVI`S - Checked Shirt",
+    "description": "Shirt from the Levi's collection. The model is made of smooth fabric.\n      - Slim cut.\n      - Snap closure.\n      - Soft classic Kent collar.\n      - Chest pockets.\n      - Collar circumference: 44 cm.\n      - Sleeve length: 64 cm.\n      - Length: 71 cm.\n      - Armpit width: 53 cm.\n      - Shoulder width: 44 cm.\n      - Dimensions for size: M.\n\n      Pattern: patterned\n      Cut: slim\n      Material: cotton\n      Collar: classic\n      Design: lattice\n      Collar: soft\n      Occasions: casual\n      Composition: 100% Cotton",
+    "brand": "LEVI`S",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#245eff", "#d41919"],
+    "images": [
+      {
+        "value": "#245eff",
+        "url": [
+          "./assets/server-data/images/levis-blue-1.1.jpg",
+          "./assets/server-data/images/levis-blue-1.2.jpg",
+          "./assets/server-data/images/levis-blue-1.3.jpg",
+          "./assets/server-data/images/levis-blue-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#d41919",
+        "url": [
+          "./assets/server-data/images/levis-red-1.1.jpg",
+          "./assets/server-data/images/levis-red-1.2.jpg",
+          "./assets/server-data/images/levis-red-1.3.jpg",
+          "./assets/server-data/images/levis-red-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/levis-red.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 10,
+    "price": 79,
+    "id": "f1d3642e"
+  },
+  {
+    "productName": "Wrangler - Checked Shirt",
+    "description": "The model is made of patterned fabric.\n\n      - Regular cut.\n      - Soft classic Kent collar.\n      - Sleeves with buttoned cuffs.\n      - Snap closure.\n      - Chest pockets.\n      - Patterned fabric.\n      - Decorative details.\n      - Sleeve length: 66 cm.\n      - Length: 74 cm.\n      - Armpit width: 53 cm.\n      - Dimensions for size: M.\n      \n      Pattern: patterned\n      Cut: regular\n      Material: cotton\n      Collar: classic\n      Design: lattice\n      Collar: soft\n      Occasions: casual\n      Composition:\n      Main material: 100% Cotton",
+    "brand": "Wrangler",
+    "sizes": [ "s", "m", "l", "xl"],
+    "colors": ["#bd1717"],
+    "images": [
+      {
+        "value": "#bd1717",
+        "url": [
+          "./assets/server-data/images/wrangler-red-1.1.jpg",
+          "./assets/server-data/images/wrangler-red-1.2.jpg",
+          "./assets/server-data/images/wrangler-red-1.3.jpg",
+          "./assets/server-data/images/wrangler-red-1.4.jpg"
+        ],
+        "video": "./assets/server-data/video/wrangler-red.mp4"
+      }
+    ],
+    "sex": "man",
+    "category": "shirt",
+    "season": [
+      "fall",
+      "spring"
+    ],
+    "quantity": 20,
+    "price": 599,
+    "id": "f4a568f0"
+  },
+  {
+    "productName": "Polo Ralph Lauren - Shirt",
+    "description": "Shirt from the Polo Ralph Lauren collection. The model is made of smooth fabric. It has an Italian, slightly stiffened collar.\n\n      - Slim cut.\n      - Slightly stiffened Italian collar.\n      - Button fastening.\n      - Thin, inflexible fabric.\n      - Collar circumference: 39.5 cm.\n      - Armpit width: 53.5 cm.\n      - Shoulder width: 43 cm.\n      - Sleeve length: 66 cm.\n      - Length: 75.5 cm.\n      - Dimensions for size: M.\n      \n      Pattern: smooth\n      Cut: slim\n      Material: cotton\n      Occasions: casual\n      Collar: Italian\n      Collar: stiffened\n      Composition: 100% Cotton",
+    "brand": "Polo Ralph Lauren",
+    "sizes": [ "s", "m", "l", "xl"],
+    "colors": ["#98c3f5", "#002045"],
+    "images": [
+      {
+        "value": "#98c3f5",
+        "url": [
+          "./assets/server-data/images/polorl-lightblue-1.1.jpg",
+          "./assets/server-data/images/polorl-lightblue-1.1.jpg",
+          "./assets/server-data/images/polorl-lightblue-1.1.jpg",
+          "./assets/server-data/images/polorl-lightblue-1.1.jpg"
+        ]
+      },
+      {
+        "value": "#002045",
+        "url": [
+          "./assets/server-data/images/polorl-darkblue-1.1.jpg",
+          "./assets/server-data/images/polorl-darkblue-1.1.jpg",
+          "./assets/server-data/images/polorl-darkblue-1.1.jpg",
+          "./assets/server-data/images/polorl-darkblue-1.1.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/polorl-lightblue.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 20,
+    "price": 599,
+    "id": "f24513d7"
+  },
+  {
+    "productName": "Medicine - Checked Shirt",
+    "description": "Shirt from the Medicine collection. The model is made of plaid fabric. It has a classic, soft collar.\n\n    - Regular cut.\n    - Button fastening.\n    - Sleeves with buttoned cuffs.\n    - Soft classic Kent collar.\n    - Patterned fabric.\n    - Collar circumference: 43 cm.\n    - Armpit width: 53 cm.\n    - Shoulder width: 43 cm.\n    - Sleeve length: 66 cm\n    - Length: 75 cm.\n    - Dimensions for size: M.\n    \n    Pattern: patterned\n    Cut: regular\n    Material: cotton\n    Collar: classic\n    Design: lattice\n    Collar: soft\n    Occasions: casual\n    Composition: 100% Cotton",
+    "brand": "Medicine",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ffbf00", "#c70202", "#696060"],
+    "images": [
+      {
+        "value": "#ffbf00",
+        "url": [
+          "./assets/server-data/images/medicine-yellow-1.1.jpg",
+          "./assets/server-data/images/medicine-yellow-1.2.jpg",
+          "./assets/server-data/images/medicine-yellow-1.3.jpg",
+          "./assets/server-data/images/medicine-yellow-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#c70202",
+        "url": [
+          "./assets/server-data/images/medicine-red-1.1.jpg",
+          "./assets/server-data/images/medicine-red-1.2.jpg",
+          "./assets/server-data/images/medicine-red-1.3.jpg",
+          "./assets/server-data/images/medicine-red-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#696060",
+        "url": [
+          "./assets/server-data/images/medicine-gray-1.1.jpg",
+          "./assets/server-data/images/medicine-gray-1.2.jpg",
+          "./assets/server-data/images/medicine-gray-1.3.jpg",
+          "./assets/server-data/images/medicine-gray-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/medicine-all.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 20,
+    "price": 599,
+    "id": "f258a68"
+  },
+  {
+    "productName": "Armany Exchange - Shirt",
+    "description": "Shirt from the Armani Exchange collection. The model is made of smooth fabric. Has an Italian collar.\n\n      - Simple cut.\n      - Button fastening.\n      - Sleeves with buttoned cuffs.\n      - Smooth fabric.\n\n      Pattern: smooth\n      Cut: regular\n      Collar: soft\n      Occasions: casual\n      Collar: Italian",
+    "brand": "Armani Exchange",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ffffff", "#000000"],
+    "images": [
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/armani-white-1.1.jpg",
+          "./assets/server-data/images/armani-white-1.2.jpg",
+          "./assets/server-data/images/armani-white-1.3.jpg",
+          "./assets/server-data/images/armani-white-1.4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/armani-black-1.1.jpg",
+          "./assets/server-data/images/armani-black-1.2.jpg",
+          "./assets/server-data/images/armani-black-1.3.jpg",
+          "./assets/server-data/images/armani-black-1.4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/armani-all.mp4",
+    "sex": "man",
+    "category": "shirt",
+    "season": ["fall", "spring"],
+    "quantity": 20,
+    "price": 599,
+    "id": "f485e8ac"
+  },
+  {
+    "productName": "Levis T-shirt",
+    "description": "T-shirt from Levi's collection. The model is made of knitwear with applique. According to the trademark protection policy, approximately 10% of the Levi's brand assortment has a “blank label” (red color without a brand logo, exclusively with an international trademark). 'Blank Label' is a registered trademark of Levi's brand and the model bearing this label is a full-fledged original product. In cases of uncertainty, please contact our call-center.",
+    "brand": "Levis",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ff0000"],
+    "images": [
+      {
+        "value": "#ff0000",
+        "url": [
+          "./assets/server-data/images/t-shirt_1_1.jpg",
+          "./assets/server-data/images/t-shirt_1_2.jpg",
+          "./assets/server-data/images/t-shirt_1_3.jpg",
+          "./assets/server-data/images/t-shirt_1_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_1_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 999,
+    "id": "f182bcb7"
+  },
+  {
+    "productName": "Guess Jeanse T-shirt",
+    "description": "T-shirt from the Guess Jeans collection. The model is made of knitwear with applique.",
+    "brand": "Guess",
+    "sizes": ["s", "m","l"],
+    "colors": ["#ffffff", "#000000"],
+    "images": [
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/t-shirt_2_1.jpg",
+          "./assets/server-data/images/t-shirt_2_2.jpg",
+          "./assets/server-data/images/t-shirt_2_3.jpg",
+          "./assets/server-data/images/t-shirt_2_4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/t-shirt_2_1/black.jpg",
+          "./assets/server-data/images/t-shirt_2_2/black.jpg",
+          "./assets/server-data/images/t-shirt_2_3/black.jpg",
+          "./assets/server-data/images/t-shirt_2_4/black.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_2_1.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 1589,
+    "id": "f6743c1"
+  },
+  {
+    "productName": "Puma T-shirt X-space agency NASA",
+    "description": "T-shirt from the Puma collection. The model is made of knitwear with a print.",
+    "brand": "Puma",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/t-shirt_3_1.jpg",
+          "./assets/server-data/images/t-shirt_3_2.jpg",
+          "./assets/server-data/images/t-shirt_3_3.jpg",
+          "./assets/server-data/images/t-shirt_3_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_3_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 1399,
+    "id": "f298a167"
+  },
+  {
+    "productName": "Adidas Originals T-shirt",
+    "description": "T-shirt from the adidas Originals collection. The model is made of smooth knitwear.",
+    "brand": "Adidas",
+    "sizes": ["s", "m","l"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/t-shirt_4_1.jpg",
+          "./assets/server-data/images/t-shirt_4_2.jpg",
+          "./assets/server-data/images/t-shirt_4_3.jpg",
+          "./assets/server-data/images/t-shirt_4_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_4_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 999,
+    "id": "f3a815d6"
+  },
+  {
+    "productName": "Guess Jeans Polo",
+    "description": "Polo from the Guess Jeans collection. The model is made of smooth knitwear.",
+    "brand": "Guess",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#0000ff", "#ffffff"],
+    "images": [
+      {
+        "value": "#0000ff",
+        "url": [
+          "./assets/server-data/images/t-shirt_5_1.jpg",
+          "./assets/server-data/images/t-shirt_5_2.jpg",
+          "./assets/server-data/images/t-shirt_5_3.jpg",
+          "./assets/server-data/images/t-shirt_5_4.jpg"
+        ]
+      },
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/t-shirt_5/white_1.jpg",
+          "./assets/server-data/images/t-shirt_5/white_2.jpg",
+          "./assets/server-data/images/t-shirt_5/white_3.jpg",
+          "./assets/server-data/images/t-shirt_5/white_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_5_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 1859,
+    "id": "fd80e9b"
+  },
+  {
+    "productName": "Polo Ralph Lauren T-shirt",
+    "description": "T-shirt from the Polo Ralph Lauren collection. The model is made of smooth knitwear.",
+    "brand": "Polo",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#0000ff"],
+    "images": [
+      {
+        "value": "#0000ff",
+        "url": [
+          "./assets/server-data/images/t-shirt_6_1.jpg",
+          "./assets/server-data/images/t-shirt_6_2.jpg",
+          "./assets/server-data/images/t-shirt_6_3.jpg",
+          "./assets/server-data/images/t-shirt_6_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_6_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 1299,
+    "id": "f5dba2b9"
+  },
+  {
+    "productName": "Pepe Jeans T-shirt",
+    "description": "T-shirt from the Pepe Jeans collection. The model is made of knitwear with a print.",
+    "brand": "Pepe Jeans",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ff0000", "#ffffff", "#808080", "#000000"],
+    "images": [
+      {
+        "value": "#ff0000",
+        "url": [
+          "./assets/server-data/images/t-shirt_7_1.jpg",
+          "./assets/server-data/images/t-shirt_7_2.jpg",
+          "./assets/server-data/images/t-shirt_7_3.jpg",
+          "./assets/server-data/images/t-shirt_7_4.jpg"
+        ]
+      },
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/t-shirt_7_1/white.jpg",
+          "./assets/server-data/images/t-shirt_7_2/white.jpg",
+          "./assets/server-data/images/t-shirt_7_3/white.jpg",
+          "./assets/server-data/images/t-shirt_7_4/white.jpg"
+        ]
+      },
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/t-shirt_7_1/grey.jpg",
+          "./assets/server-data/images/t-shirt_7_2/grey.jpg",
+          "./assets/server-data/images/t-shirt_7_3/grey.jpg",
+          "./assets/server-data/images/t-shirt_7_4/grey.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/t-shirt_7_1/black.jpg",
+          "./assets/server-data/images/t-shirt_7_2/black.jpg",
+          "./assets/server-data/images/t-shirt_7_3/black.jpg",
+          "./assets/server-data/images/t-shirt_7_4/black.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_7_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 799,
+    "id": "f2ece61e"
+  },
+  {
+    "productName": "Armani Exchange T-shirt",
+    "description": "T-shirt from the Armani Exchange collection. The model is made of knitwear with a print.",
+    "brand": "Armani",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ffffff", "#000000", "#808080"],
+    "images": [
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/t-shirt_8_1.jpg",
+          "./assets/server-data/images/t-shirt_8_2.jpg",
+          "./assets/server-data/images/t-shirt_8_3.jpg",
+          "./assets/server-data/images/t-shirt_8_4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/t-shirt_8_1/black.jpg",
+          "./assets/server-data/images/t-shirt_8_2/black.jpg",
+          "./assets/server-data/images/t-shirt_8_3/black.jpg",
+          "./assets/server-data/images/t-shirt_8_4/black.jpg"
+        ]
+      },
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/t-shirt_8_1/grey.jpg",
+          "./assets/server-data/images/t-shirt_8_2/grey.jpg",
+          "./assets/server-data/images/t-shirt_8_3/grey.jpg",
+          "./assets/server-data/images/t-shirt_8_4/grey.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_8_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 1299,
+    "id": "f36f58c4"
+  },
+  {
+    "productName": "Under Armour T-shirt",
+    "description": "T-shirt from the Under Armour collection. The model is made of knitwear with a print.",
+    "brand": "Under Armour",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#bdb76b", "#000000"],
+    "images": [
+      {
+        "value": "#bdb76b",
+        "url": [
+          "./assets/server-data/images/t-shirt_9_1.jpg",
+          "./assets/server-data/images/t-shirt_9_2.jpg",
+          "./assets/server-data/images/t-shirt_9_3.jpg",
+          "./assets/server-data/images/t-shirt_9_4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/t-shirt_9_1/black.jpg",
+          "./assets/server-data/images/t-shirt_9_2/black.jpg",
+          "./assets/server-data/images/t-shirt_9_3/black.jpg",
+          "./assets/server-data/images/t-shirt_9_4/black.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_9_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 1299,
+    "id": "f36596d6"
+  },
+  {
+    "productName": "Emporio Armani T-shirt",
+    "description": "T-shirt from the Emporio Armani collection. The model is made of knitwear with a print.",
+    "brand": "Armani",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000", "#0000ff"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/t-shirt_10_1.jpg",
+          "./assets/server-data/images/t-shirt_10_2.jpg",
+          "./assets/server-data/images/t-shirt_10_3.jpg",
+          "./assets/server-data/images/t-shirt_10_4.jpg"
+        ]
+      },
+      {
+        "value": "#0000ff",
+        "url": [
+          "./assets/server-data/images/t-shirt_10_1/blue.jpg",
+          "./assets/server-data/images/t-shirt_10_2/blue.jpg",
+          "./assets/server-data/images/t-shirt_10_3/blue.jpg",
+          "./assets/server-data/images/t-shirt_10_4/blue.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/t-shirt_10_v.mp4",
+    "season": ["summer"],
+    "category": "t-shirt",
+    "sex": "male",
+    "quantity": 10,
+    "price": 1599,
+    "id": "f451f8df"
+  },
+  {
+    "productName": "The North Face heat",
+    "description": "A hat from The North Face collection. The model is made of thick, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
+    "brand": "The North Face",
+    "sizes": ["m"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/heats_1_1.jpg",
+          "./assets/server-data/images/heats_1_2.jpg",
+          "./assets/server-data/images/heats_1_3.jpg"
+        ]
+      }
+    ],
+    "season": ["winter"],
+    "category": "heats",
+    "sex": "unisex",
+    "quantity": 10,
+    "price": 999,
+    "id": "f322c3b2"
+  },
+  {
+    "productName": "Guess Jeans heat",
+    "description": "Hat from the Guess Jeans collection. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
+    "brand": "Guess",
+    "sizes": ["m"],
+    "colors": ["#000000", "#808080"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/heats_2_1.jpg",
+          "./assets/server-data/images/heats_2_2.jpg",
+          "./assets/server-data/images/heats_2_3.jpg"
+        ]
+      },
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/heats_2_1/grey.jpg",
+          "./assets/server-data/images/heats_2_2/grey.jpg",
+          "./assets/server-data/images/heats_2_3/grey.jpg"
+        ]
+      }
+    ],
+    "season": ["winter"],
+    "category": "heats",
+    "sex": "unisex",
+    "quantity": 10,
+    "price": 1189,
+    "id": "f5c7ac6e"
+  },
+  {
+    "productName": "Medicine heat",
+    "description": "Hat from the Guess Medicine. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
+    "brand": "Medicine",
+    "sizes": ["m"],
+    "colors": ["#ff0000"],
+    "images": [
+      {
+        "value": "#ff0000",
+        "url": [
+          "./assets/server-data/images/heats_3_1.jpg",
+          "./assets/server-data/images/heats_3_2.jpg",
+          "./assets/server-data/images/heats_3_3.jpg"
+        ]
+      }
+    ],
+    "season": ["winter"],
+    "category": "heats",
+    "sex": "unisex",
+    "quantity": 10,
+    "price": 1189,
+    "id": "f4e80813"
+  },
+  {
+    "productName": "Barts",
+    "description": "Hat from the Guess Medicine. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
+    "brand": "Barts",
+    "sizes": ["m"],
+    "colors": ["#808080"],
+    "images": [
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/heats_4_1.jpg",
+          "./assets/server-data/images/heats_4_2.jpg",
+          "./assets/server-data/images/heats_4_3.jpg"
+        ]
+      }
+    ],
+    "season": ["winter"],
+    "category": "heats",
+    "sex": "unisex",
+    "quantity": 10,
+    "price": 999,
+    "id": "f386ac04"
+  },
+  {
+    "productName": "G-Star Raw heat",
+    "description": "Hat from the G-Star Raw. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
+    "brand": "G-Star Raw",
+    "sizes": ["m"],
+    "colors": ["#bdb76b"],
+    "images": [
+      {
+        "value": "#bdb76b",
+        "url": [
+          "./assets/server-data/images/heats_5_1.jpg",
+          "./assets/server-data/images/heats_5_2.jpg",
+          "./assets/server-data/images/heats_5_3.jpg"
+        ]
+      }
+    ],
+    "season": ["winter"],
+    "category": "heats",
+    "sex": "unisex",
+    "quantity": 10,
+    "price": 1599,
+    "id": "f2b3a6e0"
+  },
+  {
+    "productName": "MEDICINE - SWEETER BASIC",
+    "description": "Sweater from Medicine collection. The round-neck model is made of smooth knitwear.Direct style. Round neckline. Sleeves with tie. The bottom edge on the gum.",
+    "brand": "MEDICINE",
+    "sizes": ["s", "m", "l","xl"],
+    "colors": ["#39354b", "#F5EED5", "#f62721"],
+    "images": [
+      {
+        "value": "#39354b",
+        "url": [
+          "./assets/server-data/images/sweater-1-1-blue.jpg",
+          "./assets/server-data/images/sweater-1-2-blue.jpg",
+          "./assets/server-data/images/sweater-1-3-blue.jpg",
+          "./assets/server-data/images/sweater-1-4-blue.jpg"
+        ]
+      },
+      {
+        "value": "#F5EED5",
+        "url": [
+          "./assets/server-data/images/sweater-1-1-beige.jpg",
+          "./assets/server-data/images/sweater-1-2-beige.jpg",
+          "./assets/server-data/images/sweater-1-3-beige.jpg",
+          "./assets/server-data/images/sweater-1-4-beige.jpg"
+        ]
+      },
+      {
+        "value": "#f62721",
+        "url": [
+          "./assets/server-data/images/sweater-1-1-red.jpg",
+          "./assets/server-data/images/sweater-1-2-red.jpg",
+          "./assets/server-data/images/sweater-1-3-red.jpg",
+          "./assets/server-data/images/sweater-1-4-red.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring","winter"],
+    "quantity": 10,
+    "price": 399,
+    "id": "f4b9af0e"
+  },
+  {
+    "productName": "ANSWEAR - SWEETER",
+    "description": "Sweater from the Answear Collection. Spanish-style cutout made from smooth jersey. ",
+    "brand": "ANSWEAR",
+    "sizes": ["s","m","l"],
+    "colors": ["#ece1d1", "#000000"],
+    "images": [
+      {
+        "value": "#ece1d1",
+        "url": [
+          "./assets/server-data/images/sweater-2-1-beige.jpg",
+          "./assets/server-data/images/sweater-2-2-beige.jpg",
+          "./assets/server-data/images/sweater-2-3-beige.jpg",
+          "./assets/server-data/images/sweater-2-4-beige.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/sweater-2-1-black.jpg",
+          "./assets/server-data/images/sweater-2-2-black.jpg",
+          "./assets/server-data/images/sweater-2-3-black.jpg",
+          "./assets/server-data/images/sweater-2-4-black.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/sweater-2.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 12,
+    "price": 599,
+    "id": "fee7165"
+  },
+  {
+    "productName": "MANGO - SWEATER",
+    "description": "Sweater from the Mango collection. The model with a boat-shaped neck is made of smooth knitwear.",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#c7d3e4", "#000000"],
+    "images": [
+      {
+        "value": " #c7d3e4",
+        "url": [
+          "./assets/server-data/images/sweater-3-1-blue.jpg",
+          "./assets/server-data/images/sweater-3-2-blue.jpg",
+          "./assets/server-data/images/sweater-3-3-blue.jpg",
+          "./assets/server-data/images/sweater-3-1-blue.jpg"
+        ]
+      },
+      {
+        "value": " #000000",
+        "url": [
+          "./assets/server-data/images/sweater-3-1-black.jpg",
+          "./assets/server-data/images/sweater-3-2-black.jpg",
+          "./assets/server-data/images/sweater-3-3-black.jpg",
+          "./assets/server-data/images/sweater-3-1-black.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 5,
+    "price": 945,
+    "id": "f381ae08"
+  },
+  {
+    "productName": "MEDICINE - MANIFESTO JUMPER",
+    "description": "Sweater from the collection Medicine. The model is made of rough knitwear.",
+    "brand": "MEDICINE",
+    "sizes": ["s","m","l"],
+    "colors": ["#e2b835", "#a61518"],
+    "images": [
+      {
+        "value": "#e2b835",
+        "url": [
+          "./assets/server-data/images/sweater-4-1-yellow.jpg",
+          "./assets/server-data/images/sweater-4-2-yellow.jpg",
+          "./assets/server-data/images/sweater-4-3-yellow.jpg",
+          "./assets/server-data/images/sweater-4-4-yellow.jpg"
+        ]
+      },
+      {
+        "value": "#a61518",
+        "url": [
+          "./assets/server-data/images/sweater-4-1-red.jpg",
+          "./assets/server-data/images/sweater-4-2-red.jpg",
+          "./assets/server-data/images/sweater-4-3-red.jpg",
+          "./assets/server-data/images/sweater-4-4-red.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 15,
+    "price": 499,
+    "id": "f3161992"
+  },
+  {
+    "productName": "MANGO - SEMA SWEATER",
+    "description": "Sweater from the Mango collection. The crew neck model is made of smooth knitwear.",
+    "brand": "MANGO",
+    "sizes": ["xs", "s", "m","l"],
+    "colors": ["#adcac2", "#e6c170"],
+    "images": [
+      {
+        "value": "#adcac2",
+        "url": [
+          "./assets/server-data/images/sweater-5-1-green.jpg",
+          "./assets/server-data/images/sweater-5-2-green.jpg",
+          "./assets/server-data/images/sweater-5-3-green.jpg",
+          "./assets/server-data/images/sweater-5-4-green.jpg"
+        ]
+      },
+      {
+        "value": "#e6c170",
+        "url": [
+          "./assets/server-data/images/sweater-5-1-yellow.jpg",
+          "./assets/server-data/images/sweater-5-2-yellow.jpg",
+          "./assets/server-data/images/sweater-5-3-yellow.jpg",
+          "./assets/server-data/images/sweater-5-4-yellow.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 290,
+    "id": "f4957296"
+  },
+  {
+    "productName": "ANSWEAR - SWEATER",
+    "description": "Sweater from the Answear Collection. The model is made of smooth knitwear. Straight cut, round neckline, lowered shoulder line, sleeves with a tie, bottom hem with elastic.",
+    "brand": "ANSWEAR",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#48432e"],
+    "images": [
+      {
+        "value": "#48432e",
+        "url": [
+          "./assets/server-data/images/sweater-6-1-green.jpg",
+          "./assets/server-data/images/sweater-6-2-green.jpg",
+          "./assets/server-data/images/sweater-6-3-green.jpg",
+          "./assets/server-data/images/sweater-6-4-green.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/sweater-6.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 490,
+    "id": "f1a2b5f"
+  },
+  {
+    "productName": "MANGO - ALMA5 SWEATER",
+    "description": "Jumper from the Mango collection. The model is made of smooth knitwear. Straight cut. Smooth knitwear. Model without fastener. Edge with a lapel. Screed finish.",
+    "brand": "MANGO",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#d10b17", "#581f11", "#d0c1b4"],
+    "images": [
+      {
+        "value": "#d10b17",
+        "url": [
+          "./assets/server-data/images/sweater-7-1-red.jpg",
+          "./assets/server-data/images/sweater-7-2-red.jpg",
+          "./assets/server-data/images/sweater-7-3-red.jpg",
+          "./assets/server-data/images/sweater-7-4-red.jpg"
+        ]
+      },
+      {
+        "value": "#581f11",
+        "url": [
+          "./assets/server-data/images/sweater-7-1-brown.jpg",
+          "./assets/server-data/images/sweater-7-2-brown.jpg",
+          "./assets/server-data/images/sweater-7-3-brown.jpg",
+          "./assets/server-data/images/sweater-7-4-brown.jpg"
+        ]
+      },
+      {
+        "value": "#d0c1b4",
+        "url": [
+          "./assets/server-data/images/sweater-7-1-brown.jpg",
+          "./assets/server-data/images/sweater-7-2-brown.jpg",
+          "./assets/server-data/images/sweater-7-3-brown.jpg",
+          "./assets/server-data/images/sweater-7-4-brown.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 15,
+    "price": 790,
+    "id": "f10c1d1"
+  },
+  {
+    "productName": "ANSWEAR - SWEATER",
+    "description": "Sweater from the Answear Collection. The crew neck model is made of smooth knitwear. Free style. Low shoulder line. Round neckline. Thick, stretch knit.",
+    "brand": "ANSWEAR",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#361612"],
+    "images": [
+      {
+        "value": "#361612",
+        "url": [
+          "./assets/server-data/images/sweater-8-1-black.jpg",
+          "./assets/server-data/images/sweater-8-2-black.jpg",
+          "./assets/server-data/images/sweater-8-3-black.jpg",
+          "./assets/server-data/images/sweater-8-4-black.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/sweater-8.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 990,
+    "id": "f57a66c3"
+  },
+  {
+    "productName": "ANSWEAR - SWEATER",
+    "description": "Sweater from the Answear Collection. The crew neck model is made of smooth knitwear. Free style. Low shoulder line. Round neckline. Thick, stretch knit.",
+    "brand": "ANSWEAR",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#361612", "#23232f"],
+    "images": [
+      {
+        "value": "#361612",
+        "url": [
+          "./assets/server-data/images/sweater-9-1-wine.jpg",
+          "./assets/server-data/images/sweater-9-2-wine.jpg",
+          "./assets/server-data/images/sweater-9-3-wine.jpg",
+          "./assets/server-data/images/sweater-9-4-wine.jpg"
+        ]
+      },
+      {
+        "value": "#23232f",
+        "url": [
+          "./assets/server-data/images/sweater-9-1-blue.jpg",
+          "./assets/server-data/images/sweater-9-2-blue.jpg",
+          "./assets/server-data/images/sweater-9-3-blue.jpg",
+          "./assets/server-data/images/sweater-9-4-blue.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/sweater-9.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 990,
+    "id": "f4fc4f6c"
+  },
+  {
+    "productName": "ANSWEAR - SWEATER",
+    "description": "Sweater from the Answear Collection. The model with a V-neck is made of thin knitwear. Free style. Low shoulder line. Thin, stretchy knit.",
+    "brand": "ANSWEAR",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#f19e98", "#5e2522", "#b14221"],
+    "images": [
+      {
+        "value": "#f19e98",
+        "url": [
+          "./assets/server-data/images/sweater-10-1-pink.jpg",
+          "./assets/server-data/images/sweater-10-2-pink.jpg",
+          "./assets/server-data/images/sweater-10-3-pink.jpg",
+          "./assets/server-data/images/sweater-10-4-pink.jpg"
+        ]
+      },
+      {
+        "value": "#5e2522",
+        "url": [
+          "./assets/server-data/images/sweater-10-1-wine.jpg",
+          "./assets/server-data/images/sweater-10-2-wine.jpg",
+          "./assets/server-data/images/sweater-10-3-wine.jpg",
+          "./assets/server-data/images/sweater-10-4-wine.jpg"
+        ]
+      },
+      {
+        "value": "#b14221",
+        "url": [
+          "./assets/server-data/images/sweater-10-1-brown.jpg",
+          "./assets/server-data/images/sweater-10-2-brown.jpg",
+          "./assets/server-data/images/sweater-10-3-brown.jpg",
+          "./assets/server-data/images/sweater-10-4-brown.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/sweater-10.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring","winter"],
+    "quantity": 9,
+    "price": 1190,
+    "id": "f3b2a383"
+  },
+  {
+    "productName": "VERO MODA - COAT",
+    "description": "Coat from the Vero Moda collection. The uninsulated model is made of smooth material. Model without insulation with lining. High collar. Fastens with buttons. Welt pockets. Smooth material.",
+    "brand": "VERO MODA",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#c4a58e", "#000000", "#b14221"],
+    "images": [
+      {
+        "value": "#c4a58e",
+        "url": [
+          "./assets/server-data/images/coat-1-1-beige.jpg",
+          "./assets/server-data/images/coat-1-2-beige.jpg",
+          "./assets/server-data/images/coat-1-3-beige.jpg",
+          "./assets/server-data/images/coat-1-4-beige.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/coat-1-1-black.jpg",
+          "./assets/server-data/images/coat-1-2-black.jpg",
+          "./assets/server-data/images/coat-1-3-black.jpg",
+          "./assets/server-data/images/coat-1-4-black.jpg"
+        ]
+      },
+      {
+        "value": "#b14221",
+        "url": [
+          "./assets/server-data/images/sweater-1-1-brown.jpg",
+          "./assets/server-data/images/sweater-1-2-brown.jpg",
+          "./assets/server-data/images/sweater-1-3-brown.jpg",
+          "./assets/server-data/images/sweater-1-4-brown.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/coat-1.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 1190,
+    "id": "f254c739"
+  },
+
+  {
+    "productName": "ONLY - COAT",
+    "description": "Coat from the collection Only. The slightly warmed model is made of smooth material. Straight cut. Classic lapels. Fastens with a button. The belt is attached. Welt pockets. Lined model.",
+    "brand": "ONLY",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#c68060", "#000000", "#d90018"],
+    "images": [
+      {
+        "value": "#c68060",
+        "url": [
+          "./assets/server-data/images/coat-2-1-beige.jpg",
+          "./assets/server-data/images/coat-2-2-beige.jpg",
+          "./assets/server-data/images/coat-2-3-beige.jpg",
+          "./assets/server-data/images/coat-2-4-beige.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/coat-2-1-black.jpg",
+          "./assets/server-data/images/coat-2-2-black.jpg",
+          "./assets/server-data/images/coat-2-3-black.jpg",
+          "./assets/server-data/images/coat-2-4-black.jpg"
+        ]
+      },
+      {
+        "value": "#d90018",
+        "url": [
+          "./assets/server-data/images/coat-2-1-red.jpg",
+          "./assets/server-data/images/coat-2-2-red.jpg",
+          "./assets/server-data/images/coat-2-3-red.jpg",
+          "./assets/server-data/images/coat-2-4-red.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 1390,
+    "id": "f344f4fa"
+  },
+  {
+    "productName": "ONLY - COAT",
+    "description": "Coat from the collection Only. The slightly warmed model is made of smooth material. Straight cut. Classic lapels. Fastens with a button. The belt is attached. Welt pockets. Lined model.",
+    "brand": "ONLY",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#083d80", "#d62423"],
+    "images": [
+      {
+        "value": "#083d80",
+        "url": [
+          "./assets/server-data/images/coat-3-1-blue.jpg",
+          "./assets/server-data/images/coat-3-2-blue.jpg",
+          "./assets/server-data/images/coat-3-3-blue.jpg",
+          "./assets/server-data/images/coat-3-4-blue.jpg"
+        ]
+      },
+      {
+        "value": "#d62423",
+        "url": [
+          "./assets/server-data/images/coat-3-1-red.jpg",
+          "./assets/server-data/images/coat-3-2-red.jpg",
+          "./assets/server-data/images/coat-3-3-red.jpg",
+          "./assets/server-data/images/coat-3-4-red.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 2390,
+    "id": "f10ef6b5"
+  },
+  {
+    "productName": "ANSWEAR - COAT",
+    "description": "Coat from the Answear Collection. The uninsulated model is made of smooth material. Model without insulation with lining. Free style. Welt pockets. Fastens with buttons.",
+    "brand": "ANSWEAR",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#083d80"],
+    "images": [
+      {
+        "value": "#083d80",
+        "url": [
+          "./assets/server-data/images/coat-4-1-beige.jpg",
+          "./assets/server-data/images/coat-4-2-beige.jpg",
+          "./assets/server-data/images/coat-4-3-beige.jpg",
+          "./assets/server-data/images/coat-4-4-beige.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 2390,
+    "id": "f270ab1f"
+  },
+  {
+    "productName": "ONLY - COAT",
+    "description": "Coat from the collection Only. The uninsulated model is made of smooth material. Straight cut. Fastens with buttons. Classic lapels. Welt pockets. Model without insulation with lining.",
+    "brand": "ANSWEAR",
+    "sizes": ["xs", "s", "m","l"],
+    "colors": ["#083d80", "#083d80", "#083d80"],
+    "images": [
+      {
+        "value": "#083d80",
+        "url": [
+          "./assets/server-data/images/coat-5-1-green.jpg",
+          "./assets/server-data/images/coat-5-2-green.jpg",
+          "./assets/server-data/images/coat-5-3-green.jpg",
+          "./assets/server-data/images/coat-5-4-green.jpg"
+        ]
+      },
+      {
+        "value": "#083d80",
+        "url": [
+          "./assets/server-data/images/coat-5-1-blue.jpg",
+          "./assets/server-data/images/coat-5-2-blue.jpg",
+          "./assets/server-data/images/coat-5-3-blue.jpg",
+          "./assets/server-data/images/coat-5-4-blue.jpg"
+        ]
+      },
+      {
+        "value": "#083d80",
+        "url": [
+          "./assets/server-data/images/coat-5-1-gray.jpg",
+          "./assets/server-data/images/coat-5-2-gray.jpg",
+          "./assets/server-data/images/coat-5-3-gray.jpg",
+          "./assets/server-data/images/coat-5-4-gray.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/coat-5.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 2790,
+    "id": "f5e84613"
+  },
+  {
+    "productName": "VERO MODA - COAT",
+    "description": "Coat from the Vero Moda collection. The uninsulated model is made of smooth material. Model without insulation with lining. Straight cut. Welt pockets. Fastens with a button. Classic lapels.",
+    "brand": "VERO MODA",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#89271f", "#c4baa9", "#25211c"],
+    "images": [
+      {
+        "value": "#89271f",
+        "url": [
+          "./assets/server-data/images/coat-6-1-wine.jpg",
+          "./assets/server-data/images/coat-6-2-wine.jpg",
+          "./assets/server-data/images/coat-6-3-wine.jpg",
+          "./assets/server-data/images/coat-6-4-wine.jpg"
+        ]
+      },
+      {
+        "value": "#c4baa9",
+        "url": [
+          "./assets/server-data/images/coat-6-1-gray.jpg",
+          "./assets/server-data/images/coat-6-2-gray.jpg",
+          "./assets/server-data/images/coat-6-3-gray.jpg",
+          "./assets/server-data/images/coat-6-4-gray.jpg"
+        ]
+      },
+      {
+        "value": "#25211c",
+        "url": [
+          "./assets/server-data/images/coat-6-1-black.jpg",
+          "./assets/server-data/images/coat-6-2-black.jpg",
+          "./assets/server-data/images/coat-6-3-black.jpg",
+          "./assets/server-data/images/coat-6-4-black.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 2450,
+    "id": "f5c41fc1"
+  },
+  {
+    "productName": "JACQUELINE DE YONG - COAT",
+    "description": "Coat from the Jacqueline de Yong collection. The uninsulated model is made of patterned material. The warmed model with a lining. Straight cut. Welt pockets. Classic lapels.",
+    "brand": "JACQUELINE DE YONG",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#89271f"],
+    "images": [
+      {
+        "value": "#89271f",
+        "url": [
+          "./assets/server-data/images/coat-7-1-print.jpg",
+          "./assets/server-data/images/coat-7-2-print.jpg",
+          "./assets/server-data/images/coat-7-3-print.jpg",
+          "./assets/server-data/images/coat-7-4-print.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/coat-7.mp4",
+    "category": "sweater",
+    "sex": "female",
+    "season": [
+      "spring",
+      "winter"
+    ],
+    "quantity": 9,
+    "price": 2290,
+    "id": "f2ea811d"
+  },
+  {
+    "productName": "MANGO - DALI COAT",
+    "description": "Coats from the Mango collection. The uninsulated model is made of wool. Model without insulation with lining. Straight cut. Welt pockets. Double-breasted row of buttons.",
+    "brand": "MANGO",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#51504e", "#907c6b"],
+    "images": [
+      {
+        "value": "#51504e",
+        "url": [
+          "./assets/server-data/images/coat-8-1-gray.jpg",
+          "./assets/server-data/images/coat-8-2-gray.jpg",
+          "./assets/server-data/images/coat-8-3-gray.jpg",
+          "./assets/server-data/images/coat-8-4-gray.jpg"
+        ]
+      },
+      {
+        "value": "#907c6b",
+        "url": [
+          "./assets/server-data/images/coat-8-1-brown.jpg",
+          "./assets/server-data/images/coat-8-2-brown.jpg",
+          "./assets/server-data/images/coat-8-3-brown.jpg",
+          "./assets/server-data/images/coat-8-4-brown.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 2450,
+    "id": "f2e25c4a"
+  },
+  {
+    "productName": "VERO MODA - COAT",
+    "description": "Coat from the Vero Moda collection. The uninsulated model is made of wool. Model without insulation with lining. Straight cut. Welt pockets. Fastens with buttons.",
+    "brand": "VERO MODA",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#675a4d", "#b37251"],
+    "images": [
+      {
+        "value": "#675a4d",
+        "url": [
+          "./assets/server-data/images/coat-9-1-gray.jpg",
+          "./assets/server-data/images/coat-9-2-gray.jpg",
+          "./assets/server-data/images/coat-9-3-gray.jpg",
+          "./assets/server-data/images/coat-9-4-gray.jpg"
+        ]
+      },
+      {
+        "value": "#b37251",
+        "url": [
+          "./assets/server-data/images/coat-9-1-brown.jpg",
+          "./assets/server-data/images/coat-9-2-brown.jpg",
+          "./assets/server-data/images/coat-9-3-brown.jpg",
+          "./assets/server-data/images/coat-9-4-brown.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 2790,
+    "id": "f33035a8"
+  },
+  {
+    "productName": "ANSWEAR - COAT",
+    "description": "Coat from the Answear Collection. The uninsulated model is made of smooth material. Classic lapels. Fastens with a button. Welt pockets. Smooth material. Lined model.",
+    "brand": "ANSWEAR",
+    "sizes": ["xs", "s", "m", "l"],
+    "colors": ["#ecd1ba", "#000000"],
+    "images": [
+      {
+        "value": "#ecd1ba",
+        "url": [
+          "./assets/server-data/images/coat-10-1-beige.jpg",
+          "./assets/server-data/images/coat-10-2-beige.jpg",
+          "./assets/server-data/images/coat-10-3-beige.jpg",
+          "./assets/server-data/images/coat-10-4-beige.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/coat-10-1-black.jpg",
+          "./assets/server-data/images/coat-10-2-black.jpg",
+          "./assets/server-data/images/coat-10-3-black.jpg",
+          "./assets/server-data/images/coat-10-4-black.jpg"
+        ]
+      }
+    ],
+    "video": "",
+    "category": "sweater",
+    "sex": "female",
+    "season": ["spring", "winter"],
+    "quantity": 9,
+    "price": 3590,
+    "id": "fdd0f8d"
+  },
+  {
+    "productName": "MANGO - DRESS",
+    "description": "Dress from the MANGO collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#CD853F", "#D3D3D3"],
+    "images": [
+      {
+        "value": "#CD853F",
+        "url": [
+          "./assets/server-data/images/dress_1_1.jpg",
+          "./assets/server-data/images/dress_1_2.jpg",
+          "./assets/server-data/images/dress_1_3.jpg",
+          "./assets/server-data/images/dress_1_4.jpg"
+        ]
+      },
+      {
+        "value": "#D3D3D3",
+        "url": [
+          "./assets/server-data/images/dress_2_1.jpg",
+          "./assets/server-data/images/dress_2_2.jpg",
+          "./assets/server-data/images/dress_2_3.jpg",
+          "./assets/server-data/images/dress_2_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_1_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "f2257323"
+  },
+  {
+    "productName": "MANGO - DRESS",
+    "description": "Dress from the MANGO collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000", "#32CD32", "#FFFACD"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/dress_3_1.jpg",
+          "./assets/server-data/images/dress_3_2.jpg",
+          "./assets/server-data/images/dress_3_3.jpg",
+          "./assets/server-data/images/dress_3_4.jpg"
+        ]
+      },
+      {
+        "value": "#32CD32",
+        "url": [
+          "./assets/server-data/images/dress_4_1.jpg",
+          "./assets/server-data/images/dress_4_2.jpg",
+          "./assets/server-data/images/dress_4_3.jpg",
+          "./assets/server-data/images/dress_4_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_3_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "f147d88"
+  },
+  {
+    "productName": "MANGO - DRESS",
+    "description": "Dress from the MANGO collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#FFFACD"],
+    "images": [
+      {
+        "value": "#FFFACD",
+        "url": [
+          "./assets/server-data/images/dress_5_1.jpg",
+          "./assets/server-data/images/dress_5_2.jpg",
+          "./assets/server-data/images/dress_5_3.jpg",
+          "./assets/server-data/images/dress_5_4.jpg"
+        ]
+      },
+      {
+        "value": "#FFFACD",
+        "url": [
+          "./assets/server-data/images/dress_6_1.jpg",
+          "./assets/server-data/images/dress_6_2.jpg",
+          "./assets/server-data/images/dress_6_3.jpg",
+          "./assets/server-data/images/dress_6_4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/dress_7_1.jpg",
+          "./assets/server-data/images/dress_7_2.jpg",
+          "./assets/server-data/images/dress_7_3.jpg",
+          "./assets/server-data/images/dress_7_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_5_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "f5b0b072"
+  },
+  {
+    "productName": "MANGO - DRESS",
+    "description": "Dress from the MANGO collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#FFFACD", "#32CD32"],
+    "images": [
+      {
+        "value": "#32CD32",
+        "url": [
+          "./assets/server-data/images/dress_8_1.jpg",
+          "./assets/server-data/images/dress_8_2.jpg",
+          "./assets/server-data/images/dress_8_3.jpg",
+          "./assets/server-data/images/dress_8_4.jpg"
+        ]
+      },
+      {
+        "value": "#32CD32",
+        "url": [
+          "./assets/server-data/images/dress_9_1.jpg",
+          "./assets/server-data/images/dress_9_2.jpg",
+          "./assets/server-data/images/dress_9_3.jpg",
+          "./assets/server-data/images/dress_9_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_8_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "f22aec3c"
+  },
+  {
+    "productName": "MANGO - DRESS",
+    "description": "Dress from the MANGO collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#32CD32", "#000000", "#FFFACD"],
+    "images": [
+      
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/dress_10_1.jpg",
+          "./assets/server-data/images/dress_10_2.jpg",
+          "./assets/server-data/images/dress_10_3.jpg",
+          "./assets/server-data/images/dress_10_4.jpg"
+        ]
+      },
+      {
+        "value": "#FFFACD",
+        "url": [
+          "./assets/server-data/images/dress_11_1.jpg",
+          "./assets/server-data/images/dress_11_2.jpg",
+          "./assets/server-data/images/dress_11_3.jpg",
+          "./assets/server-data/images/dress_11_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_10_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "faf444"
+  },
+  {
+    "productName": "ANSWEAR - DRESS",
+    "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000", "#808080"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/dress_12_1.jpg",
+          "./assets/server-data/images/dress_12_2.jpg",
+          "./assets/server-data/images/dress_12_3.jpg",
+          "./assets/server-data/images/dress_12_4.jpg"
+        ]
+      },
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/dress_13_1.jpg",
+          "./assets/server-data/images/dress_13_2.jpg",
+          "./assets/server-data/images/dress_13_3.jpg",
+          "./assets/server-data/images/dress_13_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_12_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "f24b339a"
+  },
+  {
+    "productName": "ANSWEAR - DRESS",
+    "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#808080", "#000000"],
+    "images": [
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/dress_14_1.jpg",
+          "./assets/server-data/images/dress_14_2.jpg",
+          "./assets/server-data/images/dress_14_3.jpg",
+          "./assets/server-data/images/dress_14_4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/dress_15_1.jpg",
+          "./assets/server-data/images/dress_15_2.jpg",
+          "./assets/server-data/images/dress_15_3.jpg",
+          "./assets/server-data/images/dress_15_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_14_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "f164a379"
+  },
+  {
+    "productName": "ANSWEAR - DRESS",
+    "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#ffffff", "#080b5c", "fac0f4", "#000000"],
+    "images": [
+      {
+        "value": "#ffffff",
+        "url": [
+          "./assets/server-data/images/dress_16_1.jpg",
+          "./assets/server-data/images/dress_16_2.jpg",
+          "./assets/server-data/images/dress_16_3.jpg",
+          "./assets/server-data/images/dress_16_4.jpg"
+        ]
+      },
+      {
+        "value": "#080b5c",
+        "url": [
+          "./assets/server-data/images/dress_17_1.jpg",
+          "./assets/server-data/images/dress_17_2.jpg",
+          "./assets/server-data/images/dress_17_3.jpg",
+          "./assets/server-data/images/dress_17_4.jpg"
+        ]
+      },
+      {
+        "value": "#fac0f4",
+        "url": [
+          "./assets/server-data/images/dress_18_1.jpg",
+          "./assets/server-data/images/dress_18_2.jpg",
+          "./assets/server-data/images/dress_18_3.jpg",
+          "./assets/server-data/images/dress_18_4.jpg"
+        ]
+      },
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/dress_19_1.jpg",
+          "./assets/server-data/images/dress_19_2.jpg",
+          "./assets/server-data/images/dress_19_3.jpg",
+          "./assets/server-data/images/dress_19_4.jpg"
+        ]
+      }
+    ],
+    "video": "./assets/server-data/video/dress_16_v.mp4",
+    "category": "dress",
+    "sex": "female",
+    "season": ["spring", "summer", "fall"],
+    "quantity": 12,
+    "price": 599,
+    "id": "f3062811"
+  },
+  {
+    "productName": "MANGO - PANTS LONDONPU",
+    "description": "Mango pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_1_1.jpg",
+          "./assets/server-data/images/pants_1_2.jpg",
+          "./assets/server-data/images/pants_1_3.jpg",
+          "./assets/server-data/images/pants_1_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f42f9066"
+  },
+  {
+    "productName": "MANGO - PANTS",
+    "description": "Mango pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_2_1.jpg",
+          "./assets/server-data/images/pants_2_2.jpg",
+          "./assets/server-data/images/pants_2_3.jpg",
+          "./assets/server-data/images/pants_2_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f180c06e"
+  },
+  {
+    "productName": "ANSWEAR - PANTS",
+    "description": "ANSWEAR pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_3_1.jpg",
+          "./assets/server-data/images/pants_3_2.jpg",
+          "./assets/server-data/images/pants_3_3.jpg",
+          "./assets/server-data/images/pants_3_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f130119c"
+  },
+  {
+    "productName": "ANSWEAR - PANTS",
+    "description": "ANSWEAR pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_4_1.jpg",
+          "./assets/server-data/images/pants_4_2.jpg",
+          "./assets/server-data/images/pants_4_3.jpg",
+          "./assets/server-data/images/pants_4_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f3bffdad"
+  },
+  {
+    "productName": "ANSWEAR - PANTS",
+    "description": "ANSWEAR pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#CDCDCD"],
+    "images": [
+      {
+        "value": "#CDCDCD",
+        "url": [
+          "./assets/server-data/images/pants_5_1.jpg",
+          "./assets/server-data/images/pants_5_2.jpg",
+          "./assets/server-data/images/pants_5_3.jpg",
+          "./assets/server-data/images/pants_5_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "fafa6e4"
+  },
+  {
+    "productName": "ANSWEAR - PANTS",
+    "description": "ANSWEAR pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_6_1.jpg",
+          "./assets/server-data/images/pants_6_2.jpg",
+          "./assets/server-data/images/pants_6_3.jpg",
+          "./assets/server-data/images/pants_6_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f23a8f6b"
+  },
+  {
+    "productName": "ANSWEAR - PANTS",
+    "description": "ANSWEAR pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_7_1.jpg",
+          "./assets/server-data/images/pants_7_2.jpg",
+          "./assets/server-data/images/pants_7_3.jpg",
+          "./assets/server-data/images/pants_7_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f2ca590c"
+  },
+  {
+    "productName": "ANSWEAR - PANTS",
+    "description": "ANSWEAR pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_8_1.jpg",
+          "./assets/server-data/images/pants_8_2.jpg",
+          "./assets/server-data/images/pants_8_3.jpg",
+          "./assets/server-data/images/pants_8_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f2a1f1f"
+  },
+  {
+    "productName": "ANSWEAR - PANTS",
+    "description": "ANSWEAR pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "ANSWEAR",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_9_1.jpg",
+          "./assets/server-data/images/pants_9_2.jpg",
+          "./assets/server-data/images/pants_9_3.jpg",
+          "./assets/server-data/images/pants_9_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f209be9d"
+  },
+  {
+    "productName": "MANGO - PANTS",
+    "description": "MANGO pants. The model is made of imitation leather.\n\n- A lean model.\n- Fastens on a secret mole.\n- High waist.\n\nPattern: solid\nCut: Skins\nComposition:\n100% Polyurethane",
+    "brand": "MANGO",
+    "sizes": ["s", "m", "l", "xl"],
+    "colors": ["#000000"],
+    "images": [
+      {
+        "value": "#000000",
+        "url": [
+          "./assets/server-data/images/pants_10_1.jpg",
+          "./assets/server-data/images/pants_10_2.jpg",
+          "./assets/server-data/images/pants_10_3.jpg",
+          "./assets/server-data/images/pants_10_4.jpg"
+        ]
+      }
+    ],
+    "category": "pants",
+    "sex": "female",
+    "season": ["spring", "summer", "fall", "winter"],
+    "quantity": 22,
+    "price": 499,
+    "id": "f1b3d28d"
   }
 ]
