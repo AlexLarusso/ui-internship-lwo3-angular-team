@@ -37,12 +37,14 @@ export class ProductShortInfoService {
       case 'similar':
         return this.httpService.getData()
           .pipe(map(data => this.productFilterService
-            .findSimilar(data, this.similarOptions).map((item => ({
+            .findSimilar(data, this.similarOptions)
+            .map((item => ({
               productTitle: item.productName,
               imgUrl: item.images[0].url[0],
               productPrice: item.price + ' uah',
               productId: item.id,
-            })))));
+            })))
+          ));
     }
   }
 }
