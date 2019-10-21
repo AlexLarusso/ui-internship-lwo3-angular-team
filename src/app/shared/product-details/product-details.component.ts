@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { ProductShortInfoService } from '../services/product-short-info.service';
 import { ProductService } from '../services/product.service';
 import { map } from 'rxjs/operators';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.html'
