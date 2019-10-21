@@ -16,14 +16,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
   public aboutProductsText = `Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
     lacinia eget consectetur sed, convallis at tellus.`;
-  public getProducts: Subscription;
+  public getProductsSub: Subscription;
   public productData: Array<IProductShortInfo>;
 
   constructor(private productList: ProductShortInfoService) {
   }
 
   public ngOnInit(): void {
-    this.getProducts = this.productList.getShortInfo()
+    this.getProductsSub = this.productList.getShortInfo()
       .subscribe(data => this.productData = data);
   }
 
