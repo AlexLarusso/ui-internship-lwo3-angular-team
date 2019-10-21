@@ -194,7 +194,7 @@
           "blouse_13_4.jpg"]
       }
     ],
-    "video": "blouse_12_v.mp4",
+    "video": "./assets/server-data/video/blouse_12_v.mp4",
     "sex": "female",
     "category": "blouse",
     "season": ["spring", "fall", "summer", "winter"],
@@ -224,7 +224,7 @@
           "./assets/server-data/images/blouse_15_4.jpg"]
       }
     ],
-    "video": "blouse_14_v.mp4",
+    "video": "./assets/server-data/video/blouse_14_v.mp4",
     "category": "blouse",
     "season": ["spring", "fall", "summer", "winter"],
     "sex": "female",
@@ -254,7 +254,7 @@
           "./assets/server-data/images/blouse_17_4.jpg"]
       }
     ],
-    "video": "blouse_16_v.mp4",
+    "video": "./assets/server-data/video/blouse_16_v.mp4",
     "category": "blouse",
     "season": ["spring", "fall", "summer", "winter"],
     "sex": "female",
@@ -323,7 +323,7 @@
           "./assets/server-data/images/skirt_21_4.jpg"]
       }
     ],
-    "video": "skirt_21_v.mp4",
+    "video": "./assets/server-data/video/skirt_21_v.mp4",
     "category": "skirt",
     "sex": "female",
     "season": ["summer"],
@@ -505,7 +505,7 @@
           "./assets/server-data/images/skirt_31_4.jpg"]
       }
     ],
-    "video": "skirt_31_v.mp4",
+    "video": "./assets/server-data/video/skirt_31_v.mp4",
     "category": "skirt",
     "sex": "female",
     "season": ["spring", "summer"],
@@ -572,7 +572,7 @@
         ]
       }
     ],
-    "video": "./video/tommy-all.mp4",
+    "video": "./assets/server-data/video/tommy-all.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -626,7 +626,7 @@
         ]
       }
     ],
-    "video": "./video/camel-active.mp4",
+    "video": "./assets/server-data/video/camel-active.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -649,7 +649,7 @@
           "./assets/server-data/images/polo-rl-black-1.3.jpg",
           "./assets/server-data/images/polo-rl-black-1.4.jpg"
         ],
-        "video": "./video/polo-rl-black.mp4"
+        "video": "./assets/server-data/video/polo-rl-black.mp4"
       },
       {
         "value": "#ffffff",
@@ -659,7 +659,7 @@
           "./assets/server-data/images/polo-rl-white-1.3.jpg",
           "./assets/server-data/images/polo-rl-white-1.4.jpg"
         ],
-        "video": "./video/polo-rl-white.mp4"
+        "video": "./assets/server-data/video/polo-rl-white.mp4"
       },
       {
         "value": "#00064d",
@@ -671,7 +671,7 @@
         ]
       }
     ],
-    "video": "./video/polo-rl-blue.mp4",
+    "video": "./assets/server-data/video/polo-rl-blue.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -714,7 +714,7 @@
         ]
       }
     ],
-    "video": "./video/scotch-soda-green.mp4",
+    "video": "./assets/server-data/video/scotch-soda-green.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -739,7 +739,7 @@
         ]
       }
     ],
-    "video": "./video/levis-sol-green.mp4",
+    "video": "./assets/server-data/video/levis-sol-green.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -773,7 +773,7 @@
         ]
       }
     ],
-    "video": "./video/levis-red.mp4",
+    "video": "./assets/server-data/video/levis-red.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -796,7 +796,7 @@
           "./assets/server-data/images/wrangler-red-1.3.jpg",
           "./assets/server-data/images/wrangler-red-1.4.jpg"
         ],
-        "video": "./video/wrangler-red.mp4"
+        "video": "./assets/server-data/video/wrangler-red.mp4"
       }
     ],
     "sex": "man",
@@ -835,7 +835,7 @@
         ]
       }
     ],
-    "video": "./video/polorl-lightblue.mp4",
+    "video": "./assets/server-data/video/polorl-lightblue.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -878,7 +878,7 @@
         ]
       }
     ],
-    "video": "./video/medicine-all.mp4",
+    "video": "./assets/server-data/video/medicine-all.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -912,7 +912,7 @@
         ]
       }
     ],
-    "video": "./video/armani-all.mp4",
+    "video": "./assets/server-data/video/armani-all.mp4",
     "sex": "man",
     "category": "shirt",
     "season": ["fall", "spring"],
@@ -937,10 +937,7 @@
         ]
       }
     ],
-    "video": {
-      "colors": "#ff0000",
-      "url": "t-shirt_1_v.mp4"
-    },
+    "video": "./assets/server-data/video/t-shirt_1_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -974,7 +971,7 @@
         ]
       }
     ],
-    "video": "t-shirt_2_1.mp4",
+    "video": "./assets/server-data/video/t-shirt_2_1.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -999,7 +996,7 @@
         ]
       }
     ],
-    "video": "t-shirt_3_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_3_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1024,7 +1021,7 @@
         ]
       }
     ],
-    "video": "t-shirt_4_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_4_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1058,7 +1055,7 @@
         ]
       }
     ],
-    "video": "t-shirt_5_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_5_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1083,7 +1080,7 @@
         ]
       }
     ],
-    "video": "t-shirt_6_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_6_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1135,7 +1132,7 @@
         ]
       }
     ],
-    "video": "t-shirt_7_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_7_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1178,7 +1175,7 @@
         ]
       }
     ],
-    "video": "t-shirt_8_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_8_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1212,7 +1209,7 @@
         ]
       }
     ],
-    "video": "t-shirt_9_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_9_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1246,7 +1243,7 @@
         ]
       }
     ],
-    "video": "t-shirt_10_v.mp4",
+    "video": "./assets/server-data/video/t-shirt_10_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
     "sex": "male",
@@ -1446,7 +1443,7 @@
         ]
       }
     ],
-    "video": "sweater-2.mp4",
+    "video": "./assets/server-data/video/sweater-2.mp4",
     "category": "sweater",
     "sex": "female",
     "season": ["spring", "winter"],
@@ -1573,7 +1570,7 @@
         ]
       }
     ],
-    "video": "sweater-6.mp4",
+    "video": "./assets/server-data/video/sweater-6.mp4",
     "category": "sweater",
     "sex": "female",
     "season": ["spring", "winter"],
@@ -1641,7 +1638,7 @@
         ]
       }
     ],
-    "video": "",
+    "video": "./assets/server-data/video/sweater-8.mp4",
     "category": "sweater",
     "sex": "female",
     "season": ["spring", "winter"],
@@ -1675,7 +1672,7 @@
         ]
       }
     ],
-    "video": "sweater-9.mp4",
+    "video": "./assets/server-data/video/sweater-9.mp4",
     "category": "sweater",
     "sex": "female",
     "season": ["spring", "winter"],
@@ -1718,7 +1715,7 @@
         ]
       }
     ],
-    "video": "",
+    "video": "./assets/server-data/video/sweater-10.mp4",
     "category": "sweater",
     "sex": "female",
     "season": ["spring","winter"],
@@ -1761,7 +1758,7 @@
         ]
       }
     ],
-    "video": "sweater-10.mp4",
+    "video": "./assets/server-data/video/coat-1.mp4",
     "category": "sweater",
     "sex": "female",
     "season": ["spring", "winter"],
@@ -1907,7 +1904,7 @@
         ]
       }
     ],
-    "video": "coat-5.mp4",
+    "video": "./assets/server-data/video/coat-5.mp4",
     "category": "sweater",
     "sex": "female",
     "season": ["spring", "winter"],
@@ -1975,7 +1972,7 @@
         ]
       }
     ],
-    "video": "coat-7.mp4",
+    "video": "./assets/server-data/video/coat-7.mp4",
     "category": "sweater",
     "sex": "female",
     "season": [
@@ -2114,6 +2111,7 @@
         ]
       }
     ],
+    "video": "./assets/server-data/video/dress_1_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "fall"],
@@ -2145,17 +2143,9 @@
           "./assets/server-data/images/dress_4_3.jpg",
           "./assets/server-data/images/dress_4_4.jpg"
         ]
-      },
-      {
-        "value": "#FFFACD",
-        "url": [
-          "./assets/server-data/images/dress_5_1.jpg",
-          "./assets/server-data/images/dress_5_2.jpg",
-          "./assets/server-data/images/dress_5_3.jpg",
-          "./assets/server-data/images/dress_5_4.jpg"
-        ]
       }
     ],
+    "video": "./assets/server-data/video/dress_3_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "fall"],
@@ -2198,6 +2188,7 @@
         ]
       }
     ],
+    "video": "./assets/server-data/video/dress_5_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "fall"],
@@ -2231,6 +2222,7 @@
         ]
       }
     ],
+    "video": "./assets/server-data/video/dress_8_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "fall"],
@@ -2265,6 +2257,7 @@
         ]
       }
     ],
+    "video": "./assets/server-data/video/dress_10_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "fall"],
@@ -2298,6 +2291,7 @@
         ]
       }
     ],
+    "video": "./assets/server-data/video/dress_12_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "fall"],
@@ -2331,6 +2325,7 @@
         ]
       }
     ],
+    "video": "./assets/server-data/video/dress_14_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "fall"],
@@ -2343,10 +2338,10 @@
     "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
     "brand": "ANSWEAR",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#000000", "#FFFFFF", "#000000"],
+    "colors": ["#ffffff", "#080b5c", "fac0f4", "#000000"],
     "images": [
       {
-        "value": "#000000",
+        "value": "#ffffff",
         "url": [
           "./assets/server-data/images/dress_16_1.jpg",
           "./assets/server-data/images/dress_16_2.jpg",
@@ -2355,7 +2350,7 @@
         ]
       },
       {
-        "value": "#FFFFFF",
+        "value": "#080b5c",
         "url": [
           "./assets/server-data/images/dress_17_1.jpg",
           "./assets/server-data/images/dress_17_2.jpg",
@@ -2364,29 +2359,14 @@
         ]
       },
       {
-        "value": "#000000",
+        "value": "#fac0f4",
         "url": [
           "./assets/server-data/images/dress_18_1.jpg",
           "./assets/server-data/images/dress_18_2.jpg",
           "./assets/server-data/images/dress_18_3.jpg",
           "./assets/server-data/images/dress_18_4.jpg"
         ]
-      }
-    ],
-    "category": "dress",
-    "sex": "female",
-    "season": ["spring", "summer", "fall"],
-    "quantity": 12,
-    "price": 599,
-    "id": "f3062811"
-  },
-  {
-    "productName": "ANSWEAR - DRESS",
-    "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
-    "brand": "ANSWEAR",
-    "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#000000", "#FFFFFF"],
-    "images": [
+      },
       {
         "value": "#000000",
         "url": [
@@ -2397,12 +2377,13 @@
         ]
       }
     ],
+    "video": "./assets/server-data/video/dress_16_v.mp4",
     "category": "dress",
     "sex": "female",
     "season": ["spring", "summer", "fall"],
     "quantity": 12,
     "price": 599,
-    "id": "f470cba5"
+    "id": "f3062811"
   },
   {
     "productName": "MANGO - PANTS LONDONPU",
