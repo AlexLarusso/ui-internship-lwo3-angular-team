@@ -1,0 +1,15 @@
+<div class="content__container">
+  <div class="col-12 menu">
+    <ul class="col-4 menu__container">
+      <li *ngFor="let category of categories">
+        <a routerLink="/{{ category | lowercase }}">{{ category }}</a>
+      </li>
+    </ul>
+    <app-main-logo logoColor="dark" class="logo col-4"></app-main-logo>
+    <ul class="col-4 menu__container">
+      <li *ngFor="let season of seasons">
+        <a routerLink="/{{ season | lowercase }}">{{ season }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

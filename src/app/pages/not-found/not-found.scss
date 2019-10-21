@@ -1,0 +1,9 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+		margin: 95px 0;
+	}
+}

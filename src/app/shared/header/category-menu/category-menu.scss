@@ -1,0 +1,45 @@
+@import '../../../styles/variables';
+
+.menu {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+  }
+}
+
+li {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.logo {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 992px) {
+  li {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+
+    &__container {
+      width: 100%;
+    }
+  }
+
+  .logo {
+    width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+.parallax {
+  &__container {
+    height: 100vh;
+    background: url('../../../assets/img/beauty-casual-curly.jpg') top right / cover no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .parallax {
+    &__container {
+      background-position: center;
+    }
+  }
+}

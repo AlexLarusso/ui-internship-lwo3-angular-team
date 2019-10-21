@@ -1,0 +1,58 @@
+@import '../../styles/_variables.scss';
+
+.product-item {
+  &__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px;
+    width: 250px;
+    height: 400px;
+    background-color: $bgColorLight;
+    text-align: center;
+  }
+
+  &__picture {
+    margin: 20px 0 5px;
+    height: 320px;
+    background: $bgColorMedium;
+    overflow: hidden;
+
+    &__container {
+      position: relative;
+      display: flex;;
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+  }
+
+  &__price {
+    font-size: 14px;
+    font-family: $mainFontBold;
+    color: $accentColor;
+  }
+}
+
+.wish {
+  &__btn {
+    width: 10px;
+    height: 10px;
+    background: inherit;
+  }
+
+  &__icon {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    font-size: 1.3rem;
+    color: $fontColorLight;
+  
+    &:hover {
+      color: $wishHeartColor;
+    }
+  }
+}
