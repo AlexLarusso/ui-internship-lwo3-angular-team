@@ -112,7 +112,7 @@
       },
       {
         "value": "#fffff",
-        "url": ["blouse_9_1.jpg",
+        "url": ["./assets/server-data/images/blouse_9_1.jpg",
           "./assets/server-data/images/blouse_9_2.jpg",
           "./assets/server-data/images/blouse_9_3.jpg",
           "./assets/server-data/images/blouse_9_4.jpg"]

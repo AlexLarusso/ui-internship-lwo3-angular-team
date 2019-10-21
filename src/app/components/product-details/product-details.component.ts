@@ -3,7 +3,7 @@ import { IProductDetails } from "src/app/interfaces/product-details.interface";
 import { IProductOptions } from "src/app/interfaces/product-options.interface";
 
 @Component({
-  selector: "app-product-details",
+  selector: 'app-product-details',
   templateUrl: "./product-details.html",
   styleUrls: ["./product-details.scss"]
 })
@@ -20,8 +20,6 @@ export class ProductDetailsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.productDetails.description.detail);
-
     this.addDescriptionNote('Detail',
       this.productDetails.description.detail);
     this.addDescriptionNote('Style',
