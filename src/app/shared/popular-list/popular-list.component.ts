@@ -14,14 +14,14 @@ import { IProductShortInfo } from '../../interfaces/product-short-info.interface
 })
 export class PopularListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
-  public getProducts: Subscription;
+  public getProductsSub: Subscription;
   public productData: Array<IProductShortInfo>;
 
   constructor(private productList: ProductShortInfoService) {
   }
 
   public ngOnInit(): void {
-    this.getProducts = this.productList.getShortInfo()
+    this.getProductsSub = this.productList.getShortInfo()
       .subscribe(data => this.productData = data);
   }
 

@@ -44,7 +44,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
 
   public faArrowLeft = faArrowLeft;
   public faArrowRight = faArrowRight;
-  public getProducts: Subscription;
+  public getProductsSub: Subscription;
   public canMoveToNext = true;
   public canMoveToPrev = false;
   public productContainer: HTMLElement;
@@ -85,7 +85,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   constructor(private productList: ProductShortInfoService) { }
 
   public ngOnInit(): void {
-    this.getProducts = this.productList.getShortInfo()
+    this.getProductsSub = this.productList.getShortInfo()
       .subscribe((data) => this.productData = data);
 
     this.pageWidth = window.innerWidth;
