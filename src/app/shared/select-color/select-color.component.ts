@@ -6,9 +6,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./select-color.scss']
 })
 export class SelectColorComponent {
-  @Input() public colors: Array<number>;
+  @Input() colors: Array<number>;
   @Output() colorSelect: EventEmitter<number> = new EventEmitter<number>();
-  selectedColorID: number;
+
+  public selectedColorID: number;
 
   constructor() { }
 

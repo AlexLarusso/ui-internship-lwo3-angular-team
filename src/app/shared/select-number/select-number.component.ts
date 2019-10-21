@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faPlusCircle, faMinusCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,7 +7,8 @@ import { faPlusCircle, faMinusCircle, IconDefinition } from '@fortawesome/free-s
   styleUrls: ['select-number.scss']
 })
 export class SelectNumberComponent {
-  @Input() private maxNumber: number;
+  @Input() maxNumber: number;
+  @Output() numberSelect: EventEmitter<number> = new EventEmitter<number>();
 
   public minusIcon: IconDefinition;
   public plusIcon: IconDefinition;
@@ -29,13 +30,13 @@ export class SelectNumberComponent {
     const nextNum = this.value + i
     if (nextNum <= this.maxNumber && nextNum > 0) {
         this.value = nextNum;
+        this.numberSelect.emit(nextNum);
         this.valueLimit = false;
     } else {
-      this.valueLimit = true;
-      setTimeout(() => {
-        this.valueLimit = false;
-      }, 500);
+        this.valueLimit = true;
+        setTimeout(() => {
+          this.valueLimit = false;
+        }, 500);
     }
-    
   }
 }

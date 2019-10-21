@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+
 import { IProductDetails } from "src/app/interfaces/product-details.interface";
 import { IProductOptions } from "src/app/interfaces/product-options.interface";
 
@@ -8,18 +9,15 @@ import { IProductOptions } from "src/app/interfaces/product-options.interface";
   styleUrls: ["./product-details.scss"]
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input() private productDetails: IProductDetails;
+  @Input() productDetails: IProductDetails;
 
-  public productOptions: IProductOptions;
   public productDescription: {
     title: string;
     text: string;
   }[] = [];
-  public currentCurrency = "UAH";
+  public currentCurrency: string = "UAH";
 
-  constructor() {}
-
-  ngOnInit() {
+  public ngOnInit(): void {
     this.addDescriptionNote('Detail',
       this.productDetails.description.detail);
     this.addDescriptionNote('Style',
@@ -29,9 +27,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   private addDescriptionNote(title: string, text: string) {
-    this.productDescription.push({
-      title: title,
-      text: text
-    });
+    this.productDescription.push({ title: title, text: text });
   }
 }
