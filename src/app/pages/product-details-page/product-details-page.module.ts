@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { SimilarProductsComponent } from 'src/app/components/similar-products/similar-products.component';
 

@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { Subscription } from 'rxjs';
 
-import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
-import { ProductService } from '../services/product.service';
+import { IProductShortInfo } from 'src/app/interfaces';
+import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
 
 @AutoUnsubscribe()

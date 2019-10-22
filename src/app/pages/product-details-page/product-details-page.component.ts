@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { Observable } from 'rxjs';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-import { IProduct } from 'src/app/interfaces/product.interface';
-import { ProductService } from 'src/app/shared/services/product.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { IProduct } from 'src/app/interfaces';
+import { ProductService } from 'src/app/shared/services';
 
 @AutoUnsubscribe()
 @Component({
@@ -16,12 +16,12 @@ import { map } from 'rxjs/operators';
 export class ProductDetailsPageComponent implements OnInit, OnDestroy{
   public productSource$: Observable<IProduct> = new Observable<IProduct>();
 
-  constructor(private productService: ProductService,
-    private route: ActivatedRoute) { }
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) { }
 
   public ngOnInit(): void {
-    console.log('pdp');
-
     this.route.params.subscribe(value => {
       this.productSource$ = this.productService
         .getProductById(value.id);
@@ -29,5 +29,4 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy{
   }
 
   public ngOnDestroy(): void { }
-
 }

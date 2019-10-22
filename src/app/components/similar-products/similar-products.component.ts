@@ -1,13 +1,15 @@
 import { Component, OnDestroy, Input } from '@angular/core';
+
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { Subscription } from 'rxjs';
 
-import { ProductService } from 'src/app/shared/services/product.service';
+import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
 
-import { IProductShortInfo } from 'src/app/interfaces/product-short-info.interface';
-import { IProductSimilarOptions } from 'src/app/interfaces/product-similar-options.interface';
-import { IProduct } from 'src/app/interfaces/product.interface';
+import {
+  IProductShortInfo, IProductSimilarOptions, IProduct
+ } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Component({
@@ -15,12 +17,12 @@ import { IProduct } from 'src/app/interfaces/product.interface';
   templateUrl: './similar-products.html',
 })
 export class SimilarProductsComponent implements OnDestroy {
-  @Input() product: IProduct;
+  @Input() public product: IProduct;
 
-  public similarProductsArray: Array<IProductShortInfo> = [];
+  public similarProducts: Array<IProductShortInfo> = [];
+  public productServiceSub: Subscription;
 
   private productSimilarOptions: IProductSimilarOptions;
-  private productServiceSub: Subscription;
 
   constructor(private productService: ProductService) { }
 
@@ -30,9 +32,9 @@ export class SimilarProductsComponent implements OnDestroy {
       sex: this.product.sex,
       id: this.product.id
     };
-    this.productService
+    this.productServiceSub = this.productService
       .getSimilarProducts(this.productSimilarOptions, ProductFormat.short)
-        .subscribe(products => this.similarProductsArray = products);
+        .subscribe(products => this.similarProducts = products);
   }
 
   public ngOnDestroy(): void { }

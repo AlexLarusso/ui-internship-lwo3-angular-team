@@ -1,18 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { Subscription } from 'rxjs';
 
-import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
-import { ProductService } from 'src/app/shared/services/product.service';
+import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductFormat } from 'src/app/app.enum';
+import { ProductService } from 'src/app/shared/services';
 
 @AutoUnsubscribe()
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.scss'],
-  providers: [ProductService]
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
@@ -21,13 +21,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public getProductsSub: Subscription;
   public productData: Array<IProductShortInfo>;
 
-  constructor(private productService: ProductService) {
-  }
+  constructor(private productService: ProductService) { }
 
   public ngOnInit(): void {
     this.getProductsSub = this.productService.getProducts(ProductFormat.short)
       .subscribe(data => this.productData = data);
   }
 
-  public ngOnDestroy(): void {}
+  public ngOnDestroy(): void { }
 }

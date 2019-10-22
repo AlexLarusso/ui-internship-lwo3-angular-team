@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LocalStorageService } from '../../shared/services/local-storage.service';
-import { EnumRegExp } from '../../app.enum';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { EnumRegExp } from 'src/app/app.enum';
 
 @Component({
   selector: 'app-join-us',
