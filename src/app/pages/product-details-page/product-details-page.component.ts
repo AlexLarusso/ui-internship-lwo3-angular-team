@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { IProduct } from 'src/app/interfaces/product.interface';
@@ -21,24 +21,22 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy{
   public productSub: Subscription;
   public productsimilarOptionsSub: Subscription;
 
-  constructor(private productService: ProductService,
+  constructor(
+    private productService: ProductService,
     private shortInfoService: ProductShortInfoService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute
+  ) { }
 
   public ngOnInit(): void {
-    this.productSub = this.route.params
-      .subscribe(value => this.productSource$ =
-        this.productService.getProduct(value.id));
-
-    this.productsimilarOptionsSub = this.productService
-      .getProduct(this.route.snapshot.paramMap.get('id'))
-        .pipe(map(data => ({
-          sex: data.sex,
-          category: data.category,
-          id: data.id
-        })
-      ))
-      .subscribe(data => this.shortInfoService.similarOptions = data);
+    this.productSub = this.route.params.pipe(
+      switchMap(value => this.productSource$ =
+        this.productService.getProduct(value.id)
+      )
+    ).subscribe(data => this.shortInfoService.similarOptions = {
+        sex: data.sex,
+        category: data.category,
+        id: data.id
+    });
   }
 
   public ngOnDestroy(): void { }

@@ -8,7 +8,7 @@ import { IProductDetails } from "src/app/interfaces/product-details.interface";
   styleUrls: ["./product-details.scss"]
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input() productDetails: IProductDetails;
+  @Input() public productDetails: IProductDetails;
 
   public productDescription: {
     title: string;

@@ -7,7 +7,7 @@
   </div>
   <app-product-details [productDetails]="productDetails">
     <div class="product-options">
-      <app-dropdown class="option" [default]="'Size'" [options]="productDetails.options.sizes"
+      <app-dropdown class="option" default="Size" [options]="productDetails.options.sizes"
         (itemSelect)="handleSizeSelect($event)">
       </app-dropdown>
       <app-select-number class="option" [maxNumber]="productDetails.options.quantity"

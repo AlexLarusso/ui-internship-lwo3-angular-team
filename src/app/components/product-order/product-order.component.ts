@@ -17,7 +17,7 @@ const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nis
   styleUrls: ['./product-order.scss']
 })
 export class ProductOrderComponent implements OnInit {
-  @Input() product: IProduct;
+  @Input() private product: IProduct;
 
   public productDetails: IProductDetails;
   public productImages: Array<IProductImage>;
@@ -53,16 +53,16 @@ export class ProductOrderComponent implements OnInit {
     this.productImages = this.product.images;
   }
 
-  public handleSizeSelect(event: string): void {
-    this.selectedSize = event;
+  public handleSizeSelect(size: string): void {
+    this.selectedSize = size;
   }
 
-  public handleColorSelect(event: number): void {
-    this.selectedColor = event;
+  public handleColorSelect(color: number): void {
+    this.selectedColor = color;
   }
 
-  public handleQuantitySelect(event: number): void {
-    this.selectedQty = event;
+  public handleQuantitySelect(quantity: number): void {
+    this.selectedQty = quantity;
   }
 
   public onBuyClick(): void {

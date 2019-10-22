@@ -7,8 +7,8 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
   styleUrls: ['./product-preview.scss']
 })
 export class ProductPreviewComponent implements OnChanges {
-  @Input() public productImages: Array<IProductImage>;
-  @Input() public productSelectedColor: number;
+  @Input() private productImages: Array<IProductImage>;
+  @Input() private productSelectedColor: number;
 
   public imagesSource: Array<string>;
   public selectedImageID: number;
@@ -23,9 +23,11 @@ export class ProductPreviewComponent implements OnChanges {
   }
 
   private findImagesSource(): Array<string> {
-    return this.productSelectedColor
-      ? this.productImages
-          .find(images => images.value === this.productSelectedColor).url
-      : this.productImages[0].url;
+    const productImages = this.productSelectedColor
+      ? this.productImages.find(images =>
+          images.value === this.productSelectedColor)
+      : this.productImages[0];
+
+    return productImages ? productImages.url : [];
   }
 }
