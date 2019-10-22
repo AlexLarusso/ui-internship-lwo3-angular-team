@@ -1,25 +1,33 @@
-import { Injectable } from "@angular/core";
-import { Subject, Observable, BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class LocalStorageService {
+  
+  constructor() {
+      this.init();
+  }
   // TODO: move it from here
-  public recentlyViewed: Array<Number>;
+  public recentlyViewed: Array<string>;
   public userEmail = '';
   public ViewedItems = '';
   private storageSub = new BehaviorSubject<any>([]);
 
-  watchStorage(): Observable<any> {
-    return this.storageSub.asObservable();
+  saveViewedHistory(id: string) {
+    this.recentlyViewed = JSON.parse(localStorage.getItem('recentlyView')) || [];
+    this.recentlyViewed.unshift(id);
+    localStorage.setItem('recentlyView', JSON.stringify(this.recentlyViewed));
+    this.storageSub.next(this.recentlyViewed);
   }
 
-  saveViewedHistory(key: number, data: any) {
-    this.recentlyViewed = JSON.parse(localStorage.getItem("recentlyView")) || [];
-    this.recentlyViewed.push(key);
-    localStorage.setItem("recentlyView", JSON.stringify(this.recentlyViewed));
-    this.storageSub.next(this.recentlyViewed);
+  public init() {
+    this.recentlyViewed = this.getItem('recentlyView');
+
+    if (this.recentlyViewed) {
+      this.storageSub.next(this.recentlyViewed);
+    }
   }
 
   public get email() {

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core'; 
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class RecentlyViewedService { 
+export class RecentlyViewedService {
   public isViewed(key: string) {
-    
+
   }
 }

@@ -1,44 +1,65 @@
-import { Injectable } from "@angular/core";
-import { HttpService } from "./http.service";
-import { map } from "rxjs/operators";
-import { IProductShortInfo } from "../../interfaces/product-short-info.interface";
-import { Observable } from "rxjs";
-import { LocalStorageService } from "./local-storage.service";
+import { Injectable } from '@angular/core';
+import { HttpService } from './http.service';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
+
+import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
+import { ProductFilterService } from '../services/product-filter.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ProductShortInfoService {
+  public similarProducts = [];
+  public similarOptions = {
+    sex: '',
+    category: '',
+    id: 1
+  };
+
   constructor(
+    private productFilterService: ProductFilterService,
     private httpService: HttpService,
     private localStorageService: LocalStorageService
   ) {}
 
-  public getShortInfo(category = "all"): Observable<Array<IProductShortInfo>> {
+  public getShortInfo(category = 'all'): Observable<Array<IProductShortInfo>> {
     switch (category) {
-      case "all":
+      case 'all':
         return this.httpService.getData().pipe(
           map(data =>
             data.map(item => ({
-              title: item.productName,
+              productTitle: item.productName,
               imgUrl: item.images[0].url[0],
-              price: item.price + " uah",
-              id: item.id
+              productPrice: item.price + ' uah',
+              productId: item.id
             }))
           )
         );
-      case "allrecentItems":
-        console.log("it works");
+      case 'similar':
         return this.httpService.getData().pipe(
           map(data =>
-            data
-              .filter(el =>
-                this.localStorageService.recentlyViewed.includes(el.id))
+            this.productFilterService
+              .findSimilar(data, this.similarOptions)
               .map(item => ({
-                title: item.productName,
+                productTitle: item.productName,
                 imgUrl: item.images[0].url[0],
-                price: item.price + " uah",
-                id: item.id
+                productPrice: item.price + ' uah',
+                productId: item.id
+              }))
+          )
+        );
+      case 'allrecentItems':
+        return this.httpService.getData().pipe(
+          map(data =>
+            data.filter(el =>
+                this.localStorageService.recentlyViewed.includes(el.id.toString()))
+              .map(item => ({
+                productTitle: item.productName,
+                imgUrl: item.images[0].url[0],
+                productPrice: item.price + ' uah',
+                productId: item.id
               }))
           )
         );

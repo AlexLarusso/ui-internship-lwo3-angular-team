@@ -11,7 +11,7 @@ import { StoryComponent } from '../../components/story/story.component';
 import { ScrollComponent } from '../../components/scroll/scroll.component';
 import { SlideshowComponent } from '../../components/slideshow/slideshow.component';
 import { JoinUsComponent } from '../../components/join-us/join-us.component';
-import { RecentlyViewedComponent } from '../../components/recently-viewed/recently-viewed.component'
+import { RecentlyViewedComponent } from '../../components/recently-viewed/recently-viewed.component';
 
 @NgModule({
   declarations: [

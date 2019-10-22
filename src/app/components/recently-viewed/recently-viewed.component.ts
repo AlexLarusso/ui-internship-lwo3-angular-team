@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
@@ -7,14 +7,14 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
   styleUrls: ['recently-viewed.scss']
 })
 
-export class RecentlyViewedComponent {
-  public products = 'allrecentItems';
+export class RecentlyViewedComponent implements OnInit {
+
   constructor(private localStorageService: LocalStorageService) {}
 
-  public arrOfProducts = this.localStorageService.recentlyViewed;
+  public products = 'allrecentItems';
+  public isEmpty: boolean;
 
   public ngOnInit(): void {
-    this.arrOfProducts = this.localStorageService.getItem('recentlyView')
+    this.isEmpty = Boolean(this.localStorageService.recentlyViewed);
   }
 }
-

@@ -1,7 +1,7 @@
 <div class="col-3 product-item__container">
   <div class="product-item__picture__container">
     <a routerLink="/products/{{ productId }}"
-       (click) = "OnClick(+productId, productId)">
+       (click) = "OnClick(productId)">
       <img class="product-item__picture" [alt]="productTitle" [src]="imgUrl"/>
     </a>
     <button class="wish__btn">

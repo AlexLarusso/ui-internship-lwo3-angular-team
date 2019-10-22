@@ -17,10 +17,9 @@ export class ProductItemComponent {
   public faHeart = faHeart;
   public product: IProduct;
 
-  constructor(private localStorageService: LocalStorageService ){}
-  
-  public OnClick(key: number, value: number){
-    this.localStorageService.saveViewedHistory(key, value)
-    
+  constructor(private localStorageService: LocalStorageService ) { }
+
+  public OnClick(key: string) {
+    this.localStorageService.saveViewedHistory(key);
   }
 }

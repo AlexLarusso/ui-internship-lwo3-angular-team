@@ -1,7 +1,4 @@
-import 
-{ Component,
-  OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, OnDestroy, Input }
-from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, OnDestroy, Input } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Subscription } from 'rxjs';
@@ -42,10 +39,10 @@ const MARGIN = 10;
   styleUrls: ['./product-carousel.scss']
 })
 export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
+  @Input() category: string;
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
-  @Input() category: string;
-  
+
   public faArrowLeft = faArrowLeft;
   public faArrowRight = faArrowRight;
   public getProductsSub: Subscription;
