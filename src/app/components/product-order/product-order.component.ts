@@ -2,10 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { IProductDetails } from 'src/app/interfaces/product-details.interface';
-import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { IProductOptions } from 'src/app/interfaces/product-options.interface';
 import { IProductDescription } from 'src/app/interfaces/product-description.interface';
 import { IProductImage } from 'src/app/interfaces/product-image.interface';
+
+import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 const DELIVERY_MOCK = 'Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur ea sit excepteur ex eu. Nisi esse dolore aute laborum.'
 const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nisi cupidatat.';
@@ -65,7 +66,7 @@ export class ProductOrderComponent implements OnInit {
   }
 
   public onBuyClick(): void {
-    // TODO: imlement after CartComponent is implemented
+    // TODO: Implement modal service
     const message = `Added ${this.productDetails.title} to your cart.
       Quantity: ${this.selectedQty}.
       Size: ${this.selectedSize}.
@@ -76,7 +77,7 @@ export class ProductOrderComponent implements OnInit {
   }
 
   public addToWhishlistClick(): void {
-    // TODO: imlement after WhishlistComponent is implemented
+    // TODO: Implement modal service
     alert(`${this.productDetails.title} added  to whishlist`);
   }
 }

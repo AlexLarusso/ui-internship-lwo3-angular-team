@@ -13,8 +13,7 @@ export class ProductService {
 
   public getProduct(id): Observable<IProduct> {
     return this.httpService.getData().pipe(map(products =>
-      products.find(product => {
-        return product.id == id;
-      })));
+      products.find(product => product.id === id)
+    ));
   }
 }

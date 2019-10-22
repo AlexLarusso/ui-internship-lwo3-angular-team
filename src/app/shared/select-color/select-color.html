@@ -4,7 +4,7 @@
     <button *ngFor="let color of colors; let i = index"
       class="colorBtn"
       [class.selected]="selectedColorID === i"
-      [ngStyle]="{backgroundColor: color}"
+      [ngStyle]="{ backgroundColor: color }"
       (click)="onSelect(i)"
       >
     </button>

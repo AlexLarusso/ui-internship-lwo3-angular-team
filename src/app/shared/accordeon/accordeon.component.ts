@@ -15,13 +15,13 @@ export class AccordeonComponent implements OnInit {
 
   private collapsedAllIndex: number = -1;
 
-  constructor() { }
-
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.selectedTopic = this.collapsedAllIndex;
   }
 
-  public topicClick(i: number) {
-    this.selectedTopic = this.selectedTopic === i ? this.collapsedAllIndex : i;
+  public topicClick(index: number): void {
+    this.selectedTopic = this.selectedTopic === index
+      ? this.collapsedAllIndex
+      : index;
   }
 }

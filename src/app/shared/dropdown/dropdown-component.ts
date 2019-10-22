@@ -9,16 +9,16 @@ import { faCaretDown, faCaretUp, IconDefinition } from '@fortawesome/free-solid-
 export class DropdownComponent implements OnInit {
   @Input() options: Array<string>;
   @Input() default: string;
+
   @Output() itemSelect: EventEmitter<string> = new EventEmitter<string>();
-  
-  private iconUp: IconDefinition;
-  private iconDown: IconDefinition;
+
+  public iconUp: IconDefinition;
+  public iconDown: IconDefinition;
+  public expanded: boolean;
+
   private selected: string;
-  private expanded: boolean;
 
-  constructor() { }
-
-  ngOnInit() {
+  public ngOnInit(): void {
     this.expanded = false;
     this.selected = this.default
       ? this.default
@@ -27,16 +27,16 @@ export class DropdownComponent implements OnInit {
     this.iconDown = faCaretDown;
   }
 
-  toggleDropdown() {
+  public toggleDropdown(): void {
     this.expanded = !this.expanded;
   }
 
-  onBlur() {
+  public onBlur(): void {
     this.expanded = false;
   }
 
-  onItemSelect(i: number) {
-    this.selected = this.options[i];
+  public onItemSelect(index: number): void {
+    this.selected = this.options[index];
     this.itemSelect.emit(this.selected);
   }
 }

@@ -8,22 +8,24 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
 })
 export class ProductPreviewComponent implements OnChanges {
   @Input() public productImages: Array<IProductImage>;
-  @Input() public productColorSelected: number;
+  @Input() public productSelectedColor: number;
 
   public imagesSource: Array<string>;
   public selectedImageID: number;
 
   public ngOnChanges(): void {
     this.selectedImageID = 0;
-    if(this.productColorSelected) {
-      this.imagesSource = this.productImages.find(images =>
-        images.value == this.productColorSelected).url;
-    } else {
-      this.imagesSource = this.productImages[0].url;
-    }
+    this.imagesSource = this.findImagesSource();
   }
 
-  public onImageSelect(i: number): void {
-    this.selectedImageID = i;
+  public onImageSelect(index: number): void {
+    this.selectedImageID = index;
+  }
+
+  private findImagesSource(): Array<string> {
+    return this.productSelectedColor
+      ? this.productImages
+          .find(images => images.value === this.productSelectedColor).url
+      : this.productImages[0].url;
   }
 }

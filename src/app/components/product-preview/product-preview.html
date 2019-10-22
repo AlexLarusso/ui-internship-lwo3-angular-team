@@ -1,4 +1,4 @@
-<div *ngIf="imagesSource.length" class="product-preview">
+<div *ngIf="imagesSource?.length" class="product-preview">
   <img class="img_preview"
     [src]="imagesSource[selectedImageID]"
     alt="{{ title }}"

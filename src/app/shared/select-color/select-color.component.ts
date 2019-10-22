@@ -1,23 +1,22 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-select-color',
   templateUrl: './select-color.html',
   styleUrls: ['./select-color.scss']
 })
-export class SelectColorComponent {
+export class SelectColorComponent implements OnInit {
   @Input() colors: Array<number>;
+
   @Output() colorSelect: EventEmitter<number> = new EventEmitter<number>();
 
   public selectedColorID: number;
 
-  constructor() { }
-
-  ngOnInit() {
+  public ngOnInit(): void {
     this.selectedColorID = 0;
-   }
+  }
 
-  onSelect(i: number) {
+   public onSelect(i: number): void {
     this.selectedColorID = i;
     this.colorSelect.emit(this.colors[this.selectedColorID]);
   }

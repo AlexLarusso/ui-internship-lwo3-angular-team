@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 import { IProductDetails } from "src/app/interfaces/product-details.interface";
-import { IProductOptions } from "src/app/interfaces/product-options.interface";
 
 @Component({
   selector: 'app-product-details',
@@ -26,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
       this.productDetails.description.delivery);
   }
 
-  private addDescriptionNote(title: string, text: string) {
-    this.productDescription.push({ title: title, text: text });
+  private addDescriptionNote(title: string, text: string): void {
+    this.productDescription.push({ text, title });
   }
 }
