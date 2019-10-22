@@ -1,0 +1,21 @@
+@import '../../styles//variables';
+
+.product {
+  background: $bgColorMedium;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  &__item {
+    width: 250px;
+  }
+}

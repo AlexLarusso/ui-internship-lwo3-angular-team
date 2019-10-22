@@ -2,7 +2,8 @@ import { Action } from '@ngrx/store';
 
 export enum WishListActionTypes {
   Add = '[Wish List] Add',
-  Remove = '[Wish List] Remove'
+  Remove = '[Wish List] Remove',
+  SetAll = '[Wish List] Set all from LocalStorage'
 }
 
 export class AddToWishList implements Action {
@@ -19,4 +20,11 @@ export class RemoveFromWishList implements Action {
   constructor(public product) { }
 }
 
-export type WishListActions = AddToWishList | RemoveFromWishList;
+export class SetToWishList implements Action {
+  public static readonly TYPE = WishListActionTypes.SetAll;
+  public type = SetToWishList.TYPE;
+
+  constructor(public product) { }
+}
+
+export type WishListActions = AddToWishList | RemoveFromWishList | SetToWishList;

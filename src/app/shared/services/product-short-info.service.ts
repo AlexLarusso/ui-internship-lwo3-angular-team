@@ -14,7 +14,7 @@ export class ProductShortInfoService {
   public similarOptions = {
     sex: '',
     category: '',
-    id: 1
+    id: ''
   };
 
   constructor(

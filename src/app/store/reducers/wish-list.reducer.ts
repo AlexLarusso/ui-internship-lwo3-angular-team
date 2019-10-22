@@ -1,6 +1,6 @@
-import { WishListActions, AddToWishList, RemoveFromWishList } from '../actions/wish-list.actions';
+import { WishListActions, AddToWishList, RemoveFromWishList, SetToWishList } from '../actions/wish-list.actions';
 
-export interface State {
+export interface IState {
   likedProducts: Array<string>;
 }
 
@@ -8,12 +8,11 @@ const initialState = {
   likedProducts: []
 };
 
-export function wishListReducer(state = initialState, action: WishListActions): State {
+export function wishListReducer(state = initialState, action: WishListActions): IState {
   const likedProductsArray = state.likedProducts;
 
   switch (action.type) {
     case AddToWishList.TYPE:
-      console.log(state.likedProducts);
 
       return {
         ...state,
@@ -28,6 +27,12 @@ export function wishListReducer(state = initialState, action: WishListActions): 
       return {
         ...state,
         likedProducts: newProductArray
+      };
+
+    case SetToWishList.TYPE:
+      return {
+        ...state,
+        likedProducts: action.product
       };
 
     default:
