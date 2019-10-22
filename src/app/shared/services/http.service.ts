@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IProduct } from '../../interfaces/product.interface';
 import { Observable } from 'rxjs';
-import { pipe, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpService {
   private URL = '../assets/server-data/data.json';
 
@@ -21,9 +23,9 @@ export class HttpService {
     )));
   }
 
-  public getProductsByCategory(category: string): Observable<IProduct> {
+  public getProductsByCategory(category: string): Observable<Array<IProduct>> {
     return this.http.get<Array<IProduct>>(this.URL)
-      .pipe(map(products => products.filter(products =>
+      .pipe(map(products => products.filter(product =>
         product.category == category
     )));
   }

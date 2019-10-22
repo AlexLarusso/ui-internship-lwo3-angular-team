@@ -21,7 +21,7 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy{
 
   public ngOnInit(): void {
     console.log('pdp');
-    
+
     this.route.params.subscribe(value => {
       this.productSource$ = this.productService
         .getProductById(value.id);

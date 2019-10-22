@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Subscription } from 'rxjs';
 
-import { ProductShortInfoService } from '../services/product-short-info.service';
 import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
+import { ProductService } from '../services/product.service';
+import { ProductFormat } from 'src/app/app.enum';
 
 @AutoUnsubscribe()
 @Component({
@@ -17,13 +17,12 @@ export class PopularListComponent implements OnInit, OnDestroy {
   public getProductsSub: Subscription;
   public productData: Array<IProductShortInfo>;
 
-  constructor(private productList: ProductShortInfoService) {
-  }
+  constructor(private productService: ProductService) { }
 
   public ngOnInit(): void {
-    this.getProductsSub = this.productList.getShortInfo()
+    this.getProductsSub = this.productService.getProducts(ProductFormat.short)
       .subscribe(data => this.productData = data);
   }
 
-  public ngOnDestroy(): void {}
+  public ngOnDestroy(): void { }
 }

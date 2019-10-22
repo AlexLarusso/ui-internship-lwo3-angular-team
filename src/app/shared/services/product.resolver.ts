@@ -7,7 +7,6 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 
 import { IProduct } from '../../interfaces/product.interface';
 import { ProductService } from './product.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class ProductResolver implements Resolve<IProduct> {

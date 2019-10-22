@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
-import { ProductService } from './services/product.service';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { CategoryMenuComponent } from './header/category-menu/category-menu.component';
@@ -16,7 +16,6 @@ import { MainLogoComponent } from './main-logo/main-logo.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { SaleBannerComponent } from './sale-banner/sale-banner.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
   ],
   providers: [
-    ProductService
   ],
   exports: [
     HeaderComponent,
