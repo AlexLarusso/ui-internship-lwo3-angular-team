@@ -1,9 +1,6 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild, HostListener, ElementRef, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked,
+  ViewChild, HostListener,ElementRef, Input } from '@angular/core';
 
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Subscription } from 'rxjs';
-
-import { ProductShortInfoService } from '../services/product-short-info.service';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
 
@@ -32,24 +29,22 @@ const BREAK_POINTS = {
 
 const MARGIN = 10;
 
-@AutoUnsubscribe()
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.html',
   styleUrls: ['./product-carousel.scss']
 })
-export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
-  @Input() category: string;
+export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked {
+  @Input() productData: Array<IProductShortInfo>;
+  
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
 
   public faArrowLeft = faArrowLeft;
   public faArrowRight = faArrowRight;
-  public getProductsSub: Subscription;
   public canMoveToNext = true;
   public canMoveToPrev = false;
   public productContainer: HTMLElement;
-  public productData: Array<IProductShortInfo>;
   public productArray: Array<IProductShortInfo>;
   public itemWidth: number;
   public visibleNum: number;
@@ -83,12 +78,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
-  constructor(private productList: ProductShortInfoService) { }
-
   public ngOnInit(): void {
-    this.getProductsSub = this.productList.getShortInfo(this.category)
-      .subscribe((data) => this.productData = data);
-
     this.pageWidth = window.innerWidth;
   }
 
@@ -119,6 +109,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public moveToNext(): void {
     const newPosition = this.position - this.itemWidth * this.visibleNum;
     const possiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
+
     this.position = newPosition >= possiblePosition ? newPosition : possiblePosition;
     this.productContainer.style.marginLeft = this.position + this.additionalScroll + 'px';
 
@@ -128,6 +119,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public moveToPrev(): void {
     const newPosition = this.position + this.itemWidth * this.visibleNum;
     const possiblePosition = 0;
+
     this.position = newPosition >= possiblePosition ? possiblePosition : newPosition;
     this.productContainer.style.marginLeft = this.position + this.additionalScroll + 'px';
 
@@ -158,6 +150,4 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.productContainer.style.marginLeft = 0 + 'px';
     this.productsContainer.nativeElement.scrollLeft = 0;
   }
-
-  public ngOnDestroy(): void {}
 }
