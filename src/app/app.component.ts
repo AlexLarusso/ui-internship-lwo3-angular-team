@@ -3,12 +3,13 @@ import {
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-import { ScrollService } from './shared/services/scroll.service';
-import { ScrollAnchorDirective } from './shared/directives/scroll-anchor.directive';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
+import { ScrollService } from './shared/services';
+import { ScrollAnchorDirective } from './shared/directives';
 
 @AutoUnsubscribe()
 @Component({
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.routerSub = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)                                                                                                               
+      filter(event => event instanceof NavigationEnd)
     )
     .subscribe(() => {
       this.scrollService.resetAnchors();

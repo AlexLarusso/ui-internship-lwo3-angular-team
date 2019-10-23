@@ -1279,7 +1279,7 @@
     "description": "Hat from the Guess Jeans collection. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
     "brand": "Guess",
     "sizes": ["m"],
-    "colors": ["#000000", "#808080"],
+    "colors": ["#000000"],
     "images": [
       {
         "value": "#000000",
@@ -1287,14 +1287,6 @@
           "./assets/server-data/images/heats_2_1.jpg",
           "./assets/server-data/images/heats_2_2.jpg",
           "./assets/server-data/images/heats_2_3.jpg"
-        ]
-      },
-      {
-        "value": "#808080",
-        "url": [
-          "./assets/server-data/images/heats_2_1/grey.jpg",
-          "./assets/server-data/images/heats_2_2/grey.jpg",
-          "./assets/server-data/images/heats_2_3/grey.jpg"
         ]
       }
     ],
