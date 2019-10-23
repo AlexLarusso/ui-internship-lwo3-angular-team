@@ -1,26 +1,21 @@
-import { Component, AfterContentInit, OnDestroy } from '@angular/core';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../../store/app.store';
+import { getLoadingStatus } from '../../store/selectors/loader.selectors';
 
-import { LoaderService } from '../services/loader.service';
-
-@AutoUnsubscribe()
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.html',
   styleUrls: ['./loader.scss']
 })
-export class LoaderComponent implements AfterContentInit, OnDestroy {
-  public isLoading = true;
+export class LoaderComponent implements OnInit {
   public bulletsArray = new Array(12).fill('');
-  public loaderSub: Subscription;
+  public loader$: Observable<boolean>;
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private store: Store<IAppState>) { }
 
-  public ngAfterContentInit() {
-    this.loaderSub = this.loaderService.isLoading
-      .subscribe(result => this.isLoading = result);
+  public ngOnInit() {
+    this.loader$ = this.store.select(getLoadingStatus);
   }
-
-  public ngOnDestroy(): void { }
 }

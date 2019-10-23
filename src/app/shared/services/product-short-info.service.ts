@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from './local-storage.service';
 
 import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
 import { ProductFilterService } from '../services/product-filter.service';
+import { StoreService } from './store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ProductShortInfoService {
   constructor(
     private productFilterService: ProductFilterService,
     private httpService: HttpService,
-    private localStorageService: LocalStorageService
+    private storeService: StoreService
   ) {}
 
   public getShortInfo(category = 'all'): Observable<Array<IProductShortInfo>> {
@@ -54,7 +54,7 @@ export class ProductShortInfoService {
         return this.httpService.getData().pipe(
           map(data =>
             data.filter(el =>
-                this.localStorageService.recentlyViewed.includes(el.id.toString()))
+                this.storeService.recentlyViewed.includes(el.id.toString()))
               .map(item => ({
                 productTitle: item.productName,
                 imgUrl: item.images[0].url[0],
