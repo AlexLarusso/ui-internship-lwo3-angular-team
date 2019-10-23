@@ -1,5 +1,5 @@
 import {
-  Component, ViewChildren, QueryList, AfterViewInit, OnDestroy
+  Component, OnInit, ViewChildren, QueryList, AfterViewInit, OnDestroy
 } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -16,7 +16,7 @@ import { IProductShortInfo } from 'src/app/interfaces';
   selector: 'app-home',
   templateUrl: './home.html',
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren(ScrollAnchorDirective)
   private pageAnchors: QueryList<ScrollAnchorDirective>;
 

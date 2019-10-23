@@ -8,7 +8,9 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
 
 import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-const DELIVERY_MOCK = 'Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur ea sit excepteur ex eu. Nisi esse dolore aute laborum.'
+const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
+  irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
+  ea sit excepteur ex eu. Nisi esse dolore aute laborum.`;
 const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nisi cupidatat.';
 
 @Component({
@@ -49,7 +51,7 @@ export class ProductOrderComponent implements OnInit {
       season: this.product.season,
       options: productOptions,
       description: productDescription,
-    }
+    };
     this.productImages = this.product.images;
   }
 
@@ -71,7 +73,7 @@ export class ProductOrderComponent implements OnInit {
       Quantity: ${this.selectedQty}.
       Size: ${this.selectedSize}.
       Color: ${this.selectedColor}.
-      Full price: ${this.selectedQty * this.productDetails.price} uah.`
+      Full price: ${this.selectedQty * this.productDetails.price} uah.`;
 
     alert(message);
   }

@@ -16,7 +16,7 @@ export class DropdownComponent implements OnInit {
   public iconDown: IconDefinition;
   public expanded: boolean;
 
-  private selected: string;
+  public selected: string;
 
   public ngOnInit(): void {
     this.expanded = false;
