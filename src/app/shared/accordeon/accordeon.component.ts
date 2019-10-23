@@ -13,7 +13,7 @@ export class AccordeonComponent implements OnInit {
   public iconExpand: IconDefinition = faPlus;
   public iconCollapse: IconDefinition = faMinus;
 
-  private collapsedAllIndex: number = -1;
+  private collapsedAllIndex = -1;
 
   public ngOnInit(): void {
     this.selectedTopic = this.collapsedAllIndex;

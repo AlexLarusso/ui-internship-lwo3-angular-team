@@ -15,7 +15,7 @@ import { ProductService } from 'src/app/shared/services';
   templateUrl: './product-details-page.html',
 })
 
-export class ProductDetailsPageComponent implements OnInit, OnDestroy{
+export class ProductDetailsPageComponent implements OnInit, OnDestroy {
   public productSource$: Observable<IProduct> = new Observable<IProduct>();
   public routerSub: Subscription;
   constructor(
