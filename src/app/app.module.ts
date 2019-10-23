@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductResolver } from './shared/services/product.resolver';
-import { HttpService } from './shared/services/http.service';
+
+import { StoreModule } from '@ngrx/store';
+
+import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './pages/home/home.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
 import { ProductDetailsPageModule } from './pages/product-details-page/product-details-page.module';
 import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
-import { SharedModule } from './shared/shared.module';
 
-import { StoreModule } from '@ngrx/store';
+import { LoaderInterceptor } from './shared/services/loader.interceptor';
+import { ProductResolver } from './shared/services/product.resolver';
+
 import { appReducer } from './store/app.store';
 
 import { LoaderComponent } from './shared/loader/loader.component';
@@ -51,7 +53,6 @@ const routes: Routes = [
     StoreModule.forRoot(appReducer)
   ],
   providers: [
-    HttpService,
     ProductResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],

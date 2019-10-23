@@ -1,10 +1,5 @@
 import {
-  animate,
-  style,
-  transition,
-  trigger,
-  group,
-  query
+  animate, style, transition, trigger, group, query
 } from '@angular/animations';
 
 export const slideshowAnimation = trigger('slideAnimation', [

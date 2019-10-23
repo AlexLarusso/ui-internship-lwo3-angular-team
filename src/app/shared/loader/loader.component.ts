@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+
 import { Store } from '@ngrx/store';
-import { IAppState } from '../../store/app.store';
-import { getLoadingStatus } from '../../store/selectors/loader.selectors';
+
+import { Observable } from 'rxjs';
+
+import { IAppState } from 'src/app/store/app.store';
+import { getLoadingStatus } from 'src/app/store/selectors/loader.selectors';
 
 @Component({
   selector: 'app-loader',

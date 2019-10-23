@@ -1,9 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { Subscription } from 'rxjs';
+
 import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-import { ScrollService, IPageAnchor } from '../../shared/services/scroll.service';
+import { ScrollService } from 'src/app/shared/services';
+import { IPageAnchor } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Component({
