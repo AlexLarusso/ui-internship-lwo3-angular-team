@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 
-import { IProductDetails } from "src/app/interfaces/product-details.interface";
+import { IProductDetails } from 'src/app/interfaces/product-details.interface';
 
 @Component({
   selector: 'app-product-details',
-  templateUrl: "./product-details.html",
-  styleUrls: ["./product-details.scss"]
+  templateUrl: './product-details.html',
+  styleUrls: ['./product-details.scss']
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() public productDetails: IProductDetails;
@@ -14,7 +14,7 @@ export class ProductDetailsComponent implements OnInit {
     title: string;
     text: string;
   }[] = [];
-  public currentCurrency: string = "UAH";
+  public currentCurrency = 'UAH';
 
   public ngOnInit(): void {
     this.addDescriptionNote('Detail',

@@ -1,5 +1,5 @@
 export interface IProductDescription {
-  detail: string,
-  style: string,
-  delivery: string,
+  detail: string;
+  style: string;
+  delivery: string;
 }
