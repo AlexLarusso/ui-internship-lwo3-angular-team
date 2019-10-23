@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ScrollService } from '../../shared/services/scroll.service';
-import { ScrollAnchorDirective } from 'src/app/shared/directives/scroll-anchor.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from '../../shared/shared.module';
 
-import { PromoComponent } from '../../components/promo/promo.component';
-import { ParallaxComponent } from '../../components/parallax/parallax.component';
-import { StoryComponent } from '../../components/story/story.component';
-import { ScrollComponent } from '../../components/scroll/scroll.component';
-import { SlideshowComponent } from '../../components/slideshow/slideshow.component';
-import { JoinUsComponent } from '../../components/join-us/join-us.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
+import { ScrollAnchorDirective } from 'src/app/shared/directives';
+
+import { PromoComponent } from 'src/app/components/promo/promo.component';
+import { ParallaxComponent } from 'src/app/components/parallax/parallax.component';
+import { StoryComponent } from 'src/app/components/story/story.component';
+import { ScrollComponent } from 'src/app/components/scroll/scroll.component';
+import { SlideshowComponent } from 'src/app/components/slideshow/slideshow.component';
+import { JoinUsComponent } from 'src/app/components/join-us/join-us.component';
 import { RecentlyViewedComponent } from '../../components/recently-viewed/recently-viewed.component';
 
 @NgModule({
@@ -29,7 +30,6 @@ import { RecentlyViewedComponent } from '../../components/recently-viewed/recent
     SharedModule
   ],
   providers: [
-    ScrollService,
   ],
   exports: [
     PromoComponent,

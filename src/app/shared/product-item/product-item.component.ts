@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { IProduct } from 'src/app/interfaces/product.interface';
+import { IProduct } from 'src/app/interfaces';
 import { StoreService } from '../services/store.service';
 
 @Component({

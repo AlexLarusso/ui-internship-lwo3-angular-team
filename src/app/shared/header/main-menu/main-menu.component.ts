@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { faSearch, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faSearch, faCartArrowDown
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-main-menu',

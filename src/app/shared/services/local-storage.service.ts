@@ -9,7 +9,6 @@ export class LocalStorageService {
 
   // TODO: move it from here
   public userEmail = '';
-  public ViewedItems = '';
 
   public get email() {
     return this.userEmail;
