@@ -8,7 +8,9 @@ import { take } from 'rxjs/operators';
 import { ProductService } from 'src/app/shared/services';
 import { IProduct } from 'src/app/interfaces';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductResolver implements Resolve<IProduct> {
   constructor(private productService: ProductService) { }
 
