@@ -1,7 +1,9 @@
 <div class="content__container product__wrapper">
-  <h1>Wish list</h1>
   <div>
     <h2 class="col-12 content__title">Wish List</h2>
+  </div>
+  <div class="message__container" *ngIf="!productData.length">
+    <h2 class="message_default">Your Wishlist is currently empty</h2>
   </div>
   <div class="product__container">
     <app-product-item *ngFor="let product of productData"

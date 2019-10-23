@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import {
+  HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
+} from '@angular/common/http';
+
+import { Store } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
 import { finalize, delay } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
-import { IAppState } from '../../store/app.store';
-import { LoaderShow, LoaderHide } from 'src/app/store/actions/loader.actions';
 
-@Injectable()
+import { LoaderShow, LoaderHide } from 'src/app/store/actions/loader.actions';
+import { IAppState } from 'src/app/store/app.store';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(private store: Store<IAppState>) { }

@@ -1,0 +1,8 @@
+<div class="product-details">
+  <h3 class="product-details__title">{{ productDetails.title }}</h3>
+  <span class="product-details__price">
+    {{ productDetails.price }} {{ currentCurrency }}
+  </span> 
+  <ng-content></ng-content>
+  <app-accordeon [content]="productDescription"></app-accordeon>
+</div>

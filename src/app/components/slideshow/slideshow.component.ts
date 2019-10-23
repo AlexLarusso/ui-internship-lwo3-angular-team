@@ -1,30 +1,17 @@
 import {
-  Component,
-  OnInit,
-  ViewChild,
-  EventEmitter,
-  ElementRef,
-  AfterViewInit,
-  HostListener,
-  OnDestroy
+  Component, OnInit, ViewChild, EventEmitter, ElementRef,
+  AfterViewInit, HostListener, OnDestroy
 } from '@angular/core';
+
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import {
-  fromEvent,
-  merge,
-  interval,
-  ObservableInput,
-  Subscription
+  fromEvent, merge, interval, ObservableInput, Subscription
 } from 'rxjs';
 import {
-  map,
-  scan,
-  startWith,
-  tap,
-  switchMap,
-  takeWhile,
-  throttleTime
+  map, scan, startWith, tap, switchMap, takeWhile, throttleTime
 } from 'rxjs/operators';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { slideshowAnimation } from './slideshow.animations';
 
 const images: Array<string> = [

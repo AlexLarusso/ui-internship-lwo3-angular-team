@@ -1,12 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProductShortInfoService } from '../../shared/services/product-short-info.service';
-import { IProductShortInfo } from '../../interfaces/product-short-info.interface';
-import { Observable, Subscription } from 'rxjs';
+
 import { Store } from '@ngrx/store';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { IAppState } from '../../store/app.store';
 import { getLiked } from '../../store/selectors/wish-list.selectors';
 import { SetToWishList } from '../../store/actions/wish-list.actions';
 
+import { Observable, Subscription } from 'rxjs';
+
+import { ProductFormat } from '../../app.enum';
+import { ProductService } from '../../shared/services';
+import { IProductShortInfo } from '../../interfaces';
+
+@AutoUnsubscribe()
 @Component({
   selector: 'app-wish-list',
   templateUrl: './wish-list.html',
@@ -14,12 +20,12 @@ import { SetToWishList } from '../../store/actions/wish-list.actions';
 })
 export class WishListComponent implements OnInit, OnDestroy {
   public getProductsSub: Subscription;
-  public productData: Array<IProductShortInfo>;
+  public productData: Array<IProductShortInfo> = [];
   liked$: Observable<Array<string>>;
-  stringArray: Array<string>;
+  likedArray: Array<string>;
 
   constructor(
-    private productList: ProductShortInfoService,
+    private productService: ProductService,
     private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
@@ -30,20 +36,15 @@ export class WishListComponent implements OnInit, OnDestroy {
     }
 
     this.liked$ = this.store.select(getLiked);
-    console.log(this.stringArray);
     this.liked$.subscribe(data => {
-      this.stringArray = data;
+      this.likedArray = data;
+      this.productData = this.productData.filter(el => data.includes(el.productId.toString()));
     });
 
-    this.stringArray = JSON.parse(localStorage.getItem('liked'));
-    this.getProductsSub = this.productList.getShortInfo()
-      .subscribe(data => this.productData = data.filter((el) => {
-        return this.stringArray.includes(el.productId.toString());
-      }));
-  }
-
-  public ngOnChanges() {
-    
+    this.getProductsSub = this.productService.getProducts(ProductFormat.short)
+    .subscribe(data => this.productData = data.filter((el) =>
+      this.likedArray.includes(el.productId.toString()
+    )));
   }
 
   public ngOnDestroy(): void {}

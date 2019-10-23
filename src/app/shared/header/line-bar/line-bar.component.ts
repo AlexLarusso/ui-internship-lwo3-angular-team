@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { faFacebookF, faTwitter, faGoogle } from '@fortawesome/free-brands-svg-icons';
+
+import {
+  faFacebookF, faTwitter, faGoogle
+} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-line-bar',
