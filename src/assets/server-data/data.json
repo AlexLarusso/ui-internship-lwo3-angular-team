@@ -64,7 +64,7 @@
     "description": "Shirt from the Medicine collection. The model is made of smooth fabric. Has a classic collar.\n      - Direct style.\n      - Fastens on buttons.\n      - Pockets on the chest.\n      - Lowered shoulder line.\n      - Smooth fabric.\n      - Armpit width: 51 cm.\n      - Sleeve length (from collar): 78 cm.\n      - Length: 68 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Cut: regular\n      Sleeve: long\n      Collar: Classic\n      Casual: casual\n      Composition:\n      100% Viscose",
     "brand": "Answear",
     "sizes": ["s", "m", "l", "xl"],
-    "color": ["#edfcfb", "#fffff", "#debb47"],
+    "colors": ["#edfcfb", "#fffff", "#debb47"],
     "images": [
       {
         "value": "#edfcfb",
@@ -112,7 +112,7 @@
       },
       {
         "value": "#fffff",
-        "url": ["blouse_9_1.jpg",
+        "url": ["./assets/server-data/images/blouse_9_1.jpg",
           "./assets/server-data/images/blouse_9_2.jpg",
           "./assets/server-data/images/blouse_9_3.jpg",
           "./assets/server-data/images/blouse_9_4.jpg"]
@@ -188,10 +188,10 @@
       },
       {
         "value": "#fffff",
-        "url": ["blouse_13_1.jpg",
-          "blouse_13_2.jpg",
-          "blouse_13_3.jpg",
-          "blouse_13_4.jpg"]
+        "url": ["./assets/server-data/images/blouse_13_1.jpg",
+          "./assets/server-data/images/blouse_13_2.jpg",
+          "./assets/server-data/images/blouse_13_3.jpg",
+          "./assets/server-data/images/blouse_13_4.jpg"]
       }
     ],
     "video": "./assets/server-data/video/blouse_12_v.mp4",
@@ -1279,7 +1279,7 @@
     "description": "Hat from the Guess Jeans collection. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
     "brand": "Guess",
     "sizes": ["m"],
-    "colors": ["#000000", "#808080"],
+    "colors": ["#000000"],
     "images": [
       {
         "value": "#000000",
@@ -1287,14 +1287,6 @@
           "./assets/server-data/images/heats_2_1.jpg",
           "./assets/server-data/images/heats_2_2.jpg",
           "./assets/server-data/images/heats_2_3.jpg"
-        ]
-      },
-      {
-        "value": "#808080",
-        "url": [
-          "./assets/server-data/images/heats_2_1/grey.jpg",
-          "./assets/server-data/images/heats_2_2/grey.jpg",
-          "./assets/server-data/images/heats_2_3/grey.jpg"
         ]
       }
     ],

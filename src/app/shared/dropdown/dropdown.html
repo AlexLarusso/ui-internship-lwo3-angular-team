@@ -1,0 +1,15 @@
+<div class="dropdown"
+  tabindex="-1"
+  [attr.aria-expanded]="expanded"
+  (click)="toggleDropdown()"
+  (blur)="expanded=false">
+  <span class="dropdown__selected">{{ selected }}</span>
+  <ul class="options">
+    <li *ngFor="let option of options; let i = index"
+      class="options__item"
+      (click)="onItemSelect(i)">
+      <span>{{ option }}</span>
+    </li>
+  </ul>
+  <fa-icon class="icon" [icon]="expanded ? iconUp : iconDown"></fa-icon>
+  </div>

@@ -14,6 +14,7 @@
   }
 
   &__picture {
+    position: relative;
     margin: 20px 0 5px;
     height: 320px;
     background: $bgColorMedium;
@@ -37,22 +38,8 @@
   }
 }
 
-.wish {
-  &__btn {
-    width: 10px;
-    height: 10px;
-    background: inherit;
-  }
-
-  &__icon {
-    position: absolute;
-    bottom: 30px;
-    right: 20px;
-    font-size: 1.3rem;
-    color: $fontColorLight;
-
-    &_active {
-      color: $wishHeartColor;
-    }
-  }
+.wish__btn {
+  position: absolute;
+  top: 30px;
+  right: 10px;
 }

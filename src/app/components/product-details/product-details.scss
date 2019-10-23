@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+$spacing: 15px;
+
+.product-details {
+  &__title {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+
+    &::first-letter {
+      color: $accentColor;
+      font-size: 1.6rem;
+    }
+  }
+
+  &__price {
+    display: block;
+    position: relative;
+    color: $accentColor;
+    margin: $spacing * 2 0;
+    font-family: $mainFontBold;
+
+    &::before {
+      position: absolute;
+      width: 100px;
+      top: -$spacing;
+      border: 1px solid $accentColor;
+      content: '';
+    }
+  }
+}
