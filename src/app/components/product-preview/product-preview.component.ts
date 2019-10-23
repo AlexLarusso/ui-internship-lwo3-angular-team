@@ -9,6 +9,7 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
 export class ProductPreviewComponent implements OnChanges {
   @Input() private productImages: Array<IProductImage>;
   @Input() private productSelectedColor: number;
+  @Input() public productTitle: string;
 
   public imagesSource: Array<string>;
   public selectedImageID: number;

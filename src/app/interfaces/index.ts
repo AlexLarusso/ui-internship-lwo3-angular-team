@@ -10,4 +10,4 @@ export {
   IProduct,
   IProductImage,
   IPageAnchor
-}
+};

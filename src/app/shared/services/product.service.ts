@@ -50,18 +50,19 @@ export class ProductService {
 
   private formatProduct(product: IProduct, format: string):
     IProduct | IProductShortInfo {
-      switch(format) {
+      switch (format) {
         case ProductFormat.full: return product;
         case ProductFormat.short: return {
           productTitle: product.productName,
           imgUrl: product.images[0].url[0],
           productPrice: product.price + ' uah',
           productId: product.id,
-        }
+        };
       }
   }
 
-  private filterSimilarProducts(products: Array<IProduct>,
+  private filterSimilarProducts(
+    products: Array<IProduct>,
     similarOptions: IProductSimilarOptions): Array<IProduct> {
       return products.filter(product =>
         product.category === similarOptions.category &&

@@ -8,4 +8,4 @@ export {
   LocalStorageService,
   ProductService,
   ScrollService
-}
+};

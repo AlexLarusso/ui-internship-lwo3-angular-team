@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
@@ -16,7 +16,7 @@ import {
   selector: 'app-similar-products',
   templateUrl: './similar-products.html',
 })
-export class SimilarProductsComponent implements OnDestroy {
+export class SimilarProductsComponent implements OnInit, OnDestroy {
   @Input() public product: IProduct;
 
   public similarProducts: Array<IProductShortInfo> = [];
