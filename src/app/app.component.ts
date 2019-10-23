@@ -26,12 +26,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.routerSub = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
+      filter(event => event instanceof NavigationEnd)                                                                                                               
     )
     .subscribe(() => {
       this.scrollService.resetAnchors();
       this.pageAnchors.forEach(el =>
         this.scrollService.addAnchor(el.elementReference));
+      this.scrollService.moveTo({ selector: 'app-header', title: '' });
       this.isHomePage = window.location.pathname === '/home';
     });
   }

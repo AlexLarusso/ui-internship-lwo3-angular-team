@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { switchMap, find } from 'rxjs/operators';
 
 import { IProduct } from '../../interfaces/product.interface';
 import { HttpService } from './http.service';
@@ -11,8 +11,11 @@ import { HttpService } from './http.service';
 export class ProductService {
   constructor(private httpService: HttpService) { }
 
-  public getProduct(id): Observable<IProduct> {
-    return this.httpService.getData().pipe(map(products =>
-      products.find(product => product.id === id)));
+  public getProduct(id: string | number): Observable<IProduct> {
+    return this.httpService.getData()
+      .pipe(
+        switchMap(data => data),
+        find(product => product.id === id)
+    );
   }
 }

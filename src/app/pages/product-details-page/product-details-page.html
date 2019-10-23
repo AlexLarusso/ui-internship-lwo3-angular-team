@@ -1,1 +1,6 @@
-<app-product-details></app-product-details>
+<app-product-order
+  *ngIf="productSource$ | async as product"
+  [product]="product"
+>
+</app-product-order>
+<app-similar-products></app-similar-products>
