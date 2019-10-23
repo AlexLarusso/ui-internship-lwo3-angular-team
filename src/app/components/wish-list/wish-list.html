@@ -4,12 +4,12 @@
     <h2 class="col-12 content__title">Wish List</h2>
   </div>
   <div class="product__container">
-    <app-product-item *ngFor="let product of productData"
-      class="product__item"
-      [imgUrl]="product.imgUrl"
-      [productTitle]="product.productTitle"
-      [productPrice]="product.productPrice"
-      [productId]="product.productId">
-    </app-product-item>
+      <app-product-item *ngFor="let product of productData"
+        class="product__item"
+        [imgUrl]="product.imgUrl"
+        [productTitle]="product.productTitle"
+        [productPrice]="product.productPrice"
+        [productId]="product.productId">
+      </app-product-item>
   </div>
 </div>

@@ -1,0 +1,3 @@
+<button class="wish__btn" [class]="wishClass" (click)="toggleLike()">
+  <fa-icon [icon]="faHeart" class="wish-icon" [ngClass]="{'wish-icon_active': isLiked}"></fa-icon>
+</button>

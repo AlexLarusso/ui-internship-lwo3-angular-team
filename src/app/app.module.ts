@@ -58,7 +58,6 @@ const routes: Routes = [
     StoreModule.forRoot(appReducer)
   ],
   providers: [
-    ProductResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [

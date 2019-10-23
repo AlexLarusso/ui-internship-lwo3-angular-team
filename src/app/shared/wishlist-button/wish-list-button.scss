@@ -1,0 +1,36 @@
+@import '../../styles//variables';
+
+.wish {
+  &__product {
+    &-item {
+      width: 10px;
+      height: 10px;
+      background: inherit;
+
+      .wish-icon {
+        position: absolute;
+        bottom: 30px;
+        right: 20px;
+        font-size: 1.3rem;
+        color: $fontColorLight;
+      }
+    }
+    
+    &-details {
+      width: 50px;
+      height: 50px;
+      background: inherit;
+  
+      .wish-icon{
+        font-size: 2rem;
+        color: $fontColorDark;
+      }
+    }
+  }
+
+  .wish-icon{
+    &_active {
+      color: $wishHeartColor;
+    }
+  }
+}
