@@ -1,0 +1,34 @@
+<div *ngIf="productDetails" class="product-order content__container">
+  <div class="product-order__image-preview">
+    <app-product-preview
+      [productImages]="productImages"
+      [productSelectedColor]="selectedColor">
+    </app-product-preview>
+  </div>
+  <app-product-details [productDetails]="productDetails">
+    <div class="product-options">
+      <app-dropdown class="option" default="Size" [options]="productDetails.options.sizes"
+        (itemSelect)="handleSizeSelect($event)">
+      </app-dropdown>
+      <app-select-number class="option" [maxNumber]="productDetails.options.quantity"
+        (numberSelect)="handleQuantitySelect($event)">
+        <span class="option__label">Qty</span>
+      </app-select-number>
+      <app-select-color class="option" [colors]="productDetails.options.colors"
+        (colorSelect)="handleColorSelect($event)">
+        <span class="option__label">Color</span>
+      </app-select-color>
+    </div>
+    <div class="buttons-container">
+      <app-button buttonClass="button_dark button_full-width"
+        [isDisabled]="!selectedSize"
+        (click)="onBuyClick()">
+        Buy this item
+      </app-button>
+      <app-button buttonClass="button_square"
+        (click)="addToWhishlistClick()">
+        <fa-icon class="heartIcon" [icon]="iconWhishlistBtn"></fa-icon>
+      </app-button>
+    </div>
+  </app-product-details>
+</div>

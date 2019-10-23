@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { HttpService } from './http.service';
 import { ProductFormat } from 'src/app/app.enum';
@@ -52,7 +52,7 @@ export class ProductService {
     IProduct | IProductShortInfo {
       switch(format) {
         case ProductFormat.full: return product;
-        case ProductFormat.short:return {
+        case ProductFormat.short: return {
           productTitle: product.productName,
           imgUrl: product.images[0].url[0],
           productPrice: product.price + ' uah',

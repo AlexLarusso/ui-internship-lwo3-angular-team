@@ -33,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.scrollService.resetAnchors();
       this.pageAnchors.forEach(el =>
         this.scrollService.addAnchor(el.elementReference));
+      this.scrollService.moveTo({ selector: 'app-header', title: '' });
       this.isHomePage = window.location.pathname === '/home';
     });
   }
