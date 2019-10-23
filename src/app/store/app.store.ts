@@ -1,7 +1,8 @@
+import { ActionReducerMap } from '@ngrx/store';
+
 import * as fromCounter from './reducers/counter.reducer';
 import * as fromLoader from './reducers/loader.reducer';
 import * as fromWishList from './reducers/wish-list.reducer';
-import { ActionReducerMap } from '@ngrx/store';
 
 export interface IAppState {
   counter: fromCounter.IState;

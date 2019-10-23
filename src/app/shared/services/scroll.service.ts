@@ -1,12 +1,15 @@
-import { Injectable, ElementRef, OnDestroy } from '@angular/core';
-import { fromEvent, BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {
+  Injectable, ElementRef, OnDestroy
+} from '@angular/core';
+
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-export interface IPageAnchor {
-  title: string;
-  selector: string;
-}
+import {
+  fromEvent, BehaviorSubject, Observable, Subscription
+} from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { IPageAnchor } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Injectable({

@@ -1,4 +1,6 @@
-import { Increment, Decrement, Reset, CounterActions } from '../actions/counter.actions';
+import {
+  Increment, Decrement, Reset, CounterActions
+} from '../actions/counter.actions';
 
 export interface IState {
   count: number;

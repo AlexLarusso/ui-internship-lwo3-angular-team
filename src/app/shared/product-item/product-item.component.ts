@@ -7,7 +7,8 @@ import { AddToWishList, RemoveFromWishList, SetToWishList } from '../../store/ac
 import { getLiked } from '../../store/selectors/wish-list.selectors';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { IProduct } from 'src/app/interfaces/product.interface';
+
+import { IProduct } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Component({
