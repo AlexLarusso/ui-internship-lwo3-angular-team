@@ -1,42 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LocalStorageService } from '../../shared/services/web-storage/local-storage.service';
-import { StoreService } from '../../shared/services/store.service';
-import { IProductShortInfo } from '../../interfaces'
 import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
-import { getRecentItemsStatus } from 'src/app/store/selectors/recently-viewed.selectors';
-import { Store } from '@ngrx/store'
-import { IAppState } from 'src/app/store/app.store';
-import { GetRecentProducts } from 'src/app/store/actions/recently-viewed.actions';
-import { forkJoin } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { flatMap, map, tap, concatAll, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-recently-viewed',
   templateUrl: 'recently-viewed.html',
   styleUrls: ['recently-viewed.scss']
 })
-export class RecentlyViewedComponent implements OnInit {
+export class RecentlyViewedComponent implements OnInit, OnDestroy {
   constructor(
     private localStorageService: LocalStorageService,
-    private storeService: StoreService,
     private productService: ProductService,
-    private store: Store<IAppState>
     ) {}
 
   public products = 'allrecentItems';
   public isEmpty: boolean;
-  public recentlyViewedProducts: Array<IProductShortInfo> = [];
+  public recentlyViewedProducts: Array<any> = [];
+  public test: Subscription;
 
   public ngOnInit(): void {
     this.checkIfExpired();
-    this.storeService.init();
 
+    this.productService.recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed"));
+
+    if (this.productService.recentlyViewed) {
+      this.productService.storageSubject.next(this.productService.recentlyViewed);
+    }
     // this.store.select(getRecentItemsStatus).subscribe(data => console.log(data))
-    this.storeService.storageSubject.getValue().map(id => {
-      this.productService.getProductById(id, ProductFormat.short).subscribe(
-        product => this.recentlyViewedProducts.push(product)
-      )
-    })
+    // this.productService.storageSubject.getValue().map(id => {
+    //   console.log(id, 'subj id')
+    //   this.productService.getProductById(id, ProductFormat.short).subscribe(
+    //     product => this.recentlyViewedProducts.push(product)
+    //   )
+    // })
     // this.store.select(getRecentItemsStatus).subscribe(data => data.map(id => {
     //   this.productService.getProductById(id, ProductFormat.short).subscribe(
     //     product => this.recentlyViewedProducts.push(product)
@@ -52,13 +51,32 @@ export class RecentlyViewedComponent implements OnInit {
   //       this.recentlyViewedProducts = data;
   //   })
   // })
-
     // console.log(this.storeService.storageSub.getValue())
-
-    // this.storeService.storageSub.subscribe((data) => {
-    //   console.log(data, 'safadsfdafsd')
-    // })
-  }
+  // map(data => this.recentlyViewedProducts.push(data))
+    // map(product => {
+    //   this.recentlyViewedProducts.push(product)
+    //   console.log(product)  
+    // }))
+     //   this.productService.storageSubject.subscribe((data) => {
+  //     data.map(id => {
+  //       this.productService.getProductById(id, ProductFormat.short).subscribe(
+  //         product => this.recentlyViewedProducts.push(product)
+  //     )
+  //   })
+  // })
+this.test = this.productService.storageSubject
+    .pipe(
+      tap(data => console.log(data, 'event added')),
+      takeWhile((data) => Boolean(data.length)),
+      flatMap(ids => ids),
+      map(productId => this.productService.getProductById(productId, ProductFormat.short)),
+      concatAll()
+    )
+    .subscribe(el => {
+      console.log(el)
+      this.recentlyViewedProducts.push(el);
+    });
+}
 
   public checkIfExpired() {
     const hours = 0.1; // 360 seconds
@@ -76,5 +94,9 @@ export class RecentlyViewedComponent implements OnInit {
         this.localStorageService.localStorageDelete('clearRecentlyViewed');
       }
     }
+  }
+
+  public ngOnDestroy() {
+    this.test.unsubscribe()
   }
 }

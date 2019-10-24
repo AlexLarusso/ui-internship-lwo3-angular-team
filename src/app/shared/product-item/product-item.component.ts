@@ -22,11 +22,10 @@ export class ProductItemComponent {
   public product: IProduct;
 
   constructor(
-    // private storeService: StoreService,
-    private store: Store<IAppState>) { }
+    private storeService: StoreService,
+    ) { }
 
   public OnClick(id: string) {
-    // this.storeService.saveViewedHistory(key);
-    this.store.dispatch(new SetRecentProducts(id));
+    this.storeService.addProductToLocalStorage(id);
   }
 }

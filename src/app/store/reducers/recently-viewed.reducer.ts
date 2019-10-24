@@ -18,7 +18,7 @@ export const initialState: IState = {
 
 export function recentItemsReducer(state = initialState, action: RecentItemsAction): IState {
   const recentItemsArr = state.recentlyViewedItemsIds
-  const {payload, type} = action
+  const { payload, type } = action
     switch (type) {
       case SetRecentProducts.TYPE:
         return {
