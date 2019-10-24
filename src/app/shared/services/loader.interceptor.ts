@@ -11,7 +11,9 @@ import { finalize, delay } from 'rxjs/operators';
 import { LoaderShow, LoaderHide } from 'src/app/store/actions/loader.actions';
 import { IAppState } from 'src/app/store/app.store';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(private store: Store<IAppState>) { }

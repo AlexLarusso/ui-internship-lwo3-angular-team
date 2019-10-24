@@ -1,12 +1,14 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faPlusCircle, faMinusCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { Store } from '@ngrx/store';
+
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
 import { IAppState } from 'src/app/store/app.store';
 import { IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
 import { getProductQuantity } from 'src/app/store/selectors/product-options.selector';
-import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-select-number',
@@ -15,8 +17,6 @@ import { delay } from 'rxjs/operators';
 })
 export class SelectNumberComponent implements OnInit {
   @Input() maxNumber: number;
-
-  @Output() numberSelect: EventEmitter<number> = new EventEmitter<number>();
 
   public minusIcon: IconDefinition = faMinusCircle;
   public plusIcon: IconDefinition = faPlusCircle;

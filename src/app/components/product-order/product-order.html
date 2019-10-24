@@ -2,7 +2,6 @@
   <div class="product-order__image-preview">
     <app-product-preview
       [productImages]="productImages"
-      [productSelectedColor]="selectedColor"
       [productTitle]="productDetails.title">
     </app-product-preview>
   </div>
@@ -11,12 +10,10 @@
       <app-dropdown class="option" default="Size" [options]="productDetails.options.sizes"
         (itemSelect)="handleSizeSelect($event)">
       </app-dropdown>
-      <app-select-number class="option" [maxNumber]="productDetails.options.quantity"
-        (numberSelect)="handleQuantitySelect($event)">
+      <app-select-number class="option" [maxNumber]="productDetails.options.quantity">
         <span class="option__label">Qty</span>
       </app-select-number>
-      <app-select-color class="option" [colors]="productDetails.options.colors"
-        (colorSelect)="handleColorSelect($event)">
+      <app-select-color class="option" [colors]="productDetails.options.colors">
         <span class="option__label">Color</span>
       </app-select-color>
     </div>

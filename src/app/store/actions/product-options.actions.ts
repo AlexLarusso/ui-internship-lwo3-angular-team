@@ -1,18 +1,39 @@
 import { Action } from '@ngrx/store';
 
 export enum ProductOptionsActionTypes {
-  IncrementQuantity = '[Product Options] IncrementQuantity',
-  DecrementQuantity = '[Product Options] DecrementQuantity'
+  IncrementQuantity = '[Product Options] Increment quantity',
+  DecrementQuantity = '[Product Options] Decrement quantity',
+  SelectColor = '[Product Options] Select color',
+  SelectSize = '[Product Options] Select size'
 }
 
 export class IncrementQuantity implements Action {
+  constructor() { }
+
   public static readonly TYPE = ProductOptionsActionTypes.IncrementQuantity;
   public type = IncrementQuantity.TYPE;
 }
 
 export class DecrementQuantity implements Action {
+  constructor() { }
+
   public static readonly TYPE = ProductOptionsActionTypes.DecrementQuantity;
   public type = DecrementQuantity.TYPE;
 }
 
-export type ProductOptionsActions = IncrementQuantity | DecrementQuantity;
+export class SelectColor implements Action {
+  constructor(public readonly color?: number) { }
+
+  public static readonly TYPE = ProductOptionsActionTypes.SelectColor;
+  public type = SelectColor.TYPE;
+}
+
+export class SelectSize implements Action {
+  constructor(public readonly size?: string) { }
+
+  public static readonly TYPE = ProductOptionsActionTypes.SelectSize;
+  public type = SelectSize.TYPE;
+}
+
+export type ProductOptionsActions =
+  IncrementQuantity | DecrementQuantity | SelectColor | SelectSize;

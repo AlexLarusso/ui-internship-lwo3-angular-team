@@ -3,6 +3,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './pages/home/home.module';
@@ -50,10 +51,10 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    StoreModule.forRoot(appReducer)
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({})
   ],
   providers: [
-    ProductResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [

@@ -1,22 +1,32 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProductImage } from 'src/app/interfaces/product-image.interface';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
 
 @Component({
   selector: 'app-product-preview',
   templateUrl: './product-preview.html',
   styleUrls: ['./product-preview.scss']
 })
-export class ProductPreviewComponent implements OnChanges {
+export class ProductPreviewComponent implements OnInit {
   @Input() private productImages: Array<IProductImage>;
-  @Input() private productSelectedColor: number;
   @Input() public productTitle: string;
 
   public imagesSource: Array<string>;
   public selectedImageID: number;
 
-  public ngOnChanges(): void {
-    this.selectedImageID = 0;
-    this.imagesSource = this.findImagesSource();
+  private productSelectedColor: number;
+
+  constructor(private store: Store<IAppState>) { }
+
+  public ngOnInit(): void {
+    this.store.select(getProductSelectedColor)
+      .subscribe(color => {
+        this.selectedImageID = 0;
+        this.productSelectedColor = color;
+        this.imagesSource = this.findImagesSource();
+      });
   }
 
   public onImageSelect(index: number): void {
