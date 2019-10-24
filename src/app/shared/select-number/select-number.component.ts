@@ -1,5 +1,10 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { faPlusCircle, faMinusCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { Increment, Decrement } from 'src/app/store/actions/counter.actions';
+import { getCount } from 'src/app/store/selectors/counter.selectors';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -10,33 +15,38 @@ import { delay } from 'rxjs/operators';
 })
 export class SelectNumberComponent implements OnInit {
   @Input() maxNumber: number;
-
   @Output() numberSelect: EventEmitter<number> = new EventEmitter<number>();
 
   public minusIcon: IconDefinition;
   public plusIcon: IconDefinition;
   public value: number;
   public isValuelimit = false;
-  public increment = 1;
-  public decrement = -1;
+
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
     this.minusIcon = faMinusCircle;
     this.plusIcon = faPlusCircle;
-    this.value = 1;
+    this.store.select(getCount).subscribe(data => this.value = data);
   }
 
-  public onClick(index: number): void {
-    const nextNum = this.value + index;
+  public increment(): void {
+    this.isWithinValueLimit(this.value + 1)
+      && this.store.dispatch(new Increment());
+  }
 
-    if (nextNum <= this.maxNumber && nextNum > 0) {
-      this.value = nextNum;
-      this.numberSelect.emit(nextNum);
-      this.isValuelimit = false;
-    } else {
-      this.isValuelimit = true;
-      of(false).pipe(delay(500))
-        .subscribe(value => this.isValuelimit = value);
+  public decrement(): void {
+    this.isWithinValueLimit(this.value - 1)
+      && this.store.dispatch(new Decrement());
+  }
+
+  private isWithinValueLimit(value: number): boolean {
+    if (value > 0 && value <= this.maxNumber) {
+      return true;
     }
+
+    this.isValuelimit = true;
+    of(false).pipe(delay(500))
+      .subscribe(value => this.isValuelimit = value);
   }
 }
