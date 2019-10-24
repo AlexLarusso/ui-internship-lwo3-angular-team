@@ -4,7 +4,7 @@ export interface IState {
   count: number;
   userEmail: string;
   recently: Array<string>;
-  liked: Array<string>
+  liked: Array<string>;
 }
 
 export const initialState: IState = {
@@ -22,7 +22,7 @@ export function webStorageReducer(state = initialState, action: StorageAction): 
       return {
         ...state,
         [action.key]: action.payload
-      }
+      };
     default: return state;
   }
-};
+}
