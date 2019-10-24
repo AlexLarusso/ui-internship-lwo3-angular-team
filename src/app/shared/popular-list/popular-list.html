@@ -2,14 +2,20 @@
   <div class="content__container popular__wrapper">
     <h2 class="content__title">Popular Now</h2>
     <ul class="filter__panel col-8">
-      <li *ngFor="let item of filterItems" class="filter__item">
-        {{ item }}
+      <li *ngFor="let item of filterItems">
+        <button class="filter__item" (click)="SortByTag(item)">
+          {{ item }}
+        </button>
       </li>
     </ul>
     <div class="col-12 product__container">
       <app-product-item
         *ngFor="let product of productData | slice:0:4"
-        class="product__item">
+        class="product__item"
+        [imgUrl]="product.imgUrl"
+        [productTitle]="product.productTitle"
+        [productPrice]="product.productPrice"
+        [productId]="product.productId">
       </app-product-item>
     </div>
   </div>

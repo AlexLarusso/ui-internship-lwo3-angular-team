@@ -34,7 +34,8 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 799,
-    "id": "f58bcf13"
+    "id": "f58bcf13",
+    "status": "On Sale"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -57,7 +58,8 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 12,
     "price": 600,
-    "id": "f13b82bb"
+    "id": "f13b82bb",
+    "status": "trending"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -306,7 +308,8 @@
     "sex": "female",
     "quantity": 10,
     "price": 799,
-    "id": "f1c9a09f"
+    "id": "f1c9a09f",
+    "status": "New"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -398,7 +401,8 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 799,
-    "id": "fab8d95"
+    "id": "fab8d95",
+    "status": "Bestsellers"
   },
   {
     "productName":  "LEVI'S - JEAN SKIRTT",
@@ -458,8 +462,9 @@
     "season": ["spring", "fall", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": "f229e000"
-  }, 
+    "id": "f229e000",
+    "status":"On Sale"
+  },
   {
     "productName": "Answear - SKIRT",
     "description": "Skirt from the Answear collection. The straight cut model is made of smooth knitwear.\n      - Direct style.\n      - Excessive waist.\n      - Gum in the belt.\n      - Thin, stretchy knitwear.\n      - Textured material.\n      - Belt width: 39 cm.\n      - Length: 87 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Material: knitwear\n      Style: straight\n      Composition:\n      100% Acrylic",
@@ -677,7 +682,8 @@
     "season": ["fall", "spring"],
     "quantity": 8,
     "price": 129,
-    "id": "f5bbc2e2"
+    "id": "f5bbc2e2",
+    "status": "Bestsellers"
   },
   {
     "productName": "SCOTCH & SODA - Shirt",
@@ -745,7 +751,8 @@
     "season": ["fall", "spring"],
     "quantity": 15,
     "price": 79,
-    "id": "f19a4a97"
+    "id": "f19a4a97",
+    "status": "trending"
   },
   {
     "productName": "LEVI`S - Checked Shirt",
@@ -2229,7 +2236,7 @@
     "sizes": ["s", "m", "l", "xl"],
     "colors": ["#32CD32", "#000000", "#FFFACD"],
     "images": [
-      
+
       {
         "value": "#000000",
         "url": [

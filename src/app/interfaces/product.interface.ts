@@ -14,4 +14,5 @@ export interface IProduct {
   quantity: number;
   price: number;
   id: string;
+  status: string;
 }

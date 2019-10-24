@@ -15,15 +15,21 @@ import { ProductFormat } from 'src/app/app.enum';
   styleUrls: ['./popular-list.scss']
 })
 export class PopularListComponent implements OnInit, OnDestroy {
-  public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
+  public filterItems = ['trending', 'Bestsellers', 'New', 'On Sale'];
   public getProductsSub: Subscription;
   public productData: Array<IProductShortInfo>;
 
   constructor(private productService: ProductService) { }
 
+  public ProductListRefresh(item?: string){
+  this.getProductsSub = this.productService.getProducts(ProductFormat.short)
+    .subscribe(data => this.productData = data.filter(product => product.status === item));
+  }
   public ngOnInit(): void {
-    this.getProductsSub = this.productService.getProducts(ProductFormat.short)
-      .subscribe(data => this.productData = data);
+    this.ProductListRefresh('trending')
+  }
+  public SortByTag(item: string){
+    this.ProductListRefresh(item);
   }
 
   public ngOnDestroy(): void { }
