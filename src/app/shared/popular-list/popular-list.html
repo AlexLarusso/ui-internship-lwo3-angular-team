@@ -2,10 +2,8 @@
   <div class="content__container popular__wrapper">
     <h2 class="content__title">Popular Now</h2>
     <ul class="filter__panel col-8">
-      <li *ngFor="let item of filterItems">
-        <button class="filter__item" (click)="onSortByTag(item)">
+      <li *ngFor="let item of filterItems" class="filter__item">
           {{ item }}
-        </button>
       </li>
     </ul>
     <div class="col-12 product__container">
