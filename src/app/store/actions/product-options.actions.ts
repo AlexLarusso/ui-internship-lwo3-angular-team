@@ -15,4 +15,4 @@ export class DecrementQuantity implements Action {
   public type = DecrementQuantity.TYPE;
 }
 
-export type ProductOptionsActionType = IncrementQuantity | DecrementQuantity;
+export type ProductOptionsActions = IncrementQuantity | DecrementQuantity;

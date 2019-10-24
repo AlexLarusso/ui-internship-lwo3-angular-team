@@ -3,8 +3,8 @@ import { faPlusCircle, faMinusCircle, IconDefinition } from '@fortawesome/free-s
 
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
-import { Increment, Decrement } from 'src/app/store/actions/counter.actions';
-import { getCount } from 'src/app/store/selectors/counter.selectors';
+import { IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
+import { getProductQuantity } from 'src/app/store/selectors/product-options.selector';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -15,29 +15,29 @@ import { delay } from 'rxjs/operators';
 })
 export class SelectNumberComponent implements OnInit {
   @Input() maxNumber: number;
+
   @Output() numberSelect: EventEmitter<number> = new EventEmitter<number>();
 
-  public minusIcon: IconDefinition;
-  public plusIcon: IconDefinition;
+  public minusIcon: IconDefinition = faMinusCircle;
+  public plusIcon: IconDefinition = faPlusCircle;
   public value: number;
   public isValuelimit = false;
 
   constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
-    this.minusIcon = faMinusCircle;
-    this.plusIcon = faPlusCircle;
-    this.store.select(getCount).subscribe(data => this.value = data);
+    this.store.select(getProductQuantity)
+      .subscribe(data => this.value = data);
   }
 
   public increment(): void {
     this.isWithinValueLimit(this.value + 1)
-      && this.store.dispatch(new Increment());
+      && this.store.dispatch(new IncrementQuantity());
   }
 
   public decrement(): void {
     this.isWithinValueLimit(this.value - 1)
-      && this.store.dispatch(new Decrement());
+      && this.store.dispatch(new DecrementQuantity());
   }
 
   private isWithinValueLimit(value: number): boolean {
