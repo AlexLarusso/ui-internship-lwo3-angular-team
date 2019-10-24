@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { StoreModule } from '@ngrx/store';
 
@@ -40,7 +41,7 @@ const routes: Routes = [
     ProductListPageComponent,
     ProductDetailsPageComponent,
     LoaderComponent,
-    CounterComponent
+    CounterComponent,
   ],
   imports: [
     HomeModule,
@@ -50,10 +51,10 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    StoreModule.forRoot(appReducer)
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({})
   ],
   providers: [
-    ProductResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [

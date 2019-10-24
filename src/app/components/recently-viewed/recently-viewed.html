@@ -1,4 +1,5 @@
-<div *ngIf='recentlyViewedProducts?.length'>
+<div *ngIf='recentlyViewedProducts?.length' appScrollAnchor title="Recent Items">
 <div class="content__title">Recently viewed items</div>
 <app-product-carousel [productData]="recentlyViewedProducts"></app-product-carousel>
 <!-- <app-product-carousel [category]="products"></app-product-carousel> -->
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { EnumRegExp } from 'src/app/app.enum';
+import { LocalStorageService } from '../../shared/services/web-storage/local-storage.service';
+import { EnumRegExp } from '../../app.enum';
 
 @Component({
   selector: 'app-join-us',
@@ -40,7 +40,7 @@ export class JoinUsComponent implements OnInit {
   }
 
   public saveUser(): void {
-    this.localStorageService.setEmail(this.inputText);
+    this.localStorageService.setData(this.inputText);
     this.localStorageService.localStorageAdd('userEmail');
     this.isSubscribed = true;
   }
@@ -50,11 +50,11 @@ export class JoinUsComponent implements OnInit {
     this.isSubscribed = false;
   }
 
-  public onValidate(value?: string): void {
-    const isValid = this.emailRegExp.test(value || this.inputText);
+  public onValidate(): void {
+    const isValid = this.emailRegExp.test(this.inputText);
 
-    this.localStorageService.setEmail(this.inputText);
+    this.localStorageService.setData(this.inputText);
     this.buttonDisabled = !isValid;
     this.isInvalid = !isValid;
-    }
+  }
 }
