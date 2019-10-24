@@ -26,5 +26,9 @@ export class PopularListComponent implements OnInit, OnDestroy {
       .subscribe(data => this.productData = data);
   }
 
+  // public onSortByTag(item: string): Array<any> {
+  //   return this.productData.filter(product => product.status === item);
+  // }
+
   public ngOnDestroy(): void { }
 }

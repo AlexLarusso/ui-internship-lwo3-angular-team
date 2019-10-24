@@ -6,14 +6,14 @@ export enum StorageActionTypes {
 }
 
 export class SetValueToStorage implements Action {
-  constructor(public payload: any){}
+  constructor(public key: string, public payload: any){}
 
   public static readonly TYPE = StorageActionTypes.SetValue;
   public type = SetValueToStorage.TYPE;
 }
 
 export class GetValueFromStorage implements Action {
-  constructor(public payload: any){}
+  constructor(public key: string, public payload: any){}
 
   public static readonly TYPE = StorageActionTypes.GetValue;
   public type = GetValueFromStorage.TYPE;
