@@ -3,8 +3,8 @@
     <a routerLink="/products/{{ productId }}">
       <img class="product-item__picture" [alt]="productTitle" [src]="imgUrl"/>
     </a>
-    <app-wish-list-button class="wish__btn" [productId]="productId" wishClass="wish__product-item">
-    </app-wish-list-button>
+    <app-wish-button class="wish__btn" [productId]="productId" wishClass="wish__product-item">
+    </app-wish-button>
   </div>
   <h4 class="product-item__title">{{ productTitle }}</h4>
   <p class="product-item__price">{{ productPrice }}</p>

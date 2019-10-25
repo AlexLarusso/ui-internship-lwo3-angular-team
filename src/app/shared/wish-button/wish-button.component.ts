@@ -12,9 +12,9 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @AutoUnsubscribe()
 @Component({
-  selector: 'app-wish-list-button',
-  templateUrl: './wish-list-button.html',
-  styleUrls: ['./wish-list-button.scss']
+  selector: 'app-wish-button',
+  templateUrl: './wish-button.html',
+  styleUrls: ['./wish-button.scss']
 })
 export class WishListButtonComponent implements OnInit, OnDestroy {
   @Input() public productId: string;
@@ -30,7 +30,6 @@ export class WishListButtonComponent implements OnInit, OnDestroy {
     const localStorageLiked = JSON.parse(localStorage.getItem('liked'));
 
     if (localStorageLiked) {
-      this.store.dispatch(new SetToWishList(localStorageLiked));
       this.isLiked = localStorageLiked.includes(this.productId);
     }
   }
@@ -47,7 +46,7 @@ export class WishListButtonComponent implements OnInit, OnDestroy {
 
   public setAllToLocalStorage(): void {
     this.liked$ = this.store.select(getLiked);
-    let stringifyData;
+    let stringifyData: string;
 
     this.liked$.subscribe(data => stringifyData = JSON.stringify(data));
     localStorage.setItem('liked', stringifyData);

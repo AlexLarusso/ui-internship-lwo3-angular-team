@@ -20,7 +20,7 @@ import { AccordeonComponent } from './accordeon/accordeon.component';
 import { SelectColorComponent } from './select-color/select-color.component';
 import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
-import { WishListButtonComponent } from './wishlist-button/wish-list-button.component';
+import { WishListButtonComponent } from './wish-button/wish-button.component';
 
 @NgModule({
   declarations: [

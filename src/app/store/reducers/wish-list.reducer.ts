@@ -9,19 +9,21 @@ const initialState = {
 };
 
 export function wishListReducer(state = initialState, action: WishListActions): IState {
+  const { type, payload } = action;
   const likedProductsArray = state.likedProducts;
 
-  switch (action.type) {
+  switch (type) {
     case AddToWishList.TYPE:
 
       return {
         ...state,
-        likedProducts: [...likedProductsArray, action.product]
+        likedProducts: [...likedProductsArray, payload]
       };
 
     case RemoveFromWishList.TYPE:
-      const removeIndex = likedProductsArray.indexOf(action.product);
+      const removeIndex = likedProductsArray.indexOf(payload);
       const newProductArray = [...likedProductsArray];
+
       newProductArray.splice(removeIndex, 1);
 
       return {
@@ -32,7 +34,7 @@ export function wishListReducer(state = initialState, action: WishListActions): 
     case SetToWishList.TYPE:
       return {
         ...state,
-        likedProducts: action.product
+        likedProducts: [...payload]
       };
 
     default:

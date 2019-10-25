@@ -4,7 +4,7 @@
       <div class="col-9 menu__container">
         <ul class="menu__list col-6">
           <li *ngFor="let item of menuItems" class="menu__list__item">
-            <a routerLink="/{{ item.split(' ').join('') | lowercase }}">{{ item }}</a>
+            <a [routerLink]="item.url">{{ item.title }}</a>
           </li>
         </ul>
         <div class="col-5 menu__input__container">

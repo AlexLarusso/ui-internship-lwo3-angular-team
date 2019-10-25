@@ -7,24 +7,24 @@ export enum WishListActionTypes {
 }
 
 export class AddToWishList implements Action {
+  constructor(public payload: string) { }
+
   public static readonly TYPE = WishListActionTypes.Add;
   public type = AddToWishList.TYPE;
-
-  constructor(public product) { }
 }
 
 export class RemoveFromWishList implements Action {
+  constructor(public payload: string) { }
+
   public static readonly TYPE = WishListActionTypes.Remove;
   public type = RemoveFromWishList.TYPE;
-
-  constructor(public product) { }
 }
 
 export class SetToWishList implements Action {
+  constructor(public payload: Array<string>) { }
+
   public static readonly TYPE = WishListActionTypes.SetAll;
   public type = SetToWishList.TYPE;
-
-  constructor(public product) { }
 }
 
 export type WishListActions = AddToWishList | RemoveFromWishList | SetToWishList;
