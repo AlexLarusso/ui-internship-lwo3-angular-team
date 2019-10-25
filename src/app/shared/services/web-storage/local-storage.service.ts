@@ -7,12 +7,12 @@ import { WebStorageService } from './web-storage.service';
 
 export class LocalStorageService extends WebStorageService {
 
-  public getData(): void {
-    super.getValue();
+  public getData(key: string) {
+    super.getValue(key);
   }
 
-  public setData(value: string): void {
-    super.setValue(value);
+  public setData(key: string, value: string): void {
+    super.setValue(key, value);
   }
 
   public getItem(property: string): any {
