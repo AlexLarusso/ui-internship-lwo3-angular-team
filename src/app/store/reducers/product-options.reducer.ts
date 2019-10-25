@@ -1,6 +1,5 @@
 import {
-  ProductOptionsActions, IncrementQuantity,
-  DecrementQuantity, SelectColor, SelectSize
+  IncrementQuantity, DecrementQuantity, SelectColor, SelectSize
 } from '../actions/product-options.actions';
 
 export interface IState {
@@ -15,7 +14,7 @@ export const initialState: IState = {
   selectedSize: null
 };
 
-export function productOptionsReducer(state = initialState, action: ProductOptionsActions): IState {
+export function productOptionsReducer(state = initialState, action: any): IState {
   const { type, payload } = action;
 
   switch (type) {

@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Subscription } from 'rxjs';
 
 import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,17 +23,21 @@ const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor comm
   ea sit excepteur ex eu. Nisi esse dolore aute laborum.`;
 const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nisi cupidatat.';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-product-order',
   templateUrl: './product-order.html',
   styleUrls: ['./product-order.scss']
 })
-export class ProductOrderComponent implements OnInit {
+export class ProductOrderComponent implements OnInit, OnDestroy {
   @Input() private product: IProduct;
 
   public iconWhishlistBtn: IconDefinition = faHeart;
   public productDetails: IProductDetails;
   public productImages: Array<IProductImage>;
+  public selectedSizeSub: Subscription;
+  public selectedColorSub: Subscription;
+  public selectedQtySub: Subscription;
 
   private selectedSize: string;
   private selectedColor: string;
@@ -65,13 +71,15 @@ export class ProductOrderComponent implements OnInit {
     this.productImages = this.product.images;
 
     this.store.dispatch(new SelectColor(initColor));
-    this.store.select(getProductQuantity)
+    this.selectedQtySub = this.store.select(getProductQuantity)
       .subscribe(qty => this.selectedQty = qty);
-    this.store.select(getProductSelectedColor)
+    this.selectedColorSub = this.store.select(getProductSelectedColor)
       .subscribe(color => this.selectedColor = color);
-    this.store.select(getProductSelectedSize)
+    this.selectedSizeSub = this.store.select(getProductSelectedSize)
       .subscribe(size => this.selectedSize = size);
   }
+
+  public ngOnDestroy(): void { }
 
   public onBuyClick(): void {
     // TODO: Implement modal service

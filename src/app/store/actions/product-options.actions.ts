@@ -34,6 +34,3 @@ export class SelectSize implements Action {
   public static readonly TYPE = ProductOptionsActionTypes.SelectSize;
   public type = SelectSize.TYPE;
 }
-
-export type ProductOptionsActions =
-  IncrementQuantity | DecrementQuantity | SelectColor | SelectSize;
