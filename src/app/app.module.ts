@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -13,6 +13,7 @@ import { ProductListPageModule } from './pages/product-list-page/product-list-pa
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ProductResolver } from './shared/services/product.resolver';
+import { ErrorsHandler } from './shared/services/errors.handler';
 
 import { appReducer } from './store/app.store';
 
@@ -55,7 +56,8 @@ const routes: Routes = [
     StoreDevtoolsModule.instrument({})
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: ErrorsHandler }
   ],
   bootstrap: [
     AppComponent
