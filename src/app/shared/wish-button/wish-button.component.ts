@@ -16,7 +16,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './wish-button.html',
   styleUrls: ['./wish-button.scss']
 })
-export class WishListButtonComponent implements OnInit, OnDestroy {
+export class WishButtonComponent implements OnInit, OnDestroy {
   @Input() public productId: string;
   @Input() public wishClass: string;
 

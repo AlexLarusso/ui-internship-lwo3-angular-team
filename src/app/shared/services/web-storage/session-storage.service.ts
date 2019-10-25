@@ -5,4 +5,5 @@ import { WebStorageService } from './web-storage.service';
   providedIn: 'root'
 })
 
-export class SessionStorageService extends WebStorageService { }
+export class SessionStorageService extends WebStorageService {
+}
