@@ -13,15 +13,12 @@ export const initialState: IState = {
 export function counterReducer(state = initialState, action: CounterActions): IState {
   switch (action.type) {
     case Increment.TYPE:
-      console.log(state);
-
       return {
         ...state,
         count: state.count + 1
       };
 
     case Decrement.TYPE:
-        console.log(state.count);
       return {
         ...state,
         count: state.count - 1

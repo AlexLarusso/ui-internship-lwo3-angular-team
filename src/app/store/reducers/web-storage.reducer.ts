@@ -2,12 +2,16 @@ import { SetValueToStorage, StorageAction } from '../actions/web-storage.actions
 
 export interface IState {
   count: number;
-  value: string;
+  userEmail: string;
+  recently: Array<string>;
+  liked: Array<string>;
 }
 
 export const initialState: IState = {
   count: 0,
-  value: '',
+  userEmail: '',
+  recently: [],
+  liked: []
 };
 
 export function webStorageReducer(state = initialState, action: StorageAction): IState {
@@ -16,8 +20,8 @@ export function webStorageReducer(state = initialState, action: StorageAction): 
     case SetValueToStorage.TYPE:
       return {
         ...state,
-        value: action.payload
-      }
+        [action.key]: action.payload
+      };
     default: return state;
   }
-};
+}
