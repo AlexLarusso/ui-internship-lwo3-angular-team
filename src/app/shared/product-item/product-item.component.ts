@@ -17,12 +17,11 @@ export class ProductItemComponent {
 
   public faHeart = faHeart;
   public product: IProduct;
+  public order = 0;
 
-  constructor(
-    private productService: ProductService,
-    ) { }
+  constructor(private productService: ProductService) { }
 
-  public OnClick(id: string) {
-    this.productService.addProductToLocalStorage(id);
+  public addIdToLocalStorage(id: string): void {
+   this.productService.recentProductOrder(id);
   }
 }

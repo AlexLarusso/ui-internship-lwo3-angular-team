@@ -260,7 +260,7 @@
     "sex": "female",
     "quantity": 10,
     "price": 999,
-    "id": "f8ebd8b"
+    "id": "f8eb7d8b"
   },
   {
     "productName": "ONLY - SHIRT",
@@ -283,7 +283,7 @@
     "sex": "female",
     "quantity": 10,
     "price": 799,
-    "id": "fe68153"
+    "id": "fe6d8153"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -398,7 +398,7 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 799,
-    "id": "fab8d95"
+    "id": "fa7b8d95"
   },
   {
     "productName":  "LEVI'S - JEAN SKIRTT",
@@ -534,7 +534,7 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": "f67e5e3"
+    "id": "f67e5de3"
   },
   {
     "productName": "Tommy Jeans Shirt",
@@ -884,7 +884,7 @@
     "season": ["fall", "spring"],
     "quantity": 20,
     "price": 599,
-    "id": "f258a68"
+    "id": "f258a6f8"
   },
   {
     "productName": "Armany Exchange - Shirt",
@@ -977,7 +977,7 @@
     "sex": "male",
     "quantity": 10,
     "price": 1589,
-    "id": "f6743c1"
+    "id": "f674b3c1"
   },
   {
     "productName": "Puma T-shirt X-space agency NASA",
@@ -1061,7 +1061,7 @@
     "sex": "male",
     "quantity": 10,
     "price": 1859,
-    "id": "fd80e9b"
+    "id": "fd8a0e9b"
   },
   {
     "productName": "Polo Ralph Lauren T-shirt",
@@ -1441,7 +1441,7 @@
     "season": ["spring", "winter"],
     "quantity": 12,
     "price": 599,
-    "id": "fee7165"
+    "id": "fe2e7165"
   },
   {
     "productName": "MANGO - SWEATER",
@@ -1568,7 +1568,7 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 490,
-    "id": "f1a2b5f"
+    "id": "f1a2b5f3"
   },
   {
     "productName": "MANGO - ALMA5 SWEATER",
@@ -1611,7 +1611,7 @@
     "season": ["spring", "winter"],
     "quantity": 15,
     "price": 790,
-    "id": "f10c1d1"
+    "id": "f1a0c1d1"
   },
   {
     "productName": "ANSWEAR - SWEATER",
@@ -1758,7 +1758,6 @@
     "price": 1190,
     "id": "f254c739"
   },
-
   {
     "productName": "ONLY - COAT",
     "description": "Coat from the collection Only. The slightly warmed model is made of smooth material. Straight cut. Classic lapels. Fastens with a button. The belt is attached. Welt pockets. Lined model.",
@@ -2075,7 +2074,7 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 3590,
-    "id": "fdd0f8d"
+    "id": "fd2d0f8d"
   },
   {
     "productName": "MANGO - DRESS",
@@ -2143,7 +2142,7 @@
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
-    "id": "f147d88"
+    "id": "f1f47d88"
   },
   {
     "productName": "MANGO - DRESS",
@@ -2255,7 +2254,7 @@
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
-    "id": "faf444"
+    "id": "f1a3f444"
   },
   {
     "productName": "ANSWEAR - DRESS",
@@ -2495,7 +2494,7 @@
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,
-    "id": "fafa6e4"
+    "id": "fa1fa6e4"
   },
   {
     "productName": "ANSWEAR - PANTS",
@@ -2567,7 +2566,7 @@
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,
-    "id": "f2a1f1f"
+    "id": "f2a1f1f5"
   },
   {
     "productName": "ANSWEAR - PANTS",
