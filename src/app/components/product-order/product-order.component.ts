@@ -12,7 +12,7 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
 
 import { IAppState } from 'src/app/store/app.store';
 import {
-  getProductQuantity, getProductSelectedColor
+  getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
 import { SelectColor } from 'src/app/store/actions/product-options.actions';
 
@@ -29,12 +29,13 @@ const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nis
 export class ProductOrderComponent implements OnInit {
   @Input() private product: IProduct;
 
+  public iconWhishlistBtn: IconDefinition = faHeart;
   public productDetails: IProductDetails;
   public productImages: Array<IProductImage>;
-  public selectedSize: string;
-  public selectedColor: number;
+
+  private selectedSize: string;
+  private selectedColor: string;
   private selectedQty: number;
-  public iconWhishlistBtn: IconDefinition = faHeart;
 
   constructor(private store: Store<IAppState>) { }
 
@@ -49,8 +50,8 @@ export class ProductOrderComponent implements OnInit {
       style: STYLE_MOCK,
       delivery: DELIVERY_MOCK,
     };
+    const initColor = productOptions.colors[0];
 
-    this.selectedQty = 1;
     this.productDetails = {
       title: this.product.productName,
       price: this.product.price,
@@ -63,15 +64,13 @@ export class ProductOrderComponent implements OnInit {
     };
     this.productImages = this.product.images;
 
+    this.store.dispatch(new SelectColor(initColor));
     this.store.select(getProductQuantity)
       .subscribe(qty => this.selectedQty = qty);
-    this.store.dispatch(new SelectColor(productOptions.colors[0]));
     this.store.select(getProductSelectedColor)
       .subscribe(color => this.selectedColor = color);
-  }
-
-  public handleSizeSelect(size: string): void {
-    this.selectedSize = size;
+    this.store.select(getProductSelectedSize)
+      .subscribe(size => this.selectedSize = size);
   }
 
   public onBuyClick(): void {

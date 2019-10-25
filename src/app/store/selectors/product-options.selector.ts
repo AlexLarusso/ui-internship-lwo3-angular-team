@@ -12,3 +12,8 @@ export const getProductSelectedColor = createSelector(
   getProductOptions,
   (state: IState) => state.selectedColor
 );
+
+export const getProductSelectedSize = createSelector(
+  getProductOptions,
+  (state: IState) => state.selectedSize
+);

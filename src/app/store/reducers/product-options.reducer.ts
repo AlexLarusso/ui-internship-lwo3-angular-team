@@ -1,10 +1,11 @@
 import {
-  ProductOptionsActions, IncrementQuantity, DecrementQuantity, SelectColor, SelectSize
+  ProductOptionsActions, IncrementQuantity,
+  DecrementQuantity, SelectColor, SelectSize
 } from '../actions/product-options.actions';
 
 export interface IState {
   quantity: number;
-  selectedColor: number;
+  selectedColor: string;
   selectedSize: string;
 }
 
@@ -12,11 +13,12 @@ export const initialState: IState = {
   quantity: 1,
   selectedColor: null,
   selectedSize: null
-}
+};
 
 export function productOptionsReducer(state = initialState, action: ProductOptionsActions): IState {
+  const { type, payload } = action;
 
-  switch(action.type) {
+  switch (type) {
     case IncrementQuantity.TYPE:
       return {
         ...state,
@@ -30,13 +32,13 @@ export function productOptionsReducer(state = initialState, action: ProductOptio
     case SelectColor.TYPE:
       return {
         ...state,
-        selectedColor: action.color 
+        selectedColor: payload
       };
     case SelectSize.TYPE:
       return {
         ...state,
-        selectedSize: action.size
-      }
+        selectedSize: payload
+      };
     default:
       return state;
   }

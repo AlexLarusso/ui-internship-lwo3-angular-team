@@ -5,7 +5,7 @@
     title="{{ productTitle }}"
     [src]="imagesSource[selectedImageID]"
   >
-  <img *ngFor="let url of imagesSource; let i = index" 
+  <img *ngFor="let url of imagesSource; let i = index"
     class="img_small"
     alt="{{ productTitle }}"
     [src]="url"

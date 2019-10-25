@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProductImage } from 'src/app/interfaces/product-image.interface';
+
 import { Store } from '@ngrx/store';
+
+import { IProductImage } from 'src/app/interfaces/product-image.interface';
+
 import { IAppState } from 'src/app/store/app.store';
 import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
 
@@ -16,7 +19,7 @@ export class ProductPreviewComponent implements OnInit {
   public imagesSource: Array<string>;
   public selectedImageID: number;
 
-  private productSelectedColor: number;
+  private productSelectedColor: string;
 
   constructor(private store: Store<IAppState>) { }
 

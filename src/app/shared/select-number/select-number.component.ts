@@ -31,13 +31,15 @@ export class SelectNumberComponent implements OnInit {
   }
 
   public increment(): void {
-    this.isWithinValueLimit(this.value + 1)
-      && this.store.dispatch(new IncrementQuantity());
+    if (this.isWithinValueLimit(this.value + 1)) {
+      this.store.dispatch(new IncrementQuantity());
+    }
   }
 
   public decrement(): void {
-    this.isWithinValueLimit(this.value - 1)
-      && this.store.dispatch(new DecrementQuantity());
+    if (this.isWithinValueLimit(this.value - 1)) {
+      this.store.dispatch(new DecrementQuantity());
+    }
   }
 
   private isWithinValueLimit(value: number): boolean {
@@ -47,6 +49,6 @@ export class SelectNumberComponent implements OnInit {
 
     this.isValuelimit = true;
     of(false).pipe(delay(500))
-      .subscribe(value => this.isValuelimit = value);
+      .subscribe(val => this.isValuelimit = val);
   }
 }

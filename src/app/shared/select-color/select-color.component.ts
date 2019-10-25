@@ -10,9 +10,9 @@ import { SelectColor } from 'src/app/store/actions/product-options.actions';
   styleUrls: ['./select-color.scss']
 })
 export class SelectColorComponent implements OnInit {
-  @Input() colors: Array<number>;
+  @Input() colors: Array<string>;
 
-  public selectedColor: number;
+  public selectedColor: string;
 
   constructor(private store: Store<IAppState>) { }
 
@@ -21,7 +21,7 @@ export class SelectColorComponent implements OnInit {
       .subscribe(color => this.selectedColor = color);
   }
 
-   public onSelect(color: number): void {
+   public onSelect(color: string): void {
     this.store.dispatch(new SelectColor(color));
   }
 }
