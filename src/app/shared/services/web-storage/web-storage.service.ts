@@ -13,13 +13,13 @@ export class WebStorageService {
   public value: string;
 
   public setValue(value: string): void {
-    this.store.dispatch(new SetValueToStorage(value))
+    this.store.dispatch(new SetValueToStorage(value));
     this.store.select(getStorageStatus)
       .subscribe(data => this.value = JSON.stringify(data));
   }
 
   public getValue(): string {
-    this.store.dispatch(new GetValueFromStorage(this.value))
+    this.store.dispatch(new GetValueFromStorage(this.value));
     this.store.select(getStorageStatus)
     .subscribe(data => this.value = JSON.parse(data));
 

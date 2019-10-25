@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { ProductFormat } from 'src/app/app.enum';
@@ -18,8 +18,7 @@ export class ProductService {
   public recentlyViewed: Array<string> = [];
   public storageSubject = new BehaviorSubject([]);
 
-  constructor(private httpService: HttpService) { 
-  }
+  constructor(private httpService: HttpService) { }
 
   public getProducts(format: string = ProductFormat.full):
     Observable<Array<any>> {
@@ -56,13 +55,13 @@ export class ProductService {
 
   public addProductToLocalStorage(id: string): void {
     this.recentlyViewed =
-      JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+      JSON.parse(localStorage.getItem('recentlyViewed')) || [];
 
     if (this.recentlyViewed.indexOf(id) !== -1) {
       this.recentlyViewed.splice(this.recentlyViewed.indexOf(id), 1);
     }
     this.recentlyViewed.unshift(id);
-    localStorage.setItem("recentlyViewed", JSON.stringify(this.recentlyViewed));
+    localStorage.setItem('recentlyViewed', JSON.stringify(this.recentlyViewed));
     this.storageSubject.next(this.recentlyViewed);
   }
 

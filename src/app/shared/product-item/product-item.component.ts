@@ -2,10 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { IProduct } from 'src/app/interfaces';
-import { StoreService } from '../services/store.service';
-import { Store } from '@ngrx/store'
-import { IAppState } from 'src/app/store/app.store';
-import { SetRecentProducts } from '../../store/actions/recently-viewed.actions'
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-item',
@@ -22,10 +19,10 @@ export class ProductItemComponent {
   public product: IProduct;
 
   constructor(
-    private storeService: StoreService,
+    private productService: ProductService,
     ) { }
 
   public OnClick(id: string) {
-    this.storeService.addProductToLocalStorage(id);
+    this.productService.addProductToLocalStorage(id);
   }
 }

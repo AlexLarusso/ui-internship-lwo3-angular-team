@@ -100,15 +100,13 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     }
 
     this.productsContainer.nativeElement.style.width = this.itemWidth * this.visibleNum + 'px';
-    // this.toggleButtonsState();
   }
 
   public toggleButtonsState(): void {
     const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
 
     this.canMoveToPrev = this.position !== 0;
-    this.canMoveToNext = this.position !== maxPosition
-    // this.canMoveToNext = this.position !== maxPosition && this.productArray.length > this.visibleNum;
+    this.canMoveToNext = this.position !== maxPosition;
   }
 
   public moveToNext(): void {

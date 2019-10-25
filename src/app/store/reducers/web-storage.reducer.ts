@@ -17,7 +17,9 @@ export function webStorageReducer(state = initialState, action: StorageAction): 
       return {
         ...state,
         value: action.payload
-      }
+      };
     default: return state;
   }
-};
+}
+
+
