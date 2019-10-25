@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="product__container">
-      <app-product-item *ngFor="let product of productData"
+      <app-product-item *ngFor="let product of productData | slice:0:visibleNumber"
         class="product__item"
         [imgUrl]="product.imgUrl"
         [productTitle]="product.productTitle"
@@ -24,5 +24,12 @@
         [productId]="product.productId">
       </app-product-item>
     </div>
+    <app-button
+      class="button_load"
+      buttonClass="button_load-more"
+      (click)="loadMore()"
+      [isDisabled]="!isLoadMoreActive">
+      Load more
+    </app-button>
   </div>
 </div>
