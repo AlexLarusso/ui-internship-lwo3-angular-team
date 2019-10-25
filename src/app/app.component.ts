@@ -26,7 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<IAppState>,
     private scrollService: ScrollService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   public isHomePage: boolean;
   public routerSub: Subscription;

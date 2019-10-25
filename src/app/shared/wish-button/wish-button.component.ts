@@ -44,13 +44,13 @@ export class WishButtonComponent implements OnInit, OnDestroy {
     this.setAllToLocalStorage();
   }
 
-  public setAllToLocalStorage(): void {
+  public ngOnDestroy(): void { }
+
+  private setAllToLocalStorage(): void {
     this.liked$ = this.store.select(getLiked);
     let stringifyData: string;
 
     this.liked$.subscribe(data => stringifyData = JSON.stringify(data));
     localStorage.setItem('liked', stringifyData);
   }
-
-  public ngOnDestroy(): void { }
 }

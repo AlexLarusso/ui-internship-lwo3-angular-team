@@ -19,11 +19,11 @@ import { map, switchMap } from 'rxjs/operators';
   styleUrls: ['./wish-list.scss']
 })
 export class WishListComponent implements OnInit, OnDestroy {
-  public getProducts: Observable<Array<IProductShortInfo>>;
+  public products$: Observable<Array<IProductShortInfo>>;
   public getLikeSub: Subscription;
   public productData: Array<IProductShortInfo> = [];
-  liked$: Observable<Array<string>>;
-  likedArray: Array<string>;
+  public liked$: Observable<Array<string>>;
+  public likedArray: Array<string>;
 
   constructor(
     private productService: ProductService,
@@ -33,20 +33,19 @@ export class WishListComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.liked$ = this.store.select(getLiked);
 
-    this.getProducts = this.productService.getProducts(ProductFormat.short);
+    this.products$ = this.productService.getProducts(ProductFormat.short);
 
     this.getLikeSub = this.liked$.pipe(switchMap(
       likedProducts => {
         this.likedArray = likedProducts;
 
-        return this.getProducts.pipe(
-          map(products => {
-            this.productData = products;
-            this.productData = this.productData.filter(el => this.likedArray.includes(el.productId));
-          })
+        return this.products$.pipe(
+          map(products =>
+            products.filter(el => this.likedArray.includes(el.productId))
+          )
         );
       }
-    )).subscribe();
+    )).subscribe(productArray => this.productData = productArray);
   }
 
   public ngOnDestroy(): void { }
