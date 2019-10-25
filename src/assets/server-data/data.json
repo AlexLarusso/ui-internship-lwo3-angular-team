@@ -59,7 +59,7 @@
     "quantity": 12,
     "price": 600,
     "id": "f13b82bb",
-    "status": "trending"
+    "status": "Trending"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -516,7 +516,8 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": "f3f7fa23"
+    "id": "f3f7fa23",
+    "status": "New"
   },
   {
     "productName": "MANGO - SOFT SKIRT",
@@ -612,7 +613,8 @@
     ],
     "quantity": 10,
     "price": 79,
-    "id": "f15368e4"
+    "id": "f15368e4",
+    "status": "On Sale"
   },
   {
     "productName": "Camel Active Shirt",
@@ -637,7 +639,8 @@
     "season": ["fall", "spring"],
     "quantity": 10,
     "price": 74,
-    "id": "f4784ed5"
+    "id": "f4784ed5",
+    "status": "On Sale"
   },
   {
     "productName": "Polo Ralph Lauren (smooth)",
@@ -752,7 +755,7 @@
     "quantity": 15,
     "price": 79,
     "id": "f19a4a97",
-    "status": "trending"
+    "status": "Trending"
   },
   {
     "productName": "LEVI`S - Checked Shirt",
@@ -1068,7 +1071,8 @@
     "sex": "male",
     "quantity": 10,
     "price": 1859,
-    "id": "fd80e9b"
+    "id": "fd80e9b",
+    "status": "Trending"
   },
   {
     "productName": "Polo Ralph Lauren T-shirt",
@@ -1188,7 +1192,8 @@
     "sex": "male",
     "quantity": 10,
     "price": 1299,
-    "id": "f36f58c4"
+    "id": "f36f58c4",
+    "status": "New"
   },
   {
     "productName": "Under Armour T-shirt",
@@ -1371,7 +1376,8 @@
     "sex": "unisex",
     "quantity": 10,
     "price": 1599,
-    "id": "f2b3a6e0"
+    "id": "f2b3a6e0",
+    "status": "On Sale"
   },
   {
     "productName": "MEDICINE - SWEETER BASIC",
@@ -1482,7 +1488,8 @@
     "season": ["spring", "winter"],
     "quantity": 5,
     "price": 945,
-    "id": "f381ae08"
+    "id": "f381ae08",
+    "status": "Bestsellers"
   },
   {
     "productName": "MEDICINE - MANIFESTO JUMPER",
@@ -1643,7 +1650,8 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 990,
-    "id": "f57a66c3"
+    "id": "f57a66c3",
+    "status": "Trending"
   },
   {
     "productName": "ANSWEAR - SWEATER",
@@ -1720,7 +1728,8 @@
     "season": ["spring","winter"],
     "quantity": 9,
     "price": 1190,
-    "id": "f3b2a383"
+    "id": "f3b2a383",
+    "status": "New"
   },
   {
     "productName": "VERO MODA - COAT",
@@ -1952,7 +1961,8 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2450,
-    "id": "f5c41fc1"
+    "id": "f5c41fc1",
+    "status": "Bestsellers"
   },
   {
     "productName": "JACQUELINE DE YONG - COAT",
@@ -2048,7 +2058,8 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2790,
-    "id": "f33035a8"
+    "id": "f33035a8",
+    "status": "On Sale"
   },
   {
     "productName": "ANSWEAR - COAT",
@@ -2296,7 +2307,8 @@
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
-    "id": "f24b339a"
+    "id": "f24b339a",
+    "status": "New"
   },
   {
     "productName": "ANSWEAR - DRESS",
@@ -2574,7 +2586,8 @@
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,
-    "id": "f2a1f1f"
+    "id": "f2a1f1f",
+    "status": "Trending"
   },
   {
     "productName": "ANSWEAR - PANTS",

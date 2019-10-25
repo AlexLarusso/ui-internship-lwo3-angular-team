@@ -12,6 +12,7 @@
       <app-product-item
         *ngFor="let product of productData | slice:0:4"
         class="product__item"
+        [status]="product.status"
         [imgUrl]="product.imgUrl"
         [productTitle]="product.productTitle"
         [productPrice]="product.productPrice"

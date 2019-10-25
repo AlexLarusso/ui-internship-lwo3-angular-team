@@ -14,6 +14,7 @@ export class ProductItemComponent {
   @Input() public productTitle = 'Product Title';
   @Input() public productPrice = 0;
   @Input() public productId = 1;
+  @Input() public status = '';
 
   public faHeart = faHeart;
   public product: IProduct;
