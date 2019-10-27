@@ -47,7 +47,7 @@ export class ProductService {
 
   public getProductsByIds(items: any, format: string = ProductFormat.full):
     Array<Observable<any>>  {
-      return items.map(item => this.httpService.getProductById(item.id).pipe(
+      return items.map((item: { id: string; }) => this.httpService.getProductById(item.id).pipe(
         map(product => this.formatProduct(product, format)
       )));
   }
@@ -64,14 +64,12 @@ export class ProductService {
   public addProductToLocalStorage({id, order}): void {
     this.recentlyViewed =
       JSON.parse(localStorage.getItem('recentlyViewed')) || [];
-
-    if (this.recentlyViewed.includes(item => item.id)) {
-      this.recentlyViewed.splice(this.recentlyViewed.indexOf({id, order}), 1);
-    }
+    this.recentlyViewed.forEach(el => Object.values(el).includes(id)
+      ? this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1)
+      : false);
     this.recentlyViewed.unshift({id, order});
     localStorage.setItem('recentlyViewed', JSON.stringify(this.recentlyViewed));
     this.storageSubject.next(this.recentlyViewed);
-    console.log(this.storageSubject.value, 'subj');
   }
 
   public recentProductOrder(id: string) {

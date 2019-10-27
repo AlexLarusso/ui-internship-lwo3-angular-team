@@ -34,9 +34,6 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
     this.recentProductsSub = this.productService.storageSubject
       .pipe(
         switchMap(ids => {
-          // const indexes = ids.map(i => i.id);
-          // let parsed = [...JSON.parse(ids[0])];
-          console.log(ids);
           return forkJoin(this.productService.getProductsByIds(ids, ProductFormat.short));
         }),
       )
@@ -61,6 +58,5 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
       }
   }
 
-  public ngOnDestroy() {
-   }
+  public ngOnDestroy() { }
 }
