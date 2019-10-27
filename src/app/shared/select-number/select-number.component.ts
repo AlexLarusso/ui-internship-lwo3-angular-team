@@ -1,42 +1,61 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { faPlusCircle, faMinusCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 
+import { Store } from '@ngrx/store';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { of, Subscription, Observable } from 'rxjs';
+import { delay, switchMap, mergeAll } from 'rxjs/operators';
+
+import { IAppState } from 'src/app/store/app.store';
+import { IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
+import { getProductQuantity } from 'src/app/store/selectors/product-options.selector';
+
+@AutoUnsubscribe()
 @Component({
   selector: 'app-select-number',
   templateUrl: 'select-number.html',
   styleUrls: ['select-number.scss']
 })
-export class SelectNumberComponent implements OnInit {
+export class SelectNumberComponent implements OnInit, OnDestroy {
   @Input() maxNumber: number;
 
-  @Output() numberSelect: EventEmitter<number> = new EventEmitter<number>();
-
-  public minusIcon: IconDefinition;
-  public plusIcon: IconDefinition;
+  public minusIcon: IconDefinition = faMinusCircle;
+  public plusIcon: IconDefinition = faPlusCircle;
+  public valueSub: Subscription;
   public value: number;
   public isValuelimit = false;
-  public increment = 1;
-  public decrement = -1;
+
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
-    this.minusIcon = faMinusCircle;
-    this.plusIcon = faPlusCircle;
-    this.value = 1;
+    this.valueSub = this.store.select(getProductQuantity)
+      .subscribe(data => this.value = data);
   }
 
-  public onClick(index: number): void {
-    const nextNum = this.value + index;
+  public ngOnDestroy(): void { }
 
-    if (nextNum <= this.maxNumber && nextNum > 0) {
-      this.value = nextNum;
-      this.numberSelect.emit(nextNum);
-      this.isValuelimit = false;
-    } else {
-      this.isValuelimit = true;
-      of(false).pipe(delay(500))
-        .subscribe(value => this.isValuelimit = value);
+  public increment(): void {
+    if (this.isWithinValueLimit(this.value + 1)) {
+      this.store.dispatch(new IncrementQuantity());
     }
+  }
+
+  public decrement(): void {
+    if (this.isWithinValueLimit(this.value - 1)) {
+      this.store.dispatch(new DecrementQuantity());
+    }
+  }
+
+  private isWithinValueLimit(value: number): boolean {
+    if (value > 0 && value <= this.maxNumber) {
+      return true;
+    }
+    this.toggleLimit();
+  }
+
+  private toggleLimit() {
+    this.isValuelimit = true;
+    of(false).pipe(delay(500))
+      .subscribe(val => this.isValuelimit = val);
   }
 }

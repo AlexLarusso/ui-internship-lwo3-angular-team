@@ -1,11 +1,11 @@
 <div class="select-color__wrapper">
   <ng-content></ng-content>
   <div class="select-color">
-    <button *ngFor="let color of colors; let i = index"
+    <button *ngFor="let color of colors"
       class="colorBtn"
-      [class.selected]="selectedColorID === i"
+      [class.selected]="selectedColor === color"
       [ngStyle]="{ backgroundColor: color }"
-      (click)="onSelect(i)"
+      (click)="onSelect(color)"
       >
     </button>
   </div>

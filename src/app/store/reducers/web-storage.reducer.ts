@@ -15,7 +15,6 @@ export const initialState: IState = {
 };
 
 export function webStorageReducer(state = initialState, action: StorageAction): IState {
-  console.log(action.key);
 
   switch (action.type) {
     case SetValueToStorage.TYPE:

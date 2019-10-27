@@ -1,4 +1,4 @@
 export interface IProductImage {
-  value: number;
+  value: string;
   url: Array<string>;
 }
