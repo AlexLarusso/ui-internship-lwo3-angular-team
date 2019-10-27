@@ -21,6 +21,7 @@ import { SelectColorComponent } from './select-color/select-color.component';
 import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
+import { WishButtonComponent } from './wish-button/wish-button.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SelectSizeComponent } from './select-size/select-size.component';
     SelectColorComponent,
     SelectNumberComponent,
     DropdownComponent,
-    SelectSizeComponent
+    SelectSizeComponent,
+    WishButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { SelectSizeComponent } from './select-size/select-size.component';
     SelectColorComponent,
     SelectNumberComponent,
     DropdownComponent,
-    SelectSizeComponent
+    SelectSizeComponent,
+    WishButtonComponent
   ]
 })
 

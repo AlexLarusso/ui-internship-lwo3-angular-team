@@ -22,10 +22,8 @@
         (click)="onBuyClick()">
         Buy this item
       </app-button>
-      <app-button buttonClass="button_square"
-        (click)="addToWhishlistClick()">
-        <fa-icon class="heartIcon" [icon]="iconWhishlistBtn"></fa-icon>
-      </app-button>
+      <app-wish-button [productId]="productDetails.productId" wishClass="wish__product-details">
+      </app-wish-button>
     </div>
   </app-product-details>
 </div>

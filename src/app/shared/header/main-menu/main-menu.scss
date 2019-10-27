@@ -6,7 +6,6 @@
   z-index: 5;
   height: 60px;
   background: rgba($color: $bgColorDark, $alpha: 0.9);
-  color: $fontColorLight;
 
   &__wrapper {
     display: flex;
@@ -66,6 +65,10 @@
       width: 30%;
       background: $accentColor;
     }
+  }
+
+  a {
+    color: $fontColorLight;
   }
 }
 
