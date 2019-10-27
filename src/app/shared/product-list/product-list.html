@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="product__container" *ngIf="productData.length">
+    <div class="product__container">
       <app-product-item *ngFor="let product of productData | slice:0:visibleNumber"
         class="product__item"
         [imgUrl]="product.imgUrl"

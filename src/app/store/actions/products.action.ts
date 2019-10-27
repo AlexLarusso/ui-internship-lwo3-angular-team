@@ -6,16 +6,16 @@ export enum ProductsActionTypes {
   LoadProducts = '[Products] Load data'
 }
 
+export class LoadProducts implements Action {
+  public static readonly TYPE = ProductsActionTypes.LoadProducts;
+  public type = LoadProducts.TYPE;
+}
+
 export class SetProducts implements Action {
   public static readonly TYPE = ProductsActionTypes.SetProducts;
   public type = SetProducts.TYPE;
 
   constructor(public payload: Array<IProductShortInfo>) { }
-}
-
-export class LoadProducts implements Action {
-  public static readonly TYPE = ProductsActionTypes.LoadProducts;
-  public type = LoadProducts.TYPE;
 }
 
 export type ProductsActions = any;

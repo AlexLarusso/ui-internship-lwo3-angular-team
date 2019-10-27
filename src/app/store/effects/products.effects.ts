@@ -16,7 +16,7 @@ export class ProductsEffects {
   ) { }
 
   @Effect()
-  loadProducts$ = this.actions$
+  public loadProducts$ = this.actions$
   .pipe(
     ofType(LoadProducts.TYPE),
     switchMap(() =>
