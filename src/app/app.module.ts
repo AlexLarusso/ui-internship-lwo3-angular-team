@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './pages/home/home.module';
