@@ -3,13 +3,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './pages/home/home.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
 import { ProductDetailsPageModule } from './pages/product-details-page/product-details-page.module';
 import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
+import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ProductResolver } from './shared/services/product.resolver';
@@ -22,7 +23,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductDetailsPageComponent } from './pages/product-details-page/product-details-page.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.component';
 import { CounterComponent } from './components/counter/counter.component';
+
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './store/effects/products.effects';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -30,6 +36,7 @@ const routes: Routes = [
   { path: 'woman', component: ProductListPageComponent },
   { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
   { path: '404', component: NotFoundComponent },
+  { path: 'wishlist', component: WishListPageComponent },
   { path: '**', redirectTo: '/404' },
 ];
 
@@ -40,19 +47,22 @@ const routes: Routes = [
     NotFoundComponent,
     ProductListPageComponent,
     ProductDetailsPageComponent,
+    WishListPageComponent,
     LoaderComponent,
-    CounterComponent
+    CounterComponent,
   ],
   imports: [
     HomeModule,
     NotFoundModule,
     ProductDetailsPageModule,
     ProductListPageModule,
+    WishListPageModule,
     SharedModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({})
+    StoreDevtoolsModule.instrument({}),
+    EffectsModule.forRoot([ProductsEffects])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }

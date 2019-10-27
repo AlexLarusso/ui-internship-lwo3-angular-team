@@ -10,4 +10,5 @@ export interface IProductDetails {
   season: string | Array<string>;
   options: IProductOptions;
   description: IProductDescription;
+  productId: string;
 }
