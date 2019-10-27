@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { ProductFormat } from 'src/app/app.enum';
@@ -9,10 +10,15 @@ import {
   IProduct, IProductShortInfo, IProductSimilarOptions
 } from 'src/app/interfaces';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  public recentlyViewed: Array<{}> = [];
+  public storageSubject = new BehaviorSubject([]);
+  public recentItemOrder = 0;
+
   constructor(private httpService: HttpService) { }
 
   public getProducts(format: string = ProductFormat.full):
@@ -39,6 +45,13 @@ export class ProductService {
       ));
   }
 
+  public getProductsByIds(items: any, format: string = ProductFormat.full):
+    Array<Observable<any>>  {
+      return items.map((item: { id: string; }) => this.httpService.getProductById(item.id).pipe(
+        map(product => this.formatProduct(product, format)
+      )));
+  }
+
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
     Observable<Array<any>> {
       return this.httpService.getProductsByCategory(similarOptions.category)
@@ -46,6 +59,22 @@ export class ProductService {
           this.filterSimilarProducts(data, similarOptions)
             .map(product => this.formatProduct(product, format))
         ));
+  }
+
+  public addProductToLocalStorage({id, order}): void {
+    this.recentlyViewed =
+      JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+    this.recentlyViewed.forEach(el => Object.values(el).includes(id)
+      ? this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1)
+      : false);
+    this.recentlyViewed.unshift({id, order});
+    localStorage.setItem('recentlyViewed', JSON.stringify(this.recentlyViewed));
+    this.storageSubject.next(this.recentlyViewed);
+  }
+
+  public recentProductOrder(id: string) {
+    const order = this.recentItemOrder++;
+    this.addProductToLocalStorage({id, order});
   }
 
   private formatProduct(product: IProduct, format: string):

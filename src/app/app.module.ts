@@ -45,7 +45,7 @@ const routes: Routes = [
     ProductDetailsPageComponent,
     WishListPageComponent,
     LoaderComponent,
-    CounterComponent
+    CounterComponent,
   ],
   imports: [
     HomeModule,

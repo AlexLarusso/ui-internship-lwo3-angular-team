@@ -1,6 +1,6 @@
 import {
   Component, OnInit, AfterViewInit, AfterViewChecked,
-  ViewChild, HostListener, ElementRef, Input
+  ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef
 } from '@angular/core';
 
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -81,6 +81,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
+  constructor(private cd: ChangeDetectorRef) {}
+
   public ngOnInit(): void {
     this.pageWidth = window.innerWidth;
   }
@@ -96,17 +98,18 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.productArray = [...rest];
 
     if (this.productArray.length) {
+      this.toggleButtonsState();
       this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
     }
-
     this.productsContainer.nativeElement.style.width = this.itemWidth * this.visibleNum + 'px';
+    this.cd.detectChanges();
   }
 
   public toggleButtonsState(): void {
     const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
 
     this.canMoveToPrev = this.position !== 0;
-    this.canMoveToNext = this.position !== maxPosition;
+    this.canMoveToNext = this.position !== maxPosition && this.productArray.length >= this.visibleNum;
   }
 
   public moveToNext(): void {
