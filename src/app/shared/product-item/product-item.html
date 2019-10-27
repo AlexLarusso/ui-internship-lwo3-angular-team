@@ -4,9 +4,8 @@
        (click)="addIdToLocalStorage(productId, order)">
       <img class="product-item__picture" [alt]="productTitle" [src]="imgUrl"/>
     </a>
-    <button class="wish__btn">
-      <fa-icon [icon]="faHeart" class="wish__icon"></fa-icon>
-    </button>
+    <app-wish-button class="wish__btn" [productId]="productId" wishClass="wish__product-item">
+    </app-wish-button>
   </div>
   <h4 class="product-item__title">{{ productTitle }}</h4>
   <p class="product-item__price">{{ productPrice }}</p>
