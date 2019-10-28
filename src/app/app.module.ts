@@ -26,6 +26,10 @@ import { ProductListPageComponent } from './pages/product-list-page/product-list
 import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.component';
 import { CounterComponent } from './components/counter/counter.component';
 
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './store/effects/products.effects';
+
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -57,7 +61,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({})
+    StoreDevtoolsModule.instrument({}),
+    EffectsModule.forRoot([ProductsEffects])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }

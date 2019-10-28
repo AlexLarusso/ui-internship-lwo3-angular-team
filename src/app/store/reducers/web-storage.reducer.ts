@@ -15,13 +15,13 @@ export const initialState: IState = {
 };
 
 export function webStorageReducer(state = initialState, action: StorageAction): IState {
-
   switch (action.type) {
     case SetValueToStorage.TYPE:
       return {
         ...state,
         [action.key]: action.payload
       };
+
     default: return state;
   }
 }
