@@ -113,6 +113,7 @@
   }
 
   &__picture {
+    position: relative;
     margin: 20px 0 5px;
     height: 320px;
     background: $bgColorMedium;
@@ -121,7 +122,6 @@
     &__container {
       position: relative;
       display: flex;
-      ;
       flex-direction: column;
     }
   }
@@ -137,22 +137,8 @@
   }
 }
 
-.wish {
-  &__btn {
-    width: 10px;
-    height: 10px;
-    background: inherit;
-  }
-
-  &__icon {
-    position: absolute;
-    bottom: 30px;
-    right: 20px;
-    font-size: 1.3rem;
-    color: $fontColorLight;
-
-    &:hover {
-      color: $wishHeartColor;
-    }
-  }
+.wish__btn {
+  position: absolute;
+  top: 30px;
+  right: 10px;
 }

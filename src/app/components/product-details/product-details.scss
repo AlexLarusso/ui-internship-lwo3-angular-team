@@ -16,7 +16,7 @@ $spacing: 15px;
     display: block;
     position: relative;
     color: $accentColor;
-    margin: $spacing * 2 0;
+    margin: $spacing 0 $spacing * 2;
     font-family: $mainFontBold;
 
     &::before {

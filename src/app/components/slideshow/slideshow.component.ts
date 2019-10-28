@@ -55,13 +55,13 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
     const prevModified$ = fromEvent(this.previousEl.nativeElement, 'click').pipe(
       throttleTime(500),
       tap(() => this.stopTimer()),
-      map(() => ({ shift: -1, direction: 'right' }))
+      map(() => ({ shift: -1, direction: 'right' })),
     );
 
     const nextModified$ = fromEvent(this.nextEl.nativeElement, 'click').pipe(
       throttleTime(500),
       tap(() => this.stopTimer()),
-      map(() => ({ shift: 1, direction: 'left' }))
+      map(() => ({ shift: 1, direction: 'left' })),
     );
 
     this.timerSub = this.isOnSlider.pipe(

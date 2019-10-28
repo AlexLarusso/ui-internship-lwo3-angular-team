@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
-import { IProduct } from 'src/app/interfaces';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-item',
@@ -13,9 +11,11 @@ export class ProductItemComponent {
   @Input() public imgUrl = '../../../assets/server-data/images/image-not-found.png';
   @Input() public productTitle = 'Product Title';
   @Input() public productPrice = 0;
-  @Input() public productId = 1;
+  @Input() public productId: string;
   @Input() public status = '';
+  constructor(private productService: ProductService) { }
 
-  public faHeart = faHeart;
-  public product: IProduct;
+  public addIdToLocalStorage(id: string): void {
+   this.productService.recentProductOrder(id);
+  }
 }

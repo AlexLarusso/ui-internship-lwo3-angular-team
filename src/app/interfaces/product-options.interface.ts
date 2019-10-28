@@ -1,5 +1,5 @@
 export interface IProductOptions {
   sizes: Array<string>;
-  colors: Array<number>;
+  colors: Array<string>;
   quantity: number;
 }
