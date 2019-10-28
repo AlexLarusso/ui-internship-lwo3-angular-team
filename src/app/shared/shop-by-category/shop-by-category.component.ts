@@ -40,8 +40,8 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy, AfterViewChec
 
   public ngAfterViewChecked(): void {
     this.currentPath === 'women' || this.currentPath === 'men' ?
-    this.store.dispatch(new FilterByGender(this.currentPath)) :
-    this.store.dispatch(new FilterBySeason(this.currentPath));
+      this.store.dispatch(new FilterByGender(this.currentPath)) :
+      this.store.dispatch(new FilterBySeason(this.currentPath));
 
     this.cd.detectChanges();
   }
