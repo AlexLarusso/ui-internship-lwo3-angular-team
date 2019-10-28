@@ -14,24 +14,27 @@ export class LoadProducts implements Action {
 }
 
 export class SetProducts implements Action {
+  constructor(public payload: Array<IProductShortInfo>) { }
+
   public static readonly TYPE = ProductsActionTypes.SetProducts;
   public type = SetProducts.TYPE;
 
-  constructor(public payload: any) { }
 }
 
 export class FilterByGender implements Action {
+  constructor(public payload: string) { }
+
   public static readonly TYPE = ProductsActionTypes.FilterByGender;
   public type = FilterByGender.TYPE;
 
-  constructor(public payload: string) { }
 }
 
 export class FilterBySeason implements Action {
+  constructor(public payload: string) { }
+
   public static readonly TYPE = ProductsActionTypes.FilterBySeason;
   public type = FilterBySeason.TYPE;
 
-  constructor(public payload: string) { }
 }
 
 export type ProductsActions = any;

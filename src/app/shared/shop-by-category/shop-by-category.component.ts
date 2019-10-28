@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { getFilteredProducts } from '../../store/selectors/products.selectors';
 import { LoadProducts, FilterByGender, FilterBySeason } from 'src/app/store/actions/products.action';
 
-import { Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { IAppState } from 'src/app/store/app.store';
@@ -39,9 +39,9 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy, AfterViewChec
   }
 
   public ngAfterViewChecked(): void {
-    this.currentPath === 'women' || this.currentPath === 'men'
-    ? this.store.dispatch(new FilterByGender(this.currentPath))
-    : this.store.dispatch(new FilterBySeason(this.currentPath));
+    this.currentPath === 'women' || this.currentPath === 'men' ?
+    this.store.dispatch(new FilterByGender(this.currentPath)) :
+    this.store.dispatch(new FilterBySeason(this.currentPath));
 
     this.cd.detectChanges();
   }
