@@ -30,6 +30,10 @@ import { CounterComponent } from './components/counter/counter.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ErrorSampleComponent } from './pages/error-sample/error-sample.component';
 
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './store/effects/products.effects';
+
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -66,7 +70,8 @@ const routes: Routes = [
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
-    ErrorSampleModule
+    ErrorSampleModule,
+    EffectsModule.forRoot([ProductsEffects]),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
