@@ -1,0 +1,17 @@
+<div *ngIf="isDisplayed">
+  <div class="notification" [ngClass]="notification.type">
+    <div class="notification__header">
+      <h2 class="notification__title">
+        {{ notification.title }}
+      </h2>
+      <fa-icon
+        class="icon"
+        [icon]="closeIcon"
+        (click)="closeNotification()">
+      </fa-icon>
+    </div>
+    <p class="notification__msg">
+      {{ notification.message }}
+    </p>
+  </div>
+</div>

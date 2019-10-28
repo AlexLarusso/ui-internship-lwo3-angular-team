@@ -17,6 +17,7 @@ import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
 import { SelectColor } from 'src/app/store/actions/product-options.actions';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -43,7 +44,10 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   private selectedColor: string;
   private selectedQty: number;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(
+    private store: Store<IAppState>,
+    private notificationService: NotificationService
+  ) { }
 
   public ngOnInit(): void {
     const productOptions: IProductOptions = {
@@ -83,18 +87,12 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   public onBuyClick(): void {
-    // TODO: Implement modal service
-    const message = `Added ${this.productDetails.title} to your cart.
-      Quantity: ${this.selectedQty}.
+    const title = `Added ${this.productDetails.title} to your cart.`;
+    const message = `Quantity: ${this.selectedQty}.
       Size: ${this.selectedSize}.
       Color: ${this.selectedColor}.
       Full price: ${this.selectedQty * this.productDetails.price} uah.`;
 
-    alert(message);
-  }
-
-  public addToWhishlistClick(): void {
-    // TODO: Implement modal service
-    alert(`${this.productDetails.title} added  to whishlist`);
+    this.notificationService.success(title, message);
   }
 }

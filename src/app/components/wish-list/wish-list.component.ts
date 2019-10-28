@@ -11,6 +11,7 @@ import { ProductFormat } from '../../app.enum';
 import { ProductService } from '../../shared/services';
 import { IProductShortInfo } from '../../interfaces';
 import { map, switchMap } from 'rxjs/operators';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @AutoUnsubscribe()
 @Component({
@@ -24,10 +25,12 @@ export class WishListComponent implements OnInit, OnDestroy {
   public productData: Array<IProductShortInfo> = [];
   public liked$: Observable<Array<string>>;
   public likedArray: Array<string>;
+  public wishListEmptyMsg = 'Your Wishlist is currently empty';
 
   constructor(
     private productService: ProductService,
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
+    private notificationService: NotificationService
   ) { }
 
   public ngOnInit(): void {
@@ -45,7 +48,12 @@ export class WishListComponent implements OnInit, OnDestroy {
           )
         );
       }
-    )).subscribe(productArray => this.productData = productArray);
+    )).subscribe(productArray => {
+      this.productData = productArray;
+      if (!this.productData.length) {
+        this.notificationService.info(this.wishListEmptyMsg);
+      }
+    });
   }
 
   public ngOnDestroy(): void { }
