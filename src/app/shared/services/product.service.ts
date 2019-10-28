@@ -86,6 +86,7 @@ export class ProductService {
           imgUrl: product.images[0].url[0],
           productPrice: product.price + ' uah',
           productId: product.id,
+          status: product.status
         };
       }
   }

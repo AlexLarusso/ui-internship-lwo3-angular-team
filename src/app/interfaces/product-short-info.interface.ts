@@ -3,4 +3,5 @@ export interface IProductShortInfo {
   imgUrl: string;
   productPrice: string;
   productId: string;
+  status?: string;
 }

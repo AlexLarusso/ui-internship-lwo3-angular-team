@@ -21,9 +21,15 @@ export class PopularListComponent implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService) { }
 
+  public ProductListRefresh(item?: string) {
+  this.getProductsSub = this.productService.getProducts(ProductFormat.short)
+    .subscribe(data => this.productData = data.filter(product => product.status === item));
+  }
   public ngOnInit(): void {
-    this.getProductsSub = this.productService.getProducts(ProductFormat.short)
-      .subscribe(data => this.productData = data);
+    this.ProductListRefresh('Trending');
+  }
+  public SortByTag(item: string) {
+    this.ProductListRefresh(item);
   }
 
   public ngOnDestroy(): void { }
