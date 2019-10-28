@@ -68,15 +68,12 @@
   &::before {
     @include tagStyle;
     content: 'best';
+    color: $fontColorLight;
   }
 
   &::after {
     @include tagBackground;
     border-color: $accentColor transparent transparent transparent;
-  }
-
-  &:hover::before {
-    color: $fontColorLight;
   }
 }
 
@@ -91,14 +88,9 @@
     @include tagBackground;
     border-color: $trandingColor transparent transparent transparent;
   }
-
-  &:hover::before {
-    color: $bgColorDark;
-  }
 }
 
 .product-item {
-
   &__container {
     display: flex;
     flex-direction: column;

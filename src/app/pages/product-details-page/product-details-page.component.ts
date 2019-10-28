@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { IProduct } from 'src/app/interfaces';
 import { ProductService } from 'src/app/shared/services';
@@ -13,6 +12,7 @@ import { ProductService } from 'src/app/shared/services';
 @Component({
   selector: 'app-product-details-page',
   templateUrl: './product-details-page.html',
+  styleUrls: ['./product-details-page.scss']
 })
 
 export class ProductDetailsPageComponent implements OnInit, OnDestroy {

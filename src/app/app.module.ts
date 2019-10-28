@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,9 +11,11 @@ import { NotFoundModule } from './pages/not-found/not-found.module';
 import { ProductDetailsPageModule } from './pages/product-details-page/product-details-page.module';
 import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
 import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
+import { ErrorSampleModule } from './pages/error-sample/error-sample.module';
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ProductResolver } from './shared/services/product.resolver';
+import { ErrorsHandler } from './shared/services/errors.handler';
 
 import { appReducer } from './store/app.store';
 
@@ -25,6 +27,8 @@ import { ProductDetailsPageComponent } from './pages/product-details-page/produc
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { ErrorSampleComponent } from './pages/error-sample/error-sample.component';
 
 import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffects } from './store/effects/products.effects';
@@ -42,6 +46,8 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
   { path: '404', component: NotFoundComponent },
   { path: 'wishlist', component: WishListPageComponent },
+  { path: 'error', component: ErrorSampleComponent },
+  { path: 'checkout', redirectTo: '/error' },
   { path: '**', redirectTo: '/404' },
 ];
 
@@ -55,6 +61,8 @@ const routes: Routes = [
     WishListPageComponent,
     LoaderComponent,
     CounterComponent,
+    NotificationComponent,
+    ErrorSampleComponent,
   ],
   imports: [
     HomeModule,
@@ -67,10 +75,12 @@ const routes: Routes = [
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
-    EffectsModule.forRoot([ProductsEffects])
+    ErrorSampleModule,
+    EffectsModule.forRoot([ProductsEffects]),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: ErrorsHandler }
   ],
   bootstrap: [
     AppComponent

@@ -31,4 +31,10 @@ export class HttpService {
         product.category === category
     )));
   }
+
+  public getProductWithError(): Observable<any> {
+    const BAD_URL = 'https://od-api-demo.oxforddictionaries.com:443/api/v1/domains/en/en';
+
+    return this.http.get<any>(BAD_URL);
+  }
 }
