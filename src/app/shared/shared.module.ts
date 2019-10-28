@@ -22,6 +22,7 @@ import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
+import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
+    ShopByCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
+    ShopByCategoryComponent
   ]
 })
 

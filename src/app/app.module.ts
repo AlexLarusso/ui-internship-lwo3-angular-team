@@ -33,7 +33,12 @@ import { ProductsEffects } from './store/effects/products.effects';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'woman', component: ProductListPageComponent },
+  { path: 'women', component: ProductListPageComponent },
+  { path: 'men', component: ProductListPageComponent },
+  { path: 'winter', component: ProductListPageComponent },
+  { path: 'spring', component: ProductListPageComponent },
+  { path: 'summer', component: ProductListPageComponent },
+  { path: 'fall', component: ProductListPageComponent },
   { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
   { path: '404', component: NotFoundComponent },
   { path: 'wishlist', component: WishListPageComponent },

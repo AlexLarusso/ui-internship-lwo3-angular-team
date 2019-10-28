@@ -4,4 +4,6 @@ export interface IProductShortInfo {
   productPrice: string;
   productId: string;
   status?: string;
+  sex: string;
+  season: Array<string>;
 }
