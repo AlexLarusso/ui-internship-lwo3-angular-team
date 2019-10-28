@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-parallax',
   templateUrl: './parallax.html',
   styleUrls: ['./parallax.scss']
 })
-export class ParallaxComponent {}
+export class ParallaxComponent {
+  @Input() public parallaxClass: string;
+}

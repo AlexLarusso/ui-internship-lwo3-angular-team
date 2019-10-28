@@ -42,7 +42,7 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +68,7 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
   ]
 })
 
