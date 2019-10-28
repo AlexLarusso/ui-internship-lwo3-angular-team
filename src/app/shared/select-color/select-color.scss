@@ -3,7 +3,7 @@
 $buttons-spacing: 15px;
 $button-size: 22px;
 $select-color-height: 40px;
-$item-shadow-color: rgba(100, 100, 100, 0.4);
+$item-shadow-color: rgba(100, 100, 100, .4);
 
 .select-color {
   display: flex;
@@ -21,11 +21,11 @@ $item-shadow-color: rgba(100, 100, 100, 0.4);
     width: $button-size;
     height: $button-size;
     border-radius: 50%;
-    box-shadow: 0 0 3px 3px $item-shadow-color;
+    border: 2px solid $item-shadow-color;
     margin: 0 $buttons-spacing;
 
     &.selected {
-      box-shadow: 0 0 3px 3px $accentColor;
+      border: 2px solid $accentColor;
     }
   }
 }

@@ -3,11 +3,13 @@ import { IProductSimilarOptions } from 'src/app/interfaces/product-similar-optio
 import { IProductImage } from 'src/app/interfaces/product-image.interface';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { IPageAnchor } from 'src/app/interfaces/page-anchor.interface';
+import { INotification } from 'src/app/interfaces/notification.interface';
 
 export {
   IProductShortInfo,
   IProductSimilarOptions,
   IProduct,
   IProductImage,
-  IPageAnchor
+  IPageAnchor,
+  INotification
 };

@@ -34,7 +34,8 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 10,
     "price": 799,
-    "id": "f58bcf13"
+    "id": "f58bcf13",
+    "status": "On Sale"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -57,7 +58,8 @@
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 12,
     "price": 600,
-    "id": "f13b82bb"
+    "id": "f13b82bb",
+    "status": "Trending"
   },
   {
     "productName": "ANSWEAR - BLOUSE",
@@ -260,7 +262,7 @@
     "sex": "female",
     "quantity": 10,
     "price": 999,
-    "id": "f8ebd8b"
+    "id": "f8eb7d8b"
   },
   {
     "productName": "ONLY - SHIRT",
@@ -283,7 +285,7 @@
     "sex": "female",
     "quantity": 10,
     "price": 799,
-    "id": "fe68153"
+    "id": "fe6d8153"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -306,7 +308,8 @@
     "sex": "female",
     "quantity": 10,
     "price": 799,
-    "id": "f1c9a09f"
+    "id": "f1c9a09f",
+    "status": "New"
   },
   {
     "productName": "ANSWEAR - SKIRT",
@@ -398,7 +401,8 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 799,
-    "id": "fab8d95"
+    "id": "fab8d95",
+    "status": "Bestsellers"
   },
   {
     "productName":  "LEVI'S - JEAN SKIRTT",
@@ -458,8 +462,9 @@
     "season": ["spring", "fall", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": "f229e000"
-  }, 
+    "id": "f229e000",
+    "status":"On Sale"
+  },
   {
     "productName": "Answear - SKIRT",
     "description": "Skirt from the Answear collection. The straight cut model is made of smooth knitwear.\n      - Direct style.\n      - Excessive waist.\n      - Gum in the belt.\n      - Thin, stretchy knitwear.\n      - Textured material.\n      - Belt width: 39 cm.\n      - Length: 87 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Material: knitwear\n      Style: straight\n      Composition:\n      100% Acrylic",
@@ -511,7 +516,8 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": "f3f7fa23"
+    "id": "f3f7fa23",
+    "status": "New"
   },
   {
     "productName": "MANGO - SOFT SKIRT",
@@ -534,7 +540,7 @@
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
-    "id": "f67e5e3"
+    "id": "f67e5de3"
   },
   {
     "productName": "Tommy Jeans Shirt",
@@ -607,7 +613,8 @@
     ],
     "quantity": 10,
     "price": 79,
-    "id": "f15368e4"
+    "id": "f15368e4",
+    "status": "On Sale"
   },
   {
     "productName": "Camel Active Shirt",
@@ -632,7 +639,8 @@
     "season": ["fall", "spring"],
     "quantity": 10,
     "price": 74,
-    "id": "f4784ed5"
+    "id": "f4784ed5",
+    "status": "On Sale"
   },
   {
     "productName": "Polo Ralph Lauren (smooth)",
@@ -677,7 +685,8 @@
     "season": ["fall", "spring"],
     "quantity": 8,
     "price": 129,
-    "id": "f5bbc2e2"
+    "id": "f5bbc2e2",
+    "status": "Bestsellers"
   },
   {
     "productName": "SCOTCH & SODA - Shirt",
@@ -745,7 +754,8 @@
     "season": ["fall", "spring"],
     "quantity": 15,
     "price": 79,
-    "id": "f19a4a97"
+    "id": "f19a4a97",
+    "status": "Trending"
   },
   {
     "productName": "LEVI`S - Checked Shirt",
@@ -884,7 +894,7 @@
     "season": ["fall", "spring"],
     "quantity": 20,
     "price": 599,
-    "id": "f258a68"
+    "id": "f258a6f8"
   },
   {
     "productName": "Armany Exchange - Shirt",
@@ -977,7 +987,7 @@
     "sex": "male",
     "quantity": 10,
     "price": 1589,
-    "id": "f6743c1"
+    "id": "f674b3c1"
   },
   {
     "productName": "Puma T-shirt X-space agency NASA",
@@ -1061,7 +1071,8 @@
     "sex": "male",
     "quantity": 10,
     "price": 1859,
-    "id": "fd80e9b"
+    "id": "fd80e9b",
+    "status": "Trending"
   },
   {
     "productName": "Polo Ralph Lauren T-shirt",
@@ -1181,7 +1192,8 @@
     "sex": "male",
     "quantity": 10,
     "price": 1299,
-    "id": "f36f58c4"
+    "id": "f36f58c4",
+    "status": "New"
   },
   {
     "productName": "Under Armour T-shirt",
@@ -1364,7 +1376,8 @@
     "sex": "unisex",
     "quantity": 10,
     "price": 1599,
-    "id": "f2b3a6e0"
+    "id": "f2b3a6e0",
+    "status": "On Sale"
   },
   {
     "productName": "MEDICINE - SWEETER BASIC",
@@ -1441,7 +1454,7 @@
     "season": ["spring", "winter"],
     "quantity": 12,
     "price": 599,
-    "id": "fee7165"
+    "id": "fe2e7165"
   },
   {
     "productName": "MANGO - SWEATER",
@@ -1475,7 +1488,8 @@
     "season": ["spring", "winter"],
     "quantity": 5,
     "price": 945,
-    "id": "f381ae08"
+    "id": "f381ae08",
+    "status": "Bestsellers"
   },
   {
     "productName": "MEDICINE - MANIFESTO JUMPER",
@@ -1568,7 +1582,7 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 490,
-    "id": "f1a2b5f"
+    "id": "f1a2b5f3"
   },
   {
     "productName": "MANGO - ALMA5 SWEATER",
@@ -1611,7 +1625,7 @@
     "season": ["spring", "winter"],
     "quantity": 15,
     "price": 790,
-    "id": "f10c1d1"
+    "id": "f1a0c1d1"
   },
   {
     "productName": "ANSWEAR - SWEATER",
@@ -1636,7 +1650,8 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 990,
-    "id": "f57a66c3"
+    "id": "f57a66c3",
+    "status": "Trending"
   },
   {
     "productName": "ANSWEAR - SWEATER",
@@ -1713,7 +1728,8 @@
     "season": ["spring","winter"],
     "quantity": 9,
     "price": 1190,
-    "id": "f3b2a383"
+    "id": "f3b2a383",
+    "status": "New"
   },
   {
     "productName": "VERO MODA - COAT",
@@ -1758,7 +1774,6 @@
     "price": 1190,
     "id": "f254c739"
   },
-
   {
     "productName": "ONLY - COAT",
     "description": "Coat from the collection Only. The slightly warmed model is made of smooth material. Straight cut. Classic lapels. Fastens with a button. The belt is attached. Welt pockets. Lined model.",
@@ -1945,7 +1960,8 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2450,
-    "id": "f5c41fc1"
+    "id": "f5c41fc1",
+    "status": "Bestsellers"
   },
   {
     "productName": "JACQUELINE DE YONG - COAT",
@@ -2041,7 +2057,8 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2790,
-    "id": "f33035a8"
+    "id": "f33035a8",
+    "status": "On Sale"
   },
   {
     "productName": "ANSWEAR - COAT",
@@ -2075,7 +2092,7 @@
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 3590,
-    "id": "fdd0f8d"
+    "id": "fd2d0f8d"
   },
   {
     "productName": "MANGO - DRESS",
@@ -2143,7 +2160,7 @@
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
-    "id": "f147d88"
+    "id": "f1f47d88"
   },
   {
     "productName": "MANGO - DRESS",
@@ -2229,7 +2246,7 @@
     "sizes": ["s", "m", "l", "xl"],
     "colors": ["#32CD32", "#000000", "#FFFACD"],
     "images": [
-      
+
       {
         "value": "#000000",
         "url": [
@@ -2255,7 +2272,7 @@
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
-    "id": "faf444"
+    "id": "f1a3f444"
   },
   {
     "productName": "ANSWEAR - DRESS",
@@ -2289,7 +2306,8 @@
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
-    "id": "f24b339a"
+    "id": "f24b339a",
+    "status": "New"
   },
   {
     "productName": "ANSWEAR - DRESS",
@@ -2495,7 +2513,7 @@
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,
-    "id": "fafa6e4"
+    "id": "fa1fa6e4"
   },
   {
     "productName": "ANSWEAR - PANTS",
@@ -2567,7 +2585,8 @@
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,
-    "id": "f2a1f1f"
+    "id": "f2a1f1f",
+    "status": "Trending"
   },
   {
     "productName": "ANSWEAR - PANTS",

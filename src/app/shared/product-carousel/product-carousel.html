@@ -7,6 +7,7 @@
       <div class="products" #products>
         <app-product-item *ngFor="let product of productData"
           [imgUrl]="product.imgUrl"
+          [status]="product.status"
           [productTitle]="product.productTitle"
           [productPrice]="product.productPrice"
           [productId]="product.productId">
