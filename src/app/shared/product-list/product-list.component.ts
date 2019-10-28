@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
   public aboutProductsText = `Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
     lacinia eget consectetur sed, convallis at tellus.`;
-  public products$: Subscription;
+  public productsSub: Subscription;
   public productData: Array<IProductShortInfo>;
   public stepNumber = 8;
   public visibleNumber = 8;
@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.store.dispatch(new LoadProducts());
 
-    this.products$ = this.store.select(getAllProducts).subscribe(data => {
+    this.productsSub = this.store.select(getAllProducts).subscribe(data => {
       this.productData = data;
 
       this.checkLoadMoreAbility();
