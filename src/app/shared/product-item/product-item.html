@@ -1,7 +1,7 @@
 <div class="col-3 product-item__container">
   <div class="product-item__picture__container">
     <a routerLink="/products/{{ productId }}"
-       (click)="addIdToLocalStorage(productId, order)">
+       (click)="addIdToLocalStorage(productId)">
       <div [ngClass]="status | lowercase">
         <img class="product-item__picture" [alt]="productTitle" [src]="imgUrl"/>
       </div>

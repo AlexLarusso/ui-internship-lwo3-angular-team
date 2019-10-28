@@ -33,7 +33,7 @@ export class HttpService {
   }
 
   public getProductWithError(): Observable<any> {
-    const BAD_URL = 'https://www.googleapis.com/content/v2/1/products/1';
+    const BAD_URL = 'https://od-api-demo.oxforddictionaries.com:443/api/v1/domains/en/en';
 
     return this.http.get<any>(BAD_URL);
   }

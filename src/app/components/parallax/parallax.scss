@@ -1,9 +1,33 @@
 .parallax {
   &__container {
-    height: 100vh;
+    height: 70vh;
     background: url('../../../assets/img/beauty-casual-curly.jpg') top right / cover no-repeat;
     background-attachment: fixed;
   }
+}
+
+.spring {
+  background: url('../../../assets/img/spring_fashion.jpg') top right / cover no-repeat;
+}
+
+.summer {
+  background: url('../../../assets/img/summer_fashion.jpg');
+  background-attachment: fixed;
+}
+
+.fall {
+  background: url('../../../assets/img/fall_fashion.jpg') top right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.winter {
+  background: url('../../../assets/img/winter_fashion.png') top right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.shopping {
+  background: url('../../../assets/img/shopping.jpg') top right / cover no-repeat;
+  background-attachment: fixed;
 }
 
 @media screen and (max-width: 768px) {
