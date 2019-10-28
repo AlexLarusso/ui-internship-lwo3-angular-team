@@ -22,6 +22,7 @@ import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
+import { ImageLoadDirective } from './directives/image-loader.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
+    ImageLoadDirective
   ],
   imports: [
     BrowserModule,

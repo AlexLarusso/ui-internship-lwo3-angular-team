@@ -13,6 +13,8 @@ export class ProductItemComponent {
   @Input() public productPrice = 0;
   @Input() public productId: string;
   @Input() public status = '';
+  public showImage: boolean;
+
   constructor(private productService: ProductService) { }
 
   public addIdToLocalStorage(id: string): void {

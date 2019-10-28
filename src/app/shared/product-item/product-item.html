@@ -2,8 +2,11 @@
   <div class="product-item__picture__container">
     <a routerLink="/products/{{ productId }}"
        (click)="addIdToLocalStorage(productId, order)">
-      <div [ngClass]="status | lowercase">
-        <img class="product-item__picture" [alt]="productTitle" [src]="imgUrl"/>
+      <div [ngClass]="status | lowercase" (downloadImage)="showImage=true">
+        <img *ngIf="showImage"
+        class="product-item__picture"
+        [alt]="productTitle"
+        [src]="imgUrl"/>
       </div>
     </a>
     <app-wish-button class="wish__btn" [productId]="productId" wishClass="wish__product-item">
