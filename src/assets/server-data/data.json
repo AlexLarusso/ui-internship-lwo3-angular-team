@@ -93,7 +93,7 @@
     "video": "",
     "category": "blouse",
     "sex": "women",
-    "season": ["spring", "fall", "summer"],
+    "season": ["spring", "fall"],
     "quantity": 10,
     "price": 799,
     "id": "f40912a8"
@@ -405,7 +405,7 @@
     "status": "Bestsellers"
   },
   {
-    "productName":  "LEVI'S - JEAN SKIRTT",
+    "productName":  "LEVI'S - JEAN SKIRT",
     "description": "Levi's skirt. The straight cut model is made of denim.\n      - Direct style.\n      - Fastens on buttons.\n      - Slit pockets.\n      - With a cut.\n      - Model with decorative torn edge.\n      - Denim with decorative scuffs.\n      - Belt width: 37 cm.\n      - Length: 65 cm.\n      - The parameters are specified for size: 27.\n      \n      Pattern: solid\n      Material: fabric\n      Material: jeans\n      Material: cotton\n      Casual: casual\n      Style: straight\n      Composition:\n      100% Cotton",
     "brand": "LEVI'S",
     "sizes": ["s", "m", "l", "xl"],
@@ -583,7 +583,7 @@
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 10,
-    "price": 69,
+    "price": 1250,
     "id": "f2680ab8"
   },
   {
@@ -612,7 +612,7 @@
       "spring"
     ],
     "quantity": 10,
-    "price": 79,
+    "price": 1399,
     "id": "f15368e4",
     "status": "On Sale"
   },
@@ -638,7 +638,7 @@
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 10,
-    "price": 74,
+    "price": 1199,
     "id": "f4784ed5",
     "status": "On Sale"
   },
@@ -684,7 +684,7 @@
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 8,
-    "price": 129,
+    "price": 1799,
     "id": "f5bbc2e2",
     "status": "Bestsellers"
   },
@@ -728,7 +728,7 @@
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 8,
-    "price": 109,
+    "price": 1759,
     "id": "f285b9ae"
   },
   {
@@ -753,7 +753,7 @@
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 15,
-    "price": 79,
+    "price": 1099,
     "id": "f19a4a97",
     "status": "Trending"
   },
@@ -788,7 +788,7 @@
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 10,
-    "price": 79,
+    "price": 999,
     "id": "f1d3642e"
   },
   {
@@ -971,10 +971,10 @@
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_2_1/black.jpg",
-          "./assets/server-data/images/t-shirt_2_2/black.jpg",
-          "./assets/server-data/images/t-shirt_2_3/black.jpg",
-          "./assets/server-data/images/t-shirt_2_4/black.jpg"
+          "./assets/server-data/images/t-shirt_2_1_black.jpg",
+          "./assets/server-data/images/t-shirt_2_2_black.jpg",
+          "./assets/server-data/images/t-shirt_2_3_black.jpg",
+          "./assets/server-data/images/t-shirt_2_4_black.jpg"
         ]
       }
     ],
@@ -1055,10 +1055,10 @@
       {
         "value": "#ffffff",
         "url": [
-          "./assets/server-data/images/t-shirt_5/white_1.jpg",
-          "./assets/server-data/images/t-shirt_5/white_2.jpg",
-          "./assets/server-data/images/t-shirt_5/white_3.jpg",
-          "./assets/server-data/images/t-shirt_5/white_4.jpg"
+          "./assets/server-data/images/t-shirt_5_1_white.jpg",
+          "./assets/server-data/images/t-shirt_5_2_white.jpg",
+          "./assets/server-data/images/t-shirt_5_3_white.jpg",
+          "./assets/server-data/images/t-shirt_5_4_white.jpg"
         ]
       }
     ],
@@ -1101,10 +1101,10 @@
     "description": "T-shirt from the Pepe Jeans collection. The model is made of knitwear with a print.",
     "brand": "Pepe Jeans",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#ff0000", "#ffffff", "#808080", "#000000"],
+    "colors": ["#ffffff", "#ff0000", "#808080", "#000000"],
     "images": [
       {
-        "value": "#ff0000",
+        "value": "#ffffff",
         "url": [
           "./assets/server-data/images/t-shirt_7_1.jpg",
           "./assets/server-data/images/t-shirt_7_2.jpg",
@@ -1113,30 +1113,30 @@
         ]
       },
       {
-        "value": "#ffffff",
+        "value": "#ff0000",
         "url": [
-          "./assets/server-data/images/t-shirt_7_1/white.jpg",
-          "./assets/server-data/images/t-shirt_7_2/white.jpg",
-          "./assets/server-data/images/t-shirt_7_3/white.jpg",
-          "./assets/server-data/images/t-shirt_7_4/white.jpg"
+          "./assets/server-data/images/t-shirt_7_1_red.jpg",
+          "./assets/server-data/images/t-shirt_7_2_red.jpg",
+          "./assets/server-data/images/t-shirt_7_3_red.jpg",
+          "./assets/server-data/images/t-shirt_7_4_red.jpg"
         ]
       },
       {
         "value": "#808080",
         "url": [
-          "./assets/server-data/images/t-shirt_7_1/grey.jpg",
-          "./assets/server-data/images/t-shirt_7_2/grey.jpg",
-          "./assets/server-data/images/t-shirt_7_3/grey.jpg",
-          "./assets/server-data/images/t-shirt_7_4/grey.jpg"
+          "./assets/server-data/images/t-shirt_7_1_grey.jpg",
+          "./assets/server-data/images/t-shirt_7_2_grey.jpg",
+          "./assets/server-data/images/t-shirt_7_3_grey.jpg",
+          "./assets/server-data/images/t-shirt_7_4_grey.jpg"
         ]
       },
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_7_1/black.jpg",
-          "./assets/server-data/images/t-shirt_7_2/black.jpg",
-          "./assets/server-data/images/t-shirt_7_3/black.jpg",
-          "./assets/server-data/images/t-shirt_7_4/black.jpg"
+          "./assets/server-data/images/t-shirt_7_1_black.jpg",
+          "./assets/server-data/images/t-shirt_7_2_black.jpg",
+          "./assets/server-data/images/t-shirt_7_3_black.jpg",
+          "./assets/server-data/images/t-shirt_7_4_black.jpg"
         ]
       }
     ],
@@ -1167,19 +1167,19 @@
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_8_1/black.jpg",
-          "./assets/server-data/images/t-shirt_8_2/black.jpg",
-          "./assets/server-data/images/t-shirt_8_3/black.jpg",
-          "./assets/server-data/images/t-shirt_8_4/black.jpg"
+          "./assets/server-data/images/t-shirt_8_1_black.jpg",
+          "./assets/server-data/images/t-shirt_8_2_black.jpg",
+          "./assets/server-data/images/t-shirt_8_3_black.jpg",
+          "./assets/server-data/images/t-shirt_8_4_black.jpg"
         ]
       },
       {
         "value": "#808080",
         "url": [
-          "./assets/server-data/images/t-shirt_8_1/grey.jpg",
-          "./assets/server-data/images/t-shirt_8_2/grey.jpg",
-          "./assets/server-data/images/t-shirt_8_3/grey.jpg",
-          "./assets/server-data/images/t-shirt_8_4/grey.jpg"
+          "./assets/server-data/images/t-shirt_8_1_grey.jpg",
+          "./assets/server-data/images/t-shirt_8_2_grey.jpg",
+          "./assets/server-data/images/t-shirt_8_3_grey.jpg",
+          "./assets/server-data/images/t-shirt_8_4_grey.jpg"
         ]
       }
     ],
@@ -1211,10 +1211,10 @@
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_9_1/black.jpg",
-          "./assets/server-data/images/t-shirt_9_2/black.jpg",
-          "./assets/server-data/images/t-shirt_9_3/black.jpg",
-          "./assets/server-data/images/t-shirt_9_4/black.jpg"
+          "./assets/server-data/images/t-shirt_9_1_black.jpg",
+          "./assets/server-data/images/t-shirt_9_2_black.jpg",
+          "./assets/server-data/images/t-shirt_9_3_black.jpg",
+          "./assets/server-data/images/t-shirt_9_4_black.jpg"
         ]
       }
     ],
@@ -1245,10 +1245,10 @@
       {
         "value": "#0000ff",
         "url": [
-          "./assets/server-data/images/t-shirt_10_1/blue.jpg",
-          "./assets/server-data/images/t-shirt_10_2/blue.jpg",
-          "./assets/server-data/images/t-shirt_10_3/blue.jpg",
-          "./assets/server-data/images/t-shirt_10_4/blue.jpg"
+          "./assets/server-data/images/t-shirt_10_1_blue.jpg",
+          "./assets/server-data/images/t-shirt_10_2_blue.jpg",
+          "./assets/server-data/images/t-shirt_10_3_blue.jpg",
+          "./assets/server-data/images/t-shirt_10_4_blue.jpg"
         ]
       }
     ],
@@ -1288,7 +1288,7 @@
     "description": "Hat from the Guess Jeans collection. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
     "brand": "Guess",
     "sizes": ["m"],
-    "colors": ["#000000"],
+    "colors": ["#000000", "#808080"],
     "images": [
       {
         "value": "#000000",
@@ -1296,6 +1296,14 @@
           "./assets/server-data/images/heats_2_1.jpg",
           "./assets/server-data/images/heats_2_2.jpg",
           "./assets/server-data/images/heats_2_3.jpg"
+        ]
+      },
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/heats_2_1_grey.jpg",
+          "./assets/server-data/images/heats_2_2_grey.jpg",
+          "./assets/server-data/images/heats_2_3_grey.jpg"
         ]
       }
     ],
@@ -1609,10 +1617,10 @@
       {
         "value": "#d0c1b4",
         "url": [
-          "./assets/server-data/images/sweater-7-1-brown.jpg",
-          "./assets/server-data/images/sweater-7-2-brown.jpg",
-          "./assets/server-data/images/sweater-7-3-brown.jpg",
-          "./assets/server-data/images/sweater-7-4-brown.jpg"
+          "./assets/server-data/images/sweater-7-1-grey.jpg",
+          "./assets/server-data/images/sweater-7-2-grey.jpg",
+          "./assets/server-data/images/sweater-7-3-grey.jpg",
+          "./assets/server-data/images/sweater-7-4-grey.jpg"
         ]
       }
     ],
@@ -1733,7 +1741,7 @@
     "description": "Coat from the Vero Moda collection. The uninsulated model is made of smooth material. Model without insulation with lining. High collar. Fastens with buttons. Welt pockets. Smooth material.",
     "brand": "VERO MODA",
     "sizes": ["xs", "s", "m", "l"],
-    "colors": ["#c4a58e", "#000000", "#b14221"],
+    "colors": ["#c4a58e", "#000000"],
     "images": [
       {
         "value": "#c4a58e",
@@ -1751,15 +1759,6 @@
           "./assets/server-data/images/coat-1-2-black.jpg",
           "./assets/server-data/images/coat-1-3-black.jpg",
           "./assets/server-data/images/coat-1-4-black.jpg"
-        ]
-      },
-      {
-        "value": "#b14221",
-        "url": [
-          "./assets/server-data/images/sweater-1-1-brown.jpg",
-          "./assets/server-data/images/sweater-1-2-brown.jpg",
-          "./assets/server-data/images/sweater-1-3-brown.jpg",
-          "./assets/server-data/images/sweater-1-4-brown.jpg"
         ]
       }
     ],
@@ -1853,10 +1852,10 @@
     "description": "Coat from the Answear Collection. The uninsulated model is made of smooth material. Model without insulation with lining. Free style. Welt pockets. Fastens with buttons.",
     "brand": "ANSWEAR",
     "sizes": ["xs", "s", "m", "l"],
-    "colors": ["#083d80"],
+    "colors": ["#ffb3a6"],
     "images": [
       {
-        "value": "#083d80",
+        "value": "#ffb3a6",
         "url": [
           "./assets/server-data/images/coat-4-1-beige.jpg",
           "./assets/server-data/images/coat-4-2-beige.jpg",
@@ -1878,10 +1877,10 @@
     "description": "Coat from the collection Only. The uninsulated model is made of smooth material. Straight cut. Fastens with buttons. Classic lapels. Welt pockets. Model without insulation with lining.",
     "brand": "ANSWEAR",
     "sizes": ["xs", "s", "m","l"],
-    "colors": ["#083d80", "#083d80", "#083d80"],
+    "colors": ["#63ece1", "#282656", "#8f9292"],
     "images": [
       {
-        "value": "#083d80",
+        "value": "#63ece1",
         "url": [
           "./assets/server-data/images/coat-5-1-green.jpg",
           "./assets/server-data/images/coat-5-2-green.jpg",
@@ -1890,7 +1889,7 @@
         ]
       },
       {
-        "value": "#083d80",
+        "value": "#282656",
         "url": [
           "./assets/server-data/images/coat-5-1-blue.jpg",
           "./assets/server-data/images/coat-5-2-blue.jpg",
@@ -1899,12 +1898,12 @@
         ]
       },
       {
-        "value": "#083d80",
+        "value": "#8f9292",
         "url": [
-          "./assets/server-data/images/coat-5-1-gray.jpg",
-          "./assets/server-data/images/coat-5-2-gray.jpg",
-          "./assets/server-data/images/coat-5-3-gray.jpg",
-          "./assets/server-data/images/coat-5-4-gray.jpg"
+          "./assets/server-data/images/coat-5-1-grey.jpg",
+          "./assets/server-data/images/coat-5-2-grey.jpg",
+          "./assets/server-data/images/coat-5-3-grey.jpg",
+          "./assets/server-data/images/coat-5-4-grey.jpg"
         ]
       }
     ],
@@ -1935,10 +1934,10 @@
       {
         "value": "#c4baa9",
         "url": [
-          "./assets/server-data/images/coat-6-1-gray.jpg",
-          "./assets/server-data/images/coat-6-2-gray.jpg",
-          "./assets/server-data/images/coat-6-3-gray.jpg",
-          "./assets/server-data/images/coat-6-4-gray.jpg"
+          "./assets/server-data/images/coat-6-1-grey.jpg",
+          "./assets/server-data/images/coat-6-2-grey.jpg",
+          "./assets/server-data/images/coat-6-3-grey.jpg",
+          "./assets/server-data/images/coat-6-4-grey.jpg"
         ]
       },
       {
@@ -1965,10 +1964,10 @@
     "description": "Coat from the Jacqueline de Yong collection. The uninsulated model is made of patterned material. The warmed model with a lining. Straight cut. Welt pockets. Classic lapels.",
     "brand": "JACQUELINE DE YONG",
     "sizes": ["xs", "s", "m", "l"],
-    "colors": ["#89271f"],
+    "colors": ["#8f9292"],
     "images": [
       {
-        "value": "#89271f",
+        "value": "#8f9292",
         "url": [
           "./assets/server-data/images/coat-7-1-print.jpg",
           "./assets/server-data/images/coat-7-2-print.jpg",
@@ -2311,10 +2310,10 @@
     "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
     "brand": "ANSWEAR",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#808080", "#000000"],
+    "colors": ["#ffffff", "#efdd6f"],
     "images": [
       {
-        "value": "#808080",
+        "value": "#ffffff",
         "url": [
           "./assets/server-data/images/dress_14_1.jpg",
           "./assets/server-data/images/dress_14_2.jpg",
@@ -2323,7 +2322,7 @@
         ]
       },
       {
-        "value": "#000000",
+        "value": "#efdd6f",
         "url": [
           "./assets/server-data/images/dress_15_1.jpg",
           "./assets/server-data/images/dress_15_2.jpg",
@@ -2345,7 +2344,7 @@
     "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
     "brand": "ANSWEAR",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#ffffff", "#080b5c", "fac0f4", "#000000"],
+    "colors": ["#ffffff", "#080b5c", "#ffc0cb", "#000000"],
     "images": [
       {
         "value": "#ffffff",
@@ -2366,7 +2365,7 @@
         ]
       },
       {
-        "value": "#fac0f4",
+        "value": "#ffc0cb",
         "url": [
           "./assets/server-data/images/dress_18_1.jpg",
           "./assets/server-data/images/dress_18_2.jpg",
@@ -2411,7 +2410,7 @@
     ],
     "category": "pants",
     "sex": "women",
-    "season": ["spring", "summer", "fall", "winter"],
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f42f9066"
@@ -2435,7 +2434,7 @@
     ],
     "category": "pants",
     "sex": "women",
-    "season": ["spring", "summer", "fall", "winter"],
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f180c06e"
@@ -2459,7 +2458,7 @@
     ],
     "category": "pants",
     "sex": "women",
-    "season": ["spring", "summer", "fall", "winter"],
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f130119c"
@@ -2483,7 +2482,7 @@
     ],
     "category": "pants",
     "sex": "women",
-    "season": ["spring", "summer", "fall", "winter"],
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f3bffdad"
@@ -2555,7 +2554,7 @@
     ],
     "category": "pants",
     "sex": "women",
-    "season": ["spring", "summer", "fall", "winter"],
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f2ca590c"
@@ -2579,7 +2578,7 @@
     ],
     "category": "pants",
     "sex": "women",
-    "season": ["spring", "summer", "fall", "winter"],
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f2a1f1f",
@@ -2604,7 +2603,7 @@
     ],
     "category": "pants",
     "sex": "women",
-    "season": ["spring", "summer", "fall", "winter"],
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f209be9d"
