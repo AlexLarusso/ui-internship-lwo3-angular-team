@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, ChangeDetectorRef, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -19,29 +19,27 @@ import { IAppState } from 'src/app/store/app.store';
 })
 
 export class ShopByCategoryComponent implements OnInit, OnDestroy, AfterViewChecked {
+  @Input() public filterCategory: string;
 
   public filterGenderSub: Subscription;
   public filteredItems: Array<IProductShortInfo>;
-  public currentPath: string;
   public filterItemsSub: Subscription;
 
   constructor(
      private store: Store<IAppState>,
-     private route: ActivatedRoute,
      private cd: ChangeDetectorRef
     ) { }
 
   public ngOnInit(): void {
-    this.currentPath = this.route.snapshot.url[0].path;
     this.store.dispatch(new LoadProducts());
 
     this.filterGenderSub = this.store.select(getFilteredProducts).subscribe(items => this.filteredItems = items);
   }
 
   public ngAfterViewChecked(): void {
-    this.currentPath === 'women' || this.currentPath === 'men' ?
-      this.store.dispatch(new FilterByGender(this.currentPath)) :
-      this.store.dispatch(new FilterBySeason(this.currentPath));
+    this.filterCategory === 'women' || this.filterCategory === 'men' ?
+      this.store.dispatch(new FilterByGender(this.filterCategory)) :
+      this.store.dispatch(new FilterBySeason(this.filterCategory));
 
     this.cd.detectChanges();
   }
