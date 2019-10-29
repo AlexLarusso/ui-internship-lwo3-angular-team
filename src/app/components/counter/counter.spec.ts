@@ -3,13 +3,13 @@ import { getCount } from 'src/app/store/selectors/counter.selectors';
 import { Increment, Decrement, Reset } from 'src/app/store/actions/counter.actions';
 
 describe('CounterComponent: ', () => {
+  const countMock = 1;
   let component;
   let storeMock;
-  let countMock = 1;
 
   function setMocks() {
     storeMock = {
-      select: jasmine.createSpy('storeMock:selelct').and.returnValue(countMock),
+      select: jasmine.createSpy('storeMock:select').and.returnValue(countMock),
       dispatch: jasmine.createSpy('storeMock:dispatch')
     };
     component = new CounterComponent(storeMock);

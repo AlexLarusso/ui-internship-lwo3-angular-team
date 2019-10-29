@@ -1,10 +1,10 @@
 import {
-  Component, ViewChildren, QueryList, OnInit,AfterViewInit
+  Component, ViewChildren, QueryList, OnInit, AfterViewInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { ScrollService } from 'src/app/shared/services';
 import { ScrollAnchorDirective } from 'src/app/shared/directives';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list-page',
