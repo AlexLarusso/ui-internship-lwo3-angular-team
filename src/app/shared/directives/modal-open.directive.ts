@@ -10,11 +10,11 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 export class ModalOpenDirective implements OnInit, OnDestroy {
   constructor(private renderer: Renderer2) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.renderer.addClass(document.body, 'modal-open');
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.renderer.removeClass(document.body, 'modal-open');
   }
 }
