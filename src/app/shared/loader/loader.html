@@ -1,4 +1,4 @@
-<div *ngIf="loader$ | async" class="overlay">
+<div *ngIf="loader$ | async" class="overlay" appModalOpen>
     <div class="lds-css ng-scope">
     <div class="lds-spinner">
       <div *ngFor="let bullet of bulletsArray"></div>

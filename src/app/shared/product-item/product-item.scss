@@ -102,6 +102,14 @@
     overflow: hidden;
     background-color: $bgColorLight;
     text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      -webkit-transform: translateY(-6px) translateX(-6px);
+      transform: translateY(-6px) translateX(-6px);
+      background-color: rgba($color: $bgColorDark,  $alpha: 0.05);
+    }
   }
 
   &__picture {
