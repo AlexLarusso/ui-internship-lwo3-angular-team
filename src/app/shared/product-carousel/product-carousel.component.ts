@@ -99,9 +99,12 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
 
     if (this.productArray.length) {
       this.toggleButtonsState();
+
       this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
     }
+
     this.productsContainer.nativeElement.style.width = this.itemWidth * this.visibleNum + 'px';
+
     this.cd.detectChanges();
   }
 

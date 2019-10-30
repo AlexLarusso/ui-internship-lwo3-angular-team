@@ -23,6 +23,7 @@ import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ImageLoadDirective } from './directives/image-loader.directive';
+import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ImageLoadDirective } from './directives/image-loader.directive';
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ImageLoadDirective
+    ImageLoadDirective,
+    ShopByCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { ImageLoadDirective } from './directives/image-loader.directive';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
+    ShopByCategoryComponent
   ]
 })
 

@@ -1,0 +1,17 @@
+<div class="product">
+  <div class="content__container product__wrapper">
+    <div>
+      <h2 class="col-12 content__title">{{ currentPath | titlecase }} Collection</h2>
+    </div>
+    <div class="product__container">
+      <app-product-item *ngFor="let product of filteredItems"
+        class="product__item"
+        [status]="product.status"
+        [imgUrl]="product.imgUrl"
+        [productTitle]="product.productTitle"
+        [productPrice]="product.productPrice"
+        [productId]="product.productId">
+      </app-product-item>
+    </div>
+  </div>
+</div>
