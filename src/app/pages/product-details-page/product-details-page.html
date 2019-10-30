@@ -1,1 +1,12 @@
-<app-product-details></app-product-details>
+<div class="pdp-default-wrapper">
+  <app-product-order
+    *ngIf="productSource$ | async as product"
+    [product]="product"
+  >
+  </app-product-order>
+  <app-similar-products
+    *ngIf="productSource$ | async as product"
+    [product]="product">
+  </app-similar-products>
+</div>
+

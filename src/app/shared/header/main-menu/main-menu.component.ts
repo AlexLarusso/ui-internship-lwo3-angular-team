@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { faSearch, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faSearch, faCartArrowDown
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-main-menu',
@@ -10,5 +13,10 @@ export class MainMenuComponent {
   public faSearch = faSearch;
   public faCartArrowDown = faCartArrowDown;
 
-  public menuItems = ['Shopping Cart', 'Wish List', 'Checkout', 'My Account'];
+  public menuItems = [
+    {title: 'Shopping Cart', url: '/shoppingcart'},
+    {title: 'Wish List', url: '/wishlist'},
+    {title: 'Checkout', url: '/checkout'},
+    {title: 'My Account', url: '/myaccount'}
+  ];
 }

@@ -1,0 +1,15 @@
+<div *ngIf="content.length" class="accordeon">
+  <div *ngFor="let topic of content; let i = index"
+      class="topic"
+      [attr.aria-expanded]="i === selectedTopic">
+    <div class="topic__header"
+      (click)="topicClick(i)">
+      <h4 class="topic__title">{{topic.title}}</h4>
+      <fa-icon
+        class="icon"
+        [icon]="i === selectedTopic ? iconCollapse : iconExpand">
+      </fa-icon>
+    </div>
+    <p class="topic__text">{{topic.text}}</p>
+  </div>
+</div>

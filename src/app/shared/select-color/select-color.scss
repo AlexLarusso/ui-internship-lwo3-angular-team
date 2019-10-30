@@ -1,0 +1,31 @@
+@import 'src/app/styles/variables';
+
+$buttons-spacing: 15px;
+$button-size: 22px;
+$select-color-height: 40px;
+$item-shadow-color: rgba(100, 100, 100, .4);
+
+.select-color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: $select-color-height;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .colorBtn {
+    width: $button-size;
+    height: $button-size;
+    border-radius: 50%;
+    border: 2px solid $item-shadow-color;
+    margin: 0 $buttons-spacing;
+
+    &.selected {
+      border: 2px solid $accentColor;
+    }
+  }
+}

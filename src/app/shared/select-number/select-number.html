@@ -1,0 +1,14 @@
+<div class="select-number__wrapper">
+  <ng-content></ng-content>
+  <div class="select-number" [class.value-limit]="isValuelimit">
+    <span class="select-number__value">{{ value }}</span>
+    <fa-icon class="select-number__icon"
+      [icon]="plusIcon"
+      (click)="increment()">
+    </fa-icon>
+    <fa-icon class="select-number__icon"
+      [icon]="minusIcon"
+      (click)="decrement()">
+    </fa-icon>
+  </div>
+</div>

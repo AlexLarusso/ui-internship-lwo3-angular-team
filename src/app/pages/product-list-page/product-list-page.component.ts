@@ -1,20 +1,18 @@
-import { Component, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
-import { ScrollService } from 'src/app/shared/services/scroll.service';
-import { ScrollAnchorDirective } from 'src/app/shared/directives/scroll-anchor.directive';
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list-page',
   templateUrl: './product-list-page.html',
 })
-export class ProductListPageComponent implements AfterViewInit {
-  @ViewChildren(ScrollAnchorDirective)
-  private pageAnchors: QueryList<ScrollAnchorDirective>;
 
-  constructor(private scrollService: ScrollService) { }
+export class ProductListPageComponent implements OnInit {
+  public currentPath: string;
 
-  public ngAfterViewInit(): void {
-    this.pageAnchors.forEach(el =>
-      this.scrollService.addAnchor(el.elementReference)
-    );
+  constructor(private route: ActivatedRoute) { }
+
+  public ngOnInit(): void {
+    this.currentPath = this.route.snapshot.url[0].path;
   }
 }

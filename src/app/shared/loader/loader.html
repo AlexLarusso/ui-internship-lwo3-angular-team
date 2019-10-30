@@ -1,4 +1,4 @@
-<div *ngIf="isLoading" class="overlay">
+<div *ngIf="loader$ | async" class="overlay">
     <div class="lds-css ng-scope">
     <div class="lds-spinner">
       <div *ngFor="let bullet of bulletsArray"></div>

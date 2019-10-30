@@ -1,0 +1,13 @@
+<div *ngIf="product" class="error-sample content__container">
+  <app-product-item
+    class="product__item"
+    [status]="product.status"
+    [imgUrl]="product.imgUrl"
+    [productTitle]="product.productTitle"
+    [productPrice]="product.productPrice"
+    [productId]="product.productId">
+  </app-product-item>
+  <app-button (click)="loadNext()">
+    {{ buttonTitle }}
+  </app-button>
+</div>

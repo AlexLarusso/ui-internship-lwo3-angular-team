@@ -7,7 +7,7 @@
           class="email_input"
           placeholder="Your email"
           [(ngModel)]="inputText"
-          [class.error]="invalid"
+          [class.error]="isInvalid"
           (input)="onValidate()"
           (blur)="onBlur()">
         <app-button

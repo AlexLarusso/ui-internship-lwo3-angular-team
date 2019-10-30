@@ -1,20 +1,30 @@
-import { Component, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
-import { ScrollService } from 'src/app/shared/services/scroll.service';
-import { ScrollAnchorDirective } from 'src/app/shared/directives/scroll-anchor.directive';
+import {
+  Component, OnInit, OnDestroy
+} from '@angular/core';
 
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
+import { Subscription } from 'rxjs';
+
+import { ProductService } from 'src/app/shared/services';
+import { ProductFormat } from 'src/app/app.enum';
+import { IProductShortInfo } from 'src/app/interfaces';
+
+@AutoUnsubscribe()
 @Component({
   selector: 'app-home',
   templateUrl: './home.html',
 })
-export class HomeComponent implements AfterViewInit {
-  @ViewChildren(ScrollAnchorDirective)
-  private pageAnchors: QueryList<ScrollAnchorDirective>;
+export class HomeComponent implements OnInit, OnDestroy {
+  public productList: Array<IProductShortInfo>;
+  public getProductsSub: Subscription;
 
-  constructor(private scrollService: ScrollService) {}
+  constructor(private productService: ProductService) { }
 
-  public ngAfterViewInit(): void {
-    this.pageAnchors.forEach(el =>
-      this.scrollService.addAnchor(el.elementReference)
-    );
+  public ngOnInit(): void {
+    this.getProductsSub = this.productService.getProducts(ProductFormat.short)
+      .subscribe(data => this.productList = data);
   }
+
+  public ngOnDestroy(): void { }
 }

@@ -5,7 +5,7 @@ export interface IProduct {
   description: string;
   brand: string;
   sizes: Array<string>;
-  colors: Array<number>;
+  colors: Array<string>;
   images: Array<IProductImage>;
   video: string;
   category: string;
@@ -13,5 +13,6 @@ export interface IProduct {
   season: Array<string>;
   quantity: number;
   price: number;
-  id: number;
+  id: string;
+  status: string;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { LocalStorageService } from '../../shared/services/web-storage/local-storage.service';
 import { EnumRegExp } from '../../app.enum';
 
 @Component({
@@ -15,6 +15,7 @@ export class JoinUsComponent implements OnInit {
   public isInvalid = false;
   public isSubscribed = false;
   public inputText = '';
+  public key = 'userEmail';
   public formText = {
     success: 'You have successfully subscribed to our newsletter',
     subscribe: 'Subscribe',
@@ -26,7 +27,7 @@ export class JoinUsComponent implements OnInit {
   constructor(private localStorageService: LocalStorageService) { }
 
   public ngOnInit(): void {
-    this.onRefresh('userEmail');
+    this.onRefresh(this.key);
   }
 
   public onBlur(): void {
@@ -40,21 +41,21 @@ export class JoinUsComponent implements OnInit {
   }
 
   public saveUser(): void {
-    this.localStorageService.setEmail(this.inputText);
-    this.localStorageService.localStorageAdd('userEmail');
+    this.localStorageService.setData(this.key, this.inputText);
+    this.localStorageService.localStorageAdd(this.key);
     this.isSubscribed = true;
   }
 
   public deleteUser(): void {
-    this.localStorageService.localStorageDelete('userEmail');
+    this.localStorageService.localStorageDelete(this.key);
     this.isSubscribed = false;
   }
 
-  public onValidate(value?: string): void {
-    const isValid = this.emailRegExp.test(value || this.inputText);
+  public onValidate(): void {
+    const isValid = this.emailRegExp.test(this.inputText);
 
-    this.localStorageService.setEmail(this.inputText);
+    this.localStorageService.setData(this.key, this.inputText);
     this.buttonDisabled = !isValid;
     this.isInvalid = !isValid;
-    }
+  }
 }
