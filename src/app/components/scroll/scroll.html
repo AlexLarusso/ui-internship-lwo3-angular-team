@@ -4,7 +4,7 @@
       *ngFor="let component of pageComponents; let i = index"
       class="menu"
       (click)="onItemSelect(component)"
-      [ngSwitch]="component.selector"
+      [ngSwitch]="component.title"
     >
       <fa-icon
         *ngSwitchCase="'app-header'"
@@ -21,7 +21,7 @@
       <span *ngSwitchDefault class="item"
         [class.active]="i === activeElement"
       >
-        <span class="item__text">{{component.title}}</span>
+        <span class="item__text">{{ component.title }}</span>
       </span>
     </li>
   </ul>

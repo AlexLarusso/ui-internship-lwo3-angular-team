@@ -1,5 +1,5 @@
 import {
-  Component, QueryList, ViewChildren, OnInit, OnDestroy
+  Component, OnInit, OnDestroy
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -12,7 +12,6 @@ import { IAppState } from './store/app.store';
 import { SetToWishList } from './store/actions/wish-list.actions';
 
 import { ScrollService } from './shared/services';
-import { ScrollAnchorDirective } from './shared/directives';
 
 @AutoUnsubscribe()
 @Component({
@@ -20,9 +19,6 @@ import { ScrollAnchorDirective } from './shared/directives';
   templateUrl: './app.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @ViewChildren(ScrollAnchorDirective)
-    private pageAnchors: QueryList<ScrollAnchorDirective>;
-
   constructor(
     private store: Store<IAppState>,
     private scrollService: ScrollService,
@@ -43,10 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
       filter(event => event instanceof NavigationEnd)
     )
     .subscribe(() => {
-      this.scrollService.resetAnchors();
-      this.pageAnchors.forEach(el =>
-        this.scrollService.addAnchor(el.elementReference));
-      this.scrollService.moveTo({ selector: 'app-header', title: '' });
+      this.scrollService.moveTo({ title: 'app-header' });
       this.isHomePage = window.location.pathname === '/home';
     });
   }

@@ -1,12 +1,25 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, OnDestroy, AfterContentInit } from '@angular/core';
 
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
+import { ScrollService } from '../services';
+
+@AutoUnsubscribe()
 @Directive({
-  selector: '[appScrollAnchor], app-header, app-footer'
+  selector: '[appScrollAnchor]'
 })
-export class ScrollAnchorDirective {
-  public elementReference: ElementRef;
+export class ScrollAnchorDirective implements OnDestroy, AfterContentInit {
 
-  constructor(elr: ElementRef) {
-    this.elementReference = elr;
+  constructor(
+    private elementReference: ElementRef,
+    private scrollService: ScrollService
+  ) { }
+
+  public ngAfterContentInit(): void {
+    this.scrollService.addAnchor(this.elementReference);
+  }
+
+  public ngOnDestroy(): void {
+    this.scrollService.removeAnchor(this.elementReference);
   }
 }

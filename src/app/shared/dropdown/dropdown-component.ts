@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener, ViewChildren, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 import { faCaretDown, faCaretUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
