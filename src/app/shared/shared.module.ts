@@ -4,7 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-import { ScrollAnchorDirective } from './directives';
+import { ScrollAnchorDirective, ModalOpenDirective } from './directives';
 import { HeaderComponent } from './header/header.component';
 import { CategoryMenuComponent } from './header/category-menu/category-menu.component';
 import { LineBarComponent } from './header/line-bar/line-bar.component';
@@ -28,6 +28,7 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
 @NgModule({
   declarations: [
     ScrollAnchorDirective,
+    ModalOpenDirective,
     HeaderComponent,
     FooterComponent,
     PopularListComponent,
@@ -57,6 +58,7 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
   ],
   exports: [
     ScrollAnchorDirective,
+    ModalOpenDirective,
     HeaderComponent,
     FooterComponent,
     PopularListComponent,

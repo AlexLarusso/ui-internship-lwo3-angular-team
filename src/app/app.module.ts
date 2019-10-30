@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './pages/home/home.module';
@@ -12,6 +13,7 @@ import { ProductDetailsPageModule } from './pages/product-details-page/product-d
 import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
 import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
 import { ErrorSampleModule } from './pages/error-sample/error-sample.module';
+import { ErrorPageModule } from './pages/error-page/error-page.module';
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ProductResolver } from './shared/services/product.resolver';
@@ -29,10 +31,9 @@ import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.com
 import { CounterComponent } from './components/counter/counter.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ErrorSampleComponent } from './pages/error-sample/error-sample.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
-import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffects } from './store/effects/products.effects';
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,8 +47,8 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
   { path: '404', component: NotFoundComponent },
   { path: 'wishlist', component: WishListPageComponent },
-  { path: 'error', component: ErrorSampleComponent },
-  { path: 'checkout', redirectTo: '/error' },
+  { path: 'error', component: ErrorPageComponent },
+  { path: 'checkout', component: ErrorSampleComponent },
   { path: '**', redirectTo: '/404' },
 ];
 
@@ -77,6 +78,7 @@ const routes: Routes = [
     StoreDevtoolsModule.instrument({}),
     ErrorSampleModule,
     EffectsModule.forRoot([ProductsEffects]),
+    ErrorPageModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
