@@ -15,9 +15,9 @@
             </button>
           </div>
           <div class="col-4 menu__cart__container">
-            <button class="menu__cart__btn">
+            <a [routerLink]="menuItems[0].url" class="menu__cart__btn">
               <fa-icon [icon]="faCartArrowDown"></fa-icon>
-            </button>
+            </a>
             <div class="menu__cart"></div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import { ProductListPageModule } from './pages/product-list-page/product-list-pa
 import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
 import { ErrorSampleModule } from './pages/error-sample/error-sample.module';
 import { ErrorPageModule } from './pages/error-page/error-page.module';
+import { CartPageModule } from './pages/cart-page/cart-page.module';
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ProductResolver } from './shared/services/product.resolver';
@@ -32,6 +33,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ErrorSampleComponent } from './pages/error-sample/error-sample.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 import { ProductsEffects } from './store/effects/products.effects';
 
@@ -49,6 +51,7 @@ const routes: Routes = [
   { path: 'wishlist', component: WishListPageComponent },
   { path: 'error', component: ErrorPageComponent },
   { path: 'checkout', component: ErrorSampleComponent },
+  { path: 'shoppingcart', component: CartPageComponent },
   { path: '**', redirectTo: '/404' },
 ];
 
@@ -79,6 +82,7 @@ const routes: Routes = [
     ErrorSampleModule,
     EffectsModule.forRoot([ProductsEffects]),
     ErrorPageModule,
+    CartPageModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
