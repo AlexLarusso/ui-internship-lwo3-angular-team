@@ -10,6 +10,8 @@ import { ImagePlaceholder } from '../../app.enum';
 })
 export class ProductItemComponent {
   public placeholderImage = ImagePlaceholder.IMAGE_NOT_FOUND;
+  public showImage = false;
+
   @Input() public imgUrl = this.placeholderImage;
   @Input() public productTitle = 'Product Title';
   @Input() public productPrice = 0;
@@ -20,5 +22,9 @@ export class ProductItemComponent {
 
   public addIdToLocalStorage(id: string): void {
    this.productService.recentProductOrder(id);
+  }
+
+  public onShowImage(): void {
+    this.showImage = true;
   }
 }

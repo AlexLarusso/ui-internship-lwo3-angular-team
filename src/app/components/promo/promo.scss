@@ -64,7 +64,7 @@
 @media screen and (max-width: 768px) {
   .promo {
     &__container {
-      height: 60vh;
+      height: 400px;
     }
 
     &__content {
@@ -75,10 +75,6 @@
 
 @media screen and (max-width: 576px) {
   .promo {
-    &__container {
-      height: 65vh;
-    }
-
     &__content {
       width: 80%;
       height: 250px;
@@ -89,7 +85,7 @@
 @media screen and (max-width: 320px) {
   .promo {
     &__container {
-      height: 80vh;
+      height: 500px;
     }
 
     &__content {

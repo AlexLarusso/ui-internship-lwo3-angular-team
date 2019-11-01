@@ -32,7 +32,7 @@ export class ImageLoadDirective implements AfterViewInit {
 
   private checkIntersecting(entrance: IntersectionObserverEntry) {
     return entrance.isIntersecting &&
-    entrance.target === this.element.nativeElement;
+      entrance.target === this.element.nativeElement;
   }
 
   private checkForIntersection = (entries: Array<IntersectionObserverEntry>) => {

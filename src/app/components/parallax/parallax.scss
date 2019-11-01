@@ -6,12 +6,24 @@
   }
 }
 
+.men {
+  background: url('../../../assets/img/men_fashion.jpg') bottom right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.women {
+  transform: translateZ(-1px) scale(1);
+  background: url('../../../assets/img/women_fashion.jpg') top right / cover no-repeat;;
+  background-attachment: fixed;
+}
+
 .spring {
   background: url('../../../assets/img/spring_fashion.jpg') top right / cover no-repeat;
+  background-attachment: fixed;
 }
 
 .summer {
-  background: url('../../../assets/img/summer_fashion.jpg');
+  background: url('../../../assets/img/summer_fashion.jpg') top right / cover no-repeat;;
   background-attachment: fixed;
 }
 
@@ -21,7 +33,7 @@
 }
 
 .winter {
-  background: url('../../../assets/img/winter_fashion.png') top right / cover no-repeat;
+  background: url('../../../assets/img/winter_fashion.jpg') top right / cover no-repeat;
   background-attachment: fixed;
 }
 

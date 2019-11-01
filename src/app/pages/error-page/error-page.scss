@@ -1,0 +1,21 @@
+.error-page {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+  }
+
+  &__title, &__label {
+    display: block;
+    text-align: center;
+    margin: 50px 0;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+  }
+
+  &__label {
+    font-size: 1.3rem;
+  }
+}

@@ -5,9 +5,10 @@
       <div
         class="product-item__image-wrapper"
         [ngClass]="status | lowercase"
-        (downloadImage)="showImage=true">
-          <img *ngIf="!showImage" [src]="placeholderImage">
-          <img *ngIf="showImage"
+        (downloadImage)="onShowImage()">
+        <img *ngIf="showImage && !isImgLoaded" class="placeholder-image" [src]="placeholderImage">
+        <img *ngIf="showImage"
+            (load)="isImgLoaded = true"
             class="product-item__picture"
             [alt]="productTitle"
             [src]="imgUrl"/>

@@ -42,15 +42,21 @@ export class ScrollService implements OnDestroy {
   public ngOnDestroy(): void { }
 
   public addAnchor(elRef: ElementRef): void {
-    const firstActive = this.detectActive(window.pageYOffset);
-
     this.insertElementRef(elRef);
     this.anchors.next(this.anchorRefs.map(ref => this.getAnchor(ref)));
-    this.activeAnchor.next(firstActive);
+    this.activeAnchor.next(this.detectActive(window.pageYOffset));
+  }
+
+  public removeAnchor(elRef: ElementRef): void {
+    const elRefIndex = this.anchorRefs.indexOf(elRef);
+
+    this.anchorRefs.splice(elRefIndex, 1);
+    this.anchors.next(this.anchorRefs.map(ref => this.getAnchor(ref)));
   }
 
   public resetAnchors(): void {
     this.anchorRefs = [];
+    this.anchors.next([]);
   }
 
   public moveTo(anchor: IPageAnchor): void {
@@ -60,14 +66,13 @@ export class ScrollService implements OnDestroy {
 
   private getAnchor(elRef: ElementRef): IPageAnchor {
     return {
-      selector: elRef.nativeElement.localName,
-      title: elRef.nativeElement.title
+      title: elRef.nativeElement.getAttribute('appScrollAnchor')
     };
   }
 
   private selectRef(anchor: IPageAnchor): ElementRef {
     return this.anchorRefs.find(el =>
-      el.nativeElement.localName === anchor.selector
+      el.nativeElement.getAttribute('appScrollAnchor') === anchor.title
     );
   }
 
@@ -97,14 +102,16 @@ export class ScrollService implements OnDestroy {
       const lastNumber = this.anchorRefs.length - 1;
       const lastElementBottomPosition = this.anchorRefs[lastNumber]
         .nativeElement.getBoundingClientRect().bottom + window.pageYOffset;
+      const positionMargin = 10;
+      const correctedPosition = position + positionMargin;
 
-      if (lastElementBottomPosition === window.innerHeight + position) {
+      if (lastElementBottomPosition <= window.innerHeight + correctedPosition) {
         return lastNumber;
       }
 
       for (let i = 0; i < lastNumber; i++) {
-        if (this.getRefPosition(this.anchorRefs[i]) <= position
-          && this.getRefPosition(this.anchorRefs[i + 1]) > position) {
+        if (this.getRefPosition(this.anchorRefs[i]) <= correctedPosition
+          && this.getRefPosition(this.anchorRefs[i + 1]) > correctedPosition) {
             return i;
         }
       }

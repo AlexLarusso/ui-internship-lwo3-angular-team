@@ -1,6 +1,13 @@
-<div class="error-sample">
-  <div *ngIf="product?.length">
-    <h3 class="error-sample__title">Data from server:</h3>
-    <p class="error-sample__data">{{ product }}</p>
-  </div>
+<div *ngIf="product" class="error-sample content__container">
+  <app-product-item
+    class="product__item"
+    [status]="product.status"
+    [imgUrl]="product.imgUrl"
+    [productTitle]="product.productTitle"
+    [productPrice]="product.productPrice"
+    [productId]="product.productId">
+  </app-product-item>
+  <app-button (click)="loadNext()">
+    {{ buttonTitle }}
+  </app-button>
 </div>

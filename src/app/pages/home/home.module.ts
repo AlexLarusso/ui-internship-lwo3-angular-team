@@ -4,8 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { ScrollAnchorDirective } from 'src/app/shared/directives';
-
 import { PromoComponent } from 'src/app/components/promo/promo.component';
 import { ParallaxComponent } from 'src/app/components/parallax/parallax.component';
 import { StoryComponent } from 'src/app/components/story/story.component';
@@ -21,7 +19,6 @@ import { RecentlyViewedComponent } from '../../components/recently-viewed/recent
     StoryComponent,
     ScrollComponent,
     SlideshowComponent,
-    ScrollAnchorDirective,
     JoinUsComponent,
     RecentlyViewedComponent
   ],
@@ -36,7 +33,6 @@ import { RecentlyViewedComponent } from '../../components/recently-viewed/recent
     ParallaxComponent,
     StoryComponent,
     ScrollComponent,
-    ScrollAnchorDirective,
     JoinUsComponent,
     BrowserAnimationsModule,
     RecentlyViewedComponent
