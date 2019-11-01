@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Subscription, merge, forkJoin, combineLatest } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
 
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
@@ -10,7 +10,7 @@ import {
 
 import { IProductCartItem } from 'src/app/interfaces';
 import { IAppState } from 'src/app/store/app.store';
-import { mapTo, map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @AutoUnsubscribe()
 @Component({

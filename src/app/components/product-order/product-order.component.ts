@@ -17,7 +17,9 @@ import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
 import { SelectColor } from 'src/app/store/actions/product-options.actions';
+import { AddProductToCart } from 'src/app/store/actions/cart.actions';
 import { NotificationService } from 'src/app/shared/services/notification.service';
+import { IProductCartItem } from 'src/app/interfaces';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -87,6 +89,19 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   public onBuyClick(): void {
+    const productCartItem: IProductCartItem = {
+      id: this.product.id,
+      title: this.product.productName,
+      price: this.product.price,
+      imageUrl: this.product.images[0].url[0],
+      color: this.selectedColor,
+      size: this.selectedSize,
+      quantity: this.selectedQty
+    };
+
+    this.store.dispatch(new AddProductToCart(productCartItem));
+
+    //TODO: move this to effects?
     const title = `Added ${this.productDetails.title} to your cart.`;
     const message = `Quantity: ${this.selectedQty}.
       Size: ${this.selectedSize}.
