@@ -25,5 +25,6 @@
       <app-wish-button [productId]="productDetails.productId" wishClass="wish__product-details">
       </app-wish-button>
     </div>
+    <app-paypal-checkout *ngIf="selectedSize"></app-paypal-checkout>
   </app-product-details>
 </div>

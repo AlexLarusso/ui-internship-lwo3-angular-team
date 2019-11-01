@@ -24,6 +24,7 @@ import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
+import { PaypalCheckoutComponent } from '../components/paypal-checkout/paypal-checkout.component';
 
 @NgModule({
   declarations: [
@@ -47,12 +48,14 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent
+    ShopByCategoryComponent,
+    PaypalCheckoutComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     RouterModule,
+    FormsModule
   ],
   providers: [
   ],
@@ -76,7 +79,8 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent
+    ShopByCategoryComponent,
+    PaypalCheckoutComponent
   ]
 })
 
