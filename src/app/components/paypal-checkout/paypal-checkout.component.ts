@@ -12,12 +12,8 @@ export class PaypalCheckoutComponent implements OnInit {
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
 
   product = {
-    price: 777.77,
-    description: 'used couch, decent condition',
-    img: '../../assets/serverdata/images/armani-black-1.1.jpg'
+    price: 777.77
   };
-
-  public paidFor = false;
 
   ngOnInit() {
     paypal
@@ -26,7 +22,6 @@ export class PaypalCheckoutComponent implements OnInit {
           return actions.order.create({
             purchase_units: [
               {
-                description: this.product.description,
                 amount: {
                   currency_code: 'USD',
                   value: this.product.price
@@ -37,7 +32,6 @@ export class PaypalCheckoutComponent implements OnInit {
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
-          this.paidFor = true;
           console.log(order);
         },
         onError: err => {
