@@ -13,3 +13,8 @@ export enum NotificationType {
   error =  'error',
   info = 'info'
 }
+
+export enum Role {
+  User = 'User',
+  Admin = 'Admin'
+}
