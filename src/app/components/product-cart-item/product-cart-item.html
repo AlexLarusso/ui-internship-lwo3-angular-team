@@ -1,0 +1,22 @@
+<div class="product-cart-item" *ngIf="productItem">
+  <img class="product-cart-item__image"
+    [src]="productItem.imageUrl"
+    alt="Product image">
+  <h3 class="product-cart-item__title">
+    {{ productItem.title }}
+  </h3>
+  <span class="product-cart-item__qty">
+    Qty: {{ productItem.quantity }}
+  </span>
+  <span class="product-cart-item__size">
+    Size: {{ productItem.size }}
+  </span>
+  <a [routerLink]="'/products/'+productItem.id">Details...</a>
+  <span class="product-cart-item__price">
+    Price: {{ productItem.price }}
+  </span>
+  <button class="product-cart-item__remove-btn"
+    (click)="removeItemFromCart()">
+    x
+  </button>
+</div>

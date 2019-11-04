@@ -5,8 +5,8 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Subscription, combineLatest } from 'rxjs';
 
 import {
-  getProductQuantity, getProductSelectedColor, getProductSelectedSize
-} from 'src/app/store/selectors/product-options.selector';
+  getCartProductItems
+} from 'src/app/store/selectors/cart.selector';
 
 import { IProductCartItem } from 'src/app/interfaces';
 import { IAppState } from 'src/app/store/app.store';
@@ -15,27 +15,24 @@ import { map } from 'rxjs/operators';
 @AutoUnsubscribe()
 @Component({
   selector: 'app-cart-page',
-  templateUrl: './cart-page.html'
+  templateUrl: './cart-page.html',
+  styleUrls: ['./cart-page.scss']
 })
 export class CartPageComponent implements OnInit, OnDestroy {
 
-  public productsList: Array<IProductCartItem> = [];
+  public cartProductList: Array<IProductCartItem> = [];
 
-  public selectedOptionsSub: Subscription;
+  public cartProductListSub: Subscription;
 
   constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
-    console.log('im alive');
-
-    const selectedOptionsSub = combineLatest(
-      this.store.select(getProductQuantity),
-      this.store.select(getProductSelectedSize),
-      this.store.select(getProductSelectedColor),
-      ).pipe(
-          map(([qty, size, color]) => ({ qty, size, color })
-        )
-      ).subscribe(console.log);
+    this.cartProductListSub 
+      this.store.select(getCartProductItems)
+        .subscribe(items => {
+          console.log(items);
+          this.cartProductList = items
+        });
     }
 
   public ngOnDestroy(): void { }

@@ -2209,7 +2209,7 @@
     "colors": ["#FFFACD", "#32CD32"],
     "images": [
       {
-        "value": "#32CD32",
+        "value": "#FFFACD",
         "url": [
           "./assets/server-data/images/dress_8_1.jpg",
           "./assets/server-data/images/dress_8_2.jpg",
