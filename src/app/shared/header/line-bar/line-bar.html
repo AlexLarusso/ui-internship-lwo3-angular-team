@@ -10,8 +10,18 @@
         <fa-icon [icon]="faTwitter" class="link__item"></fa-icon>
         <fa-icon [icon]="faGoogle" class="link__item"></fa-icon>
       </div>
-      <a class="bar__link">Login</a>
-      <a class="bar__link">Register</a>
+      <app-modal-window
+        id="login"
+        *ngIf="modalService.isLoginModalOpen">
+        <app-login></app-login>
+      </app-modal-window>
+      <app-modal-window
+        id="sign-up"
+        *ngIf="modalService.isSignUpModalOpen">
+        <app-sign-up></app-sign-up>
+      </app-modal-window>
+      <a (click)="openModal('login')" class="bar__link">Login</a>
+      <a (click)="openModal('sign-up')" class="bar__link">Sign Up</a>
     </div>
   </div>
 </div>

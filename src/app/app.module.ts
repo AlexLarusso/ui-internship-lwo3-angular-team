@@ -37,6 +37,8 @@ import { ProductsEffects } from './store/effects/products.effects';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'log-in', component: HomeComponent},
+  { path: 'sign-up', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'women', component: ProductListPageComponent },
   { path: 'men', component: ProductListPageComponent },

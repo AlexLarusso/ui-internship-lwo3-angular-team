@@ -1,0 +1,46 @@
+  <div class="authentication">
+    <div class="authentication__wrapper">
+      <div class="authentication__title">Sign up</div>
+      <form class="authentication__form"
+            (ngSubmit)="onSubmit()" 
+            ngNativeValidate>
+        <div class="authentication__field">
+          <label
+            for="email"
+            class="authentication__label">Email</label>
+          <input
+            [(ngModel)]="user.email"
+            name="email"
+            type="email"
+            required
+            id="sign_up-email"
+            class="authentication__input"
+            placeholder="enter your email">
+        </div>
+        <div class="authentication__field">
+          <label 
+            for="password"
+            class="authentication__label">Password</label>
+          <input
+            [(ngModel)]="user.password"
+            name="password"
+            type="password"
+            required
+            id="sign_up-password"
+            class="authentication__input"
+            placeholder="enter a password">
+        </div>
+        <app-button 
+          class="authentication__btn-success" 
+          type="submit">Submit</app-button>
+        <app-button 
+          class="authentication__btn-warning" 
+          (click)="closeModal('sign-up')">Cancel</app-button>
+          <span class="authentication__paragraph">Already have an account?&nbsp;>
+          <a 
+            class="authentication__redirect" 
+            (click)="closeModal('sign-up');openModal('login')">Log in!</a>
+          </span>
+      </form>
+    </div>
+  </div>

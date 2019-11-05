@@ -24,6 +24,11 @@ import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
+// import { ModalComponent } from '../shared/directives/modal.directive';
+import { ModalComponent } from '../shared/modal-window/modal-window.component';
+import { LogInComponent } from '../components/log-in/log-in.component';
+import { SignUpComponent } from '../components/sign-up/sign-up.component';
+import { ModalService } from 'src/app/shared/services/modal-service';
 
 @NgModule({
   declarations: [
@@ -47,14 +52,19 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent
+    ShopByCategoryComponent,
+    LogInComponent,
+    SignUpComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     RouterModule,
+    FormsModule
   ],
   providers: [
+    ModalService
   ],
   exports: [
     ScrollAnchorDirective,
@@ -76,7 +86,10 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent
+    ShopByCategoryComponent,
+    ModalComponent,
+    LogInComponent,
+    SignUpComponent
   ]
 })
 

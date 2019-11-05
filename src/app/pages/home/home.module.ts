@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { PromoComponent } from 'src/app/components/promo/promo.component';
 import { ParallaxComponent } from 'src/app/components/parallax/parallax.component';
@@ -12,6 +14,7 @@ import { SlideshowComponent } from 'src/app/components/slideshow/slideshow.compo
 import { JoinUsComponent } from 'src/app/components/join-us/join-us.component';
 import { RecentlyViewedComponent } from '../../components/recently-viewed/recently-viewed.component';
 
+
 @NgModule({
   declarations: [
     PromoComponent,
@@ -20,11 +23,13 @@ import { RecentlyViewedComponent } from '../../components/recently-viewed/recent
     ScrollComponent,
     SlideshowComponent,
     JoinUsComponent,
-    RecentlyViewedComponent
+    RecentlyViewedComponent,
   ],
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    RouterModule
   ],
   providers: [
   ],
@@ -35,7 +40,7 @@ import { RecentlyViewedComponent } from '../../components/recently-viewed/recent
     ScrollComponent,
     JoinUsComponent,
     BrowserAnimationsModule,
-    RecentlyViewedComponent
+    RecentlyViewedComponent,
   ]
 })
 

@@ -1,0 +1,57 @@
+@import 'src/app/styles/variables';
+
+.authentication {
+  &__wrapper { 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 75%;
+  }
+
+  &__title {
+    font-family: $mainFontBold;
+    font-size: 2rem;
+    margin: 0 auto;
+  }
+
+  &__form {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-size: 1rem;
+    font-family: $mainFontRegular;
+  }
+
+  &__input {
+    margin: 5px 0;
+    padding: 5px; 
+    border: 2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  // &__btn-success {
+
+  // }
+
+  // &__btn-warning {
+
+  // }
+
+  &__paragraph {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__redirect {
+    color: $accentColor
+  }
+}
