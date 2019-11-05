@@ -12,12 +12,12 @@ import { ScrollComponent } from 'src/app/components/scroll/scroll.component';
 import { SlideshowComponent } from 'src/app/components/slideshow/slideshow.component';
 import { JoinUsComponent } from 'src/app/components/join-us/join-us.component';
 import { RecentlyViewedComponent } from '../../components/recently-viewed/recently-viewed.component';
-import { HomeComponent } from './home.component';
+import { HomePageComponent } from './home-page.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
+    component: HomePageComponent,
   }
 ];
 
@@ -30,7 +30,7 @@ const routes: Routes = [
     SlideshowComponent,
     JoinUsComponent,
     RecentlyViewedComponent,
-    HomeComponent
+    HomePageComponent
   ],
   imports: [
     CommonModule,
@@ -51,4 +51,4 @@ const routes: Routes = [
   ]
 })
 
-export class HomeModule { }
+export class HomePageModule { }

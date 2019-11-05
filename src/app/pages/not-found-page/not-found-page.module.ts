@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NotFoundComponent } from './not-found.component';
+import { NotFoundPageComponent } from './not-found-page.component';
 
 const routes: Routes = [
   {
     path: '404',
-    component: NotFoundComponent
+    component: NotFoundPageComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    NotFoundComponent
+    NotFoundPageComponent
   ],
   imports: [
     RouterModule.forChild(routes)
@@ -22,4 +22,4 @@ const routes: Routes = [
   ]
 })
 
-export class NotFoundModule { }
+export class NotFoundPageModule { }
