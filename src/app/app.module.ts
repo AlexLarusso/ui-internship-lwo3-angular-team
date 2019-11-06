@@ -34,6 +34,7 @@ import { ErrorSampleComponent } from './pages/error-sample/error-sample.componen
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 import { ProductsEffects } from './store/effects/products.effects';
+import { AuthEffects } from './store/effects/auth.effects';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -79,7 +80,7 @@ const routes: Routes = [
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
     ErrorSampleModule,
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forRoot([ProductsEffects, AuthEffects]),
     ErrorPageModule,
   ],
   providers: [

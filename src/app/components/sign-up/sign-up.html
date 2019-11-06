@@ -1,6 +1,11 @@
   <div class="authentication">
     <div class="authentication__wrapper">
       <div class="authentication__title">Sign up</div>
+      <div *ngIf="errorMessage">
+        <div class="authentication__error">
+          {{errorMessage}}
+        </div>
+      </div>
       <form class="authentication__form"
             (ngSubmit)="onSubmit()" 
             ngNativeValidate>
@@ -35,11 +40,12 @@
           type="submit">Submit</app-button>
         <app-button 
           class="authentication__btn-warning" 
-          (click)="closeModal('sign-up')">Cancel</app-button>
+          (click)="modalService.close('sign-up')"
+          type="button">Cancel</app-button>
           <span class="authentication__paragraph">Already have an account?&nbsp;>
           <a 
             class="authentication__redirect" 
-            (click)="closeModal('sign-up');openModal('login')">Log in!</a>
+            (click)="modalService.close('sign-up');modalService.open('login')">Log in!</a>
           </span>
       </form>
     </div>

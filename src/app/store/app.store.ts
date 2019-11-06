@@ -1,4 +1,4 @@
-import { ActionReducerMap } from '@ngrx/store';
+import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 
 import * as fromCounter from './reducers/counter.reducer';
 import * as fromLoader from './reducers/loader.reducer';
@@ -6,6 +6,7 @@ import * as fromProductOptions from './reducers/product-options.reducer';
 import * as fromWishList from './reducers/wish-list.reducer';
 import * as fromWebStorage from './reducers/web-storage.reducer';
 import * as fromProducts from './reducers/products.reducer';
+import * as fromAuth from './reducers/auth.reducer';
 
 export interface IAppState {
   counter: fromCounter.IState;
@@ -14,6 +15,7 @@ export interface IAppState {
   wishList: fromWishList.IState;
   webStorage: fromWebStorage.IState;
   products: fromProducts.IState;
+  auth: fromAuth.IState;
 }
 
 export const appReducer: ActionReducerMap<IAppState> = {
@@ -23,4 +25,7 @@ export const appReducer: ActionReducerMap<IAppState> = {
   wishList: fromWishList.wishListReducer,
   webStorage: fromWebStorage.webStorageReducer,
   products: fromProducts.productsReducer,
+  auth: fromAuth.authReducer
 };
+
+export const selectAuthState = createFeatureSelector<IAppState>('auth');
