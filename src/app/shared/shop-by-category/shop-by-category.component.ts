@@ -24,6 +24,7 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy, AfterViewChec
   public filterGenderSub: Subscription;
   public filteredItems: Array<IProductShortInfo>;
   public filterItemsSub: Subscription;
+  public routeParamsSub: Subscription;
 
   constructor(
     private store: Store<IAppState>,
@@ -37,7 +38,7 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy, AfterViewChec
   }
 
   public ngOnInit(): void {
-    this.route.params.pipe()
+    this.routeParamsSub = this.route.params.pipe()
       .subscribe(item => {
         this.filterCategory = item.category;
 
