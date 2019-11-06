@@ -1,10 +1,20 @@
+@import 'src/app/styles/variables';
+
+$item-shadow-color: rgba(100, 100, 100, .4);
+
 .product-cart-item {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 140px 1fr 25% 15% 10% 10%;
   grid-gap: 10px;
   position: relative;
   width: 100%;
-  
+  padding: 25px 0;
+  border-top: 1px solid $item-shadow-color;
+
+  &.last-cart-item {
+    border-bottom: 1px solid $item-shadow-color;
+  }
+
   &__image {
     display: block;
     grid-column: 1;
@@ -12,18 +22,66 @@
     width: 100%;
   }
 
+  &__title {
+    grid-column: 2;
+    color: $accentColor;
+  }
+
   &__size {
+    grid-column: 3;
+    grid-row: 2;
     text-transform: uppercase;
   }
 
-  &__remove-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 30px;
-    height: 30px;
-    &:hover {
-      background-color: black;   
+  &__color {
+    display: flex;
+    grid-column: 3;
+    grid-row: 3;
+
+    &-sample {
+      display: block;
+      margin-left: 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid $item-shadow-color;
     }
   }
+
+  &__qty {
+    grid-column: 4;
+    grid-row: 2;
+  }
+
+  &__pdp-link {
+    grid-column: 3;
+    grid-row: 4;
+  }
+
+  &__price {
+    grid-column: 5;
+    grid-row: 2;
+    text-transform: uppercase;
+    color: $fontColorDark;
+  }
+
+  &__sum {
+    grid-column: 6;
+    grid-row: 2;
+    text-transform: uppercase;
+    color: $accentColor;
+  }
+
+  &__remove-icon {
+    grid-column: 6;
+    grid-row: 1;
+    margin-left: auto;
+    font-size: 22px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+
 }

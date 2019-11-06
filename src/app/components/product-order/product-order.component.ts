@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -16,7 +17,7 @@ import { IAppState } from 'src/app/store/app.store';
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
-import { SelectColor } from 'src/app/store/actions/product-options.actions';
+import { SelectColor, ResetProductOptions } from 'src/app/store/actions/product-options.actions';
 import { AddProductToCart } from 'src/app/store/actions/cart.actions';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { IProductCartItem } from 'src/app/interfaces';
@@ -48,7 +49,8 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<IAppState>,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) { }
 
   public ngOnInit(): void {
@@ -86,7 +88,9 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       .subscribe(size => this.selectedSize = size);
   }
 
-  public ngOnDestroy(): void { }
+  public ngOnDestroy(): void {
+    this.store.dispatch(new ResetProductOptions());
+  }
 
   public onBuyClick(): void {
     const productCartItem: IProductCartItem = {
@@ -100,14 +104,15 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
     };
 
     this.store.dispatch(new AddProductToCart(productCartItem));
+    this.router.navigate(['/shoppingcart']);
 
     //TODO: move this to effects?
-    const title = `Added ${this.productDetails.title} to your cart.`;
-    const message = `Quantity: ${this.selectedQty}.
-      Size: ${this.selectedSize}.
-      Color: ${this.selectedColor}.
-      Full price: ${this.selectedQty * this.productDetails.price} uah.`;
+    // const title = `Added ${this.productDetails.title} to your cart.`;
+    // const message = `Quantity: ${this.selectedQty}.
+    //   Size: ${this.selectedSize}.
+    //   Color: ${this.selectedColor}.
+    //   Full price: ${this.selectedQty * this.productDetails.price} uah.`;
 
-    this.notificationService.success(title, message);
+    // this.notificationService.success(title, message);
   }
 }
