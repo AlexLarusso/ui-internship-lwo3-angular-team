@@ -12,10 +12,10 @@ import { IProductShortInfo } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.html',
+  selector: 'app-home-page',
+  templateUrl: './home-page.html',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit, OnDestroy {
   public productList: Array<IProductShortInfo>;
   public getProductsSub: Subscription;
 

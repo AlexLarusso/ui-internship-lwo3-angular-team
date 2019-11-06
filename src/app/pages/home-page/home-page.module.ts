@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -11,6 +12,14 @@ import { ScrollComponent } from 'src/app/components/scroll/scroll.component';
 import { SlideshowComponent } from 'src/app/components/slideshow/slideshow.component';
 import { JoinUsComponent } from 'src/app/components/join-us/join-us.component';
 import { RecentlyViewedComponent } from '../../components/recently-viewed/recently-viewed.component';
+import { HomePageComponent } from './home-page.component';
+
+const routes: Routes = [
+  {
+    path: 'home',
+    component: HomePageComponent,
+  }
+];
 
 @NgModule({
   declarations: [
@@ -20,11 +29,13 @@ import { RecentlyViewedComponent } from '../../components/recently-viewed/recent
     ScrollComponent,
     SlideshowComponent,
     JoinUsComponent,
-    RecentlyViewedComponent
+    RecentlyViewedComponent,
+    HomePageComponent
   ],
   imports: [
-    BrowserModule,
-    SharedModule
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes)
   ],
   providers: [
   ],
@@ -35,8 +46,9 @@ import { RecentlyViewedComponent } from '../../components/recently-viewed/recent
     ScrollComponent,
     JoinUsComponent,
     BrowserAnimationsModule,
-    RecentlyViewedComponent
+    RecentlyViewedComponent,
+    RouterModule
   ]
 })
 
-export class HomeModule { }
+export class HomePageModule { }
