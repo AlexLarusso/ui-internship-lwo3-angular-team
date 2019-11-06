@@ -9,6 +9,7 @@ import {
 @Directive({
   selector: '[downloadImage]'
 })
+
 export class ImageLoadDirective implements AfterViewInit {
   @Output() public downloadImage = new EventEmitter();
 
@@ -16,7 +17,7 @@ export class ImageLoadDirective implements AfterViewInit {
     root: document.querySelector('.root'),
     rootMargin: '0px',
     threshold: [0, 0.5, 1.0]
-};
+  };
 
   private observer: IntersectionObserver;
 
