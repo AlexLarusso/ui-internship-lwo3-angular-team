@@ -9,7 +9,8 @@ import { IProductShortInfo } from 'src/app/interfaces';
 import { IAppState } from 'src/app/store/app.store';
 
 import { LoadProducts } from '../../store/actions/products.action';
-import { getAllProducts } from 'src/app/store/selectors/products.selectors';
+import { getAllProducts, getAllProductImages } from 'src/app/store/selectors/products.selectors';
+import { tap } from 'rxjs/operators';
 
 @AutoUnsubscribe()
 @Component({
@@ -30,8 +31,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
-    this.store.dispatch(new LoadProducts());
-
     this.productsSub = this.store.select(getAllProducts).subscribe(data => {
       this.productData = data;
 

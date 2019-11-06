@@ -9,10 +9,13 @@ export interface IProduct {
   images: Array<IProductImage>;
   video: string;
   category: string;
-  sex: string;
+  gender: string;
   season: Array<string>;
   quantity: number;
   price: number;
-  id: string;
+  _id: string;
   status: string;
+  sellCount: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

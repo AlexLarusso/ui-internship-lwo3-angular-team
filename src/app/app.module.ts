@@ -82,7 +82,7 @@ const routes: Routes = [
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: ErrorsHandler }
+    //{ provide: ErrorHandler, useClass: ErrorsHandler }
   ],
   bootstrap: [
     AppComponent

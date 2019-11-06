@@ -12,6 +12,7 @@ import { IAppState } from './store/app.store';
 import { SetToWishList } from './store/actions/wish-list.actions';
 
 import { ScrollService } from './shared/services';
+import { LoadProducts } from './store/actions/products.action';
 
 @AutoUnsubscribe()
 @Component({
@@ -42,6 +43,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.scrollService.moveTo({ title: 'app-header' });
       this.isHomePage = window.location.pathname === '/home';
     });
+
+    this.store.dispatch(new LoadProducts());
   }
 
   public ngOnDestroy(): void { }

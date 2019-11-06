@@ -1,14 +1,18 @@
-import { SetProducts,  LoadProducts, ProductsActions, FilterByGender, FilterBySeason } from '../actions/products.action';
+import {
+  SetProducts,  LoadProducts, ProductsActions, FilterByGender, FilterBySeason, SetProductImages
+} from '../actions/products.action';
 import { IProductShortInfo } from '../../interfaces';
 
 export interface IState {
   products: Array<IProductShortInfo>;
+  productImages: Array<any>;
   load: boolean;
   filteredProducts: Array<IProductShortInfo>;
 }
 
 export const initialState: IState = {
   products: [],
+  productImages: [],
   load: false,
   filteredProducts: []
 };
@@ -30,8 +34,14 @@ export function productsReducer(state = initialState, action: ProductsActions): 
         products: [...payload]
       };
 
+    case SetProductImages.TYPE:
+      return {
+        ...state,
+        productImages: [...payload]
+      };
+
     case FilterByGender.TYPE:
-      const filteredByGenderItems = currentItems.filter(item => item.sex === payload);
+      const filteredByGenderItems = currentItems.filter(item => item.gender === payload);
 
       return {
         ...state,

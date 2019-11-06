@@ -67,9 +67,9 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       price: this.product.price,
       brand: this.product.brand,
       category: this.product.category,
-      sex: this.product.sex,
+      gender: this.product.gender,
       season: this.product.season,
-      productId: this.product.id,
+      productId: this.product._id,
       options: productOptions,
       description: productDescription,
     };

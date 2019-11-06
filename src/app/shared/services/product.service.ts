@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { ProductFormat } from 'src/app/app.enum';
 import {
-  IProduct, IProductShortInfo, IProductSimilarOptions
+  IProduct, IProductSimilarOptions
 } from 'src/app/interfaces';
+import { IAppState } from 'src/app/store/app.store';
+import { Store } from '@ngrx/store';
+import { getAllProductImages } from 'src/app/store/selectors/products.selectors';
+import { URLs } from '../../app.enum';
 
 
 @Injectable({
@@ -18,16 +22,31 @@ export class ProductService {
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
+  public imagesSub: Subscription;
+  public allProductImages: Array<any>;
 
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private httpService: HttpService,
+    private store: Store<IAppState>
+  ) {
+    this.imagesSub = this.store.select(getAllProductImages).subscribe(images => this.allProductImages = images);
+  }
 
   public getProducts(format: string = ProductFormat.full):
-    Observable<Array<any>> {
-      return this.httpService.getData().pipe(
-        map(products => products.map(
-          product => this.formatProduct(product, format)
-        ))
-      );
+  Observable<Array<any>> {
+    return this.httpService.getData().pipe(
+      tap(data => console.log(data)),
+      map(products => products.map(
+        product => this.formatProduct(product, format)
+      ))
+    );
+  // Subscription {
+    // return (this.store.select(getAllProducts) as Observable<Array<IProduct>>)
+    //   .pipe(
+    //     map(
+    //       products => products.map(product => this.formatProduct(product, format))
+    //     ));
+  // }
   }
 
   public getProductsByCategory(category: string, format: string = ProductFormat.full):
@@ -78,16 +97,42 @@ export class ProductService {
   }
 
   private formatProduct(product: IProduct, format: string):
-    IProduct | IProductShortInfo {
+    any {
+      const firsProductImage = this.allProductImages
+        .filter(image => image.productId === product._id)[0].claudinaryId;
+
       switch (format) {
-        case ProductFormat.full: return product;
+        case ProductFormat.full: {
+          const productImages = this.allProductImages
+            .filter(image => image.productId === product._id)
+            .reduce((prodImages, image) => {
+              for (let i = 0; i < prodImages.length; i++) {
+                if (prodImages[i].value === image.productColor) {
+                  prodImages[i].url.push(`${URLs.productImage}/${image.claudinaryId}`);
+                  return prodImages;
+                }
+              }
+
+              prodImages.push({
+                value: image.productColor,
+                url: [`${URLs.productImage}/${image.claudinaryId}`]
+              });
+
+              return prodImages;
+          }, []);
+
+          return { ...product,
+            images: [...productImages]
+          };
+        }
+
         case ProductFormat.short: return {
           productTitle: product.productName,
-          imgUrl: product.images[0].url[0],
+          imgUrl: `${URLs.productImage}/${firsProductImage}`,
           productPrice: product.price + ' uah',
-          productId: product.id,
+          productId: product._id,
           status: product.status,
-          sex: product.sex,
+          gender: product.gender,
           season: product.season
         };
       }
@@ -98,7 +143,7 @@ export class ProductService {
     similarOptions: IProductSimilarOptions): Array<IProduct> {
       return products.filter(product =>
         product.category === similarOptions.category &&
-        product.sex === similarOptions.sex &&
-        product.id !== similarOptions.id);
+        product.gender === similarOptions.gender &&
+        product._id !== similarOptions.id);
   }
 }
