@@ -1,9 +1,9 @@
 export interface IProductShortInfo {
   productTitle: string;
-  // imgUrl: string;
+  imgUrl: string;
   productPrice: string;
   productId: string;
-  status?: string;
+  status: string;
   gender: string;
-  season: Array<string>;
+  seasons: Array<string>;
 }

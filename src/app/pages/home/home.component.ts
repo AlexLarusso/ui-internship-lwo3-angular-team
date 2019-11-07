@@ -3,6 +3,9 @@ import {
 } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Subscription } from 'rxjs';
 
@@ -19,11 +22,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   public productList: Array<IProductShortInfo>;
   public getProductsSub: Subscription;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
-    this.getProductsSub = this.productService.getProducts(ProductFormat.short)
-      .subscribe(data => this.productList = data);
+    this.getProductsSub = this.store.select(getAllProducts)
+      .subscribe(data => {
+        this.productList = data.map(product =>
+          this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
+    });
   }
 
   public ngOnDestroy(): void { }

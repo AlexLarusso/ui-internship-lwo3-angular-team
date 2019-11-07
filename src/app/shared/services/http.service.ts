@@ -12,25 +12,15 @@ import { URLs } from '../../app.enum';
   providedIn: 'root'
 })
 export class HttpService {
-  // private URL = '../assets/server-data/data.json';
-  // private URLs.products = 'https://gaboo-project-server.herokuapp.com/products';
-  // private URLs.images = 'https://gaboo-project-server.herokuapp.com/images';
 
   constructor(private http: HttpClient) { }
 
-  public getData(): Observable<Array<IProduct>> {
+  public getAllProducts(): Observable<Array<IProduct>> {
     return this.http.get<Array<IProduct>>(URLs.products);
   }
 
   public getProductById(id: string): Observable<IProduct> {
     return this.http.get<IProduct>(`${URLs.products}/${id}`);
-  }
-
-  public getProductsByCategory(category: string): Observable<Array<IProduct>> {
-    return this.http.get<Array<IProduct>>(URLs.products)
-      .pipe(map(products => products.filter(product =>
-        product.category === category
-    )));
   }
 
   public getImages(): Observable<any> {

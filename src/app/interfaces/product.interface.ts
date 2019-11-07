@@ -10,7 +10,7 @@ export interface IProduct {
   video: string;
   category: string;
   gender: string;
-  season: Array<string>;
+  seasons: Array<string>;
   quantity: number;
   price: number;
   _id: string;

@@ -1,58 +1,94 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
-import { ProductFormat } from 'src/app/app.enum';
+import { ProductFormat, URLs } from 'src/app/app.enum';
 import {
-  IProduct, IProductSimilarOptions
+  IProduct, IProductSimilarOptions, ICloudinaryImage, IProductShortInfo
 } from 'src/app/interfaces';
-import { IAppState } from 'src/app/store/app.store';
-import { Store } from '@ngrx/store';
-import { getAllProductImages } from 'src/app/store/selectors/products.selectors';
-import { URLs } from '../../app.enum';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-
+@AutoUnsubscribe()
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService implements OnDestroy {
+  public imagesSub: Subscription;
+  public allProductImages: Array<ICloudinaryImage>;
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
-  public imagesSub: Subscription;
-  public allProductImages: Array<any>;
 
   constructor(
     private httpService: HttpService,
     private store: Store<IAppState>
   ) {
-    this.imagesSub = this.store.select(getAllProductImages).subscribe(images => this.allProductImages = images);
+    this.imagesSub = this.store.select(getAllProductImages)
+      .subscribe(images => this.allProductImages = images);
   }
 
-  public getProducts(format: string = ProductFormat.full):
-  Observable<Array<any>> {
-    return this.httpService.getData().pipe(
-      tap(data => console.log(data)),
-      map(products => products.map(
-        product => this.formatProduct(product, format)
-      ))
-    );
-  // Subscription {
-    // return (this.store.select(getAllProducts) as Observable<Array<IProduct>>)
-    //   .pipe(
-    //     map(
-    //       products => products.map(product => this.formatProduct(product, format))
-    //     ));
-  // }
+  public formatProduct(product: IProduct, format: string):
+    IProduct | IProductShortInfo {
+    switch (format) {
+      case ProductFormat.full: {
+        const productImages = this.allProductImages
+          .filter(image => image.productId === product._id)
+          .reduce((prodImages, image) => {
+            const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
+
+            if (isColorAlreadyExist) {
+              prodImages.forEach(el => {
+                if (el.value === image.productColor) {
+                  el.url.push(`${URLs.productImage}/${image.claudinaryId}`);
+                }
+              });
+            } else {
+              prodImages.push({
+                value: image.productColor,
+                url: [`${URLs.productImage}/${image.claudinaryId}`]
+              });
+            }
+
+            return prodImages;
+        }, []);
+
+        return { ...product,
+          images: [...productImages]
+        };
+      }
+
+      case ProductFormat.short: {
+        const firsProductImage = this.allProductImages
+          .filter(image => image.productId === product._id)[0].claudinaryId;
+
+        return {
+          productTitle: product.productName,
+          imgUrl: `${URLs.productImage}/${firsProductImage}`,
+          productPrice: product.price + ' USD',
+          productId: product._id,
+          status: product.status,
+          gender: product.gender,
+          seasons: product.seasons
+        };
+      }
+    }
   }
 
   public getProductsByCategory(category: string, format: string = ProductFormat.full):
-    Observable<Array<any>> {
-      return this.httpService.getProductsByCategory(category).pipe(
-        map(products => products.map(
+  Observable<Array<any>> {
+    return this.store.select(getAllProducts)
+      .pipe(map(
+        products => products
+        .filter(
+          product => product.category === category)
+        .map(
           product => this.formatProduct(product, format))
       ));
   }
@@ -73,7 +109,7 @@ export class ProductService {
 
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
     Observable<Array<any>> {
-      return this.httpService.getProductsByCategory(similarOptions.category)
+      return this.getProductsByCategory(similarOptions.category)
         .pipe(map(data =>
           this.filterSimilarProducts(data, similarOptions)
             .map(product => this.formatProduct(product, format))
@@ -83,60 +119,25 @@ export class ProductService {
   public addProductToLocalStorage({id, order}): void {
     this.recentlyViewed =
       JSON.parse(localStorage.getItem('recentlyViewed')) || [];
-    this.recentlyViewed.forEach(el => Object.values(el).includes(id)
-      ? this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1)
-      : false);
+
+    this.recentlyViewed.forEach(el => Object.values(el).includes(id) ?
+      this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1) :
+      false);
+
     this.recentlyViewed.unshift({id, order});
+
     localStorage.setItem('recentlyViewed', JSON.stringify(this.recentlyViewed));
+
     this.storageSubject.next(this.recentlyViewed);
   }
 
-  public recentProductOrder(id: string) {
+  public recentProductOrder(id: string): void {
     const order = this.recentItemOrder++;
+
     this.addProductToLocalStorage({id, order});
   }
 
-  private formatProduct(product: IProduct, format: string):
-    any {
-      const firsProductImage = this.allProductImages
-        .filter(image => image.productId === product._id)[0].claudinaryId;
-
-      switch (format) {
-        case ProductFormat.full: {
-          const productImages = this.allProductImages
-            .filter(image => image.productId === product._id)
-            .reduce((prodImages, image) => {
-              for (let i = 0; i < prodImages.length; i++) {
-                if (prodImages[i].value === image.productColor) {
-                  prodImages[i].url.push(`${URLs.productImage}/${image.claudinaryId}`);
-                  return prodImages;
-                }
-              }
-
-              prodImages.push({
-                value: image.productColor,
-                url: [`${URLs.productImage}/${image.claudinaryId}`]
-              });
-
-              return prodImages;
-          }, []);
-
-          return { ...product,
-            images: [...productImages]
-          };
-        }
-
-        case ProductFormat.short: return {
-          productTitle: product.productName,
-          imgUrl: `${URLs.productImage}/${firsProductImage}`,
-          productPrice: product.price + ' uah',
-          productId: product._id,
-          status: product.status,
-          gender: product.gender,
-          season: product.season
-        };
-      }
-  }
+  public ngOnDestroy(): void { }
 
   private filterSimilarProducts(
     products: Array<IProduct>,

@@ -2,15 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Subscription } from 'rxjs';
 
 import { IProductShortInfo } from 'src/app/interfaces';
-import { IAppState } from 'src/app/store/app.store';
-
-import { LoadProducts } from '../../store/actions/products.action';
-import { getAllProducts, getAllProductImages } from 'src/app/store/selectors/products.selectors';
-import { tap } from 'rxjs/operators';
+import { ProductService } from '../services';
+import { ProductFormat } from 'src/app/app.enum';
 
 @AutoUnsubscribe()
 @Component({
@@ -28,13 +27,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public visibleNumber = 8;
   public isLoadMoreActive: boolean;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(
+    private productService: ProductService,
+    private store: Store<IAppState>
+  ) { }
 
   public ngOnInit(): void {
-    this.productsSub = this.store.select(getAllProducts).subscribe(data => {
-      this.productData = data;
+    this.productsSub = this.store.select(getAllProducts)
+      .subscribe(data => {
+        this.productData = data.map(product =>
+          this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
 
-      this.checkLoadMoreAbility();
+        this.checkLoadMoreAbility();
     });
   }
 

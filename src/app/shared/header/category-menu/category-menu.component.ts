@@ -16,6 +16,6 @@ export class CategoryMenuComponent {
     {title: 'winter', url: '/winter'},
     {title: 'spring', url: '/spring'},
     {title: 'summer', url: '/summer'},
-    {title: 'fall', url: '/fall'}
+    {title: 'autumn', url: '/autumn'}
   ];
 }

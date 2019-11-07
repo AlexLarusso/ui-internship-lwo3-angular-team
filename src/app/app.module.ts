@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'winter', component: ProductListPageComponent },
   { path: 'spring', component: ProductListPageComponent },
   { path: 'summer', component: ProductListPageComponent },
-  { path: 'fall', component: ProductListPageComponent },
+  { path: 'autumn', component: ProductListPageComponent },
   { path: 'products/:id', component: ProductDetailsPageComponent, resolve: { products: ProductResolver } },
   { path: '404', component: NotFoundComponent },
   { path: 'wishlist', component: WishListPageComponent },
@@ -82,7 +82,7 @@ const routes: Routes = [
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    //{ provide: ErrorHandler, useClass: ErrorsHandler }
+    { provide: ErrorHandler, useClass: ErrorsHandler }
   ],
   bootstrap: [
     AppComponent

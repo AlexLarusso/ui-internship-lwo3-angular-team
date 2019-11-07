@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Subscription } from 'rxjs';
 
@@ -19,15 +22,23 @@ export class PopularListComponent implements OnInit, OnDestroy {
   public getProductsSub: Subscription;
   public productData: Array<IProductShortInfo>;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private store: Store<IAppState>
+  ) { }
 
   public ProductListRefresh(item?: string) {
-  this.getProductsSub = this.productService.getProducts(ProductFormat.short)
-    .subscribe(data => this.productData = data.filter(product => product.status === item));
+    this.getProductsSub = this.store.select(getAllProducts).subscribe(data => {
+      this.productData = data
+        .map(product =>
+          this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
+    });
   }
+
   public ngOnInit(): void {
     this.ProductListRefresh('Trending');
   }
+
   public SortByTag(item: string) {
     this.ProductListRefresh(item);
   }

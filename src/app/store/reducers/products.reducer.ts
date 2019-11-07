@@ -1,13 +1,13 @@
 import {
   SetProducts,  LoadProducts, ProductsActions, FilterByGender, FilterBySeason, SetProductImages
 } from '../actions/products.action';
-import { IProductShortInfo } from '../../interfaces';
+import { IProduct, ICloudinaryImage } from '../../interfaces';
 
 export interface IState {
-  products: Array<IProductShortInfo>;
-  productImages: Array<any>;
+  products: Array<IProduct>;
+  productImages: Array<ICloudinaryImage>;
   load: boolean;
-  filteredProducts: Array<IProductShortInfo>;
+  filteredProducts: Array<IProduct>;
 }
 
 export const initialState: IState = {
@@ -49,7 +49,7 @@ export function productsReducer(state = initialState, action: ProductsActions): 
       };
 
     case FilterBySeason.TYPE:
-      const filteredBySeasonItems = currentItems.filter(item => item.season.includes(payload));
+      const filteredBySeasonItems = currentItems.filter(item => item.seasons.includes(payload));
 
       return {
         ...state,

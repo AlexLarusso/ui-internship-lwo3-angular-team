@@ -4,15 +4,13 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 
 import { switchMap, map, tap } from 'rxjs/operators';
 
-import { ProductFormat } from 'src/app/app.enum';
 import { LoadProducts, SetProducts, SetProductImages } from '../actions/products.action';
-import { ProductService, HttpService } from '../../shared/services';
+import { HttpService } from '../../shared/services';
 
 @Injectable()
 export class ProductsEffects {
   constructor(
     private actions$: Actions,
-    private productService: ProductService,
     private httpService: HttpService
   ) { }
 
@@ -23,7 +21,6 @@ export class ProductsEffects {
     switchMap(() =>
       this.httpService.getImages()
         .pipe(
-          tap(data => console.log(data)),
           map(images => new SetProductImages(images))
         )
     )
@@ -32,9 +29,9 @@ export class ProductsEffects {
   @Effect()
   public loadProducts$ = this.actions$
   .pipe(
-    ofType(LoadProducts.TYPE),
+    ofType(SetProductImages.TYPE),
     switchMap(() =>
-      this.productService.getProducts(ProductFormat.short)
+      this.httpService.getAllProducts()
         .pipe(
           map(products => new SetProducts(products))
         )

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { IProductShortInfo } from 'src/app/interfaces';
+import { IProduct } from 'src/app/interfaces';
 
 export enum ProductsActionTypes {
   SetProducts = '[Products] Set data',
@@ -15,7 +15,7 @@ export class LoadProducts implements Action {
 }
 
 export class SetProducts implements Action {
-  constructor(public payload: Array<IProductShortInfo>) { }
+  constructor(public payload: Array<IProduct>) { }
 
   public static readonly TYPE = ProductsActionTypes.SetProducts;
   public type = SetProducts.TYPE;

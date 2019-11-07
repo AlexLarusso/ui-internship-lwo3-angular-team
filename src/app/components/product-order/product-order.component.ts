@@ -1,7 +1,14 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import {
+  getProductQuantity, getProductSelectedColor, getProductSelectedSize
+} from 'src/app/store/selectors/product-options.selector';
+import { SelectColor } from 'src/app/store/actions/product-options.actions';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+
 import { Subscription } from 'rxjs';
 
 import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
@@ -11,13 +18,6 @@ import { IProductDetails } from 'src/app/interfaces/product-details.interface';
 import { IProductOptions } from 'src/app/interfaces/product-options.interface';
 import { IProductDescription } from 'src/app/interfaces/product-description.interface';
 import { IProductImage } from 'src/app/interfaces/product-image.interface';
-
-import { IAppState } from 'src/app/store/app.store';
-import {
-  getProductQuantity, getProductSelectedColor, getProductSelectedSize
-} from 'src/app/store/selectors/product-options.selector';
-import { SelectColor } from 'src/app/store/actions/product-options.actions';
-import { NotificationService } from 'src/app/shared/services/notification.service';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -68,7 +68,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       brand: this.product.brand,
       category: this.product.category,
       gender: this.product.gender,
-      season: this.product.season,
+      season: this.product.seasons,
       productId: this.product._id,
       options: productOptions,
       description: productDescription,
