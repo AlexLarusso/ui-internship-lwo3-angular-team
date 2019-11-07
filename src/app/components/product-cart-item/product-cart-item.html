@@ -8,7 +8,7 @@
   <div class="product-cart-item__qty">
     <app-select-quantity
       [startNumber]="productItem.quantity"
-      maxNumber=10
+      [maxNumber]="productItem.maxQty"
       (quantityChanged)=handleQtyChange($event)>
     </app-select-quantity>
   </div>

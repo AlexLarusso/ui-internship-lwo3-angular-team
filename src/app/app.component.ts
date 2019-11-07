@@ -31,13 +31,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     const localStorageLiked = JSON.parse(localStorage.getItem('liked'));
-    const productItems = JSON.parse(localStorage.getItem('Cart'));
+    // const productItems = JSON.parse(localStorage.getItem('Cart'));
 
     if (localStorageLiked) {
       this.store.dispatch(new SetToWishList(localStorageLiked));
     }
 
-    this.store.dispatch(new LoadProductItems(productItems));
+    // if (productItems) {
+    //   this.store.dispatch(new LoadProductItems(productItems));
+    // }
 
     this.routerSub = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

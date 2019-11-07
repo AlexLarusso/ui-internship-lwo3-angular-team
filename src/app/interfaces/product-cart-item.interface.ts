@@ -6,4 +6,5 @@ export interface IProductCartItem {
   color: string;
   size: string;
   quantity: number;
+  maxQty: number;
 }

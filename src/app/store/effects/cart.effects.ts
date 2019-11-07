@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
 
@@ -13,7 +14,8 @@ import { ProductService } from 'src/app/shared/services';
 export class CartEffects {
   constructor(
     private actions$: Actions,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   @Effect({ dispatch: false })
@@ -25,4 +27,10 @@ export class CartEffects {
       ),
       tap(() => this.productService.setCartItemsToLocalStorage())
     );
+  @Effect({ dispatch: false })
+  public navigateToCartPage$: Observable<any> = this.actions$
+    .pipe(
+      ofType(AddProductToCart.TYPE),
+      tap(() => this.router.navigate(['/shoppingcart']))
+    )
 }

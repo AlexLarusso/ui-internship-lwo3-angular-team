@@ -12,7 +12,7 @@ import { IconDefinition, faPlusSquare, faMinusSquare } from '@fortawesome/free-s
 })
 export class SelectQuantityComponent implements OnInit {
   @Input() public maxNumber: number;
-  @Input() public startNumber: number;
+  @Input() public startNumber: number = 1;
 
   @Output() public quantityChanged: EventEmitter<number>
     = new EventEmitter<number>();
@@ -34,14 +34,12 @@ export class SelectQuantityComponent implements OnInit {
       this.value = newValue;
       this.quantityChanged.next(newValue);
     } else {
-      console.log('hi');
       this.toggleLimit();
     }
   }
 
   private toggleLimit(): void {
     this.isValueLimit = true;
-    console.log('dsd');
     of(false).pipe(delay(500))
       .subscribe(val => this.isValueLimit = val);
   }

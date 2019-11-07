@@ -17,7 +17,7 @@ import { IAppState } from 'src/app/store/app.store';
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
-import { SelectColor, ResetProductOptions } from 'src/app/store/actions/product-options.actions';
+import { SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
 import { AddProductToCart } from 'src/app/store/actions/cart.actions';
 import { IProductCartItem } from 'src/app/interfaces';
 
@@ -46,10 +46,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   private selectedColor: string;
   private selectedQty: number;
 
-  constructor(
-    private store: Store<IAppState>,
-    private router: Router
-  ) { }
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
     const productOptions: IProductOptions = {
@@ -95,13 +92,20 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       id: this.product.id,
       title: this.product.productName,
       price: this.product.price,
-      imageUrl: this.product.images[0].url[0],
+      imageUrl: this.product.images.find(img =>
+        img.value === this.selectedColor).url[0],
       color: this.selectedColor,
       size: this.selectedSize,
-      quantity: this.selectedQty
+      quantity: this.selectedQty,
+      maxQty: this.product.quantity
     };
 
     this.store.dispatch(new AddProductToCart(productCartItem));
-    this.router.navigate(['/shoppingcart']);
+  }
+
+  public handleQtyChange(newQty: number) {
+    newQty > this.selectedQty
+      ? this.store.dispatch(new IncrementQuantity())
+      : this.store.dispatch(new DecrementQuantity())
   }
 }

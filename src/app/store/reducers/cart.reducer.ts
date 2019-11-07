@@ -9,7 +9,7 @@ export interface IState {
 }
 
 export const initialState: IState = {
-  cartProducts: [],
+  cartProducts: JSON.parse(localStorage.getItem('Cart')) || [],
 };
 
 export function cartReducer(state = initialState, action: any): IState {
