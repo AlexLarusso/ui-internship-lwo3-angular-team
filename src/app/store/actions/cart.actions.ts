@@ -6,7 +6,15 @@ export enum CartActionType {
    AddProductToCart = '[Cart] Add product',
    RemoveProductFromCart = '[Cart] Remove product',
    ConfirmOrder = '[Cart] Confirm order',
-   ChangeProductItemQty = '[Cart] Change product qty'
+   ChangeProductItemQty = '[Cart] Change product qty',
+   LoadProductItems = '[Cart] Load products'
+}
+
+export class LoadProductItems implements Action {
+  public static readonly TYPE = CartActionType.LoadProductItems;
+  public type = LoadProductItems.TYPE;
+
+  constructor(public readonly payload: Array<IProductCartItem>) { }
 }
 
 export class AddProductToCart implements Action {

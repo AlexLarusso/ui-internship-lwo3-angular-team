@@ -12,6 +12,7 @@ import { IAppState } from './store/app.store';
 import { SetToWishList } from './store/actions/wish-list.actions';
 
 import { ScrollService } from './shared/services';
+import { LoadProductItems } from './store/actions/cart.actions';
 
 @AutoUnsubscribe()
 @Component({
@@ -30,10 +31,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     const localStorageLiked = JSON.parse(localStorage.getItem('liked'));
+    const productItems = JSON.parse(localStorage.getItem('Cart'));
 
     if (localStorageLiked) {
       this.store.dispatch(new SetToWishList(localStorageLiked));
     }
+
+    this.store.dispatch(new LoadProductItems(productItems));
 
     this.routerSub = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

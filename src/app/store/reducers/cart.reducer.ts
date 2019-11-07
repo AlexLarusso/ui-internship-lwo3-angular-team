@@ -1,6 +1,6 @@
 import {
   AddProductToCart, RemoveProductFromCart,
-  ConfirmOrder, ChangeProductItemQty
+  ConfirmOrder, ChangeProductItemQty, LoadProductItems
 } from '../actions/cart.actions';
 import { IProductCartItem } from 'src/app/interfaces';
 
@@ -16,6 +16,13 @@ export function cartReducer(state = initialState, action: any): IState {
   const { type, payload } = action;
 
   switch (type) {
+    case LoadProductItems.TYPE: {
+      return {
+        ...state,
+        cartProducts: payload
+      };
+    }
+
     case AddProductToCart.TYPE: {
       const newCart = state.cartProducts;
       const idx = newCart.findIndex(el => cartItemsAreEqual(el, payload));
@@ -31,6 +38,7 @@ export function cartReducer(state = initialState, action: any): IState {
         cartProducts: newCart
       };
     }
+
     case RemoveProductFromCart.TYPE: {
       return {
         ...state,
@@ -38,6 +46,7 @@ export function cartReducer(state = initialState, action: any): IState {
           .filter(el => !cartItemsAreEqual(el, payload))
       };
     }
+
     case ConfirmOrder.TYPE:
       // TODO: paypal checkout
       return {
