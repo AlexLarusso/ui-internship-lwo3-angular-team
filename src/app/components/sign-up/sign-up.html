@@ -14,7 +14,9 @@
             for="email"
             class="authentication__label">Email</label>
           <input
+            [class.error]="!isEmailValid"
             [(ngModel)]="user.email"
+            (input)="onValidateEmail()"
             name="email"
             type="email"
             required
@@ -28,6 +30,8 @@
             class="authentication__label">Password</label>
           <input
             [(ngModel)]="user.password"
+            [class.error]="!isPasswordValid"
+            (input)="onValidatePassword()"
             name="password"
             type="password"
             required
@@ -36,12 +40,13 @@
             placeholder="enter a password">
         </div>
         <app-button 
-          class="authentication__btn-success" 
+          buttonClass="button_success"
           type="submit">Submit</app-button>
         <app-button 
-          class="authentication__btn-warning" 
+          buttonClass="button_warning" 
           (click)="modalService.close('sign-up')"
           type="button">Cancel</app-button>
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
           <span class="authentication__paragraph">Already have an account?&nbsp;>
           <a 
             class="authentication__redirect" 

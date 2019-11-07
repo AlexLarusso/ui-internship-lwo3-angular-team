@@ -11,6 +11,7 @@ import {
   AuthActionTypes,
   LogIn, LogInSuccess, LogInFailure, SignUp, SignUpSuccess, SignUpFailure, LogOut
 } from '../actions/auth.actions';
+import { ModalService } from 'src/app/shared/services/modal-service';
 
 @Injectable()
 export class AuthEffects {
@@ -18,6 +19,7 @@ export class AuthEffects {
     private actions: Actions,
     private authService: AuthService,
     private router: Router,
+    private modalService: ModalService
   ) {}
 
 @Effect()
@@ -30,7 +32,7 @@ export class AuthEffects {
           .pipe(
             map(user => {
               console.log(user);
-              return new LogInSuccess({token: user.token, email: payload.email});
+              return new LogInSuccess({token: user.token, email: payload.email, password: payload.password});
             }),
             catchError(error => {
               console.log(error);
@@ -47,6 +49,7 @@ export class AuthEffects {
       tap(user => {
         localStorage.setItem('token', user.payload.token);
         this.router.navigateByUrl('/');
+        this.modalService.close('login');
       })
     );
 
@@ -60,7 +63,7 @@ export class AuthEffects {
           .pipe(
             map(user => {
               console.log(user);
-              return new SignUpSuccess({token: user.token, email: payload.email});
+              return new SignUpSuccess({token: user.token, email: payload.email, password: payload.password});
             }),
             catchError(error => {
               console.log(error);
@@ -77,6 +80,7 @@ export class AuthEffects {
       tap(user => {
         localStorage.setItem('token', user.payload.token);
         this.router.navigateByUrl('/');
+        this.modalService.close('sign-up');
       })
     );
 

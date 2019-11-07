@@ -7,18 +7,19 @@
           </div>
         </div>
       <form class="authentication__form"
-            (ngSubmit)="onSubmit()" 
-            ngNativeValidate>
+            (ngSubmit)="onSubmit()">
         <div class="authentication__field">
           <label
             for="email"
             class="authentication__label">Email</label>
           <input
+            [class.error]="!isEmailValid"
             [(ngModel)]="user.email"
             name="email"
             type="email"
             required
             id="login-email"
+            (input)="onValidateEmail()"
             class="authentication__input"
             placeholder="enter your email">
         </div>
@@ -27,6 +28,8 @@
             for="password"
             class="authentication__label">Password</label>
           <input
+            [class.error]="!isPasswordValid"
+            (input)="onValidatePassword()"
             [(ngModel)]="user.password"
             name="password"
             type="password"
@@ -36,10 +39,10 @@
             placeholder="enter a password">
         </div>
         <app-button 
-          class="authentication__btn-success" 
+        buttonClass="button_success" 
           type="submit">Submit</app-button>
         <app-button 
-          class="authentication__btn-warning" 
+        buttonClass="button_warning" 
           (click)="modalService.close('login')"
           type="button">Cancel</app-button>
           <span class="authentication__paragraph">Don't have an account?&nbsp;>

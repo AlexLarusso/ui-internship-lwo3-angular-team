@@ -18,6 +18,7 @@ import { ErrorPageModule } from './pages/error-page/error-page.module';
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ProductResolver } from './shared/services/product.resolver';
 import { ErrorsHandler } from './shared/services/errors.handler';
+import { TokenInterceptor } from './shared/services/token.interceptor';
 
 import { appReducer } from './store/app.store';
 
@@ -84,6 +85,7 @@ const routes: Routes = [
     ErrorPageModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: ErrorHandler, useClass: ErrorsHandler }
   ],

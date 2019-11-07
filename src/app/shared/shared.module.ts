@@ -24,7 +24,6 @@ import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
-// import { ModalComponent } from '../shared/directives/modal.directive';
 import { ModalComponent } from '../shared/modal-window/modal-window.component';
 import { LogInComponent } from '../components/log-in/log-in.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';

@@ -45,15 +45,8 @@
     border: 2px solid #ccc; 
     -webkit-border-radius: 5px;
     border-radius: 5px;
+    outline: none
   }
-
-  // &__btn-success {
-
-  // }
-
-  // &__btn-warning {
-
-  // }
 
   &__paragraph {
     display: flex;
@@ -63,4 +56,10 @@
   &__redirect {
     color: $accentColor
   }
+}
+
+.error {
+  border: 1px solid $inputWarningColor;
+  border-radius: 2px;
+  box-shadow: 0 0 1px 1px $inputWarningColor;
 }

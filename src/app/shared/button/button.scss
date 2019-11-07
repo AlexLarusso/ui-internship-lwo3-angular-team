@@ -66,4 +66,22 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
     color: $fontColorLight;
     width: 300px;
   }
+
+  &_success {
+    width: 70px;
+    border: 2px solid $accentColor;
+  }
+
+  &_warning {
+    width: 70px;
+    background: transparent;
+    border: 2px solid $saleTagColor;
+
+    &:hover:enabled {
+      background-color: $saleTagColor;
+      transform: scale(1.08);
+      transition: 0.1s ease-in-out;
+      color: $fontColorLight;
+    }
+  }
 }

@@ -21,7 +21,8 @@ export function authReducer(state = initialState, action: All): IState {
         isAuthenticated: true,
         user: {
           token: action.payload.token,
-          email: action.payload.email
+          email: action.payload.email,
+          password: action.payload.password
         },
         errorMessage: null
       };
@@ -38,7 +39,8 @@ export function authReducer(state = initialState, action: All): IState {
         isAuthenticated: true,
         user: {
           token: action.payload.token,
-          email: action.payload.email
+          email: action.payload.email,
+          password: action.payload.password
         },
         errorMessage: null
       };
@@ -51,6 +53,12 @@ export function authReducer(state = initialState, action: All): IState {
     }
     case AuthActionTypes.LOGOUT: {
       return initialState;
+    }
+    case AuthActionTypes.ISLOGGEDIN: {
+      return {
+        ...state,
+        isAuthenticated: true
+      };
     }
     default: {
       return state;

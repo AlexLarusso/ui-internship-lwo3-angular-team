@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {
   faFacebookF, faTwitter, faGoogle
 } from '@fortawesome/free-brands-svg-icons';
 import { Store } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+
 import { ModalService } from '../../../shared/services/modal-service';
 import { IAppState, selectAuthState } from 'src/app/store/app.store';
-import { LogOut } from 'src/app/store/actions/auth.actions';
-import { Observable } from 'rxjs';
+import { LogOut, IsLoggedIn } from 'src/app/store/actions/auth.actions';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-line-bar',
@@ -22,7 +24,8 @@ export class LineBarComponent implements OnInit {
 
   constructor(
     private modalService: ModalService,
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
+    private authService: AuthService,
   ) {
     this.getState = this.store.select(selectAuthState);
   }
@@ -35,6 +38,9 @@ export class LineBarComponent implements OnInit {
   public email = 'gaboo@gmail.com';
 
   ngOnInit() {
+    if (!!this.authService.getToken()) {
+      this.store.dispatch(new IsLoggedIn());
+    }
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
