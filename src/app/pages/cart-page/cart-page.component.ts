@@ -10,6 +10,7 @@ import {
 
 import { IProductCartItem } from 'src/app/interfaces';
 import { IAppState } from 'src/app/store/app.store';
+import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
 
 @AutoUnsubscribe()
 @Component({
@@ -23,7 +24,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
   public totalPrice = 0;
   public emptyCartUrl = './assets/server-data/images/empty-cart.gif';
   public isPopularListVisible = false;
-  public productOptions = ['Product', 'Details', 'Quantity', 'Price', 'Summary'];
+  public productOptions = ['Product', 'Details', 'Quantity', 'Price', 'Sum'];
   public cartProductListSub: Subscription;
   public cartTotalPriceSub: Subscription;
   public currentCurrency = 'UAH';
@@ -34,12 +35,16 @@ export class CartPageComponent implements OnInit, OnDestroy {
     this.cartProductListSub = this.store.select(getCartProductItems)
       .subscribe(items => this.cartProductList = items);
     this.cartTotalPriceSub = this.store.select(getCartTotalPrice)
-      .subscribe(price => this.totalPrice = price)
+      .subscribe(price => this.totalPrice = price);
     }
 
   public ngOnDestroy(): void { }
 
   public displayPopularList(): void {
     this.isPopularListVisible = true;
+  }
+
+  public confirmOrder(): void {
+    this.store.dispatch(new ConfirmOrder());
   }
 }

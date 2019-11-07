@@ -12,7 +12,8 @@
     </div>
     <div class="cart-footer">
       <app-button buttonClass="button_full-width"
-        class="cart__confirm-btn">
+        class="cart__confirm-btn"
+        (click)="confirmOrder()">
         Checkout
       </app-button>
       <span class="cart__total-price__label">

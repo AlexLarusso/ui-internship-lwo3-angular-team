@@ -5,7 +5,7 @@ import { faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons
 import { IProductCartItem } from 'src/app/interfaces';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
-import { RemoveProductFromCart } from 'src/app/store/actions/cart.actions';
+import { RemoveProductFromCart, ChangeProductItemQty } from 'src/app/store/actions/cart.actions';
 
 @Component({
   selector: 'app-product-cart-item',
@@ -17,11 +17,17 @@ export class ProductCartItemComponent {
   @Input() public isLastItem = false;
 
   public closeIcon: IconDefinition = faTimesCircle;
-  public currentCurrency = 'UAH';
+  public currentCurrency = 'USD';
 
   constructor(private store: Store<IAppState>) { }
 
   public removeItemFromCart(): void {
-    this.store.dispatch(new RemoveProductFromCart(this.productItem.id));
+    this.store.dispatch(new RemoveProductFromCart(this.productItem));
+  }
+
+  public handleQtyChange(qty: number) {
+    this.store.dispatch(new ChangeProductItemQty(
+      { product: this.productItem, newQty: qty }
+    ));
   }
 }

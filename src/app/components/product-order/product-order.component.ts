@@ -19,7 +19,6 @@ import {
 } from 'src/app/store/selectors/product-options.selector';
 import { SelectColor, ResetProductOptions } from 'src/app/store/actions/product-options.actions';
 import { AddProductToCart } from 'src/app/store/actions/cart.actions';
-import { NotificationService } from 'src/app/shared/services/notification.service';
 import { IProductCartItem } from 'src/app/interfaces';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
@@ -49,7 +48,6 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<IAppState>,
-    private notificationService: NotificationService,
     private router: Router
   ) { }
 
@@ -105,14 +103,5 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(new AddProductToCart(productCartItem));
     this.router.navigate(['/shoppingcart']);
-
-    //TODO: move this to effects?
-    // const title = `Added ${this.productDetails.title} to your cart.`;
-    // const message = `Quantity: ${this.selectedQty}.
-    //   Size: ${this.selectedSize}.
-    //   Color: ${this.selectedColor}.
-    //   Full price: ${this.selectedQty * this.productDetails.price} uah.`;
-
-    // this.notificationService.success(title, message);
   }
 }

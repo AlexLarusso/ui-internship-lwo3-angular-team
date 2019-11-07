@@ -5,9 +5,13 @@
   <h4 class="product-cart-item__title">
     {{ productItem.title }}
   </h4>
-  <span class="product-cart-item__qty">
-    Qty: {{ productItem.quantity }}
-  </span>
+  <div class="product-cart-item__qty">
+    <app-select-quantity
+      [startNumber]="productItem.quantity"
+      maxNumber=10
+      (quantityChanged)=handleQtyChange($event)>
+    </app-select-quantity>
+  </div>
   <span class="product-cart-item__size">
     Size: {{ productItem.size }}
   </span>
@@ -19,7 +23,7 @@
   </span>
   <a class="product-cart-item__pdp-link"
     [routerLink]="'/products/'+productItem.id">
-    Change...
+    More...
   </a>
   <span class="product-cart-item__price">
     {{ productItem.price }} {{ currentCurrency }}
