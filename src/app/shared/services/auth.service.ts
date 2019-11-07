@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+
 import { Observable } from 'rxjs';
 
 import { User } from '../../interfaces/user';
@@ -12,10 +14,13 @@ import { User } from '../../interfaces/user';
 export class AuthService {
   private BASE_URL = 'http://localhost:1337';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService
+    ) {}
 
   getToken(): string {
-    return localStorage.getItem('token');
+    return this.cookieService.get('token');
   }
 
   logIn(email: string, password: string): Observable<any> {
