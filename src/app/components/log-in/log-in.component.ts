@@ -56,6 +56,7 @@ export class LogInComponent implements OnInit {
         password: this.user.password
       };
       this.store.dispatch(new LogIn(payload));
+      localStorage.setItem('userName', this.user.email.split('@')[0]);
     }
   }
 }

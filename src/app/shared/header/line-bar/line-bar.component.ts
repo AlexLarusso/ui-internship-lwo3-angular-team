@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   faFacebookF, faTwitter, faGoogle
 } from '@fortawesome/free-brands-svg-icons';
@@ -33,13 +33,15 @@ export class LineBarComponent implements OnInit {
   public faFacebookF = faFacebookF;
   public faTwitter = faTwitter;
   public faGoogle = faGoogle;
+  public userName: string;
 
   public telephone = '+12 345-678-90';
   public email = 'gaboo@gmail.com';
 
   ngOnInit() {
-    if (!!this.authService.getToken()) {
+    if (this.authService.getToken()) {
       this.store.dispatch(new IsLoggedIn());
+      this.userName = localStorage.getItem('userName');
     }
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
