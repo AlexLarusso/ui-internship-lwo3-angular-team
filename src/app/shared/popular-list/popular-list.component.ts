@@ -27,21 +27,22 @@ export class PopularListComponent implements OnInit, OnDestroy {
     private store: Store<IAppState>
   ) { }
 
-  public ProductListRefresh(item?: string) {
+  public ngOnInit(): void {
+    this.productListRefresh('Trending');
+  }
+
+  public sortByTag(item: string): void {
+    this.productListRefresh(item);
+  }
+
+  public ngOnDestroy(): void { }
+
+  private productListRefresh(item?: string): void {
     this.getProductsSub = this.store.select(getAllProducts).subscribe(data => {
       this.productData = data
+        .filter(product => item === product.status)
         .map(product =>
           this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
     });
   }
-
-  public ngOnInit(): void {
-    this.ProductListRefresh('Trending');
-  }
-
-  public SortByTag(item: string) {
-    this.ProductListRefresh(item);
-  }
-
-  public ngOnDestroy(): void { }
 }

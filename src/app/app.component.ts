@@ -20,14 +20,15 @@ import { LoadProducts } from './store/actions/products.action';
   templateUrl: './app.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
+  public isHomePage: boolean;
+  public routerSub: Subscription;
+
   constructor(
     private store: Store<IAppState>,
     private scrollService: ScrollService,
     private router: Router
   ) { }
 
-  public isHomePage: boolean;
-  public routerSub: Subscription;
 
   public ngOnInit(): void {
     const localStorageLiked = JSON.parse(localStorage.getItem('liked'));
@@ -36,13 +37,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.store.dispatch(new SetToWishList(localStorageLiked));
     }
 
-    this.routerSub = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    )
-    .subscribe(() => {
-      this.scrollService.moveTo({ title: 'app-header' });
-      this.isHomePage = window.location.pathname === '/home';
-    });
+    this.routerSub = this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.scrollService.moveTo({ title: 'app-header' });
+        this.isHomePage = window.location.pathname === '/home';
+      });
 
     this.store.dispatch(new LoadProducts());
   }

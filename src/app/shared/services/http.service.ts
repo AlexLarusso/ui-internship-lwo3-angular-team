@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
-import { IProduct } from 'src/app/interfaces';
-
+import { IProduct, ICloudinaryImage } from 'src/app/interfaces';
 import { URLs } from '../../app.enum';
 
 @Injectable({
@@ -23,7 +21,7 @@ export class HttpService {
     return this.http.get<IProduct>(`${URLs.products}/${id}`);
   }
 
-  public getImages(): Observable<any> {
-    return this.http.get<Array<any>>(URLs.images);
+  public getImages(): Observable<Array<ICloudinaryImage>> {
+    return this.http.get<Array<ICloudinaryImage>>(URLs.images);
   }
 }
