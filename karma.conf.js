@@ -31,7 +31,7 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['PhantomJS'],
-    captureTimeout: 60000,
+    captureTimeout: 50000,
     singleRun: false,
     restartOnFileChange: true
   });
