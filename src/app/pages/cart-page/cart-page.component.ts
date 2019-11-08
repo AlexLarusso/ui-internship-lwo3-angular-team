@@ -19,15 +19,14 @@ import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
   styleUrls: ['./cart-page.scss']
 })
 export class CartPageComponent implements OnInit, OnDestroy {
-
   public cartProductList: Array<IProductCartItem> = [];
   public totalPrice = 0;
   public emptyCartUrl = './assets/server-data/images/empty-cart.gif';
   public isPopularListVisible = false;
   public productOptions = ['Product', 'Details', 'Quantity', 'Price', 'Sum'];
+  public currentCurrency = 'USD';
   public cartProductListSub: Subscription;
   public cartTotalPriceSub: Subscription;
-  public currentCurrency = 'UAH';
 
   constructor(private store: Store<IAppState>) { }
 
@@ -36,7 +35,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
       .subscribe(items => this.cartProductList = items);
     this.cartTotalPriceSub = this.store.select(getCartTotalPrice)
       .subscribe(price => this.totalPrice = price);
-    }
+  }
 
   public ngOnDestroy(): void { }
 

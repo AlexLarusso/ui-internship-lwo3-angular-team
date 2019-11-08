@@ -27,10 +27,11 @@ export class CartEffects {
       ),
       tap(() => this.productService.setCartItemsToLocalStorage())
     );
+
   @Effect({ dispatch: false })
   public navigateToCartPage$: Observable<any> = this.actions$
     .pipe(
       ofType(AddProductToCart.TYPE),
       tap(() => this.router.navigate(['/shoppingcart']))
-    )
+    );
 }
