@@ -19,12 +19,12 @@ $item-shadow-color: rgba(100, 100, 100, .4);
   &__image {
     display: block;
     grid-column: 1;
-    grid-row: 1 / span 4;
+    grid-row: 1 / 5;
     width: 100%;
   }
 
   &__title {
-    grid-column: 2 / span 3;
+    grid-column: 2 / 4;
     color: $accentColor;
   }
 
@@ -84,6 +84,34 @@ $item-shadow-color: rgba(100, 100, 100, .4);
       transform: scale(1.2);
     }
   }
+}
 
+@media screen and (max-width: 768px) {
+  .product-cart-item {
+    grid-template-columns: 140px 1fr 1fr;
 
+    &__size, &__color, &__pdp-link, &__title{
+      grid-column: 2;
+    }
+
+    &__qty, &__price, &__remove-icon, &__sum {
+      grid-column: 3;
+      margin-left: auto;
+    }
+
+    &__price {
+      grid-row: 3;
+
+    }
+    &__sum {
+      grid-row: 4;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .product-cart-item {
+    grid-template-columns: 100px min-content 1fr;
+    font-size: 14px;
+  }
 }

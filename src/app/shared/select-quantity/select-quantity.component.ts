@@ -12,7 +12,7 @@ import { IconDefinition, faPlusSquare, faMinusSquare } from '@fortawesome/free-s
 })
 export class SelectQuantityComponent implements OnInit {
   @Input() public maxNumber: number;
-  @Input() public startNumber: number = 1;
+  @Input() public startNumber = 1;
 
   @Output() public quantityChanged: EventEmitter<number>
     = new EventEmitter<number>();
@@ -23,6 +23,7 @@ export class SelectQuantityComponent implements OnInit {
   public increment = 1;
   public decrement = -1;
   public value: number;
+  public toggleLimitDelayValue = 500;
 
   public ngOnInit(): void {
     this.value = this.startNumber;
@@ -40,7 +41,7 @@ export class SelectQuantityComponent implements OnInit {
 
   private toggleLimit(): void {
     this.isValueLimit = true;
-    of(false).pipe(delay(500))
+    of(false).pipe(delay(this.toggleLimitDelayValue))
       .subscribe(val => this.isValueLimit = val);
   }
 }
