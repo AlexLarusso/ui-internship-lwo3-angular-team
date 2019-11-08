@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 import { ScrollService } from '../../shared/services/scroll.service';
 import { SharedModule } from '../../shared/shared.module';
 
 import { WishListComponent } from '../../components/wish-list/wish-list.component';
+
+const routes: Routes = [
+  {
+    path: 'wishlist',
+    component: WishListComponent
+  }
+];
 
 @NgModule({
   declarations: [
     WishListComponent
   ],
   imports: [
-    BrowserModule,
-    SharedModule
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes)
   ],
   providers: [
     ScrollService,
   ],
   exports: [
-    WishListComponent
+    WishListComponent,
+    RouterModule
   ]
 })
 

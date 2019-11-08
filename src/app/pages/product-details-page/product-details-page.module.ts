@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -7,17 +8,29 @@ import { ProductDetailsComponent } from 'src/app/components/product-details/prod
 import { ProductOrderComponent } from 'src/app/components/product-order/product-order.component';
 import { ProductPreviewComponent } from 'src/app/components/product-preview/product-preview.component';
 import { SimilarProductsComponent } from 'src/app/components/similar-products/similar-products.component';
+import { ProductResolver } from 'src/app/shared/services/product.resolver';
+import { ProductDetailsPageComponent } from './product-details-page.component';
+
+const routes: Routes = [
+  {
+    path: 'products/:id',
+    component: ProductDetailsPageComponent,
+    resolve: { products: ProductResolver }
+  }
+];
 
 @NgModule({
   declarations: [
     SimilarProductsComponent,
     ProductDetailsComponent,
     ProductOrderComponent,
-    ProductPreviewComponent
+    ProductPreviewComponent,
+    ProductDetailsPageComponent
   ],
   imports: [
     SharedModule,
-    BrowserModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ],
   providers: [
   ],
@@ -25,7 +38,8 @@ import { SimilarProductsComponent } from 'src/app/components/similar-products/si
     SimilarProductsComponent,
     ProductDetailsComponent,
     ProductOrderComponent,
-    ProductPreviewComponent
+    ProductPreviewComponent,
+    RouterModule
   ]
 })
 

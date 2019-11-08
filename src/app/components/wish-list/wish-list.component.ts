@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Store } from '@ngrx/store';
 import { IAppState } from '../../store/app.store';
 import { getLiked } from '../../store/selectors/wish-list.selectors';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';

@@ -1,6 +1,6 @@
 {
   "name": "ui-internship-lwo3-angular-team",
-  "version": "0.0.0",
+  "version": "0.3.0",
   "scripts": {
     "ng": "ng",
     "start": "npm i && ng serve",
@@ -25,7 +25,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@ngrx/effects": "^8.3.0",
     "@ngrx/store": "^8.3.0",
-    "@ngrx/store-devtools": "^8.4.0",
     "ngx-auto-unsubscribe": "^3.0.1",
     "rxjs": "^6.4.0",
     "tslib": "^1.10.0",
@@ -39,6 +38,7 @@
     "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@ngrx/store-devtools": "^8.4.0",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",

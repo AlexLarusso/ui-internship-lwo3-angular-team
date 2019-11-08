@@ -2,13 +2,15 @@
   <div class="col-12 menu">
     <ul class="col-4 menu__container">
       <li *ngFor="let gender of genders">
-        <a [routerLink]="gender.url">{{ gender.title }}</a>
+        <a [routerLink]="gender.url"
+          (click)="filterProducts(gender.title)">{{ gender.title }}</a>
       </li>
     </ul>
     <app-main-logo logoColor="dark" class="logo col-4"></app-main-logo>
     <ul class="col-4 menu__container">
       <li *ngFor="let season of seasons">
-        <a [routerLink]="season.url">{{ season.title }}</a>
+        <a [routerLink]="season.url"
+          (click)="filterProducts(season.title)">{{ season.title }}</a>
       </li>
     </ul>
   </div>
