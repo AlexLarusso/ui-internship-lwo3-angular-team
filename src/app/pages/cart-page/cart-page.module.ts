@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CartPageComponent } from './cart-page.component';
 import { ProductCartItemComponent } from 'src/app/components/product-cart-item/product-cart-item.component';
+
+const routes: Routes = [
+  {
+    path: 'shoppingcart',
+    component: CartPageComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -12,15 +19,16 @@ import { ProductCartItemComponent } from 'src/app/components/product-cart-item/p
     ProductCartItemComponent,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     SharedModule,
-    RouterModule
+    RouterModule.forChild(routes)
   ],
   providers: [
   ],
   exports: [
     CartPageComponent,
     ProductCartItemComponent,
+    RouterModule,
   ]
 })
 export class CartPageModule { }

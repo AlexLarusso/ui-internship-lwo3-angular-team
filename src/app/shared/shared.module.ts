@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -50,7 +50,7 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
     SelectQuantityComponent,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FontAwesomeModule,
     RouterModule,
   ],
