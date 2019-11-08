@@ -39,8 +39,8 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   public selectedSizeSub: Subscription;
   public selectedColorSub: Subscription;
   public selectedQtySub: Subscription;
+  public selectedSize: string;
 
-  private selectedSize: string;
   private selectedColor: string;
   private selectedQty: number;
 

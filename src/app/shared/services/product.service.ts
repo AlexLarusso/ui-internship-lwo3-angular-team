@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
@@ -86,7 +86,9 @@ export class ProductService {
           imgUrl: product.images[0].url[0],
           productPrice: product.price + ' uah',
           productId: product.id,
-          status: product.status
+          status: product.status,
+          sex: product.sex,
+          season: product.season
         };
       }
   }

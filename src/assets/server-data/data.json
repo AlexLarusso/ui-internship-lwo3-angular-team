@@ -30,8 +30,8 @@
     ],
     "video": "",
     "category": "blouse",
-    "sex": "female",
-    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "summer"],
     "quantity": 10,
     "price": 799,
     "id": "f58bcf13",
@@ -54,8 +54,8 @@
     ],
     "video": "",
     "category": "blouse",
-    "sex": "female",
-    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall"],
     "quantity": 12,
     "price": 600,
     "id": "f13b82bb",
@@ -66,7 +66,7 @@
     "description": "Shirt from the Medicine collection. The model is made of smooth fabric. Has a classic collar.\n      - Direct style.\n      - Fastens on buttons.\n      - Pockets on the chest.\n      - Lowered shoulder line.\n      - Smooth fabric.\n      - Armpit width: 51 cm.\n      - Sleeve length (from collar): 78 cm.\n      - Length: 68 cm.\n      - The parameters are specified for size: S.\n      \n      Pattern: solid\n      Cut: regular\n      Sleeve: long\n      Collar: Classic\n      Casual: casual\n      Composition:\n      100% Viscose",
     "brand": "Answear",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#edfcfb", "#fffff", "#debb47"],
+    "colors": ["#edfcfb", "#debb47", "#ffffff"],
     "images": [
       {
         "value": "#edfcfb",
@@ -76,14 +76,14 @@
           "./assets/server-data/images/blouse_5_4.jpg"]
       },
       {
-        "value": "#fffff",
+        "value": "#debb47",
         "url": ["./assets/server-data/images/blouse_6_1.jpg",
           "./assets/server-data/images/blouse_6_2.jpg",
           "./assets/server-data/images/blouse_6_3.jpg",
           "./assets/server-data/images/blouse_6_4.jpg"]
       },
       {
-        "value": "#debb47",
+        "value": "#ffffff",
         "url": ["./assets/server-data/images/blouse_7_1.jpg",
           "./assets/server-data/images/blouse_7_2.jpg",
           "./assets/server-data/images/blouse_7_3.jpg",
@@ -92,8 +92,8 @@
     ],
     "video": "",
     "category": "blouse",
-    "sex": "female",
-    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall"],
     "quantity": 10,
     "price": 799,
     "id": "f40912a8"
@@ -103,17 +103,17 @@
     "description": "Blouse from the Mango Collection. The model is made of smooth fabric. Has a neckline on the strap..\n    - Model with a viscous.\n    - Fastens on buttons.\n    - Free model.\n    - Smooth fabric.\n    \n    Pattern: solid\n    Sleeve: long\n    Neckline: binding\n    Neckline: fastened\n    Composition:\n    100% Polyester",
     "brand": "Mango",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#edfcfb", "#fffff"],
+    "colors": ["#fff", "#000"],
     "images": [
       {
-        "value": "#edfcfb",
+        "value": "#fff",
         "url": ["./assets/server-data/images/blouse_8_1.jpg",
           "./assets/server-data/images/blouse_8_2.jpg",
           "./assets/server-data/images/blouse_8_3.jpg",
           "./assets/server-data/images/blouse_8_4.jpg"]
       },
       {
-        "value": "#fffff",
+        "value": "#000",
         "url": ["./assets/server-data/images/blouse_9_1.jpg",
           "./assets/server-data/images/blouse_9_2.jpg",
           "./assets/server-data/images/blouse_9_3.jpg",
@@ -122,8 +122,8 @@
     ],
     "video": "",
     "category": "blouse",
-    "sex": "female",
-    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 10,
     "price": 899,
     "id": "f50f0b7d"
@@ -145,8 +145,8 @@
     ],
     "video": "",
     "category": "blouse",
-    "sex": "female",
-    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "women",
+    "season": ["spring", "summer"],
     "quantity": 10,
     "price": 469,
     "id": "f1d8fe27"
@@ -168,8 +168,8 @@
     ],
     "video": "",
     "category": "blouse",
-    "sex": "female",
-    "season": ["spring", "fall", "summer", "winter"],
+    "sex": "women",
+    "season": ["fall", "summer"],
     "quantity": 10,
     "price": 569,
     "id": "f283f965"
@@ -179,17 +179,17 @@
     "description": "Pepe Jeans blouse. The model is made of smooth fabric. Has a neckline tied in the area.\n    - Free style.\n    - Model with a viscous.\n    - Fastens on buttons.\n    - Thin inelastic fabric.\n    - Armpit width: 55 cm.\n    - Sleeve length (from the neck): 69.5 cm.\n    - Length: 61 cm.\n    - The parameters are specified for size: S.\n\n    Pattern: solid\n    Sleeve: long\n    Neckline: binding\n    Legs: biuro\n    Composition:\n    100% Polyester",
     "brand": "Mango",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#edfcfb", "#fffff"],
+    "colors": ["#000000", "#ffffff"],
     "images": [
       {
-        "value": "#edfcfb",
+        "value": "#ffffff",
         "url": ["./assets/server-data/images/blouse_12_1.jpg",
           "./assets/server-data/images/blouse_12_2.jpg",
           "./assets/server-data/images/blouse_12_3.jpg",
           "./assets/server-data/images/blouse_12_4.jpg"]
       },
       {
-        "value": "#fffff",
+        "value": "#000000",
         "url": ["./assets/server-data/images/blouse_13_1.jpg",
           "./assets/server-data/images/blouse_13_2.jpg",
           "./assets/server-data/images/blouse_13_3.jpg",
@@ -197,9 +197,9 @@
       }
     ],
     "video": "./assets/server-data/video/blouse_12_v.mp4",
-    "sex": "female",
+    "sex": "women",
     "category": "blouse",
-    "season": ["spring", "fall", "summer", "winter"],
+    "season": ["spring", "summer"],
     "quantity": 10,
     "price": 899,
     "id": "f128e77c"
@@ -228,8 +228,8 @@
     ],
     "video": "./assets/server-data/video/blouse_14_v.mp4",
     "category": "blouse",
-    "season": ["spring", "fall", "summer", "winter"],
-    "sex": "female",
+    "season": ["spring", "fall"],
+    "sex": "women",
     "quantity": 10,
     "price": 1199,
     "id": "f5189d22"
@@ -239,7 +239,7 @@
     "description": "The model is made of smooth fabric. Has a neckline tied in the area.\n    - Model with stand.\n    - Sleeves with tie.\n    - Textured material.\n    - Smooth material.\n    - There is a zipper in the back.\n    - Sleeve length: 61 cm.\n    - Length: 60 cm.\n    - Armpit width: 44 cm.\n    - The parameters are specified for size: 34.\n\n    Pattern: solid\n    Sleeve: long\n    Neckline: with stand\n    Legs: biuro\n    Composition:\n    3% Elastane, 97% PolyesterThe model is made of smooth fabric. Has a neckline tied in the area.\n    - Model with stand.\n    - Sleeves with tie.\n    - Textured material.\n    - Smooth material.\n    - There is a zipper in the back.\n    - Sleeve length: 61 cm.\n    - Length: 60 cm.\n    - Armpit width: 44 cm.\n    - The parameters are specified for size: 34.\n\n    Pattern: solid\n    Sleeve: long\n    Neckline: with stand\n    Legs: biuro\n    Composition:\n    3% Elastane, 97% Polyester",
     "brand": "Only",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#426d52", "#125fc9"],
+    "colors": ["#426d52", "#000000"],
     "images": [
       {
         "value": "#426d52",
@@ -249,7 +249,7 @@
           "./assets/server-data/images/blouse_16_4.jpg"]
       },
       {
-        "value": "#125fc9",
+        "value": "#000000",
         "url": ["./assets/server-data/images/blouse_17_1.jpg",
           "./assets/server-data/images/blouse_17_2.jpg",
           "./assets/server-data/images/blouse_17_3.jpg",
@@ -258,8 +258,8 @@
     ],
     "video": "./assets/server-data/video/blouse_16_v.mp4",
     "category": "blouse",
-    "season": ["spring", "fall", "summer", "winter"],
-    "sex": "female",
+    "season": ["spring", "fall"],
+    "sex": "women",
     "quantity": 10,
     "price": 999,
     "id": "f8eb7d8b"
@@ -281,8 +281,8 @@
     ],
     "video": "",
     "category": "blouse",
-    "season": ["spring", "fall", "summer", "winter"],
-    "sex": "female",
+    "season": ["spring", "fall"],
+    "sex": "women",
     "quantity": 10,
     "price": 799,
     "id": "fe6d8153"
@@ -304,8 +304,8 @@
     ],
     "video": "",
     "category": "skirt",
-    "season": ["spring", "fall", "winter"],
-    "sex": "female",
+    "season": ["spring", "fall"],
+    "sex": "women",
     "quantity": 10,
     "price": 799,
     "id": "f1c9a09f",
@@ -328,7 +328,7 @@
     ],
     "video": "./assets/server-data/video/skirt_21_v.mp4",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["summer"],
     "quantity": 10,
     "price": 799,
@@ -351,7 +351,7 @@
     ],
     "video": "",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 699,
@@ -374,7 +374,7 @@
     ],
     "video": "",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 699,
@@ -397,7 +397,7 @@
     ],
     "video": "",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 799,
@@ -405,7 +405,7 @@
     "status": "Bestsellers"
   },
   {
-    "productName":  "LEVI'S - JEAN SKIRTT",
+    "productName":  "LEVI'S - JEAN SKIRT",
     "description": "Levi's skirt. The straight cut model is made of denim.\n      - Direct style.\n      - Fastens on buttons.\n      - Slit pockets.\n      - With a cut.\n      - Model with decorative torn edge.\n      - Denim with decorative scuffs.\n      - Belt width: 37 cm.\n      - Length: 65 cm.\n      - The parameters are specified for size: 27.\n      \n      Pattern: solid\n      Material: fabric\n      Material: jeans\n      Material: cotton\n      Casual: casual\n      Style: straight\n      Composition:\n      100% Cotton",
     "brand": "LEVI'S",
     "sizes": ["s", "m", "l", "xl"],
@@ -421,7 +421,7 @@
     ],
     "video": "",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 799,
@@ -458,7 +458,7 @@
     ],
     "video": "",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall", "summer"],
     "quantity": 10,
     "price": 999,
@@ -489,7 +489,7 @@
     ],
     "video": "",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["fall", "winter"],
     "quantity": 10,
     "price": 999,
@@ -512,7 +512,7 @@
     ],
     "video": "./assets/server-data/video/skirt_31_v.mp4",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
@@ -536,7 +536,7 @@
     ],
     "video": "",
     "category": "skirt",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer"],
     "quantity": 10,
     "price": 999,
@@ -579,11 +579,11 @@
       }
     ],
     "video": "./assets/server-data/video/tommy-all.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 10,
-    "price": 69,
+    "price": 1250,
     "id": "f2680ab8"
   },
   {
@@ -605,14 +605,14 @@
       }
     ],
     "video": "",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": [
       "fall",
       "spring"
     ],
     "quantity": 10,
-    "price": 79,
+    "price": 1399,
     "id": "f15368e4",
     "status": "On Sale"
   },
@@ -634,11 +634,11 @@
       }
     ],
     "video": "./assets/server-data/video/camel-active.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 10,
-    "price": 74,
+    "price": 1199,
     "id": "f4784ed5",
     "status": "On Sale"
   },
@@ -680,11 +680,11 @@
       }
     ],
     "video": "./assets/server-data/video/polo-rl-blue.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 8,
-    "price": 129,
+    "price": 1799,
     "id": "f5bbc2e2",
     "status": "Bestsellers"
   },
@@ -724,11 +724,11 @@
       }
     ],
     "video": "./assets/server-data/video/scotch-soda-green.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 8,
-    "price": 109,
+    "price": 1759,
     "id": "f285b9ae"
   },
   {
@@ -749,11 +749,11 @@
       }
     ],
     "video": "./assets/server-data/video/levis-sol-green.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 15,
-    "price": 79,
+    "price": 1099,
     "id": "f19a4a97",
     "status": "Trending"
   },
@@ -784,11 +784,11 @@
       }
     ],
     "video": "./assets/server-data/video/levis-red.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 10,
-    "price": 79,
+    "price": 999,
     "id": "f1d3642e"
   },
   {
@@ -809,12 +809,9 @@
         "video": "./assets/server-data/video/wrangler-red.mp4"
       }
     ],
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
-    "season": [
-      "fall",
-      "spring"
-    ],
+    "season": ["fall", "spring"],
     "quantity": 20,
     "price": 599,
     "id": "f4a568f0"
@@ -846,7 +843,7 @@
       }
     ],
     "video": "./assets/server-data/video/polorl-lightblue.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 20,
@@ -889,7 +886,7 @@
       }
     ],
     "video": "./assets/server-data/video/medicine-all.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 20,
@@ -923,7 +920,7 @@
       }
     ],
     "video": "./assets/server-data/video/armani-all.mp4",
-    "sex": "man",
+    "sex": "men",
     "category": "shirt",
     "season": ["fall", "spring"],
     "quantity": 20,
@@ -950,7 +947,7 @@
     "video": "./assets/server-data/video/t-shirt_1_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 999,
     "id": "f182bcb7"
@@ -974,17 +971,17 @@
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_2_1/black.jpg",
-          "./assets/server-data/images/t-shirt_2_2/black.jpg",
-          "./assets/server-data/images/t-shirt_2_3/black.jpg",
-          "./assets/server-data/images/t-shirt_2_4/black.jpg"
+          "./assets/server-data/images/t-shirt_2_1_black.jpg",
+          "./assets/server-data/images/t-shirt_2_2_black.jpg",
+          "./assets/server-data/images/t-shirt_2_3_black.jpg",
+          "./assets/server-data/images/t-shirt_2_4_black.jpg"
         ]
       }
     ],
     "video": "./assets/server-data/video/t-shirt_2_1.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 1589,
     "id": "f674b3c1"
@@ -1009,7 +1006,7 @@
     "video": "./assets/server-data/video/t-shirt_3_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 1399,
     "id": "f298a167"
@@ -1034,7 +1031,7 @@
     "video": "./assets/server-data/video/t-shirt_4_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 999,
     "id": "f3a815d6"
@@ -1058,17 +1055,17 @@
       {
         "value": "#ffffff",
         "url": [
-          "./assets/server-data/images/t-shirt_5/white_1.jpg",
-          "./assets/server-data/images/t-shirt_5/white_2.jpg",
-          "./assets/server-data/images/t-shirt_5/white_3.jpg",
-          "./assets/server-data/images/t-shirt_5/white_4.jpg"
+          "./assets/server-data/images/t-shirt_5_1_white.jpg",
+          "./assets/server-data/images/t-shirt_5_2_white.jpg",
+          "./assets/server-data/images/t-shirt_5_3_white.jpg",
+          "./assets/server-data/images/t-shirt_5_4_white.jpg"
         ]
       }
     ],
     "video": "./assets/server-data/video/t-shirt_5_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 1859,
     "id": "fd80e9b",
@@ -1094,7 +1091,7 @@
     "video": "./assets/server-data/video/t-shirt_6_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 1299,
     "id": "f5dba2b9"
@@ -1104,10 +1101,10 @@
     "description": "T-shirt from the Pepe Jeans collection. The model is made of knitwear with a print.",
     "brand": "Pepe Jeans",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#ff0000", "#ffffff", "#808080", "#000000"],
+    "colors": ["#ffffff", "#ff0000", "#808080", "#000000"],
     "images": [
       {
-        "value": "#ff0000",
+        "value": "#ffffff",
         "url": [
           "./assets/server-data/images/t-shirt_7_1.jpg",
           "./assets/server-data/images/t-shirt_7_2.jpg",
@@ -1116,37 +1113,37 @@
         ]
       },
       {
-        "value": "#ffffff",
+        "value": "#ff0000",
         "url": [
-          "./assets/server-data/images/t-shirt_7_1/white.jpg",
-          "./assets/server-data/images/t-shirt_7_2/white.jpg",
-          "./assets/server-data/images/t-shirt_7_3/white.jpg",
-          "./assets/server-data/images/t-shirt_7_4/white.jpg"
+          "./assets/server-data/images/t-shirt_7_1_red.jpg",
+          "./assets/server-data/images/t-shirt_7_2_red.jpg",
+          "./assets/server-data/images/t-shirt_7_3_red.jpg",
+          "./assets/server-data/images/t-shirt_7_4_red.jpg"
         ]
       },
       {
         "value": "#808080",
         "url": [
-          "./assets/server-data/images/t-shirt_7_1/grey.jpg",
-          "./assets/server-data/images/t-shirt_7_2/grey.jpg",
-          "./assets/server-data/images/t-shirt_7_3/grey.jpg",
-          "./assets/server-data/images/t-shirt_7_4/grey.jpg"
+          "./assets/server-data/images/t-shirt_7_1_grey.jpg",
+          "./assets/server-data/images/t-shirt_7_2_grey.jpg",
+          "./assets/server-data/images/t-shirt_7_3_grey.jpg",
+          "./assets/server-data/images/t-shirt_7_4_grey.jpg"
         ]
       },
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_7_1/black.jpg",
-          "./assets/server-data/images/t-shirt_7_2/black.jpg",
-          "./assets/server-data/images/t-shirt_7_3/black.jpg",
-          "./assets/server-data/images/t-shirt_7_4/black.jpg"
+          "./assets/server-data/images/t-shirt_7_1_black.jpg",
+          "./assets/server-data/images/t-shirt_7_2_black.jpg",
+          "./assets/server-data/images/t-shirt_7_3_black.jpg",
+          "./assets/server-data/images/t-shirt_7_4_black.jpg"
         ]
       }
     ],
     "video": "./assets/server-data/video/t-shirt_7_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 799,
     "id": "f2ece61e"
@@ -1170,26 +1167,26 @@
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_8_1/black.jpg",
-          "./assets/server-data/images/t-shirt_8_2/black.jpg",
-          "./assets/server-data/images/t-shirt_8_3/black.jpg",
-          "./assets/server-data/images/t-shirt_8_4/black.jpg"
+          "./assets/server-data/images/t-shirt_8_1_black.jpg",
+          "./assets/server-data/images/t-shirt_8_2_black.jpg",
+          "./assets/server-data/images/t-shirt_8_3_black.jpg",
+          "./assets/server-data/images/t-shirt_8_4_black.jpg"
         ]
       },
       {
         "value": "#808080",
         "url": [
-          "./assets/server-data/images/t-shirt_8_1/grey.jpg",
-          "./assets/server-data/images/t-shirt_8_2/grey.jpg",
-          "./assets/server-data/images/t-shirt_8_3/grey.jpg",
-          "./assets/server-data/images/t-shirt_8_4/grey.jpg"
+          "./assets/server-data/images/t-shirt_8_1_grey.jpg",
+          "./assets/server-data/images/t-shirt_8_2_grey.jpg",
+          "./assets/server-data/images/t-shirt_8_3_grey.jpg",
+          "./assets/server-data/images/t-shirt_8_4_grey.jpg"
         ]
       }
     ],
     "video": "./assets/server-data/video/t-shirt_8_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 1299,
     "id": "f36f58c4",
@@ -1214,17 +1211,17 @@
       {
         "value": "#000000",
         "url": [
-          "./assets/server-data/images/t-shirt_9_1/black.jpg",
-          "./assets/server-data/images/t-shirt_9_2/black.jpg",
-          "./assets/server-data/images/t-shirt_9_3/black.jpg",
-          "./assets/server-data/images/t-shirt_9_4/black.jpg"
+          "./assets/server-data/images/t-shirt_9_1_black.jpg",
+          "./assets/server-data/images/t-shirt_9_2_black.jpg",
+          "./assets/server-data/images/t-shirt_9_3_black.jpg",
+          "./assets/server-data/images/t-shirt_9_4_black.jpg"
         ]
       }
     ],
     "video": "./assets/server-data/video/t-shirt_9_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 1299,
     "id": "f36596d6"
@@ -1248,17 +1245,17 @@
       {
         "value": "#0000ff",
         "url": [
-          "./assets/server-data/images/t-shirt_10_1/blue.jpg",
-          "./assets/server-data/images/t-shirt_10_2/blue.jpg",
-          "./assets/server-data/images/t-shirt_10_3/blue.jpg",
-          "./assets/server-data/images/t-shirt_10_4/blue.jpg"
+          "./assets/server-data/images/t-shirt_10_1_blue.jpg",
+          "./assets/server-data/images/t-shirt_10_2_blue.jpg",
+          "./assets/server-data/images/t-shirt_10_3_blue.jpg",
+          "./assets/server-data/images/t-shirt_10_4_blue.jpg"
         ]
       }
     ],
     "video": "./assets/server-data/video/t-shirt_10_v.mp4",
     "season": ["summer"],
     "category": "t-shirt",
-    "sex": "male",
+    "sex": "men",
     "quantity": 10,
     "price": 1599,
     "id": "f451f8df"
@@ -1281,7 +1278,7 @@
     ],
     "season": ["winter"],
     "category": "heats",
-    "sex": "unisex",
+    "sex": "men",
     "quantity": 10,
     "price": 999,
     "id": "f322c3b2"
@@ -1291,7 +1288,7 @@
     "description": "Hat from the Guess Jeans collection. The model is made of thin, smooth knitwear. - Edge with a lapel. Structure: 100% Acrylic Product ID: 6910-CAM603 Manufacturer Code: RW19.CAM603",
     "brand": "Guess",
     "sizes": ["m"],
-    "colors": ["#000000"],
+    "colors": ["#000000", "#808080"],
     "images": [
       {
         "value": "#000000",
@@ -1300,11 +1297,19 @@
           "./assets/server-data/images/heats_2_2.jpg",
           "./assets/server-data/images/heats_2_3.jpg"
         ]
+      },
+      {
+        "value": "#808080",
+        "url": [
+          "./assets/server-data/images/heats_2_1_grey.jpg",
+          "./assets/server-data/images/heats_2_2_grey.jpg",
+          "./assets/server-data/images/heats_2_3_grey.jpg"
+        ]
       }
     ],
     "season": ["winter"],
     "category": "heats",
-    "sex": "unisex",
+    "sex": "men",
     "quantity": 10,
     "price": 1189,
     "id": "f5c7ac6e"
@@ -1327,7 +1332,7 @@
     ],
     "season": ["winter"],
     "category": "heats",
-    "sex": "unisex",
+    "sex": "men",
     "quantity": 10,
     "price": 1189,
     "id": "f4e80813"
@@ -1350,7 +1355,7 @@
     ],
     "season": ["winter"],
     "category": "heats",
-    "sex": "unisex",
+    "sex": "men",
     "quantity": 10,
     "price": 999,
     "id": "f386ac04"
@@ -1373,7 +1378,7 @@
     ],
     "season": ["winter"],
     "category": "heats",
-    "sex": "unisex",
+    "sex": "men",
     "quantity": 10,
     "price": 1599,
     "id": "f2b3a6e0",
@@ -1416,7 +1421,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring","winter"],
     "quantity": 10,
     "price": 399,
@@ -1450,7 +1455,7 @@
     ],
     "video": "./assets/server-data/video/sweater-2.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 12,
     "price": 599,
@@ -1464,7 +1469,7 @@
     "colors": ["#c7d3e4", "#000000"],
     "images": [
       {
-        "value": " #c7d3e4",
+        "value": "#c7d3e4",
         "url": [
           "./assets/server-data/images/sweater-3-1-blue.jpg",
           "./assets/server-data/images/sweater-3-2-blue.jpg",
@@ -1473,7 +1478,7 @@
         ]
       },
       {
-        "value": " #000000",
+        "value": "#000000",
         "url": [
           "./assets/server-data/images/sweater-3-1-black.jpg",
           "./assets/server-data/images/sweater-3-2-black.jpg",
@@ -1484,7 +1489,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 5,
     "price": 945,
@@ -1519,7 +1524,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 15,
     "price": 499,
@@ -1553,7 +1558,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 290,
@@ -1578,7 +1583,7 @@
     ],
     "video": "./assets/server-data/video/sweater-6.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 490,
@@ -1612,16 +1617,16 @@
       {
         "value": "#d0c1b4",
         "url": [
-          "./assets/server-data/images/sweater-7-1-brown.jpg",
-          "./assets/server-data/images/sweater-7-2-brown.jpg",
-          "./assets/server-data/images/sweater-7-3-brown.jpg",
-          "./assets/server-data/images/sweater-7-4-brown.jpg"
+          "./assets/server-data/images/sweater-7-1-grey.jpg",
+          "./assets/server-data/images/sweater-7-2-grey.jpg",
+          "./assets/server-data/images/sweater-7-3-grey.jpg",
+          "./assets/server-data/images/sweater-7-4-grey.jpg"
         ]
       }
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 15,
     "price": 790,
@@ -1646,7 +1651,7 @@
     ],
     "video": "./assets/server-data/video/sweater-8.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 990,
@@ -1681,7 +1686,7 @@
     ],
     "video": "./assets/server-data/video/sweater-9.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 990,
@@ -1724,7 +1729,7 @@
     ],
     "video": "./assets/server-data/video/sweater-10.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring","winter"],
     "quantity": 9,
     "price": 1190,
@@ -1736,7 +1741,7 @@
     "description": "Coat from the Vero Moda collection. The uninsulated model is made of smooth material. Model without insulation with lining. High collar. Fastens with buttons. Welt pockets. Smooth material.",
     "brand": "VERO MODA",
     "sizes": ["xs", "s", "m", "l"],
-    "colors": ["#c4a58e", "#000000", "#b14221"],
+    "colors": ["#c4a58e", "#000000"],
     "images": [
       {
         "value": "#c4a58e",
@@ -1755,20 +1760,11 @@
           "./assets/server-data/images/coat-1-3-black.jpg",
           "./assets/server-data/images/coat-1-4-black.jpg"
         ]
-      },
-      {
-        "value": "#b14221",
-        "url": [
-          "./assets/server-data/images/sweater-1-1-brown.jpg",
-          "./assets/server-data/images/sweater-1-2-brown.jpg",
-          "./assets/server-data/images/sweater-1-3-brown.jpg",
-          "./assets/server-data/images/sweater-1-4-brown.jpg"
-        ]
       }
     ],
     "video": "./assets/server-data/video/coat-1.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 1190,
@@ -1811,7 +1807,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 1390,
@@ -1845,7 +1841,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2390,
@@ -1856,10 +1852,10 @@
     "description": "Coat from the Answear Collection. The uninsulated model is made of smooth material. Model without insulation with lining. Free style. Welt pockets. Fastens with buttons.",
     "brand": "ANSWEAR",
     "sizes": ["xs", "s", "m", "l"],
-    "colors": ["#083d80"],
+    "colors": ["#ffb3a6"],
     "images": [
       {
-        "value": "#083d80",
+        "value": "#ffb3a6",
         "url": [
           "./assets/server-data/images/coat-4-1-beige.jpg",
           "./assets/server-data/images/coat-4-2-beige.jpg",
@@ -1870,7 +1866,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2390,
@@ -1881,10 +1877,10 @@
     "description": "Coat from the collection Only. The uninsulated model is made of smooth material. Straight cut. Fastens with buttons. Classic lapels. Welt pockets. Model without insulation with lining.",
     "brand": "ANSWEAR",
     "sizes": ["xs", "s", "m","l"],
-    "colors": ["#083d80", "#083d80", "#083d80"],
+    "colors": ["#63ece1", "#282656", "#8f9292"],
     "images": [
       {
-        "value": "#083d80",
+        "value": "#63ece1",
         "url": [
           "./assets/server-data/images/coat-5-1-green.jpg",
           "./assets/server-data/images/coat-5-2-green.jpg",
@@ -1893,7 +1889,7 @@
         ]
       },
       {
-        "value": "#083d80",
+        "value": "#282656",
         "url": [
           "./assets/server-data/images/coat-5-1-blue.jpg",
           "./assets/server-data/images/coat-5-2-blue.jpg",
@@ -1902,18 +1898,18 @@
         ]
       },
       {
-        "value": "#083d80",
+        "value": "#8f9292",
         "url": [
-          "./assets/server-data/images/coat-5-1-gray.jpg",
-          "./assets/server-data/images/coat-5-2-gray.jpg",
-          "./assets/server-data/images/coat-5-3-gray.jpg",
-          "./assets/server-data/images/coat-5-4-gray.jpg"
+          "./assets/server-data/images/coat-5-1-grey.jpg",
+          "./assets/server-data/images/coat-5-2-grey.jpg",
+          "./assets/server-data/images/coat-5-3-grey.jpg",
+          "./assets/server-data/images/coat-5-4-grey.jpg"
         ]
       }
     ],
     "video": "./assets/server-data/video/coat-5.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2790,
@@ -1938,10 +1934,10 @@
       {
         "value": "#c4baa9",
         "url": [
-          "./assets/server-data/images/coat-6-1-gray.jpg",
-          "./assets/server-data/images/coat-6-2-gray.jpg",
-          "./assets/server-data/images/coat-6-3-gray.jpg",
-          "./assets/server-data/images/coat-6-4-gray.jpg"
+          "./assets/server-data/images/coat-6-1-grey.jpg",
+          "./assets/server-data/images/coat-6-2-grey.jpg",
+          "./assets/server-data/images/coat-6-3-grey.jpg",
+          "./assets/server-data/images/coat-6-4-grey.jpg"
         ]
       },
       {
@@ -1956,7 +1952,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2450,
@@ -1968,10 +1964,10 @@
     "description": "Coat from the Jacqueline de Yong collection. The uninsulated model is made of patterned material. The warmed model with a lining. Straight cut. Welt pockets. Classic lapels.",
     "brand": "JACQUELINE DE YONG",
     "sizes": ["xs", "s", "m", "l"],
-    "colors": ["#89271f"],
+    "colors": ["#8f9292"],
     "images": [
       {
-        "value": "#89271f",
+        "value": "#8f9292",
         "url": [
           "./assets/server-data/images/coat-7-1-print.jpg",
           "./assets/server-data/images/coat-7-2-print.jpg",
@@ -1982,7 +1978,7 @@
     ],
     "video": "./assets/server-data/video/coat-7.mp4",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": [
       "spring",
       "winter"
@@ -2019,7 +2015,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2450,
@@ -2053,7 +2049,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 2790,
@@ -2088,7 +2084,7 @@
     ],
     "video": "",
     "category": "sweater",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "winter"],
     "quantity": 9,
     "price": 3590,
@@ -2122,7 +2118,7 @@
     ],
     "video": "./assets/server-data/video/dress_1_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2156,7 +2152,7 @@
     ],
     "video": "./assets/server-data/video/dress_3_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2199,7 +2195,7 @@
     ],
     "video": "./assets/server-data/video/dress_5_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2233,7 +2229,7 @@
     ],
     "video": "./assets/server-data/video/dress_8_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2268,7 +2264,7 @@
     ],
     "video": "./assets/server-data/video/dress_10_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2302,7 +2298,7 @@
     ],
     "video": "./assets/server-data/video/dress_12_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2314,10 +2310,10 @@
     "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
     "brand": "ANSWEAR",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#808080", "#000000"],
+    "colors": ["#ffffff", "#efdd6f"],
     "images": [
       {
-        "value": "#808080",
+        "value": "#ffffff",
         "url": [
           "./assets/server-data/images/dress_14_1.jpg",
           "./assets/server-data/images/dress_14_2.jpg",
@@ -2326,7 +2322,7 @@
         ]
       },
       {
-        "value": "#000000",
+        "value": "#efdd6f",
         "url": [
           "./assets/server-data/images/dress_15_1.jpg",
           "./assets/server-data/images/dress_15_2.jpg",
@@ -2337,7 +2333,7 @@
     ],
     "video": "./assets/server-data/video/dress_14_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2348,7 +2344,7 @@
     "description": "Dress from the ANSWEAR collection. The free model is made of fabric with applique.\n\n- Free style.\n- Model with embroidery.\n- Round neckline.\n- There is a zipper on the back.\n- Thin inelastic fabric.\n- Armpit width: 55 cm.\n- Sleeve length (from the neck): 65 cm.\n- Length: 93.5 cm.\n- The parameters are specified for size: S.\n\nMaterial: fabric\nPattern: applique\nLength: mini\nNeckline: Round\nSleeve: three quarters\nOccasion: casual\nStyle: oversize\nComposition:\n80% Cotton, 20% Polyester",
     "brand": "ANSWEAR",
     "sizes": ["s", "m", "l", "xl"],
-    "colors": ["#ffffff", "#080b5c", "fac0f4", "#000000"],
+    "colors": ["#ffffff", "#080b5c", "#ffc0cb", "#000000"],
     "images": [
       {
         "value": "#ffffff",
@@ -2369,7 +2365,7 @@
         ]
       },
       {
-        "value": "#fac0f4",
+        "value": "#ffc0cb",
         "url": [
           "./assets/server-data/images/dress_18_1.jpg",
           "./assets/server-data/images/dress_18_2.jpg",
@@ -2389,7 +2385,7 @@
     ],
     "video": "./assets/server-data/video/dress_16_v.mp4",
     "category": "dress",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer", "fall"],
     "quantity": 12,
     "price": 599,
@@ -2413,8 +2409,8 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
-    "season": ["spring", "summer", "fall", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f42f9066"
@@ -2437,8 +2433,8 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
-    "season": ["spring", "summer", "fall", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f180c06e"
@@ -2461,8 +2457,8 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
-    "season": ["spring", "summer", "fall", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f130119c"
@@ -2485,8 +2481,8 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
-    "season": ["spring", "summer", "fall", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f3bffdad"
@@ -2509,7 +2505,7 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,
@@ -2533,7 +2529,7 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,
@@ -2557,8 +2553,8 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
-    "season": ["spring", "summer", "fall", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f2ca590c"
@@ -2581,8 +2577,8 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
-    "season": ["spring", "summer", "fall", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f2a1f1f",
@@ -2606,8 +2602,8 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
-    "season": ["spring", "summer", "fall", "winter"],
+    "sex": "women",
+    "season": ["spring", "fall", "winter"],
     "quantity": 22,
     "price": 499,
     "id": "f209be9d"
@@ -2630,7 +2626,7 @@
       }
     ],
     "category": "pants",
-    "sex": "female",
+    "sex": "women",
     "season": ["spring", "summer", "fall", "winter"],
     "quantity": 22,
     "price": 499,

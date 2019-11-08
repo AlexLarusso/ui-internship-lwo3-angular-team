@@ -6,3 +6,8 @@ export const getAllProducts = createSelector(
   getProducts,
   (state: IState) => state.products
  );
+
+export const getFilteredProducts = createSelector(
+  getProducts,
+  (state: IState) => state.filteredProducts
+ );

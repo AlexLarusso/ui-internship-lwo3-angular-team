@@ -39,6 +39,19 @@
   }
 }
 
+@keyframes imageScale {
+  from {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+  }
+}
+
 .new {
   &::before {
     @include tagStyle;
@@ -68,15 +81,12 @@
   &::before {
     @include tagStyle;
     content: 'best';
+    color: $fontColorLight;
   }
 
   &::after {
     @include tagBackground;
     border-color: $accentColor transparent transparent transparent;
-  }
-
-  &:hover::before {
-    color: $fontColorLight;
   }
 }
 
@@ -91,14 +101,9 @@
     @include tagBackground;
     border-color: $trandingColor transparent transparent transparent;
   }
-
-  &:hover::before {
-    color: $bgColorDark;
-  }
 }
 
 .product-item {
-
   &__container {
     display: flex;
     flex-direction: column;
@@ -110,14 +115,29 @@
     overflow: hidden;
     background-color: $bgColorLight;
     text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      -webkit-transform: translateY(-6px) translateX(-6px);
+      transform: translateY(-6px) translateX(-6px);
+      background-color: rgba($color: $bgColorDark, $alpha: 0.05);
+    }
   }
 
   &__picture {
     position: relative;
+    opacity: 0;
     margin: 20px 0 5px;
     height: 320px;
     background: $bgColorMedium;
     overflow: hidden;
+    animation: imageScale .4s ease-in-out 1 forwards;
+
+    &__image-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
 
     &__container {
       position: relative;

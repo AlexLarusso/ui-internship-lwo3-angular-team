@@ -1,11 +1,9 @@
-
-
 $notification-color: (
   info: (
-    bg: rgba(255, 187, 51, .8),
+    bg: rgba(254, 150, 15, 0.9),
     text: white),
   success: (
-    bg: rgba(0, 200, 81, .8),
+    bg: rgba(255, 199, 44, 0.945),
     text: white),
   warning: (
     bg: rgba(51, 181, 229, .8),
@@ -29,14 +27,12 @@ $spacing: 15px;
   position: fixed;
   top: 50%;
   left: 50%;
-  border-radius: 5px;
   transform: translate(-50%, -50%);
   padding: $spacing;
   z-index: 5;
 
   &__header {
     border: 1px solid white;
-    border-radius: 5px;
   }
 
   &__title {

@@ -31,10 +31,4 @@ export class HttpService {
         product.category === category
     )));
   }
-
-  public getProductWithError(): Observable<any> {
-    const BAD_URL = 'https://www.googleapis.com/content/v2/1/products/1';
-
-    return this.http.get<any>(BAD_URL);
-  }
 }

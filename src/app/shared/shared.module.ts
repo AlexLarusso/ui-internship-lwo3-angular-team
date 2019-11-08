@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { ScrollAnchorDirective, ModalOpenDirective } from './directives';
 import { HeaderComponent } from './header/header.component';
 import { CategoryMenuComponent } from './header/category-menu/category-menu.component';
 import { LineBarComponent } from './header/line-bar/line-bar.component';
@@ -22,9 +23,13 @@ import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
+import { ImageLoadDirective } from './directives/image-loader.directive';
+import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 
 @NgModule({
   declarations: [
+    ScrollAnchorDirective,
+    ModalOpenDirective,
     HeaderComponent,
     FooterComponent,
     PopularListComponent,
@@ -42,7 +47,9 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
+    ImageLoadDirective,
+    ShopByCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,8 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
   providers: [
   ],
   exports: [
+    ScrollAnchorDirective,
+    ModalOpenDirective,
     HeaderComponent,
     FooterComponent,
     PopularListComponent,
@@ -68,7 +77,8 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
     SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
-    WishButtonComponent
+    WishButtonComponent,
+    ShopByCategoryComponent
   ]
 })
 

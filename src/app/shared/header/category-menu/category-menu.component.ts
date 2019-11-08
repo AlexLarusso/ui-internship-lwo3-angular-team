@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
 })
 
 export class CategoryMenuComponent {
-  public categories = ['Woman', 'Man', 'Collection'];
-  public seasons = ['Spring', 'Summer', 'Fall', 'Winter'];
+  public genders = [
+    {title: 'women', url: '/women'},
+    {title: 'men', url: '/men'},
+    {title: 'collection', url: '/collection'}
+  ];
+  public seasons = [
+    {title: 'winter', url: '/winter'},
+    {title: 'spring', url: '/spring'},
+    {title: 'summer', url: '/summer'},
+    {title: 'fall', url: '/fall'}
+  ];
 }

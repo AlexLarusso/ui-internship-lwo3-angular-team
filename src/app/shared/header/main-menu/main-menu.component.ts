@@ -14,9 +14,9 @@ export class MainMenuComponent {
   public faCartArrowDown = faCartArrowDown;
 
   public menuItems = [
-    {title: 'Shopping Cart', url: '/shopingcart'},
+    {title: 'Shopping Cart', url: '/shoppingcart'},
     {title: 'Wish List', url: '/wishlist'},
     {title: 'Checkout', url: '/checkout'},
-    {title: 'My Account', url: '/myacount'}
+    {title: 'My Account', url: '/myaccount'}
   ];
 }

@@ -1,9 +1,9 @@
-<app-header>
+<app-header appScrollAnchor="app-header">
   <app-promo *ngIf="isHomePage"></app-promo>
 </app-header>
 <app-loader></app-loader>
 <router-outlet></router-outlet>
 <app-notification></app-notification>
-<app-footer></app-footer>
+<app-footer appScrollAnchor="app-footer"></app-footer>
 <app-scroll></app-scroll>
 

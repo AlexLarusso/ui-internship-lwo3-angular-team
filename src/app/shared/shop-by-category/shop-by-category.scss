@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+
+.product {
+  background: $bgColorMedium;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+}
+
+li {
+  &:hover {
+    color: $accentColor;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .product {
+    &__navigation {
+      flex-wrap: wrap;
+      justify-content: center;
+      height: 130px;
+
+      &>p,
+      >div {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .product {
+    &__navigation {
+      height: 200px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .product {
+    &__navigation {
+      height: 220px;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .product {
+    &__navigation {
+      height: 350px;
+    }
+  }
+}
