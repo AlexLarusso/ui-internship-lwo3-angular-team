@@ -31,12 +31,12 @@ export class ImageLoadDirective implements AfterViewInit {
     this.observer.observe(this.element.nativeElement);
   }
 
-  private checkIntersecting(entrance: IntersectionObserverEntry) {
+  public checkIntersecting(entrance: IntersectionObserverEntry) {
     return entrance.isIntersecting &&
       entrance.target === this.element.nativeElement;
   }
 
-  private checkForIntersection = (entries: Array<IntersectionObserverEntry>) => {
+  public checkForIntersection = (entries: Array<IntersectionObserverEntry>) => {
     entries.every((entrance: IntersectionObserverEntry) => {
       if (this.checkIntersecting(entrance)) {
         this.downloadImage.emit();
