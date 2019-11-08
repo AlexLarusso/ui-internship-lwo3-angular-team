@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -52,7 +52,7 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     ShopByCategoryComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FontAwesomeModule,
     RouterModule,
   ],

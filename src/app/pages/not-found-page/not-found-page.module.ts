@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ErrorSampleComponent } from './error-sample.component';
+import { NotFoundPageComponent } from './not-found-page.component';
 
 const routes: Routes = [
   {
-    path: 'checkout',
-    component: ErrorSampleComponent
+    path: '404',
+    component: NotFoundPageComponent
   }
 ];
 
 @NgModule({
   declarations: [
+    NotFoundPageComponent
   ],
   imports: [
     RouterModule.forChild(routes)
   ],
-  providers: [
+  exports: [
     RouterModule
   ]
 })
 
-export class ErrorSampleModule { }
+export class NotFoundPageModule { }
