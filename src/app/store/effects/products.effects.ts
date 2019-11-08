@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
 
-import { switchMap, map, tap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 import { LoadProducts, SetProducts, SetProductImages } from '../actions/products.action';
 import { HttpService } from '../../shared/services';
 
 @Injectable()
 export class ProductsEffects {
+
   constructor(
     private actions$: Actions,
     private httpService: HttpService
-  ) { }
+  ) {
+  }
 
   @Effect()
   public loadProductImages$ = this.actions$
