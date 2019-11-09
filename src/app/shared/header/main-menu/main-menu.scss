@@ -2,7 +2,7 @@
 
 .menu {
   position: sticky;
-  top: 0;
+  top: 30px;
   z-index: 5;
   height: 60px;
   background: rgba($color: $bgColorDark, $alpha: 0.9);
@@ -46,7 +46,7 @@
     }
 
     &__btn {
-      width: 20%;
+      width: 50px;
       border: none;
       background: $accentColor;
     }
@@ -62,13 +62,17 @@
     }
 
     &__btn {
-      width: 30%;
+      width: 50px;
       background: $accentColor;
     }
   }
 
   a {
     color: $fontColorLight;
+
+    &:hover {
+      color: $accentColor;
+    }
   }
 }
 

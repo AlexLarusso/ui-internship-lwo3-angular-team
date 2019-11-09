@@ -67,10 +67,13 @@ export class ProductService implements OnDestroy {
       case ProductFormat.short: {
         const firsProductImage = this.allProductImages
           .filter(image => image.productId === product._id)[0].claudinaryId;
+        const secondProductImage =  this.allProductImages
+          .filter(image => image.productId === product._id)[1].claudinaryId;
 
         return {
           productTitle: product.productName,
           imgUrl: `${URLs.productImage}/${firsProductImage}`,
+          imgUrlNext: `${URLs.productImage}/${secondProductImage}`,
           productPrice: product.price + ' USD',
           productId: product._id,
           status: product.status,

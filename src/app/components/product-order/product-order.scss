@@ -12,11 +12,9 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
   .product-options {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     .option {
-      margin: $section-spacing 0;
-
       &__label {
         margin-right: 10px;
         text-transform: uppercase;

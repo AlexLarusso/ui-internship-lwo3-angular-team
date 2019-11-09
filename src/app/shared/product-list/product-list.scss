@@ -12,27 +12,20 @@
   &__container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: flex-start;
   }
 
   &__navigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 120px;
-  }
-
-  &__item {
-    width: 250px;
+    margin: 10px 0;
   }
 }
 
 .navigation {
   &__panel {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    justify-self: flex-end;
   }
 }
 
@@ -42,9 +35,21 @@ li {
   }
 }
 
+app-button  {
+  margin: 10px;
+}
+
 .button_load {
   padding: 30px 0;
   align-self: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .product {
+    &__container {
+      justify-content: space-around;
+    }
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -52,44 +57,12 @@ li {
     &__navigation {
       flex-wrap: wrap;
       justify-content: center;
-      height: 130px;
 
       &>p,
       >div {
         width: 100%;
         text-align: center;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .product {
-    &__navigation {
-      height: 200px;
-    }
-  }
-
-  .navigation {
-    &__panel {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .product {
-    &__navigation {
-      height: 220px;
-    }
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .product {
-    &__navigation {
-      height: 350px;
     }
   }
 }

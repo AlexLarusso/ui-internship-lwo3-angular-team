@@ -19,10 +19,10 @@ export class CategoryMenuComponent {
   ];
 
   public seasons = [
-    { title: 'winter', url: 'category/winter' },
     { title: 'spring', url: 'category/spring' },
     { title: 'summer', url: 'category/summer' },
-    { title: 'autumn', url: 'category/autumn' }
+    { title: 'autumn', url: 'category/autumn' },
+    { title: 'winter', url: 'category/winter' }
   ];
 
   public filterProducts(filterCategory: string): void {

@@ -6,7 +6,6 @@ $text-line-height: 1.4rem;
 
 .topic {
   width: 100%;
-  padding: 0 $accordeon-spacing;
 
   &__header {
     display: flex;
@@ -23,13 +22,13 @@ $text-line-height: 1.4rem;
 
   &__text {
     display: none;
-    margin: 0 $accordeon-spacing * 2 0 $accordeon-spacing;
     max-height: $text-line-height * $text-number-of-lines;
     overflow-y: auto;
     font-style: italic;
     font-size: 0.9rem;
     line-height: $text-line-height;
     white-space: pre-line;
+    
   }
 
   &[aria-expanded="true"] {
@@ -39,6 +38,8 @@ $text-line-height: 1.4rem;
   }
 
   .icon {
-    color: black;
+    color: $bgColorDark;
+    opacity: 0.6;
+    font-size: 1rem;
   }
 }

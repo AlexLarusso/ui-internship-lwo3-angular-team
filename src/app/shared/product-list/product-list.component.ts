@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -10,6 +10,25 @@ import { Subscription } from 'rxjs';
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from '../services';
 import { ProductFormat } from 'src/app/app.enum';
+
+const BREAK_POINTS = {
+  mobile: {
+    width: 575,
+    visibleNumber: 4
+  },
+  tablet_S: {
+    width: 576,
+    visibleNumber: 6
+  },
+  tablet_M: {
+    width: 768,
+    visibleNumber: 8
+  },
+  laptop_L: {
+    width: 1201,
+    visibleNumber: 16
+  }
+};
 
 @AutoUnsubscribe()
 @Component({
@@ -23,9 +42,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
     lacinia eget consectetur sed, convallis at tellus.`;
   public productsSub: Subscription;
   public productData: Array<IProductShortInfo>;
-  public stepNumber = 8;
-  public visibleNumber = 8;
+  public pageWidth: number;
+  public stepNumber: number;
+  public visibleNumber: number;
   public isLoadMoreActive: boolean;
+
+  @HostListener('window:resize', [])
+  public onResize(): void {
+    this.indicateStepNumber();
+  }
 
   constructor(
     private productService: ProductService,
@@ -33,10 +58,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
+    this.pageWidth = window.innerWidth;
+
+    this.indicateStepNumber();
+
+    this.visibleNumber = this.stepNumber;
+
     this.productsSub = this.store.select(getAllProducts)
       .subscribe(data => {
-        this.productData = data.map(product =>
-          this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
+        this.productData = data
+          .map(product =>
+            this.productService.formatProduct(product, ProductFormat.short))
+          .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>;
 
         this.checkLoadMoreAbility();
     });
@@ -52,5 +85,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private checkLoadMoreAbility(): void {
     this.isLoadMoreActive = this.visibleNumber < this.productData.length;
+  }
+
+  private indicateStepNumber(): void {
+    switch (true) {
+      case this.pageWidth > BREAK_POINTS.laptop_L.width:
+        this.stepNumber = BREAK_POINTS.laptop_L.visibleNumber;
+        break;
+      case this.pageWidth > BREAK_POINTS.tablet_M.width:
+        this.stepNumber = BREAK_POINTS.tablet_M.visibleNumber;
+        break;
+      case this.pageWidth > BREAK_POINTS.tablet_S.width:
+        this.stepNumber = BREAK_POINTS.tablet_S.visibleNumber;
+        break;
+      default:
+        this.stepNumber = BREAK_POINTS.mobile.visibleNumber;
+    }
   }
 }

@@ -3,11 +3,11 @@
     <div>
       <h2 class="col-12 content__title">From Our Collection</h2>
       <div class="product__navigation">
-        <p class="col-5">
+        <p>
           {{ aboutProductsText }}
         </p>
-        <div class="col-7">
-          <div class="navigation__panel">
+        <div>
+          <div class="col-12 navigation__panel">
             <app-button *ngFor="let item of filterItems" buttonClass="button_navigation">
               {{ item }}
             </app-button>
@@ -17,9 +17,9 @@
     </div>
     <div class="product__container">
       <app-product-item *ngFor="let product of productData | slice:0:visibleNumber"
-        class="product__item"
         [status]="product.status"
         [imgUrl]="product.imgUrl"
+        [imgUrlNext]="product.imgUrlNext"
         [productTitle]="product.productTitle"
         [productPrice]="product.productPrice"
         [productId]="product.productId">
