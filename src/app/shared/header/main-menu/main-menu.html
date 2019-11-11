@@ -1,7 +1,9 @@
 <div class="menu">
+  
   <div class="content__container">
     <div class="col-12 menu__wrapper">
-      <div class="col-9 menu__container">
+      <app-scroll class="col-4"></app-scroll>
+      <div class="col-8 menu__container">
         <ul class="menu__list col-6">
           <li *ngFor="let item of menuItems" class="menu__list__item">
             <a [routerLink]="item.url">{{ item.title }}</a>

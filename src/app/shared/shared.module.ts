@@ -24,6 +24,8 @@ import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
+import { ParallaxComponent } from './parallax/parallax.component';
+import { ScrollComponent } from '../components/scroll/scroll.component'; 
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent
+    ShopByCategoryComponent,
+    ParallaxComponent,
+    ScrollComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +80,9 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent
+    ShopByCategoryComponent,
+    ParallaxComponent,
+    ScrollComponent
   ]
 })
 

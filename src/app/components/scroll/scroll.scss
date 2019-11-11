@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-$item-size: 15px;
+$item-size: 12px;
 $item-spacing: 5px;
 $item-hover-color: rgba(0, 0, 0, 0.2);
 $item-color: rgb(180, 180, 180);
@@ -10,15 +10,19 @@ $item-active-color: $accentColor;
 $item-text-color: white;
 
 .scroll {
-  background: $bgColorDark;
-  position: fixed;
+  // background: $bgColorDark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // position: fixed;
   // left: 95%;
-  top: 15px;
-  transform: translateY(-50%);
-  z-index: 6;
-  height: 30px;
+  // top: 15px;
+  // transform: translateY(-50%);
+  // z-index: 6;
+  height: 60px;
 
   .item {
+    position: relative;
     display: block;
     margin: $item-spacing 0;
     width: $item-size;
@@ -31,25 +35,40 @@ $item-text-color: white;
     cursor: pointer;
 
     &.active {
-      transform: scale(1.2);
+      // transform: scale(1.2);
       background-color: $item-active-color;
+
+      .item {
+        &__text {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
     }
 
     &__text {
-      visibility: hidden;
+      
       display: block;
-      font-size: 1rem;
+      position: absolute;
+      font-size: 0.6rem;
       color: $item-text-color;
       text-align: center;
       opacity: 0;
       transition: opacity 0.6s;
-      // transition-delay: 300ms;
+      transition-delay: 300ms;
+      visibility: hidden;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     &:hover {
-      background-color: $item-hover-color;
-      transform: translateX(calc(-15% + #{$item-size}));
-      width: 100px;
+    //   background-color: $item-hover-color;
+    //   transform: translateY(50px);
+    //   width: 100px;
+      background-color: $item-active-color;
+
+
 
       .item__text {
         visibility: visible;
@@ -82,5 +101,6 @@ $item-text-color: white;
 
 ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }

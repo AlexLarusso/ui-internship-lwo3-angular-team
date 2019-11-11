@@ -3,7 +3,7 @@
 @mixin tagStyle {
   position: absolute;
   top: 15px;
-  left: -20px;
+  left: -12px;
   z-index: 4;
   box-shadow: 0 0 11px rgba(33, 33, 33, .3);
   width: 90px;
@@ -60,8 +60,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin: 15px 15px;
-    width: 250px;
-    height: 430px;
+    width: 225px;
+    height: 400px;
     background-color: $bgColorLight;
     box-shadow: 0 0 10px rgba(33, 33, 33, .1);
     text-transform: uppercase;
@@ -74,7 +74,7 @@
 
   &__picture {
     position: relative;
-    height: 378px;
+    height: 340px;
 
     &__container {
       position: relative;
