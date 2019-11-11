@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
+import { LoadProducts, SetProducts, SetProductImages } from '../actions/products.action';
 
 import { switchMap, map } from 'rxjs/operators';
 
-import { LoadProducts, SetProducts, SetProductImages } from '../actions/products.action';
 import { HttpService } from '../../shared/services';
 
 @Injectable()

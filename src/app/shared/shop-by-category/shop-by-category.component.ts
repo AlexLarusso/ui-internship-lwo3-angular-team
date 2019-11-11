@@ -1,4 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+<<<<<<< HEAD
+=======
+import { ActivatedRoute } from '@angular/router';
+>>>>>>> 61b7c429cb572ec8885240970a2ada46e19a33d7
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -38,6 +42,7 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
       .subscribe(item => {
         this.filterCategory = item.category;
       });
+<<<<<<< HEAD
 
     this.getProductsByCategory();
   }
@@ -48,7 +53,19 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
       .subscribe(items => this.filteredItems = items
         .map(item =>
           this.productService.formatProduct(item, ProductFormat.short)) as Array<IProductShortInfo>);
+=======
+
+    this.getProductsByCategory();
+>>>>>>> 61b7c429cb572ec8885240970a2ada46e19a33d7
   }
 
   public ngOnDestroy(): void { }
+
+  private getProductsByCategory(): void {
+    this.filterGenderSub = this.store
+      .select(getFilteredProducts)
+      .subscribe(items => this.filteredItems = items
+        .map(item =>
+          this.productService.formatProduct(item, ProductFormat.short)) as Array<IProductShortInfo>);
+  }
 }

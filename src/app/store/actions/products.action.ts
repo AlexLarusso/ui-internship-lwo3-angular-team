@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { IProduct } from 'src/app/interfaces';
 
 export enum ProductsActionTypes {
-  SetProducts = '[Products] Set data',
+  SetProducts = '[Products] Set products',
   SetProductImages = '[Products] Set product images',
   LoadProducts = '[Products] Load data',
   FilterByGender = '[ShopCategory] FilterByGender',

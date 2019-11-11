@@ -24,7 +24,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private productService: ProductService,
-    private store: Store<IAppState>) { }
+    private store: Store<IAppState>
+  ) { }
 
   public ngOnInit(): void {
     this.getProductsSub = this.store.select(getAllProducts)

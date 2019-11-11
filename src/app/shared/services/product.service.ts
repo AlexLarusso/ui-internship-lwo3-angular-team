@@ -1,11 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
 
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Observable, Subscription } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
@@ -13,7 +14,6 @@ import { ProductFormat, URLs } from 'src/app/app.enum';
 import {
   IProduct, IProductSimilarOptions, ICloudinaryImage, IProductShortInfo
 } from 'src/app/interfaces';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 @AutoUnsubscribe()
 @Injectable({
@@ -81,18 +81,6 @@ export class ProductService implements OnDestroy {
     }
   }
 
-  public getProductsByCategory(category: string, format: string = ProductFormat.full):
-  Observable<Array<any>> {
-    return this.store.select(getAllProducts)
-      .pipe(map(
-        products => products
-        .filter(
-          product => product.category === category)
-        .map(
-          product => this.formatProduct(product, format))
-      ));
-  }
-
   public getProductById(id: string, format: string = ProductFormat.full):
     Observable<any> {
       return this.httpService.getProductById(id).pipe(
@@ -139,9 +127,20 @@ export class ProductService implements OnDestroy {
 
   public ngOnDestroy(): void { }
 
-  private filterSimilarProducts(
-    products: Array<IProduct>,
-    similarOptions: IProductSimilarOptions): Array<IProduct> {
+  private getProductsByCategory(category: string, format: string = ProductFormat.full):
+  Observable<Array<any>> {
+    return this.store.select(getAllProducts)
+      .pipe(map(
+        products => products
+        .filter(
+          product => product.category === category)
+        .map(
+          product => this.formatProduct(product, format))
+      ));
+  }
+
+  private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):
+    Array<IProduct> {
       return products.filter(product =>
         product.category === similarOptions.category &&
         product.gender === similarOptions.gender &&

@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 
 import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
-
 import {
   IProductShortInfo, IProductSimilarOptions, IProduct
  } from 'src/app/interfaces';
@@ -32,6 +31,7 @@ export class SimilarProductsComponent implements OnInit, OnDestroy {
       gender: this.product.gender,
       id: this.product._id
     };
+
     this.productServiceSub = this.productService
       .getSimilarProducts(this.productSimilarOptions, ProductFormat.short)
         .subscribe(products => this.similarProducts = products);

@@ -3,7 +3,11 @@
     <ul class="col-4 menu__container">
       <li *ngFor="let gender of genders">
         <a [routerLink]="gender.url"
+<<<<<<< HEAD
         (click)="filterProducts(gender.title)">{{ gender.title }}</a>
+=======
+          (click)="filterProducts(gender.title)">{{ gender.title }}</a>
+>>>>>>> 61b7c429cb572ec8885240970a2ada46e19a33d7
       </li>
     </ul>
     <app-main-logo logoColor="dark" class="logo col-4"></app-main-logo>

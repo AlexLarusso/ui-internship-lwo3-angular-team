@@ -76,6 +76,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
     this.productImages = this.product.images;
 
     this.store.dispatch(new SelectColor(initColor));
+
     this.selectedQtySub = this.store.select(getProductQuantity)
       .subscribe(qty => this.selectedQty = qty);
     this.selectedColorSub = this.store.select(getProductSelectedColor)
