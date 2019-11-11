@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -52,7 +52,7 @@ import { PaypalCheckoutComponent } from '../components/paypal-checkout/paypal-ch
     PaypalCheckoutComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FontAwesomeModule,
     RouterModule,
     FormsModule

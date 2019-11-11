@@ -8,14 +8,14 @@ import { Component } from '@angular/core';
 
 export class CategoryMenuComponent {
   public genders = [
-    {title: 'women', url: '/women'},
-    {title: 'men', url: '/men'},
-    {title: 'collection', url: '/collection'}
+    { title: 'women', url: 'category/women' },
+    { title: 'men', url: 'category/men' },
+    { title: 'collection', url: 'category/collection' }
   ];
   public seasons = [
-    {title: 'winter', url: '/winter'},
-    {title: 'spring', url: '/spring'},
-    {title: 'summer', url: '/summer'},
-    {title: 'fall', url: '/fall'}
+    { title: 'winter', url: 'category/winter' },
+    { title: 'spring', url: 'category/spring' },
+    { title: 'summer', url: 'category/summer' },
+    { title: 'fall', url: 'category/fall' }
   ];
 }
