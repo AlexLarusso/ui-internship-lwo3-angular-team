@@ -15,10 +15,10 @@
             </button>
           </div>
           <div class="col-4 menu__cart__container">
-            <button class="menu__cart__btn">
+            <a [routerLink]="menuItems[0].url" class="menu__cart__btn">
               <fa-icon [icon]="faCartArrowDown"></fa-icon>
-            </button>
-            <div class="menu__cart"></div>
+            </a>
+            <span class="menu__cart__qty"> ( {{ cartItemsQty }} )</span>
           </div>
         </div>
       </div>

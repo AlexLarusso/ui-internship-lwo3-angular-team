@@ -12,7 +12,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.10",
     "@angular/common": "~8.2.9",
@@ -30,6 +29,7 @@
     "@ngrx/store": "^8.3.0",
     "intl": "^1.2.5",
     "ngx-auto-unsubscribe": "^3.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "rxjs": "^6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

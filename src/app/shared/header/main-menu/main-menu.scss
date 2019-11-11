@@ -53,17 +53,26 @@
   }
 
   &__cart {
-    width: 70%;
-    background: $bgColorLight;
 
     &__container {
       display: flex;
       height: 30px;
     }
 
+    &__btn, &__qty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &__btn {
       width: 30%;
       background: $accentColor;
+    }
+
+    &__qty {
+      width: 70%;
+      height: 100%;
+      background: $bgColorLight;
     }
   }
 
