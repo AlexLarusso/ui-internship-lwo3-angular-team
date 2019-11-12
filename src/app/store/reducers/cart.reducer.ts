@@ -40,10 +40,11 @@ export function cartReducer(state = initialState, action: any): IState {
     }
 
     case RemoveProductFromCart.TYPE: {
+      const newCartProducts = state.cartProducts.filter(el => !cartItemsAreEqual(el, payload));
+
       return {
         ...state,
-        cartProducts: state.cartProducts
-          .filter(el => !cartItemsAreEqual(el, payload))
+        cartProducts: newCartProducts
       };
     }
 
@@ -54,14 +55,14 @@ export function cartReducer(state = initialState, action: any): IState {
       };
     case ChangeProductItemQty.TYPE: {
       const { product, newQty } = payload;
+      const newCartProducts = state.cartProducts.map(
+        el => cartItemsAreEqual(el, product)
+          ? { ...el, quantity: newQty }
+          : el);
 
       return {
         ...state,
-        cartProducts: state.cartProducts.map(
-          el => cartItemsAreEqual(el, product)
-            ? { ...el, quantity: newQty }
-            : el
-        )
+        cartProducts: newCartProducts
       };
     }
     default: return state;

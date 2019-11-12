@@ -9,7 +9,7 @@
     <app-select-quantity
       [startNumber]="productItem.quantity"
       [maxNumber]="productItem.maxQty"
-      (quantityChanged)=handleQtyChange($event)>
+      (quantityChanged)="handleQtyChange($event)">
     </app-select-quantity>
   </div>
   <span class="product-cart-item__size">
@@ -22,7 +22,7 @@
     </span>
   </span>
   <a class="product-cart-item__pdp-link"
-    [routerLink]="'/products/'+productItem.id">
+    [routerLink]="productRouterLink">
     More...
   </a>
   <span class="product-cart-item__price">

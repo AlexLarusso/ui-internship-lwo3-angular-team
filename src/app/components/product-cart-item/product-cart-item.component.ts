@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,20 +12,25 @@ import { RemoveProductFromCart, ChangeProductItemQty } from 'src/app/store/actio
   templateUrl: './product-cart-item.html',
   styleUrls: ['./product-cart-item.scss']
 })
-export class ProductCartItemComponent {
+export class ProductCartItemComponent implements OnInit {
   @Input() public productItem: IProductCartItem = null;
   @Input() public isLastItem = false;
 
   public closeIcon: IconDefinition = faTimesCircle;
   public currentCurrency = 'USD';
+  public productRouterLink: string;
 
   constructor(private store: Store<IAppState>) { }
+
+  public ngOnInit(): void {
+    this.productRouterLink = `/products/${this.productItem.id}`;
+  }
 
   public removeItemFromCart(): void {
     this.store.dispatch(new RemoveProductFromCart(this.productItem));
   }
 
-  public handleQtyChange(qty: number) {
+  public handleQtyChange(qty: number): void {
     this.store.dispatch(new ChangeProductItemQty(
       { product: this.productItem, newQty: qty }
     ));

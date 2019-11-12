@@ -40,7 +40,7 @@ export function productOptionsReducer(state = initialState, action: any): IState
         selectedSize: payload
       };
     case ResetProductOptions.TYPE:
-      return initialState;
+      return { ...initialState };
     default:
       return state;
   }

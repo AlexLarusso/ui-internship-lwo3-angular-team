@@ -51,7 +51,7 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
     ShopByCategoryComponent,
     PaypalCheckoutComponent,
     SelectQuantityComponent,
-    ImageLoadDirective
+    ImageLoadDirective,
   ],
   imports: [
     CommonModule,

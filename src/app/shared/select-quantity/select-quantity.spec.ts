@@ -1,7 +1,6 @@
 import { SelectQuantityComponent } from './select-quantity.component';
-import { fakeAsync, tick } from '@angular/core/testing';
 
-fdescribe('SelectQuantityComponent: ', () => {
+describe('SelectQuantityComponent: ', () => {
   const maxNumberInputMock = 10;
   const startNumberInputMock = 1;
 
@@ -46,17 +45,5 @@ fdescribe('SelectQuantityComponent: ', () => {
       expect(component.value).toEqual(maxNumberInputMock);
       expect(component.toggleLimit).toHaveBeenCalled();
     });
-  });
-
-  describe('toggleLimit():', () => {
-    it('should set isValueLimit to be true and then set back to false after toggleLimitDelayValue ms', fakeAsync(() => {
-      component.value = maxNumberInputMock;
-      expect(component.isValueLimit).toBeFalsy();
-      component.onChange(component.increment);
-      tick(0);
-      expect(component.isValueLimit).toBeTruthy();
-      tick(component.toggleLimitDelayValue);
-      expect(component.isValueLimit).toBeFalsy();
-    }));
   });
 });
