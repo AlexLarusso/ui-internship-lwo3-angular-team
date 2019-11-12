@@ -15,7 +15,9 @@ export class CategoryMenuComponent {
   public genders = [
     { title: 'women', url: 'category/women' },
     { title: 'men', url: 'category/men' },
-    { title: 'collection', url: 'category/collection' }
+    { title: 'collection', url: 'category/collection' },
+    {}
+
   ];
 
   public seasons = [

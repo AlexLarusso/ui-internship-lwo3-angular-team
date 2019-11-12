@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-.product {
+.products {
   padding-top: 50px;
   background: $bgColorMedium;
 
@@ -18,6 +18,10 @@
 
   &__navigation {
     margin: 10px 0;
+  }
+
+  &__text {
+    text-align: center;
   }
 }
 
@@ -45,7 +49,7 @@ app-button  {
 }
 
 @media screen and (max-width: 1200px) {
-  .product {
+  .products {
     &__container {
       justify-content: space-around;
     }
@@ -53,7 +57,7 @@ app-button  {
 }
 
 @media screen and (max-width: 992px) {
-  .product {
+  .products {
     &__navigation {
       flex-wrap: wrap;
       justify-content: center;

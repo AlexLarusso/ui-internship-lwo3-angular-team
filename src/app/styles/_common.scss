@@ -13,7 +13,7 @@ body {
 
   &__title,
   &__title_sale {
-    margin: 20px 0 0;
+    margin-top: 20px;
     font-size: 2rem;
     text-align: center;
     color: $accentColor;
@@ -32,6 +32,16 @@ body {
 .modal-open {
   overflow: hidden;
   position: fixed;
+}
+
+@media screen and (max-width: 992px) {
+  .content {
+    &__title,
+    &__title_sale {
+      margin-top: 60px;
+      font-size: 1.7rem;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {

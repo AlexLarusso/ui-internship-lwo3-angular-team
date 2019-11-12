@@ -59,7 +59,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 15px 15px;
+    margin: 15px;
     width: 225px;
     height: 400px;
     background-color: $bgColorLight;
@@ -68,7 +68,7 @@
 
     &:hover {
       cursor: pointer;
-      box-shadow: 0 0 14px rgba(33, 33, 33, .7);
+      box-shadow: 0 0 16px rgba(33, 33, 33, .8);
     }
   }
 

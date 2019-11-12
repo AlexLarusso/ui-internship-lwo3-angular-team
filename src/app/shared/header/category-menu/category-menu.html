@@ -1,6 +1,6 @@
 <div class="content__container">
   <div class="col-12 menu">
-    <ul class="col-3 menu__container">
+    <ul class="col-4 menu__container">
       <li *ngFor="let gender of genders">
         <a [routerLink]="gender.url"
           (click)="filterProducts(gender.title)">{{ gender.title }}</a>
