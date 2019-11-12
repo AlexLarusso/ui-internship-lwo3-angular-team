@@ -9,20 +9,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductFilterComponent implements OnInit {
   @Input() public products;
 
-  public productCategory: Array<string>;
-  public productColor: Array<string>;
-  public productBrand: Array<string>;
-  public filterRequest = {
-    category: [],
-    brand: [],
-    color: []
-  };
+  public productCategory: Array<string> = [];
+  public productColor: Array<string> = [];
+  public productBrand: Array<string> = [];
+  public filterRequest = [];
   public selectedProducts;
-  public isChecked: boolean;
+  public checkedCriteria: string;
+  public criteriaName: string;
 
-  public createRequest() {
-    if (this.isChecked) {
-      this.filterRequest
+  public onCreateRequest(event) {
+    if (event.change) {
+      this.criteriaName = event.value;
+      this.filterRequest.push(this.criteriaName);
+    } else {
+      this.filterRequest.filter(item => this.criteriaName !== item);
     }
   }
 
@@ -32,16 +32,25 @@ export class ProductFilterComponent implements OnInit {
       this.productColor.push(item.color);
       this.productBrand.push(item.brand);
     });
+    this.productCategory = [...new Set(this.productCategory)];
+    this.productColor = [...new Set(this.productColor)];
+    this.productBrand = [...new Set(this.productBrand)];
   }
 
   private onFilter() {
-    this.products.filter(item => item);
-    this.selectedProducts = this.products.filter(product =>
-    (!this.filterRequest.category.length || this.filterRequest.category.includes(product.category))
-    &&
-    (!this.filterRequest.brand.length || this.filterRequest.brand.includes(product.brand))
-    &&
-    (!this.filterRequest.color.length || this.filterRequest.color.includes(product.color))
-  );
+    this.filterRequest.forEach((criteria) =>
+      this.products.forEach(product =>
+        product.forof((prop) =>
+          prop === criteria ?
+            this.selectedProducts.push(product) :
+            this.selectedProducts))
+    );
+    //   this.selectedProducts = this.products.filter(product =>
+    //   (!this.filterRequest.category.length || this.filterRequest.category.includes(product.category))
+    //   &&
+    //   (!this.filterRequest.brand.length || this.filterRequest.brand.includes(product.brand))
+    //   &&
+    //   (!this.filterRequest.color.length || this.filterRequest.color.includes(product.color))
+    // );
   }
 }

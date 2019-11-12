@@ -39,6 +39,19 @@
   }
 }
 
+@keyframes imageScale {
+  from {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+  }
+}
+
 .new {
   &::before {
     @include tagStyle;
@@ -114,10 +127,17 @@
 
   &__picture {
     position: relative;
+    opacity: 0;
     margin: 20px 0 5px;
     height: 320px;
     background: $bgColorMedium;
     overflow: hidden;
+    animation: imageScale .4s ease-in-out 1 forwards;
+
+    &__image-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
 
     &__container {
       position: relative;

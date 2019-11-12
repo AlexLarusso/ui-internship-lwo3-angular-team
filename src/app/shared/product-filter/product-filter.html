@@ -2,24 +2,28 @@
   <div class="filter-criteria" *ngFor="let product of productBrand">
     <h2 class="filter-criteria__title">Brand</h2>
     <input class="filter-criteria__option"
-    [(ngModel)]="isChecked"
+    (change)="onCreateRequest()"
     type="checkbox"
-    name="brand">
+    name="brand"
+    value="product">
+    <label>{{ product }}</label>
   </div>
   <div class="filter-criteria"  *ngFor="let product of productCategory">
       <h2 class="filter-criteria__title">Category</h2>
       <input class="filter-criteria__option"
-      [(ngModel)]="isChecked"
+      (change)="onCreateRequest()"
       type="checkbox"
-      name="category">
+      name="category"
+      value="category + product">
       <label>{{ product }}</label>
   </div>
   <div class="filter-criteria" *ngFor="let product of productColor">
       <h2 class="filter-criteria__title">Color</h2>
       <input class="filter-criteria__option"
-      [(ngModel)]="isChecked"
+      (change)="onCreateRequest($event)"
       type="checkbox"
-      name="color">
+      name="color"
+      value="product">
       <label>{{ product }}</label>
   </div>
   <button (click)="onFilter()"></button>

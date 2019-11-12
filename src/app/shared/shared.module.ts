@@ -23,6 +23,7 @@ import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
+import { ImageLoadDirective } from './directives/image-loader.directive';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 
@@ -48,13 +49,15 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent,
-    ProductFilterComponent
+    ImageLoadDirective,
+    ProductFilterComponent,
+    ShopByCategoryComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     RouterModule,
+    FormsModule
   ],
   providers: [
   ],

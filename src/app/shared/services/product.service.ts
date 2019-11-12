@@ -88,7 +88,9 @@ export class ProductService {
           productId: product.id,
           status: product.status,
           sex: product.sex,
-          season: product.season
+          season: product.season,
+          brand: product.brand,
+          category: product.category
         };
       }
   }

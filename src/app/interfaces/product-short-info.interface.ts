@@ -6,4 +6,6 @@ export interface IProductShortInfo {
   status?: string;
   sex: string;
   season: Array<string>;
+  brand: string;
+  category: string;
 }
