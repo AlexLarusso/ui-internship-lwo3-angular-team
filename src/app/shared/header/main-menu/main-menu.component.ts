@@ -16,7 +16,6 @@ export class MainMenuComponent {
   public menuItems = [
     {title: 'Shopping Cart', url: '/shoppingcart'},
     {title: 'Wish List', url: '/wishlist'},
-    {title: 'Checkout', url: '/checkout'},
     {title: 'My Account', url: '/myaccount'}
   ];
 }

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
@@ -7,7 +9,6 @@ import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
 import { SelectColor } from 'src/app/store/actions/product-options.actions';
-import { NotificationService } from 'src/app/shared/services/notification.service';
 
 import { Subscription } from 'rxjs';
 
@@ -46,7 +47,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<IAppState>,
-    private notificationService: NotificationService
+    private toastrService: ToastrService
   ) { }
 
   public ngOnInit(): void {
@@ -88,12 +89,9 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   public onBuyClick(): void {
-    const title = `Added ${this.productDetails.title} to your cart.`;
-    const message = `Quantity: ${this.selectedQty}.
-      Size: ${this.selectedSize}.
-      Color: ${this.selectedColor}.
-      Full price: ${this.selectedQty * this.productDetails.price} uah.`;
+    const message = `Added ${this.productDetails.title} to your cart.`;
 
-    this.notificationService.success(title, message);
+    this.toastrService.success(message);
+
   }
 }
