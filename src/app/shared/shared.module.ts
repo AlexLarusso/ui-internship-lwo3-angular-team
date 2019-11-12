@@ -23,6 +23,7 @@ import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
+import { ImageLoadDirective } from './directives/image-loader.directive';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
+    ImageLoadDirective,
     ShopByCategoryComponent
   ],
   imports: [
