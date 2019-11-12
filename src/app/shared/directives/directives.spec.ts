@@ -40,6 +40,7 @@ describe('ImageLoadDirective: ', () => {
       (window as any).IntersectionObserver = jasmine.createSpy('IntersectionObserver')
         .and.callFake(entries => {
           entries = entriesMock;
+
           return observerMock;
         });
       (window as any).EventEmitter = jasmine.createSpy('EventEmitter');

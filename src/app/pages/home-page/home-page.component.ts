@@ -18,12 +18,11 @@ import { IProductShortInfo } from 'src/app/interfaces';
 export class HomePageComponent implements OnInit, OnDestroy {
   public productList: Array<IProductShortInfo>;
   public getProductsSub: Subscription;
-
+  public products$;
   constructor(private productService: ProductService) { }
 
   public ngOnInit(): void {
-    this.getProductsSub = this.productService.getProducts(ProductFormat.short)
-      .subscribe(data => this.productList = data);
+    this.products$ = this.productService.getProducts(ProductFormat.short);
   }
 
   public ngOnDestroy(): void { }
