@@ -25,11 +25,7 @@ export class CategoryMenuComponent {
     { title: 'autumn', url: 'category/autumn' }
   ];
 
-<<<<<<< HEAD
-  public filterProducts(filterCategory): void {
-=======
   public filterProducts(filterCategory: string): void {
->>>>>>> 61b7c429cb572ec8885240970a2ada46e19a33d7
     filterCategory === 'women' || filterCategory === 'men' ?
       this.store.dispatch(new FilterByGender(filterCategory)) :
       this.store.dispatch(new FilterBySeason(filterCategory));

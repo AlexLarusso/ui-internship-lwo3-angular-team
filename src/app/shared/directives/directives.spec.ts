@@ -1,106 +1,99 @@
 import { ImageLoadDirective } from './image-loader.directive';
-import { async, TestBed } from '@angular/core/testing';
-import { ElementRef, asNativeElements, EventEmitter } from '@angular/core';
 
-describe('IntersectionObserverMockTest', () => {
-  class MockElementRef extends ElementRef {
-    constructor() { super(undefined); }
-    // nativeElement = {};
-  }
-
-
-  // const observeMock = {
-  //   observe: () => null,
-  //   unobserve: () => null,
-  //   disconnect: () => null
-  // };
-
+describe('ImageLoadDirective: ', () => {
+  const elementMock = {
+    nativeElement: null
+  };
   let component;
-  let directiveMock;
-  // let argsMock;
-  let element = new MockElementRef();
-  let observerMock;
-  let downloadImage = new EventEmitter();
-  let elementMock;
-  const entranceObj = {
+  const expectedOptions = {
+    root: 'rootMock',
+    rootMargin: '0px',
+    threshold: [0, 0.5, 1.0]
+  };
+  const entriesMock = {
     isIntersecting: true,
-    target: true
+    target: null
   };
 
   function setMocks() {
-    component = new ImageLoadDirective(element);
-    directiveMock = {
-      observe: jasmine.createSpy('directiveMock:observe'),
-      unobserve: jasmine.createSpy('directiveMock:unobserve'),
-      disconnect: jasmine.createSpy('directiveMock:disconnect'),
-      isIntersecting: jasmine.createSpy('directiveMock:isIntersecting'),
-      target: jasmine.createSpy('directiveMock:target'),
-      entrance: jasmine.createSpyObj('directiveMock:entrance', entranceObj),
-      emit: jasmine.createSpy('directiveMock:emit').and.returnValue(false),
-      downloadImage: jasmine.createSpy('directiveMock:downloadImage'),
-      // element: jasmine.createSpy('directiveMock:element').and.returnValue(element)
-      // every: jasmine.createSpy('directiveMock:downloadImage').and.returnValue([intersecting, target])
-    };
-    // argsMock = {
-    //   // element: jasmine.createSpy('directiveMock:element').and.returnValue(element),
-    // };
+    document.querySelector = jasmine.createSpy('document:querySelector')
+      .and.returnValue(expectedOptions.root);
+    component = new ImageLoadDirective(elementMock);
   }
 
   beforeEach(() => {
-    elementMock = {
-      nativeElement: {}
-    };
-    const entranceMock = {
-      isIntersecting: { },
-      target: { }
-    };
-
-    observerMock = {
-      observe: jasmine.createSpy('directiveMock:observe').and.returnValue([entranceMock]),
-      unobserve: jasmine.createSpy('directiveMock:unobserve')
-    };
-
-    new IntersectionObserver(() => observerMock);
-    console.info(elementMock,typeof(elementMock.nativeElement));
-
     setMocks();
-    TestBed.configureTestingModule({
-      providers: [
-        {
-          provide: ElementRef, useClass: MockElementRef
-        }
-      ]
-    }).compileComponents();
-    element = TestBed.get(ElementRef);
   });
 
-
-  it('should be defined', () => {
-    expect(ImageLoadDirective).toBeDefined();
-    console.info(elementMock, typeof(elementMock.nativeElement));
-
+  it('should have correct properties', () => {
+    expect(component.options).toEqual(expectedOptions);
   });
 
-  fdescribe('ngAfterViewInit():', () => {
-    it('should set correct properties', () => {
+  describe('ngAfterViewInit(): ', () => {
+    const observerMock = {
+      observe: jasmine.createSpy('observerMock:observe'),
+      unobserve: jasmine.createSpy('observerMock:unobserve'),
+      disconnect: jasmine.createSpy('observerMock:disconnect')
+    };
+
+    beforeEach(() => {
+      (window as any).IntersectionObserver = jasmine.createSpy('IntersectionObserver')
+        .and.callFake(entries => {
+          entries = entriesMock;
+
+          return observerMock;
+        });
+      (window as any).EventEmitter = jasmine.createSpy('EventEmitter');
+
       component.ngAfterViewInit();
-      console.info(elementMock, typeof(elementMock.nativeElement));
+    });
 
-      // expect(component.observer.observe).toHaveBeenCalledWith();
+    it('should define element', () => {
+      expect(component.element).toEqual(elementMock);
+    });
+
+    it('should call IntersectionObserver', () => {
+      expect(IntersectionObserver).toHaveBeenCalled();
+    });
+
+    it('should define correct observer', () => {
+      expect(component.observer).toBeDefined();
+      expect(component.observer.observe).toBeDefined();
+    });
+
+    it('should call observer.observe with correct params', () => {
+      expect(component.observer.observe).toHaveBeenCalledWith(elementMock.nativeElement);
+    });
+
+    describe('checkForIntersection(): ', () => {
+      const observerMock = {
+        observe: jasmine.createSpy('observerMock:observe'),
+        unobserve: jasmine.createSpy('observerMock:unobserve'),
+        disconnect: jasmine.createSpy('observerMock:disconnect')
+      };
+
+      beforeEach(() => {
+        (window as any).IntersectionObserver = jasmine.createSpy('IntersectionObserver')
+          .and.callThrough()
+          .and.callFake(entries => {
+            entries = entriesMock;
+
+            return observerMock;
+          });
+        component.checkForIntersection([entriesMock]);
+      });
+      it('should call observer.observe with correct params', () => {
+        expect(component.observer.unobserve).toHaveBeenCalledWith(elementMock.nativeElement);
+      });
+
+      it('should call observer.unobserve with correct params', () => {
+        entriesMock.isIntersecting = false;
+        expect(component.observer.unobserve).not.toThrowError();
+      });
+
+      it('should call observer.disconnect and disconnect from intersection observer', () => {
+        expect(component.observer.disconnect).toHaveBeenCalled();
+      });
     });
   });
-
-  // fdescribe('checkForIntersection()', () => {
-  //   it('should check if intersecting', () => {
-  //     component.checkIntersecting(entranceObj);
-  //     expect(component.entrance.entrance).toHaveBeenCalled();
-  //     expect(component.element.element).toHaveBeenCalled();
-  //   });
-
-  //   it('should dispatch intersection audit', () => {
-  //     expect(component.checkForIntersection).toHaveBeenCalledWith(directiveMock.every);
-  //     expect(component.directiveMock.emit().toHaveBeenCalled());
-  //     expect(component.directiveMock.disconnect()).toHaveBeenCalled();
-  //   });
-  // });
 });

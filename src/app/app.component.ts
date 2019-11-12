@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import {
-  Component, OnInit, OnDestroy
-} from '@angular/core';
-=======
 import { Component, OnInit, OnDestroy } from '@angular/core';
->>>>>>> 61b7c429cb572ec8885240970a2ada46e19a33d7
 import { Router, NavigationEnd } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
