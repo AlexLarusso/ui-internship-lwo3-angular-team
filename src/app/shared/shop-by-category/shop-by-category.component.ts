@@ -12,7 +12,7 @@ import { IProductShortInfo } from 'src/app/interfaces';
 import { IAppState } from 'src/app/store/app.store';
 
 @AutoUnsubscribe()
-@Component ({
+@Component({
   selector: 'app-shop-by-category',
   templateUrl: './shop-by-category.html',
   styleUrls: ['./shop-by-category.scss']
@@ -24,16 +24,26 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy, AfterViewChec
   public filterGenderSub: Subscription;
   public filteredItems: Array<IProductShortInfo>;
   public filterItemsSub: Subscription;
+  public routeParamsSub: Subscription;
 
   constructor(
-     private store: Store<IAppState>,
-     private cd: ChangeDetectorRef
-    ) { }
+    private store: Store<IAppState>,
+    private cd: ChangeDetectorRef,
+    private route: ActivatedRoute
+  ) { }
+
+  public getProductsByCategory() {
+    this.store.dispatch(new LoadProducts());
+    this.filterGenderSub = this.store.select(getFilteredProducts).subscribe(items => this.filteredItems = items);
+  }
 
   public ngOnInit(): void {
-    this.store.dispatch(new LoadProducts());
+    this.routeParamsSub = this.route.params.pipe()
+      .subscribe(item => {
+        this.filterCategory = item.category;
 
-    this.filterGenderSub = this.store.select(getFilteredProducts).subscribe(items => this.filteredItems = items);
+        this.getProductsByCategory();
+      });
   }
 
   public ngAfterViewChecked(): void {

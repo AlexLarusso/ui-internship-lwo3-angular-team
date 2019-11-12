@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
+import { ImageLoadDirective } from './directives/image-loader.directive';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 import { ModalComponent } from '../shared/modal-window/modal-window.component';
 import { LogInComponent } from '../components/log-in/log-in.component';
@@ -54,10 +55,11 @@ import { ModalService } from 'src/app/shared/services/modal-service';
     ShopByCategoryComponent,
     LogInComponent,
     SignUpComponent,
-    ModalComponent
+    ModalComponent,
+    ImageLoadDirective
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FontAwesomeModule,
     RouterModule,
     FormsModule

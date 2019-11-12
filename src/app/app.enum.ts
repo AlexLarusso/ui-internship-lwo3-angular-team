@@ -15,7 +15,6 @@ export enum NotificationType {
   info = 'info'
 }
 
-export enum Role {
-  User = 'User',
-  Admin = 'Admin'
+export enum ImagePlaceholder {
+  IMAGE_NOT_FOUND = '../../../assets/server-data/images/image-not-found.png'
 }

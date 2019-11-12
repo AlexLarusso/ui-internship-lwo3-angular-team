@@ -1,10 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Subscription } from 'rxjs';
+
+@AutoUnsubscribe()
 @Component({
   selector: 'app-parallax',
   templateUrl: './parallax.html',
   styleUrls: ['./parallax.scss']
 })
-export class ParallaxComponent {
+export class ParallaxComponent implements OnInit, OnDestroy {
   @Input() public parallaxClass: string;
+
+  public routeSub: Subscription;
+
+  constructor(private route: ActivatedRoute) { }
+
+  public ngOnInit(): void {
+   this.routeSub = this.route.params.pipe()
+      .subscribe(item => this.parallaxClass = item.category);
+  }
+
+  public ngOnDestroy(): void { }
 }

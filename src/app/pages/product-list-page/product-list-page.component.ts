@@ -13,6 +13,6 @@ export class ProductListPageComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   public ngOnInit(): void {
-    this.currentPath = this.route.snapshot.url[0].path;
+    this.currentPath = this.route.snapshot.paramMap.get('category');
   }
 }
