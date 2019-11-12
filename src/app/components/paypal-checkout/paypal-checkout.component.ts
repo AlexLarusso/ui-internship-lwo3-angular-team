@@ -26,10 +26,10 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
   public cartTotalPriceSub: Subscription;
   public totalPrice: number;
 
-
   public ngOnInit(): void {
     this.cartTotalPriceSub = this.store.select(getCartTotalPrice)
       .subscribe(price => this.totalPrice = price);
+
     paypal
       .Buttons({
         style: {

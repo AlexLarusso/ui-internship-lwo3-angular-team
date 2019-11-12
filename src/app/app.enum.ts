@@ -13,3 +13,7 @@ export enum NotificationType {
   error =  'error',
   info = 'info'
 }
+
+export enum ImagePlaceholder {
+  IMAGE_NOT_FOUND = '../../../assets/server-data/images/image-not-found.png'
+}

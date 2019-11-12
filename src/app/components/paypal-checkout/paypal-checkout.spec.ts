@@ -1,12 +1,11 @@
 import { PaypalCheckoutComponent } from './paypal-checkout.component';
 import { getCartTotalPrice } from 'src/app/store/selectors/cart.selector';
 
-fdescribe( 'PaypalCheckoutComponent', () => {
+describe( 'PaypalCheckoutComponent', () => {
   const subscribeValueMock = 'value';
   let subscribeMock;
   let component;
   let mockStore;
-  let cartTotalPriceSubMock;
   let totalPriceMock = 0;
   let element;
 
@@ -30,7 +29,7 @@ fdescribe( 'PaypalCheckoutComponent', () => {
     window['paypal'].Buttons = { createOrder: jasmine.createSpy('Buttons: createOrder')};
     component = new PaypalCheckoutComponent(mockStore);
 
-    cartTotalPriceSubMock = {
+    subscribeMock = {
       unsubscribe: jasmine.createSpy('cartTotalPriceSubMock:unsubscribe')
     };
   }
@@ -61,7 +60,7 @@ fdescribe( 'PaypalCheckoutComponent', () => {
     it('should call unsubscribe() on cartTotalPriceSubMock', () => {
       component.ngOnInit();
       component.ngOnDestroy();
-      expect(component.cartTotalPriceSubMock.unsubscribe).toHaveBeenCalled();
+      expect(component.subscribeMock.unsubscribe).toHaveBeenCalled();
     });
   });
 });
