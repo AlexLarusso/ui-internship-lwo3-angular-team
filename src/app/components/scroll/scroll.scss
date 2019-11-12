@@ -93,6 +93,12 @@ $item-text-color: white;
   }
 }
 
+@media screen and (max-width: 992px) {
+  .scroll {
+    height: 20px;
+  }
+}
+
 @media screen and (max-width: 576px) {
   .scroll {
     display: none;
