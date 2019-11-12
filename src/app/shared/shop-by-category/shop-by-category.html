@@ -4,6 +4,7 @@
       <h2 class="col-12 content__title">{{ filterCategory | titlecase }} Collection</h2>
     </div>
     <div class="product__container">
+      <app-product-filter [products]="filteredItems"></app-product-filter>
       <app-product-item *ngFor="let product of filteredItems"
         class="product__item"
         [status]="product.status"
