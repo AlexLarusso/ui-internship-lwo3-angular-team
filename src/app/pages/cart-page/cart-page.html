@@ -1,12 +1,12 @@
 <div class="cart">
-  <div *ngIf="cartProductList?.length; else emptyCartBlock"
+  <div *ngIf="(cartProductList$ | async) as productList; else emptyCartBlock"
     class="content__container cart-content">
     <div class="cart-header">
       <span *ngFor="let option of productOptions">{{ option }}</span>
     </div>
-    <div *ngFor="let product of cartProductList; let last = last">
+    <div *ngFor="let product of productList; let lastItem = last">
       <app-product-cart-item
-        [isLastItem]="last"
+        [isLastItem]="lastItem"
         [productItem]="product">
       </app-product-cart-item>
     </div>
@@ -20,7 +20,7 @@
         Total price
       </span>
       <span class="cart__total-price">
-        {{ totalPrice }} {{ currentCurrency }}
+        {{ cartTotalPrice$ | async }} {{ currentCurrency }}
       </span>
     </div>
   </div>

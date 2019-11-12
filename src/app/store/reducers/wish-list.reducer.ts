@@ -5,7 +5,7 @@ export interface IState {
 }
 
 const initialState = {
-  likedProducts: []
+  likedProducts: JSON.parse(localStorage.getItem('liked')) || []
 };
 
 export function wishListReducer(state = initialState, action: WishListActions): IState {

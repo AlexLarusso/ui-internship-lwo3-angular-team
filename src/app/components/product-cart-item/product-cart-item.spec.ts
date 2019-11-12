@@ -1,15 +1,21 @@
 import { ProductCartItemComponent } from './product-cart-item.component';
 import { RemoveProductFromCart, ChangeProductItemQty } from 'src/app/store/actions/cart.actions';
 
-fdescribe('ProductCartItemComponent: ', () => {
+describe('ProductCartItemComponent: ', () => {
   const qtyMock = 10;
+  const productIdMock = 'MOCK_ID';
 
   let storeMock;
   let component;
+  let productItemMock;
 
   function setMocks() {
     storeMock = {
       dispatch: jasmine.createSpy('storeMock:dispatch')
+    };
+
+    productItemMock = {
+      id: productIdMock,
     };
   }
 
@@ -24,6 +30,15 @@ fdescribe('ProductCartItemComponent: ', () => {
 
   it('should inject store correctly', () => {
     expect(component.store).toEqual(storeMock);
+  });
+
+  describe('ngOnInit():', () => {
+    it('should set productRouterLink property correctly', () => {
+      component.productItem = productItemMock;
+      component.ngOnInit();
+
+      expect(component.productRouterLink).toEqual(`/products/${productIdMock}`);
+    });
   });
 
   describe('removeItemFromCart():', () => {

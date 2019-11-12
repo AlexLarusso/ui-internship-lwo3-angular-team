@@ -1,4 +1,4 @@
-<div class="select-qty" [class.value-limit]="isValueLimit">
+<div class="select-qty" [class.value-limit]="isValueLimit$ | async">
   <button (click)="onChange(decrement)">
     <fa-icon class="select-qty__icon"
       [icon]="iconDecrement">

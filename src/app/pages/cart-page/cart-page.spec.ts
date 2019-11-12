@@ -6,21 +6,17 @@ import {
 import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
 
 
-fdescribe('CartPageComponent: ', () => {
-  const subscribeValueMock = 'VAL';
+describe('CartPageComponent: ', () => {
+  const selectMockValue = 'stream';
+
   let subscriptionMock;
   let component;
   let storeMock;
 
   function setMocks() {
     storeMock = {
-      select: jasmine.createSpy('storeMock:select').and.returnValue({
-        subscribe: (cb) => {
-          cb(subscribeValueMock);
-
-          return subscriptionMock;
-        }
-      }),
+      select: jasmine.createSpy('storeMock:select')
+        .and.returnValue(selectMockValue),
       dispatch: jasmine.createSpy('storeMock:dispatch')
     };
     subscriptionMock = {
@@ -52,12 +48,9 @@ fdescribe('CartPageComponent: ', () => {
     });
 
     it('should set correct properties', () => {
-      expect(component.cartProductList).toEqual(subscribeValueMock);
-      expect(component.totalPrice).toEqual(subscribeValueMock);
-      expect(component.cartProductListSub).toBeDefined();
-      expect(component.cartTotalPriceSub).toBeDefined();
+      expect(component.cartProductList$).toEqual(selectMockValue);
+      expect(component.cartTotalPrice$ ).toEqual(selectMockValue);
     });
-
   });
 
   describe('displayPopularList():', () => {
@@ -71,15 +64,6 @@ fdescribe('CartPageComponent: ', () => {
     it('should dispatch ConfirmOrder', () => {
       component.confirmOrder();
       expect(component.store.dispatch).toHaveBeenCalledWith(new ConfirmOrder());
-    });
-  });
-
-  describe('ngDestroy():', () => {
-    it('should call unsubscribe() on cartTotalPriceSub and cartProductListSub', () => {
-      component.ngOnInit();
-      component.ngOnDestroy();
-      expect(component.cartTotalPriceSub.unsubscribe).toHaveBeenCalled();
-      expect(component.cartProductListSub.unsubscribe).toHaveBeenCalled();
     });
   });
 });

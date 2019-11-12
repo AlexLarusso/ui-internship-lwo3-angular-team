@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
-import { of } from 'rxjs';
+import { of, Observable, merge } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 import { IconDefinition, faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +17,7 @@ export class SelectQuantityComponent implements OnInit {
   @Output() public quantityChanged: EventEmitter<number>
     = new EventEmitter<number>();
 
-  public isValueLimit = false;
+  public isValueLimit$: Observable<boolean>;
   public iconIncrement: IconDefinition = faPlusSquare;
   public iconDecrement: IconDefinition = faMinusSquare;
   public increment = 1;
@@ -27,10 +27,12 @@ export class SelectQuantityComponent implements OnInit {
 
   public ngOnInit(): void {
     this.value = this.startNumber;
+    this.isValueLimit$ = of(false);
   }
 
   public onChange(count: number): void {
     const newValue = this.value + count;
+
     if (newValue && newValue <= this.maxNumber) {
       this.value = newValue;
       this.quantityChanged.next(newValue);
@@ -40,8 +42,9 @@ export class SelectQuantityComponent implements OnInit {
   }
 
   private toggleLimit(): void {
-    this.isValueLimit = true;
-    of(false).pipe(delay(this.toggleLimitDelayValue))
-      .subscribe(val => this.isValueLimit = val);
+    this.isValueLimit$ = merge(
+      of(true),
+      of(false).pipe(delay(this.toggleLimitDelayValue)),
+    );
   }
 }

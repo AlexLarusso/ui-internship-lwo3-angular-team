@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   faSearch, faCartArrowDown
 } from '@fortawesome/free-solid-svg-icons';
@@ -10,19 +9,15 @@ import {
 import { IAppState } from 'src/app/store/app.store';
 import { getCartTotalQty } from 'src/app/store/selectors/cart.selector';
 
-
-
-@AutoUnsubscribe()
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.html',
   styleUrls: ['./main-menu.scss']
 })
-export class MainMenuComponent implements OnInit, OnDestroy {
+export class MainMenuComponent implements OnInit {
   public faSearch = faSearch;
   public faCartArrowDown = faCartArrowDown;
-  public cartItemsQtySub: Subscription;
-  public cartItemsQty = 0;
+  public cartItemsQty$: Observable<number>;
 
   constructor(private store: Store<IAppState>) { }
 
@@ -33,11 +28,7 @@ export class MainMenuComponent implements OnInit, OnDestroy {
     {title: 'My Account', url: '/myaccount'}
   ];
 
-
   public ngOnInit(): void {
-    this.cartItemsQtySub = this.store.select(getCartTotalQty)
-      .subscribe(qty => this.cartItemsQty = qty);
+    this.cartItemsQty$ = this.store.select(getCartTotalQty);
   }
-
-  public ngOnDestroy(): void { }
 }
