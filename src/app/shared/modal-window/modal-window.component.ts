@@ -17,12 +17,10 @@ export class ModalComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        console.log('modal component init');
         if (!this.id) {
             console.error('modal must have an id');
             return;
         }
-        console.log(this.id);
         document.body.appendChild(this.element);
 
         this.element.addEventListener('click', e => {
@@ -31,22 +29,9 @@ export class ModalComponent implements OnInit, OnDestroy {
                 this.modalService.isSignUpModalOpen = false;
             }
         });
-        this.modalService.add(this.id);
-        // console.log(this);
     }
 
     ngOnDestroy(): void {
-        this.modalService.remove(this.id);
-        // this.element.remove();
+        this.modalService.close(this.id);
     }
-
-    // open(): void {
-    //     // this.element.style.display = 'block';
-    //     document.body.classList.add('modal-window__open');
-    // }
-
-    // close(): void {
-    //     // this.element.style.display = 'none';
-    //     document.body.classList.remove('modal-window__open');
-    // }
 }
