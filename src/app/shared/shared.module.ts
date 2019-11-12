@@ -22,6 +22,7 @@ import { SelectColorComponent } from './select-color/select-color.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
+import { ImageLoadDirective } from './directives/image-loader.directive';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 
@@ -48,6 +49,7 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
     WishButtonComponent,
     ShopByCategoryComponent,
     SelectQuantityComponent,
+    ImageLoadDirective,
   ],
   imports: [
     CommonModule,
