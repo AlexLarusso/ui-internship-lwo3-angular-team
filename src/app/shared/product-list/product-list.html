@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="product__container">
-      <app-product-item *ngFor="let product of productData | slice:0:visibleNumber"
+      <app-product-item *ngFor="let product of (products$ | async) | slice:0:visibleNumber"
         class="product__item"
         [status]="product.status"
         [imgUrl]="product.imgUrl"

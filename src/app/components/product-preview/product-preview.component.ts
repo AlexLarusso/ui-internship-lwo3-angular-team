@@ -2,13 +2,12 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Subscription } from 'rxjs';
-
-import { IProductImage } from 'src/app/interfaces/product-image.interface';
-
 import { IAppState } from 'src/app/store/app.store';
 import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
 
+import { Subscription } from 'rxjs';
+
+import { IProductImage } from 'src/app/interfaces/product-image.interface';
 
 @AutoUnsubscribe()
 @Component({

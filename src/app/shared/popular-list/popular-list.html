@@ -3,14 +3,14 @@
     <h2 class="content__title">Popular Now</h2>
     <ul class="filter__panel col-8">
       <li *ngFor="let item of filterItems">
-        <button class="filter__item" (click)="SortByTag(item)">
+        <button class="filter__item" (click)="sortByTag(item)">
           {{ item }}
         </button>
       </li>
     </ul>
     <div class="col-12 product__container">
       <app-product-item
-        *ngFor="let product of productData | slice:0:4"
+        *ngFor="let product of products$ | async"
         class="product__item"
         [status]="product.status"
         [imgUrl]="product.imgUrl"

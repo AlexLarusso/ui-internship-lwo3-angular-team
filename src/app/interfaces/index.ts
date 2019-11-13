@@ -4,6 +4,7 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { IPageAnchor } from 'src/app/interfaces/page-anchor.interface';
 import { INotification } from 'src/app/interfaces/notification.interface';
+import { ICloudinaryImage } from 'src/app/interfaces/cloudinary-image.interface';
 import { IProductCartItem } from './product-cart-item.interface';
 
 export {
@@ -13,5 +14,6 @@ export {
   IProductImage,
   IPageAnchor,
   INotification,
-  IProductCartItem,
+  ICloudinaryImage,
+  IProductCartItem
 };
