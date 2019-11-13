@@ -11,38 +11,38 @@ export enum CartActionType {
 }
 
 export class LoadProductItems implements Action {
+  constructor(public readonly payload: Array<IProductCartItem>) { }
+
   public static readonly TYPE = CartActionType.LoadProductItems;
   public type = LoadProductItems.TYPE;
-
-  constructor(public readonly payload: Array<IProductCartItem>) { }
 }
 
 export class AddProductToCart implements Action {
+  constructor(public readonly payload: IProductCartItem) { }
+
   public static readonly TYPE = CartActionType.AddProductToCart;
   public type = AddProductToCart.TYPE;
-
-  constructor(public readonly payload: IProductCartItem) { }
 }
 
 export class RemoveProductFromCart implements Action {
+  constructor(public readonly payload: IProductCartItem) { }
+
   public static readonly TYPE = CartActionType.RemoveProductFromCart;
   public type = RemoveProductFromCart.TYPE;
-
-  constructor(public readonly payload: IProductCartItem) { }
 }
 
 export class ConfirmOrder implements Action {
+  constructor(public readonly payload = null) { }
+
   public static readonly TYPE = CartActionType.ConfirmOrder;
   public type = ConfirmOrder.TYPE;
-
-  constructor(public readonly payload = null) { }
 }
 
 export class ChangeProductItemQty implements Action {
-  public static readonly TYPE = CartActionType.ChangeProductItemQty;
-  public type = ChangeProductItemQty.TYPE;
-
   constructor(
     public readonly payload: { product: IProductCartItem, newQty: number }
   ) { }
+
+  public static readonly TYPE = CartActionType.ChangeProductItemQty;
+  public type = ChangeProductItemQty.TYPE;
 }

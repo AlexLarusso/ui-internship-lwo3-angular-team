@@ -32,6 +32,6 @@ export class CartEffects {
   public navigateToCartPage$: Observable<any> = this.actions$
     .pipe(
       ofType(AddProductToCart.TYPE),
-      tap(() => this.router.navigate(['/shoppingcart']))
+      tap(() => this.router.navigate(['/shopping-cart']))
     );
 }

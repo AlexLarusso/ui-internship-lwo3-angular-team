@@ -42,7 +42,7 @@ const routes: Routes = [
     loadChildren: () => ErrorSampleModule
   },
   {
-    path: 'shoppingcart',
+    path: 'shopping-cart',
     loadChildren: () => CartPageModule
   },
   { path: '**', redirectTo: '/404' },

@@ -8,7 +8,7 @@ import { ProductCartItemComponent } from 'src/app/components/product-cart-item/p
 
 const routes: Routes = [
   {
-    path: 'shoppingcart',
+    path: 'shopping-cart',
     component: CartPageComponent
   }
 ];
