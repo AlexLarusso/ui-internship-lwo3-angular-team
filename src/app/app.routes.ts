@@ -9,6 +9,7 @@ import { ProductListPageModule } from './pages/product-list-page/product-list-pa
 import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
 import { ErrorSampleModule } from './pages/error-sample/error-sample.module';
 import { ErrorPageModule } from './pages/error-page/error-page.module';
+import { CartPageModule } from './pages/cart-page/cart-page.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -40,6 +41,10 @@ const routes: Routes = [
     path: 'checkout',
     loadChildren: () => ErrorSampleModule
   },
+  {
+    path: 'shopping-cart',
+    loadChildren: () => CartPageModule
+  },
   { path: '**', redirectTo: '/404' },
 ];
 
@@ -54,6 +59,7 @@ const routes: Routes = [
     SharedModule,
     ErrorSampleModule,
     ErrorPageModule,
+    CartPageModule,
   ],
   exports: [
     HomePageModule,
@@ -64,6 +70,7 @@ const routes: Routes = [
     SharedModule,
     ErrorSampleModule,
     ErrorPageModule,
+    CartPageModule,
   ]
 })
 
