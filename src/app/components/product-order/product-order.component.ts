@@ -61,17 +61,28 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
     };
     const initColor = productOptions.colors[0];
 
+    const {
+      productName: title,
+      price,
+      brand,
+      category,
+      gender,
+      seasons: season,
+      _id: productId
+    } = this.product;
+
     this.productDetails = {
-      title: this.product.productName,
-      price: this.product.price,
-      brand: this.product.brand,
-      category: this.product.category,
-      gender: this.product.gender,
-      season: this.product.seasons,
-      productId: this.product._id,
+      title,
+      price,
+      brand,
+      category,
+      gender,
+      season,
+      productId,
       options: productOptions,
       description: productDescription,
     };
+
     this.productImages = this.product.images;
 
     this.store.dispatch(new SelectColor(initColor));

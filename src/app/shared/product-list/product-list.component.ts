@@ -5,10 +5,11 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from '../services';
+import { map } from 'rxjs/operators';
 import { ProductFormat } from 'src/app/app.enum';
 
 @AutoUnsubscribe()
@@ -21,8 +22,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
   public aboutProductsText = `Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
     lacinia eget consectetur sed, convallis at tellus.`;
-  public productsSub: Subscription;
-  public productData: Array<IProductShortInfo>;
+  public products$: Observable<Array<IProductShortInfo>>;
+  public productLength: number;
   public stepNumber = 8;
   public visibleNumber = 8;
   public isLoadMoreActive: boolean;
@@ -33,13 +34,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
-    this.productsSub = this.store.select(getAllProducts)
-      .subscribe(data => {
-        this.productData = data.map(product =>
-          this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
+    this.products$ = this.store.select(getAllProducts)
+     .pipe(
+      map(products => {
+      this.productLength = products.length;
 
-        this.checkLoadMoreAbility();
-    });
+      this.checkLoadMoreAbility();
+
+      return products.map(product =>
+        this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
+     }));
   }
 
   public loadMore(): void {
@@ -51,6 +55,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private checkLoadMoreAbility(): void {
-    this.isLoadMoreActive = this.visibleNumber < this.productData.length;
+    this.isLoadMoreActive = this.visibleNumber < this.productLength;
   }
 }
