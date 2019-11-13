@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
@@ -9,7 +11,8 @@ import { ProductFormat } from 'src/app/app.enum';
 import {
   IProduct, IProductShortInfo, IProductSimilarOptions
 } from 'src/app/interfaces';
-
+import { IAppState } from 'src/app/store/app.store';
+import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +22,12 @@ export class ProductService {
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
 
-  constructor(private httpService: HttpService) { }
+  private CART_KEY = 'Cart';
+
+  constructor(
+    private httpService: HttpService,
+    private store: Store<IAppState>
+  ) { }
 
   public getProducts(format: string = ProductFormat.full):
     Observable<Array<any>> {
@@ -75,6 +83,13 @@ export class ProductService {
   public recentProductOrder(id: string) {
     const order = this.recentItemOrder++;
     this.addProductToLocalStorage({id, order});
+  }
+
+  public setCartItemsToLocalStorage(): void {
+    this.store.select(getCartProductItems)
+      .subscribe(products =>
+        localStorage.setItem(this.CART_KEY, JSON.stringify(products))
+      );
   }
 
   private formatProduct(product: IProduct, format: string):
