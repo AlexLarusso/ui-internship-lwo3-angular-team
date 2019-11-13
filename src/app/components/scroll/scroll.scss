@@ -10,15 +10,9 @@ $item-active-color: $accentColor;
 $item-text-color: white;
 
 .scroll {
-  // background: $bgColorDark;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // position: fixed;
-  // left: 95%;
-  // top: 15px;
-  // transform: translateY(-50%);
-  // z-index: 6;
   height: 60px;
 
   .item {
@@ -30,12 +24,10 @@ $item-text-color: white;
     list-style: none;
     border-radius: $item-size / 2;
     background-color: $item-color;
-    // box-shadow: 2px 2px 2px 0px $item-shadow-color;
     transition: all 600ms ease-in-out;
     cursor: pointer;
 
     &.active {
-      // transform: scale(1.2);
       background-color: $item-active-color;
 
       .item {
@@ -47,7 +39,6 @@ $item-text-color: white;
     }
 
     &__text {
-      
       display: block;
       position: absolute;
       font-size: 0.6rem;
@@ -63,12 +54,7 @@ $item-text-color: white;
     }
 
     &:hover {
-    //   background-color: $item-hover-color;
-    //   transform: translateY(50px);
-    //   width: 100px;
       background-color: $item-active-color;
-
-
 
       .item__text {
         visibility: visible;
@@ -76,6 +62,7 @@ $item-text-color: white;
       }
     }
   }
+
   .icon {
     display: block;
     margin: $item-spacing auto;
@@ -93,6 +80,12 @@ $item-text-color: white;
   }
 }
 
+ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @media screen and (max-width: 992px) {
   .scroll {
     height: 20px;
@@ -103,10 +96,4 @@ $item-text-color: white;
   .scroll {
     display: none;
   }
-}
-
-ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }

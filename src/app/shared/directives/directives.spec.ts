@@ -5,25 +5,12 @@ describe('ImageLoadDirective: ', () => {
     nativeElement: null
   };
   let component;
-
-  let directiveMock;
-  // let argsMock;
-  let element = new MockElementRef();
-  let observerMock;
-  let downloadImage = new EventEmitter();
-  let elementMock;
-  const entranceObj = {
-
   const expectedOptions = {
     root: 'rootMock',
     rootMargin: '0px',
     threshold: [0, 0.5, 1.0]
   };
   const entriesMock = {
-<<<<<<< HEAD
->>>>>>> 00e0ee5006d2762a7807a4ab09d8a06147ab7fdd
-=======
->>>>>>> 00e0ee5006d2762a7807a4ab09d8a06147ab7fdd
     isIntersecting: true,
     target: null
   };
@@ -35,25 +22,6 @@ describe('ImageLoadDirective: ', () => {
   }
 
   beforeEach(() => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    elementMock = {
-      nativeElement: {}
-    };
-    const entranceMock = {
-      isIntersecting: { },
-      target: { }
-    };
-=======
-    setMocks();
-  });
-
-  it('should have correct properties', () => {
-    expect(component.options).toEqual(expectedOptions);
-  });
->>>>>>> 00e0ee5006d2762a7807a4ab09d8a06147ab7fdd
-
-=======
     setMocks();
   });
 
@@ -61,7 +29,6 @@ describe('ImageLoadDirective: ', () => {
     expect(component.options).toEqual(expectedOptions);
   });
 
->>>>>>> 00e0ee5006d2762a7807a4ab09d8a06147ab7fdd
   describe('ngAfterViewInit(): ', () => {
     const observerMock = {
       observe: jasmine.createSpy('observerMock:observe'),

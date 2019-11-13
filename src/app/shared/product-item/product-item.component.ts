@@ -32,11 +32,11 @@ export class ProductItemComponent implements OnInit {
    this.productService.recentProductOrder(id);
   }
 
-  public changeImageToNext() {
+  public changeImageToNext(): void {
     this.currentImageUrl = this.imgUrlNext;
   }
 
-  public changeImageToPrev() {
+  public changeImageToPrev(): void {
     this.currentImageUrl = this.imgUrl;
   }
 
