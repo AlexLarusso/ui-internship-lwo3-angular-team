@@ -11,6 +11,7 @@ import { ImagePlaceholder } from '../../app.enum';
 export class ProductItemComponent {
   public placeholderImage = ImagePlaceholder.IMAGE_NOT_FOUND;
   public showImage = false;
+  public isImgLoaded: boolean;
 
   @Input() public imgUrl = this.placeholderImage;
   @Input() public productTitle = 'Product Title';
