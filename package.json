@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "npm i && ng serve",
     "build": "ng build",
-    "build:dev": "ng build --configuration=development",
-    "build:prod": "ng build --configuration=production",
-    "build:stage": "ng build --configuration=staging",
+    "build-dev": "ng build --configuration=development",
+    "build-prod": "ng build --configuration=production",
+    "build-stage": "ng build --configuration=staging",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
