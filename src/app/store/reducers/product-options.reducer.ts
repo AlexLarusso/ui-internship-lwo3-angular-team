@@ -1,5 +1,6 @@
 import {
-  IncrementQuantity, DecrementQuantity, SelectColor, SelectSize
+  IncrementQuantity, DecrementQuantity,
+  SelectColor, SelectSize, ResetProductOptions
 } from '../actions/product-options.actions';
 
 export interface IState {
@@ -38,6 +39,8 @@ export function productOptionsReducer(state = initialState, action: any): IState
         ...state,
         selectedSize: payload
       };
+    case ResetProductOptions.TYPE:
+      return { ...initialState };
     default:
       return state;
   }

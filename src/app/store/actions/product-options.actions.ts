@@ -4,7 +4,8 @@ export enum ProductOptionsActionTypes {
   IncrementQuantity = '[Product Options] Increment quantity',
   DecrementQuantity = '[Product Options] Decrement quantity',
   SelectColor = '[Product Options] Select color',
-  SelectSize = '[Product Options] Select size'
+  SelectSize = '[Product Options] Select size',
+  ResetProductOptions = '[Product Options] Reset'
 }
 
 export class IncrementQuantity implements Action {
@@ -33,4 +34,11 @@ export class SelectSize implements Action {
 
   public static readonly TYPE = ProductOptionsActionTypes.SelectSize;
   public type = SelectSize.TYPE;
+}
+
+export class ResetProductOptions implements Action {
+  constructor(public readonly payload = null) { }
+
+  public static readonly TYPE = ProductOptionsActionTypes.ResetProductOptions;
+  public type = ResetProductOptions.TYPE;
 }

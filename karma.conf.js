@@ -1,5 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function (config) {
   config.set({
@@ -9,8 +10,6 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
-
-      require('karma-phantomjs-launcher'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
@@ -30,9 +29,16 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox','--headless','--disable-gpu','--disable-translate','--disable-extensions']
+      }
+    },
     captureTimeout: 50000,
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    concurrency: Infinity
   });
 };

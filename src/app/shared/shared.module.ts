@@ -19,7 +19,6 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { SaleBannerComponent } from './sale-banner/sale-banner.component';
 import { AccordeonComponent } from './accordeon/accordeon.component';
 import { SelectColorComponent } from './select-color/select-color.component';
-import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
@@ -28,7 +27,8 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
 import { ModalComponent } from '../shared/modal-window/modal-window.component';
 import { LogInComponent } from '../components/log-in/log-in.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
-import { ModalService } from 'src/app/shared/services/modal-service';
+import { PaypalCheckoutComponent } from '../components/paypal-checkout/paypal-checkout.component';
+import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,6 @@ import { ModalService } from 'src/app/shared/services/modal-service';
     MainMenuComponent,
     AccordeonComponent,
     SelectColorComponent,
-    SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
@@ -56,16 +55,15 @@ import { ModalService } from 'src/app/shared/services/modal-service';
     LogInComponent,
     SignUpComponent,
     ModalComponent,
-    ImageLoadDirective
+    ImageLoadDirective,
+    PaypalCheckoutComponent,
+    SelectQuantityComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     RouterModule,
     FormsModule
-  ],
-  providers: [
-    ModalService
   ],
   exports: [
     ScrollAnchorDirective,
@@ -83,14 +81,15 @@ import { ModalService } from 'src/app/shared/services/modal-service';
     FormsModule,
     AccordeonComponent,
     SelectColorComponent,
-    SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
     ShopByCategoryComponent,
     ModalComponent,
     LogInComponent,
-    SignUpComponent
+    SignUpComponent,
+    PaypalCheckoutComponent,
+    SelectQuantityComponent,
   ]
 })
 

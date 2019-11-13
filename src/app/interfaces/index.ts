@@ -4,6 +4,7 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { IPageAnchor } from 'src/app/interfaces/page-anchor.interface';
 import { INotification } from 'src/app/interfaces/notification.interface';
+import { IProductCartItem } from './product-cart-item.interface';
 
 export {
   IProductShortInfo,
@@ -11,5 +12,6 @@ export {
   IProduct,
   IProductImage,
   IPageAnchor,
-  INotification
+  INotification,
+  IProductCartItem,
 };

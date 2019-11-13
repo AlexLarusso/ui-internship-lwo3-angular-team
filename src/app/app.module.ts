@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { appReducer } from './store/app.store';
 import { ProductsEffects } from './store/effects/products.effects';
 import { AuthEffects } from './store/effects/auth.effects';
+import { CartEffects } from './store/effects/cart.effects';
 
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
@@ -40,7 +41,7 @@ import { ErrorSampleComponent } from './pages/error-sample/error-sample.componen
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
-    EffectsModule.forRoot([ProductsEffects, AuthEffects]),
+    EffectsModule.forRoot([ProductsEffects, CartEffects, AuthEffects]),
     RoutesModule
   ],
   providers: [

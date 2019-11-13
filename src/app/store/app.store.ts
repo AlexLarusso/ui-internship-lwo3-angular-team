@@ -7,6 +7,7 @@ import * as fromWishList from './reducers/wish-list.reducer';
 import * as fromWebStorage from './reducers/web-storage.reducer';
 import * as fromProducts from './reducers/products.reducer';
 import * as fromAuth from './reducers/auth.reducer';
+import * as fromCart from './reducers/cart.reducer';
 
 export interface IAppState {
   counter: fromCounter.IState;
@@ -16,6 +17,7 @@ export interface IAppState {
   webStorage: fromWebStorage.IState;
   products: fromProducts.IState;
   auth: fromAuth.IState;
+  cart: fromCart.IState;
 }
 
 export const appReducer: ActionReducerMap<IAppState> = {
@@ -25,7 +27,8 @@ export const appReducer: ActionReducerMap<IAppState> = {
   wishList: fromWishList.wishListReducer,
   webStorage: fromWebStorage.webStorageReducer,
   products: fromProducts.productsReducer,
-  auth: fromAuth.authReducer
+  auth: fromAuth.authReducer,
+  cart: fromCart.cartReducer,
 };
 
 export const selectAuthState = createFeatureSelector<IAppState>('auth');
