@@ -10,6 +10,7 @@ import { IAppState, selectAuthState } from '../../store/app.store';
 import { LogIn } from '../../store/actions/auth.actions';
 import { EnumRegExp } from '../../app.enum';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,9 @@ export class LogInComponent implements OnInit {
   constructor(
     private modalService: ModalService,
     private store: Store<IAppState>,
-    public auth: AuthService,
+    private auth: AuthService,
+    private cookieService: CookieService
+
   ) {
       this.getState = this.store.select(selectAuthState);
   }
@@ -55,8 +58,8 @@ export class LogInComponent implements OnInit {
         email: this.user.email,
         password: this.user.password
       };
-      this.store.dispatch(new LogIn(payload));
       localStorage.setItem('userName', this.user.email.split('@')[0]);
+      this.store.dispatch(new LogIn(payload));
     }
   }
 }

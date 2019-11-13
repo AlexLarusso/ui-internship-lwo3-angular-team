@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, DoCheck, OnChanges } from '@angular/core';
 import {
   faFacebookF, faTwitter, faGoogle
 } from '@fortawesome/free-brands-svg-icons';
@@ -10,6 +10,7 @@ import { ModalService } from '../../../shared/services/modal-service';
 import { IAppState, selectAuthState } from 'src/app/store/app.store';
 import { LogOut, IsLoggedIn } from 'src/app/store/actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
+import { getUserFirstName } from 'src/app/store/selectors/auth.selector';
 
 @Component({
   selector: 'app-line-bar',
@@ -33,15 +34,17 @@ export class LineBarComponent implements OnInit {
   public faFacebookF = faFacebookF;
   public faTwitter = faTwitter;
   public faGoogle = faGoogle;
-  public userName: string;
+  public userName$: Observable<string>;
+
 
   public telephone = '+12 345-678-90';
   public email = 'gaboo@gmail.com';
 
-  ngOnInit() {
+  public ngOnInit(): void {
     if (this.authService.getToken()) {
+      // this.userName = localStorage.getItem('userName');
+      this.userName$ = this.store.select(getUserFirstName);
       this.store.dispatch(new IsLoggedIn());
-      this.userName = localStorage.getItem('userName');
     }
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;

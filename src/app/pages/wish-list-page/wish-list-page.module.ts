@@ -5,14 +5,12 @@ import { ScrollService } from '../../shared/services/scroll.service';
 import { SharedModule } from '../../shared/shared.module';
 
 import { WishListComponent } from '../../components/wish-list/wish-list.component';
-import { AuthGuardService as AuthGuard } from '../../shared/services/auth-guard.service';
 
 
 const routes: Routes = [
   {
     path: 'wishlist',
     component: WishListComponent,
-    canActivate: [AuthGuard]
   }
 ];
 
@@ -27,7 +25,6 @@ const routes: Routes = [
   ],
   providers: [
     ScrollService,
-    AuthGuard
   ],
   exports: [
     WishListComponent,

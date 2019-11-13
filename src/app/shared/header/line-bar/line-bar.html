@@ -12,7 +12,7 @@
       </div>
       <div *ngIf="isAuthenticated; then doSomething; else doSomethingElse;"></div>
       <ng-template #doSomething>
-          <p class="bar__link"> Hello, {{ userName }}!</p>
+          <p class="bar__link"> Hello, {{ userName$ | async }}!</p>
           <a class="bar__link" (click)="logOut()">Log out</a>
         </ng-template>
         <ng-template #doSomethingElse>

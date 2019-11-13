@@ -95,7 +95,7 @@ export class AuthEffects {
 @Effect({ dispatch: false})
   public LogOut: Observable<any> = this.actions
     .pipe(
-      ofType(AuthActionTypes.LOGOUT),
+      ofType(AuthActionTypes.LOG_OUT),
       tap(() => {
         this.cookieService.delete('token');
       })

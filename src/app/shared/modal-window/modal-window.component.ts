@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { ModalService } from '../services/modal-service';
 

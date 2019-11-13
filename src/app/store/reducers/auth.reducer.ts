@@ -5,12 +5,14 @@ export interface IState {
   isAuthenticated: boolean;
   user: User | null;
   errorMessage: string | null;
+  userName: string | null;
 }
 
 export const initialState: IState = {
   isAuthenticated: false,
   user: null,
-  errorMessage: null
+  errorMessage: null,
+  userName: localStorage.getItem('userName') || ''
 };
 
 export function authReducer(state = initialState, action: All): IState {
@@ -51,13 +53,26 @@ export function authReducer(state = initialState, action: All): IState {
         errorMessage: 'That email is already in use.'
       };
     }
-    case AuthActionTypes.LOGOUT: {
+    case AuthActionTypes.LOG_OUT: {
       return initialState;
     }
-    case AuthActionTypes.ISLOGGEDIN: {
+    case AuthActionTypes.IS_LOGGED_IN: {
       return {
         ...state,
         isAuthenticated: true
+      };
+    }
+    case AuthActionTypes.ACCESS_DENIED: {
+      return {
+        ...state,
+        errorMessage: 'To see cart page, login first'
+      };
+    }
+    case AuthActionTypes.SET_USER_NAME: {
+      const nameSetter = action.payload.email.split('@')[0];
+      return {
+        ...state,
+        userName: nameSetter
       };
     }
     default: {

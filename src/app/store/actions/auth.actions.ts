@@ -8,46 +8,57 @@ export enum AuthActionTypes {
   SIGNUP = '[Auth] Signup',
   SIGNUP_SUCCESS = '[Auth] Signup Success',
   SIGNUP_FAILURE = '[Auth] Signup Failure',
-  LOGOUT = '[Auth] Logout',
-  ISLOGGEDIN = '[Auth] Is Logged In'
+  LOG_OUT = '[Auth] Logout',
+  IS_LOGGED_IN = '[Auth] Is Logged In',
+  ACCESS_DENIED = '[Auth] Access Denied',
+  SET_USER_NAME = '[Auth] Get User Name'
 }
 
 export class LogIn implements Action {
-  readonly type = AuthActionTypes.LOGIN;
   constructor(public payload: any) {}
+  readonly type = AuthActionTypes.LOGIN;
 }
 
 export class LogInSuccess implements Action {
-  readonly type = AuthActionTypes.LOGIN_SUCCESS;
   constructor(public payload: any) {}
+  readonly type = AuthActionTypes.LOGIN_SUCCESS;
 }
 
 export class LogInFailure implements Action {
-  readonly type = AuthActionTypes.LOGIN_FAILURE;
   constructor(public payload: any) {}
+  readonly type = AuthActionTypes.LOGIN_FAILURE;
 }
 
 export class SignUp implements Action {
-  readonly type = AuthActionTypes.SIGNUP;
   constructor(public payload: any) {}
+  readonly type = AuthActionTypes.SIGNUP;
 }
 
 export class SignUpSuccess implements Action {
-  readonly type = AuthActionTypes.SIGNUP_SUCCESS;
   constructor(public payload: any) {}
+  readonly type = AuthActionTypes.SIGNUP_SUCCESS;
 }
 
 export class SignUpFailure implements Action {
-  readonly type = AuthActionTypes.SIGNUP_FAILURE;
   constructor(public payload: any) {}
+  readonly type = AuthActionTypes.SIGNUP_FAILURE;
 }
 
 export class LogOut implements Action {
-  readonly type = AuthActionTypes.LOGOUT;
+  readonly type = AuthActionTypes.LOG_OUT;
 }
 
 export class IsLoggedIn implements Action {
-  readonly type = AuthActionTypes.ISLOGGEDIN;
+  readonly type = AuthActionTypes.IS_LOGGED_IN;
+}
+
+export class AccessDenied implements Action {
+  readonly type = AuthActionTypes.ACCESS_DENIED;
+}
+
+export class SetUserName implements Action {
+  constructor(public payload: any) {}
+  readonly type = AuthActionTypes.SET_USER_NAME;
 }
 
 export type All =
@@ -58,4 +69,6 @@ export type All =
   | SignUpSuccess
   | SignUpFailure
   | LogOut
-  | IsLoggedIn;
+  | IsLoggedIn
+  | AccessDenied
+  | SetUserName;
