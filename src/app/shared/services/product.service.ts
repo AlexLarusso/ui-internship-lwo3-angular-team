@@ -3,7 +3,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
-import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
+import { getAllProductImages, getAllProducts,  } from 'src/app/store/selectors/products.selectors';
+import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -26,12 +27,23 @@ export class ProductService implements OnDestroy {
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
 
+  private CART_KEY = 'Cart';
+
   constructor(
     private httpService: HttpService,
     private store: Store<IAppState>
   ) {
     this.imagesSub = this.store.select(getAllProductImages)
       .subscribe(images => this.allProductImages = images);
+  }
+
+  public getProducts(format: string = ProductFormat.full):
+    Observable<Array<any>> {
+      return this.httpService.getAllProducts().pipe(
+        map(products => products.map(
+          product => this.formatProduct(product, format)
+        ))
+      );
   }
 
   public formatProduct(product: IProduct, format: string):
@@ -137,6 +149,13 @@ export class ProductService implements OnDestroy {
         .map(
           product => this.formatProduct(product, format))
       ));
+  }
+
+  public setCartItemsToLocalStorage(): void {
+    this.store.select(getCartProductItems)
+      .subscribe(products =>
+        localStorage.setItem(this.CART_KEY, JSON.stringify(products))
+      );
   }
 
   private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):

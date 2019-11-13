@@ -13,6 +13,7 @@ import { ErrorsHandler } from './shared/services/errors.handler';
 
 import { appReducer } from './store/app.store';
 import { ProductsEffects } from './store/effects/products.effects';
+import { CartEffects } from './store/effects/cart.effects';
 
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
@@ -38,7 +39,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forRoot([ProductsEffects, CartEffects]),
     RoutesModule
   ],
   providers: [

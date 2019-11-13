@@ -9,9 +9,11 @@
     <div class="product-options">
       <app-select-size class="option" [sizes]="productDetails.options.sizes">
       </app-select-size>
-      <app-select-number class="option" [maxNumber]="productDetails.options.quantity">
-        <span class="option__label">Qty</span>
-      </app-select-number>
+      <app-select-quantity
+        class="option"
+        [maxNumber]="productDetails.options.quantity"
+        (quantityChanged)=handleQtyChange($event)>
+      </app-select-quantity>
       <app-select-color class="option" [colors]="productDetails.options.colors">
         <span class="option__label">Color</span>
       </app-select-color>

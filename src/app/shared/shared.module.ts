@@ -19,12 +19,12 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { SaleBannerComponent } from './sale-banner/sale-banner.component';
 import { AccordeonComponent } from './accordeon/accordeon.component';
 import { SelectColorComponent } from './select-color/select-color.component';
-import { SelectNumberComponent } from './select-number/select-number.component';
 import { DropdownComponent } from './dropdown/dropdown-component';
 import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ImageLoadDirective } from './directives/image-loader.directive';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
+import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 
 @NgModule({
   declarations: [
@@ -44,12 +44,12 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     MainMenuComponent,
     AccordeonComponent,
     SelectColorComponent,
-    SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
+    ShopByCategoryComponent,
+    SelectQuantityComponent,
     ImageLoadDirective,
-    ShopByCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -74,11 +74,11 @@ import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.com
     FormsModule,
     AccordeonComponent,
     SelectColorComponent,
-    SelectNumberComponent,
     DropdownComponent,
     SelectSizeComponent,
     WishButtonComponent,
-    ShopByCategoryComponent
+    ShopByCategoryComponent,
+    SelectQuantityComponent,
   ]
 })
 
