@@ -22,7 +22,6 @@ import { ProductFormat } from 'src/app/app.enum';
 export class ShopByCategoryComponent implements OnInit, OnDestroy {
   @Input() public filterCategory: string;
 
-  public filterGenderSub: Subscription;
   public filterItemsSub: Subscription;
   public routeParamsSub: Subscription;
   public filteredItems: Array<IProductShortInfo>;
@@ -45,7 +44,7 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private getProductsByCategory(): void {
-    this.filterGenderSub = this.store
+    this.filterItemsSub = this.store
       .select(getFilteredProducts)
       .subscribe(items => this.filteredItems = items
         .map(item =>
