@@ -1,10 +1,10 @@
 <div class="cart">
-  <div *ngIf="(cartProductList$ | async) as productList; else emptyCartBlock"
+  <div *ngIf="(cartProductList$ | async)?.length; else emptyCartBlock"
     class="content__container cart-content">
     <div class="cart-header">
       <span *ngFor="let option of productOptions">{{ option }}</span>
     </div>
-    <div *ngFor="let product of productList; let lastItem = last">
+    <div *ngFor="let product of cartProductList$ | async; let lastItem = last">
       <app-product-cart-item
         [isLastItem]="lastItem"
         [productItem]="product">
