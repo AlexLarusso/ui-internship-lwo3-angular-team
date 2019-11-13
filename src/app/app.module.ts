@@ -15,13 +15,13 @@ import { ErrorsHandler } from './shared/services/errors.handler';
 
 import { appReducer } from './store/app.store';
 import { ProductsEffects } from './store/effects/products.effects';
+import { CartEffects } from './store/effects/cart.effects';
 
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { ErrorSampleComponent } from './pages/error-sample/error-sample.component';
 
 @NgModule({
   declarations: [
@@ -29,21 +29,21 @@ import { ErrorSampleComponent } from './pages/error-sample/error-sample.componen
     ProductListPageComponent,
     WishListPageComponent,
     LoaderComponent,
-    CounterComponent,
-    ErrorSampleComponent,
+    CounterComponent
   ],
   imports: [
     SharedModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forRoot([ProductsEffects, CartEffects]),
     RoutesModule,
     ToastrModule.forRoot()
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: ErrorsHandler }
+    // { provide: ErrorHandler, useClass: ErrorsHandler }
   ],
   bootstrap: [
     AppComponent

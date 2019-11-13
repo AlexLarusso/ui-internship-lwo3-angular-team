@@ -5,14 +5,13 @@
     "ng": "ng",
     "start": "npm i && ng serve",
     "build": "ng build",
-    "build:dev": "ng build --configuration=development",
-    "build:prod": "ng build --configuration=production",
-    "build:stage": "ng build --configuration=staging",
+    "build-dev": "ng build --configuration=development",
+    "build-prod": "ng build --configuration=production",
+    "build-stage": "ng build --configuration=staging",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.10",
     "@angular/common": "~8.2.9",
@@ -31,6 +30,8 @@
     "intl": "^1.2.5",
     "ngx-auto-unsubscribe": "^3.0.1",
     "ngx-toastr": "^11.2.1",
+    "puppeteer": "^2.0.0",
+    "redux-devtools-extension": "^2.13.8",
     "rxjs": "^6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

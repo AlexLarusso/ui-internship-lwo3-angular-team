@@ -5,11 +5,12 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
+import { map } from 'rxjs/operators';
 
 @AutoUnsubscribe()
 @Component({
@@ -19,7 +20,7 @@ import { ProductFormat } from 'src/app/app.enum';
 })
 export class PopularListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
-  public getProductsSub: Subscription;
+  public products$: Observable<Array<IProductShortInfo>>;
   public productData: Array<IProductShortInfo>;
 
   constructor(
@@ -38,11 +39,12 @@ export class PopularListComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private productListRefresh(item?: string): void {
-    this.getProductsSub = this.store.select(getAllProducts).subscribe(data => {
-      this.productData = data
-        .filter(product => item === product.status)
-        .map(product =>
-          this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
-    });
+    this.products$ = this.store.select(getAllProducts)
+      .pipe(map(data =>
+        data
+          .filter(product => item === product.status)
+          .map(product =>
+            this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>
+      ));
   }
 }

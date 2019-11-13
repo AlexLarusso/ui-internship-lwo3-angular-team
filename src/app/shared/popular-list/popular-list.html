@@ -10,7 +10,7 @@
     </ul>
     <div class="col-12 product__container">
       <app-product-item
-        *ngFor="let product of productData"
+        *ngFor="let product of products$ | async"
         class="product__item"
         [status]="product.status"
         [imgUrl]="product.imgUrl"
