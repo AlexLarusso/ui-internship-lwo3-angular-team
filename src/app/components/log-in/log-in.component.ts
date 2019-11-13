@@ -9,8 +9,6 @@ import { ModalService } from '../../shared/services/modal-service';
 import { IAppState, selectAuthState } from '../../store/app.store';
 import { LogIn } from '../../store/actions/auth.actions';
 import { EnumRegExp } from '../../app.enum';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -31,11 +29,8 @@ export class LogInComponent implements OnInit {
   constructor(
     private modalService: ModalService,
     private store: Store<IAppState>,
-    private auth: AuthService,
-    private cookieService: CookieService
-
   ) {
-      this.getState = this.store.select(selectAuthState);
+    this.getState = this.store.select(selectAuthState);
   }
 
   public ngOnInit(): void {
@@ -44,11 +39,11 @@ export class LogInComponent implements OnInit {
     });
   }
 
-  public onValidateEmail() {
+  public onValidateEmail(): boolean {
     return this.isEmailValid = this.emailRegExp.test(this.user.email);
   }
 
-  public onValidatePassword() {
+  public onValidatePassword(): boolean {
     return this.isPasswordValid = this.passwordRegExp.test(this.user.password);
   }
 

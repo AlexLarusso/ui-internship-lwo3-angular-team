@@ -50,7 +50,6 @@ export class AuthEffects {
       ofType(AuthActionTypes.LOGIN_SUCCESS),
       tap(user => {
         this.cookieService.set('token', user.payload.token);
-        this.router.navigateByUrl('/');
         this.modalService.close('login');
       })
     );
@@ -81,7 +80,6 @@ export class AuthEffects {
       ofType(AuthActionTypes.SIGNUP_SUCCESS),
       tap(user => {
         this.cookieService.set('token', user.payload.token);
-        this.router.navigateByUrl('/');
         this.modalService.close('sign-up');
       })
     );

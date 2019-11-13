@@ -108,13 +108,6 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.cd.detectChanges();
   }
 
-  public toggleButtonsState(): void {
-    const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
-
-    this.canMoveToPrev = this.position !== 0;
-    this.canMoveToNext = this.position !== maxPosition && this.productArray.length >= this.visibleNum;
-  }
-
   public moveToNext(): void {
     const newPosition = this.position - this.itemWidth * this.visibleNum;
     const possiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
@@ -135,7 +128,14 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
-  public indicateViewNumber(): void {
+  private toggleButtonsState(): void {
+    const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
+
+    this.canMoveToPrev = this.position !== 0;
+    this.canMoveToNext = this.position !== maxPosition && this.productArray.length >= this.visibleNum;
+  }
+
+  private indicateViewNumber(): void {
     switch (true) {
       case this.pageWidth > BREAK_POINTS.laptop_M.width:
         this.visibleNum = BREAK_POINTS.laptop_M.slideNum;
@@ -154,7 +154,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     }
   }
 
-  public resetPositionValue(): void {
+  private resetPositionValue(): void {
     this.position = 0;
     this.productContainer.style.marginLeft = 0 + 'px';
     this.productsContainer.nativeElement.scrollLeft = 0;

@@ -1,26 +1,39 @@
 import { Injectable } from '@angular/core';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
+import { LoadProducts, SetProducts, SetProductImages } from '../actions/products.action';
 
 import { switchMap, map } from 'rxjs/operators';
 
-import { ProductFormat } from 'src/app/app.enum';
-import { LoadProducts, SetProducts } from '../actions/products.action';
-import { ProductService } from '../../shared/services';
+import { HttpService } from '../../shared/services';
 
 @Injectable()
 export class ProductsEffects {
+
   constructor(
     private actions$: Actions,
-    private productService: ProductService
-  ) { }
+    private httpService: HttpService
+  ) {
+  }
+
+  @Effect()
+  public loadProductImages$ = this.actions$
+  .pipe(
+    ofType(LoadProducts.TYPE),
+    switchMap(() =>
+      this.httpService.getImages()
+        .pipe(
+          map(images => new SetProductImages(images))
+        )
+    )
+  );
 
   @Effect()
   public loadProducts$ = this.actions$
   .pipe(
-    ofType(LoadProducts.TYPE),
+    ofType(SetProductImages.TYPE),
     switchMap(() =>
-      this.productService.getProducts(ProductFormat.short)
+      this.httpService.getAllProducts()
         .pipe(
           map(products => new SetProducts(products))
         )

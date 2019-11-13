@@ -10,7 +10,6 @@ import { RoutesModule } from './app.routes';
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ErrorsHandler } from './shared/services/errors.handler';
-import { TokenInterceptor } from './shared/services/token.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 
 import { appReducer } from './store/app.store';
@@ -45,9 +44,8 @@ import { ErrorSampleComponent } from './pages/error-sample/error-sample.componen
     RoutesModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: ErrorsHandler },
+    // { provide: ErrorHandler, useClass: ErrorsHandler }
     CookieService
   ],
   bootstrap: [

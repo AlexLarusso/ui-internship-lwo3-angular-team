@@ -1,23 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
+import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { ProductFormat } from 'src/app/app.enum';
-import {
-  IProduct, IProductShortInfo, IProductSimilarOptions
-} from 'src/app/interfaces';
-import { IAppState } from 'src/app/store/app.store';
-import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
+import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
 
+@AutoUnsubscribe()
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService implements OnDestroy {
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
@@ -31,26 +32,54 @@ export class ProductService {
 
   public getProducts(format: string = ProductFormat.full):
     Observable<Array<any>> {
-      return this.httpService.getData().pipe(
+      return this.httpService.getAllProducts().pipe(
         map(products => products.map(
           product => this.formatProduct(product, format)
         ))
       );
   }
 
-  public getProductsByCategory(category: string, format: string = ProductFormat.full):
-    Observable<Array<any>> {
-      return this.httpService.getProductsByCategory(category).pipe(
-        map(products => products.map(
-          product => this.formatProduct(product, format))
-      ));
+  public formatProduct(product: IProduct, format: string):
+    IProduct | IProductShortInfo {
+    switch (format) {
+      case ProductFormat.full: {
+
+        return { ...product };
+      }
+
+      case ProductFormat.short: {
+        const firstProductImage = product.images[0].url[0];
+        const {
+          productName: productTitle,
+          price,
+          _id: productId,
+          status,
+          gender,
+          seasons
+        } = product;
+
+        return {
+          productTitle,
+          imgUrl: `${firstProductImage}`,
+          productPrice: price + ' USD',
+          productId,
+          status,
+          gender,
+          seasons
+        };
+      }
+    }
   }
 
   public getProductById(id: string, format: string = ProductFormat.full):
     Observable<any> {
-      return this.httpService.getProductById(id).pipe(
-        map(product => this.formatProduct(product, format)
-      ));
+
+    return this.store.select(getAllProducts)
+      .pipe(map(products => {
+        const searchedProduct = products.find(el => el._id === id);
+
+        return this.formatProduct(searchedProduct, format);
+      }));
   }
 
   public getProductsByIds(items: any, format: string = ProductFormat.full):
@@ -62,7 +91,7 @@ export class ProductService {
 
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
     Observable<Array<any>> {
-      return this.httpService.getProductsByCategory(similarOptions.category)
+      return this.getProductsByCategory(similarOptions.category)
         .pipe(map(data =>
           this.filterSimilarProducts(data, similarOptions)
             .map(product => this.formatProduct(product, format))
@@ -72,48 +101,50 @@ export class ProductService {
   public addProductToLocalStorage({id, order}): void {
     this.recentlyViewed =
       JSON.parse(localStorage.getItem('recentlyViewed')) || [];
-    this.recentlyViewed.forEach(el => Object.values(el).includes(id)
-      ? this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1)
-      : false);
+
+    this.recentlyViewed.forEach(el => Object.values(el).includes(id) ?
+      this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1) :
+      false);
+
     this.recentlyViewed.unshift({id, order});
+
     localStorage.setItem('recentlyViewed', JSON.stringify(this.recentlyViewed));
+
     this.storageSubject.next(this.recentlyViewed);
   }
 
-  public recentProductOrder(id: string) {
+  public recentProductOrder(id: string): void {
     const order = this.recentItemOrder++;
+
     this.addProductToLocalStorage({id, order});
   }
 
   public setCartItemsToLocalStorage(): void {
     this.store.select(getCartProductItems)
-      .subscribe(products =>
-        localStorage.setItem(this.CART_KEY, JSON.stringify(products))
+    .subscribe(products =>
+      localStorage.setItem(this.CART_KEY, JSON.stringify(products))
       );
+    }
+
+  public ngOnDestroy(): void { }
+
+  private getProductsByCategory(category: string, format: string = ProductFormat.full):
+  Observable<Array<any>> {
+    return this.store.select(getAllProducts)
+      .pipe(map(
+        products => products
+        .filter(
+          product => product.category === category)
+        .map(
+          product => this.formatProduct(product, format))
+      ));
   }
 
-  private formatProduct(product: IProduct, format: string):
-    IProduct | IProductShortInfo {
-      switch (format) {
-        case ProductFormat.full: return product;
-        case ProductFormat.short: return {
-          productTitle: product.productName,
-          imgUrl: product.images[0].url[0],
-          productPrice: product.price + ' uah',
-          productId: product.id,
-          status: product.status,
-          sex: product.sex,
-          season: product.season
-        };
-      }
-  }
-
-  private filterSimilarProducts(
-    products: Array<IProduct>,
-    similarOptions: IProductSimilarOptions): Array<IProduct> {
+  private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):
+    Array<IProduct> {
       return products.filter(product =>
         product.category === similarOptions.category &&
-        product.sex === similarOptions.sex &&
-        product.id !== similarOptions.id);
+        product.gender === similarOptions.gender &&
+        product._id !== similarOptions.id);
   }
 }

@@ -41,14 +41,13 @@ export class LineBarComponent implements OnInit {
   public email = 'gaboo@gmail.com';
 
   public ngOnInit(): void {
+    this.userName$ = this.store.select(getUserFirstName);
+
     if (this.authService.getToken()) {
-      // this.userName = localStorage.getItem('userName');
-      this.userName$ = this.store.select(getUserFirstName);
       this.store.dispatch(new IsLoggedIn());
     }
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
-      this.user = state.user;
       this.errorMessage = state.errorMessage;
     });
   }

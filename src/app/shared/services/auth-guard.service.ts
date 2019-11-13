@@ -12,15 +12,15 @@ import { AccessDenied } from 'src/app/store/actions/auth.actions';
 export class AuthGuardService implements CanActivate {
   constructor(
     private auth: AuthService,
-    private router: Router,
     private modalService: ModalService,
     private store: Store<IAppState>
   ) {}
 
-  canActivate(): boolean {
+  public canActivate(): boolean {
     if (!this.auth.getToken()) {
       this.store.dispatch(new AccessDenied());
       this.modalService.open('login');
+
       return false;
     }
     return true;

@@ -6,7 +6,7 @@ export interface IProductDetails {
   price: number;
   brand: string;
   category: string | Array<string>;
-  sex: string;
+  gender: string;
   season: string | Array<string>;
   options: IProductOptions;
   description: IProductDescription;

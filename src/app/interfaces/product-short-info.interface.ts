@@ -3,7 +3,7 @@ export interface IProductShortInfo {
   imgUrl: string;
   productPrice: string;
   productId: string;
-  status?: string;
-  sex: string;
-  season: Array<string>;
+  status: string;
+  gender: string;
+  seasons: Array<string>;
 }

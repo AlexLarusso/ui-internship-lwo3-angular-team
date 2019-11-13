@@ -5,9 +5,14 @@ import { IState } from '../reducers/products.reducer';
 export const getAllProducts = createSelector(
   getProducts,
   (state: IState) => state.products
- );
+);
 
 export const getFilteredProducts = createSelector(
   getProducts,
   (state: IState) => state.filteredProducts
- );
+);
+
+export const getAllProductImages = createSelector(
+  getProducts,
+  (state: IState) => state.productImages
+);

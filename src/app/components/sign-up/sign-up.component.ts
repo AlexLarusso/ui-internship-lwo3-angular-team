@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component} from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { User } from '../../interfaces/user';
 import { ModalService } from '../../shared/services/modal-service';
-import { IAppState, selectAuthState } from 'src/app/store/app.store';
+import { IAppState } from 'src/app/store/app.store';
 import { SignUp } from 'src/app/store/actions/auth.actions';
 import { EnumRegExp } from 'src/app/app.enum';
 
@@ -15,10 +14,8 @@ import { EnumRegExp } from 'src/app/app.enum';
   styleUrls: ['../log-in/log-in.scss']
 })
 
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
   public user = new User();
-  public getState: Observable<any>;
-  public errorMessage: string | null;
   public isEmailValid = true;
   public isPasswordValid = true;
 
@@ -28,15 +25,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private modalService: ModalService,
     private store: Store<IAppState>
-  ) {
-    this.getState = this.store.select(selectAuthState);
-  }
-
-  ngOnInit() {
-    this.getState.subscribe(state => {
-      this.errorMessage = state.errorMessage;
-    });
-  }
+  ) { }
 
   public onValidateEmail() {
     return this.isEmailValid = this.emailRegExp.test(this.user.email);
@@ -46,7 +35,7 @@ export class SignUpComponent implements OnInit {
     return this.isPasswordValid = this.passwordRegExp.test(this.user.password);
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.isEmailValid && this.isPasswordValid) {
       const payload = {
         email: this.user.email,
