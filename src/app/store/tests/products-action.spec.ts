@@ -2,28 +2,29 @@ import {
   LoadProducts,
   FilterByGender,
   FilterBySeason,
-  ProductsActionTypes } from '../actions/products.action';
+  ProductsActionTypes
+  } from '../actions/products.action';
 
-const payload = 'woman';
+const payloadMock = 'woman';
 
 describe('FilterByGenderAction', () => {
   it('should filter by gender', () => {
-    const action = new FilterByGender(payload);
+    const action = new FilterByGender(payloadMock);
 
     expect({ ...action }).toEqual({
       type: ProductsActionTypes.FilterByGender,
-      payload
+      payloadMock
     });
   });
 });
 
 describe('FilterBySeasonAction', () => {
   it('should filter by season', () => {
-    const action = new FilterBySeason(payload);
+    const action = new FilterBySeason(payloadMock);
 
     expect({ ...action }).toEqual({
       type: ProductsActionTypes.FilterBySeason,
-      payload
+      payloadMock
     });
   });
 });
