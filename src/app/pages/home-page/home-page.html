@@ -5,6 +5,6 @@
 <app-join-us appScrollAnchor="JoinUs"></app-join-us>
 <app-popular-list appScrollAnchor="Popular"></app-popular-list>
 <app-product-carousel appScrollAnchor="Gallery"
-  [productData]="productList">
+  [productData]="products$ | async">
 </app-product-carousel>
 <app-story appScrollAnchor="Story"></app-story>

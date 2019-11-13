@@ -1,13 +1,12 @@
-import {
-  Component, OnInit, OnDestroy
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
-import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
@@ -20,21 +19,18 @@ import { IProductShortInfo } from 'src/app/interfaces';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   public productList: Array<IProductShortInfo>;
-  public getProductsSub: Subscription;
+  public products$: Observable<Array<IProductShortInfo>>;
 
   constructor(
-    private productService: ProductService,
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
+    private productService: ProductService
   ) { }
 
   public ngOnInit(): void {
-    this.getProductsSub = this.store.select(getAllProducts)
-      .subscribe(data => {
-        this.productList = data
-          .map(product =>
-            this.productService.formatProduct(product, ProductFormat.short))
-          .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>;
-    });
+    this.products$ = this.store.select(getAllProducts)
+      .pipe(map(products => products.map(product =>
+        this.productService.formatProduct(product, ProductFormat.short))
+        .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>));
   }
 
   public ngOnDestroy(): void { }

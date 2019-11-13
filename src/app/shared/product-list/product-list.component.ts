@@ -5,10 +5,11 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from '../services';
+import { map } from 'rxjs/operators';
 import { ProductFormat } from 'src/app/app.enum';
 
 const BREAK_POINTS = {
@@ -40,11 +41,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
   public aboutProductsText = `Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
     lacinia eget consectetur sed, convallis at tellus.`;
-  public productsSub: Subscription;
-  public productData: Array<IProductShortInfo>;
   public pageWidth: number;
   public stepNumber: number;
   public visibleNumber: number;
+  public products$: Observable<Array<IProductShortInfo>>;
+  public productLength: number;
   public isLoadMoreActive: boolean;
 
   @HostListener('window:resize', [])
@@ -64,15 +65,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     this.visibleNumber = this.stepNumber;
 
-    this.productsSub = this.store.select(getAllProducts)
-      .subscribe(data => {
-        this.productData = data
-          .map(product =>
-            this.productService.formatProduct(product, ProductFormat.short))
-          .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>;
+    this.products$ = this.store.select(getAllProducts)
+     .pipe(
+      map(products => {
+      this.productLength = products.length;
 
-        this.checkLoadMoreAbility();
-    });
+      this.checkLoadMoreAbility();
+
+      return products.map(product =>
+        this.productService.formatProduct(product, ProductFormat.short))
+        .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>;
+      })
+     );
   }
 
   public loadMore(): void {
@@ -84,7 +88,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private checkLoadMoreAbility(): void {
-    this.isLoadMoreActive = this.visibleNumber < this.productData.length;
+    this.isLoadMoreActive = this.visibleNumber < this.productLength;
   }
 
   private indicateStepNumber(): void {

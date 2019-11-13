@@ -6,6 +6,7 @@ import * as fromProductOptions from './reducers/product-options.reducer';
 import * as fromWishList from './reducers/wish-list.reducer';
 import * as fromWebStorage from './reducers/web-storage.reducer';
 import * as fromProducts from './reducers/products.reducer';
+import * as fromCart from './reducers/cart.reducer';
 
 export interface IAppState {
   counter: fromCounter.IState;
@@ -14,6 +15,7 @@ export interface IAppState {
   wishList: fromWishList.IState;
   webStorage: fromWebStorage.IState;
   products: fromProducts.IState;
+  cart: fromCart.IState;
 }
 
 export const appReducer: ActionReducerMap<IAppState> = {
@@ -23,4 +25,5 @@ export const appReducer: ActionReducerMap<IAppState> = {
   wishList: fromWishList.wishListReducer,
   webStorage: fromWebStorage.webStorageReducer,
   products: fromProducts.productsReducer,
+  cart: fromCart.cartReducer,
 };

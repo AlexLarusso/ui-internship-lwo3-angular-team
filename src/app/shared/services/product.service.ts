@@ -4,6 +4,7 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
+import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -25,6 +26,8 @@ export class ProductService implements OnDestroy {
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
+
+  private CART_KEY = 'Cart';
 
   constructor(
     private httpService: HttpService,
@@ -67,8 +70,8 @@ export class ProductService implements OnDestroy {
       case ProductFormat.short: {
         const firsProductImage = this.allProductImages
           .filter(image => image.productId === product._id)[0].claudinaryId;
-        const secondProductImage =  this.allProductImages
-          .filter(image => image.productId === product._id)[1].claudinaryId;
+        const secondProductImage = this.allProductImages
+        .filter(image => image.productId === product._id)[1].claudinaryId;
 
         return {
           productTitle: product.productName,
@@ -129,6 +132,13 @@ export class ProductService implements OnDestroy {
   }
 
   public ngOnDestroy(): void { }
+
+  public setCartItemsToLocalStorage(): void {
+    this.store.select(getCartProductItems)
+    .subscribe(products =>
+      localStorage.setItem(this.CART_KEY, JSON.stringify(products))
+      );
+    }
 
   private getProductsByCategory(category: string, format: string = ProductFormat.full):
   Observable<Array<any>> {

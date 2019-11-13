@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -6,8 +7,9 @@ import { IAppState } from 'src/app/store/app.store';
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
-import { SelectColor } from 'src/app/store/actions/product-options.actions';
-import { NotificationService } from 'src/app/shared/services/notification.service';
+import { SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
+import { AddProductToCart } from 'src/app/store/actions/cart.actions';
+import { IProductCartItem } from 'src/app/interfaces';
 
 import { Subscription } from 'rxjs';
 
@@ -39,10 +41,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   private selectedColor: string;
   private selectedQty: number;
 
-  constructor(
-    private store: Store<IAppState>,
-    private notificationService: NotificationService
-  ) { }
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
     const productOptions: IProductOptions = {
@@ -57,14 +56,24 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
     };
     const initColor = productOptions.colors[0];
 
+    const {
+      productName: title,
+      price,
+      brand,
+      category,
+      gender,
+      seasons: season,
+      _id: productId
+    } = this.product;
+
     this.productDetails = {
-      title: this.product.productName,
-      price: this.product.price,
-      brand: this.product.brand,
-      category: this.product.category,
-      gender: this.product.gender,
-      season: this.product.seasons,
-      productId: this.product._id,
+      title,
+      price,
+      brand,
+      category,
+      gender,
+      season,
+      productId,
       options: productOptions,
       description: productDescription,
     };
@@ -81,15 +90,29 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       .subscribe(size => this.selectedSize = size);
   }
 
-  public ngOnDestroy(): void { }
+  public ngOnDestroy(): void {
+    this.store.dispatch(new ResetProductOptions());
+  }
 
   public onBuyClick(): void {
-    const title = `Added ${this.productDetails.title} to your cart.`;
-    const message = `Quantity: ${this.selectedQty}.
-      Size: ${this.selectedSize}.
-      Color: ${this.selectedColor}.
-      Full price: ${this.selectedQty * this.productDetails.price} USD.`;
+    const productCartItem: IProductCartItem = {
+      id: this.product._id,
+      title: this.product.productName,
+      price: this.product.price,
+      imageUrl: this.product.images.find(img =>
+        img.value === this.selectedColor).url[0],
+      color: this.selectedColor,
+      size: this.selectedSize,
+      quantity: this.selectedQty,
+      maxQty: this.product.quantity
+    };
 
-    this.notificationService.success(title, message);
+    this.store.dispatch(new AddProductToCart(productCartItem));
+  }
+
+  public handleQtyChange(newQty: number) {
+    newQty > this.selectedQty
+      ? this.store.dispatch(new IncrementQuantity())
+      : this.store.dispatch(new DecrementQuantity());
   }
 }

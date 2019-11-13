@@ -4,7 +4,7 @@
       <h2 class="col-12 content__title">{{ filterCategory | titlecase }} Collection</h2>
     </div>
     <div class="product__container">
-      <app-product-item *ngFor="let product of filteredItems"
+      <app-product-item *ngFor="let product of filteredItems$ | async"
         class="product__item"
         [status]="product.status"
         [imgUrl]="product.imgUrl"

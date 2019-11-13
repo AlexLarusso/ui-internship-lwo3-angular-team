@@ -6,7 +6,8 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getFilteredProducts } from '../../store/selectors/products.selectors';
 
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from '../services';
@@ -22,10 +23,8 @@ import { ProductFormat } from 'src/app/app.enum';
 export class ShopByCategoryComponent implements OnInit, OnDestroy {
   @Input() public filterCategory: string;
 
-  public filterGenderSub: Subscription;
-  public filterItemsSub: Subscription;
+  public filteredItems$: Observable<Array<IProductShortInfo>>;
   public routeParamsSub: Subscription;
-  public filteredItems: Array<IProductShortInfo>;
 
   constructor(
     private productService: ProductService,
@@ -45,10 +44,11 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private getProductsByCategory(): void {
-    this.filterGenderSub = this.store
+    this.filteredItems$ = this.store
       .select(getFilteredProducts)
-      .subscribe(items => this.filteredItems = items
-        .map(item =>
-          this.productService.formatProduct(item, ProductFormat.short)) as Array<IProductShortInfo>);
+      .pipe(
+        map(products =>
+          products.map(product =>
+            this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>));
   }
 }

@@ -8,6 +8,7 @@ import { ICloudinaryImage } from 'src/app/interfaces/cloudinary-image.interface'
 import { IProductDetails } from 'src/app/interfaces/product-details.interface';
 import { IProductOptions } from 'src/app/interfaces/product-options.interface';
 import { IProductDescription } from 'src/app/interfaces/product-description.interface';
+import { IProductCartItem } from './product-cart-item.interface';
 
 export {
   IProductShortInfo,
@@ -19,5 +20,6 @@ export {
   ICloudinaryImage,
   IProductDetails,
   IProductOptions,
-  IProductDescription
+  IProductDescription,
+  IProductCartItem
 };

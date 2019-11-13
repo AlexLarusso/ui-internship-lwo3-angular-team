@@ -1,0 +1,39 @@
+<div class="product-cart-item" *ngIf="productItem" [class.last-cart-item]="isLastItem">
+  <img class="product-cart-item__image"
+    [src]="productItem.imageUrl"
+    alt="Product image">
+  <h4 class="product-cart-item__title">
+    {{ productItem.title }}
+  </h4>
+  <div class="product-cart-item__qty">
+    <app-select-quantity
+      [startNumber]="productItem.quantity"
+      [maxNumber]="productItem.maxQty"
+      (quantityChanged)="handleQtyChange($event)">
+    </app-select-quantity>
+  </div>
+  <span class="product-cart-item__size">
+    Size: {{ productItem.size }}
+  </span>
+  <span class="product-cart-item__color">
+    Color:
+    <span class="product-cart-item__color-sample"
+      [ngStyle]="{ backgroundColor: productItem.color }">
+    </span>
+  </span>
+  <a class="product-cart-item__pdp-link"
+    [routerLink]="productRouterLink">
+    More...
+  </a>
+  <span class="product-cart-item__price">
+    {{ productItem.price }} {{ currentCurrency }}
+  </span>
+  <span class="product-cart-item__sum">
+    {{ productItem.price * productItem.quantity }} {{ currentCurrency }}
+  </span>
+  <fa-icon
+    class="product-cart-item__remove-icon"
+    [icon]="closeIcon"
+    (click)="removeItemFromCart()">
+  </fa-icon>
+</div>

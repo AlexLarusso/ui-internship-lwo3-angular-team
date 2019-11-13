@@ -19,3 +19,7 @@ export enum URLs {
   images = 'https://gaboo-project-server.herokuapp.com/images',
   productImage = 'https://res.cloudinary.com/dr8z1kafr/image/upload/v1572252362/Interns/gaboo/products'
 }
+
+export enum ImagePlaceholder {
+  IMAGE_NOT_FOUND = 'src/assets/img/image-not-found.png'
+}

@@ -13,6 +13,19 @@
   font-size: 0.8rem;
 }
 
+@keyframes imageScale {
+  from {
+    transform: scale(0);
+    transform-origin: 50% 50%;
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+  }
+}
+
 .new {
   &::after {
     @include tagStyle;
@@ -55,6 +68,7 @@
 
 .product-item {
   &__container {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -73,8 +87,8 @@
   }
 
   &__picture {
-    position: relative;
     height: 340px;
+    animation: imageScale .4s ease-in-out 1 forwards;
 
     &__container {
       position: relative;

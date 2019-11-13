@@ -56,17 +56,27 @@
   }
 
   &__cart {
-    width: 70%;
-    background: $bgColorLight;
 
     &__container {
       display: flex;
       height: 30px;
     }
 
+    &__btn, &__qty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
     &__btn {
       width: 50px;
       background: $accentColor;
+    }
+
+    &__qty {
+      width: 70%;
+      height: 100%;
+      background: $bgColorLight;
     }
   }
 
@@ -118,6 +128,8 @@
 
     &__list {
       width: 100%;
+      display: flex;
+      justify-content: space-around;
     }
   }
 
