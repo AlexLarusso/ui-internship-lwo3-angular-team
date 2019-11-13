@@ -24,6 +24,7 @@ import { SelectSizeComponent } from './select-size/select-size.component';
 import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ImageLoadDirective } from './directives/image-loader.directive';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
+import { PaypalCheckoutComponent } from '../components/paypal-checkout/paypal-checkout.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
     SelectSizeComponent,
     WishButtonComponent,
     ShopByCategoryComponent,
+    PaypalCheckoutComponent,
     SelectQuantityComponent,
     ImageLoadDirective,
   ],
@@ -55,6 +57,7 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
     CommonModule,
     FontAwesomeModule,
     RouterModule,
+    FormsModule
   ],
   providers: [
   ],
@@ -78,6 +81,7 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
     SelectSizeComponent,
     WishButtonComponent,
     ShopByCategoryComponent,
+    PaypalCheckoutComponent,
     SelectQuantityComponent,
   ]
 })
