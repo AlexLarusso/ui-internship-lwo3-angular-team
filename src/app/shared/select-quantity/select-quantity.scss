@@ -10,7 +10,7 @@ $limit-color: red;
   align-items: center;
   border: 1px solid $accentColor;
   height: $qty-select-height;
-  width: 80px;
+  width: 100%;
   padding: 0 $qty-select-spacing;
 
   &__icon {

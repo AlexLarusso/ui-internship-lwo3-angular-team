@@ -37,6 +37,13 @@ export class ProductService implements OnDestroy {
       .subscribe(images => this.allProductImages = images);
   }
 
+  public setCartItemsToLocalStorage(): void {
+    this.store.select(getCartProductItems)
+    .subscribe(products =>
+      localStorage.setItem(this.CART_KEY, JSON.stringify(products))
+      );
+    }
+
   public formatProduct(product: IProduct, format: string):
     IProduct | IProductShortInfo {
     switch (format) {
@@ -71,13 +78,13 @@ export class ProductService implements OnDestroy {
         const firsProductImage = this.allProductImages
           .filter(image => image.productId === product._id)[0].claudinaryId;
         const secondProductImage = this.allProductImages
-        .filter(image => image.productId === product._id)[1].claudinaryId;
+          .filter(image => image.productId === product._id)[0].claudinaryId;
 
         return {
           productTitle: product.productName,
           imgUrl: `${URLs.productImage}/${firsProductImage}`,
           imgUrlNext: `${URLs.productImage}/${secondProductImage}`,
-          productPrice: product.price + ' USD',
+          productPrice: `${product.price} USD`,
           productId: product._id,
           status: product.status,
           gender: product.gender,
@@ -132,13 +139,6 @@ export class ProductService implements OnDestroy {
   }
 
   public ngOnDestroy(): void { }
-
-  public setCartItemsToLocalStorage(): void {
-    this.store.select(getCartProductItems)
-    .subscribe(products =>
-      localStorage.setItem(this.CART_KEY, JSON.stringify(products))
-      );
-    }
 
   private getProductsByCategory(category: string, format: string = ProductFormat.full):
   Observable<Array<any>> {
