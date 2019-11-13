@@ -11,11 +11,7 @@
       </app-product-cart-item>
     </div>
     <div class="cart-footer">
-      <app-button buttonClass="button_full-width"
-        class="cart__confirm-btn"
-        (click)="confirmOrder()">
-        Checkout
-      </app-button>
+      <app-paypal-checkout class="cart__confirm-btn"></app-paypal-checkout>
       <span class="cart__total-price__label">
         Total price
       </span>

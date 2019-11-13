@@ -17,7 +17,7 @@ import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
   styleUrls: ['./cart-page.scss']
 })
 export class CartPageComponent implements OnInit {
-  public emptyCartUrl = './assets/server-data/images/empty-cart.gif';
+  public emptyCartUrl = './assets/img/empty-cart.gif';
   public isPopularListVisible = false;
   public productOptions = ['Product', 'Details', 'Quantity', 'Price', 'Sum'];
   public currentCurrency = 'USD';

@@ -49,7 +49,6 @@ export function cartReducer(state = initialState, action: any): IState {
     }
 
     case ConfirmOrder.TYPE:
-      // TODO: paypal checkout
       return {
         ...state,
         cartProducts: []
