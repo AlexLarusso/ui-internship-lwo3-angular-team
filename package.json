@@ -29,6 +29,7 @@
     "@ngrx/store": "^8.3.0",
     "intl": "^1.2.5",
     "ngx-auto-unsubscribe": "^3.0.1",
+    "puppeteer": "^2.0.0",
     "redux-devtools-extension": "^2.13.8",
     "rxjs": "^6.4.0",
     "tslib": "^1.10.0",

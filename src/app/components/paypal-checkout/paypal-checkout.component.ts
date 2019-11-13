@@ -52,6 +52,7 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
           this.store.dispatch(new ConfirmOrder());
           alert('Payment successful!');
           // TODO: Add toastr notification
+          // TODO: use rxjs instead
         },
         onError: err => {
           alert('Something went wrong, please try again');
