@@ -78,7 +78,7 @@ export class ProductService implements OnDestroy {
         const firsProductImage = this.allProductImages
           .filter(image => image.productId === product._id)[0].claudinaryId;
         const secondProductImage = this.allProductImages
-          .filter(image => image.productId === product._id)[0].claudinaryId;
+          .filter(image => image.productId === product._id)[1].claudinaryId;
 
         return {
           productTitle: product.productName,
