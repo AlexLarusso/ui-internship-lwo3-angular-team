@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,8 +22,6 @@ import { AppComponent } from './app.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { NotificationComponent } from './components/notification/notification.component';
-import { ErrorSampleComponent } from './pages/error-sample/error-sample.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +29,7 @@ import { ErrorSampleComponent } from './pages/error-sample/error-sample.componen
     ProductListPageComponent,
     WishListPageComponent,
     LoaderComponent,
-    CounterComponent,
-    NotificationComponent,
-    ErrorSampleComponent,
+    CounterComponent
   ],
   imports: [
     SharedModule,
@@ -39,7 +37,9 @@ import { ErrorSampleComponent } from './pages/error-sample/error-sample.componen
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
     EffectsModule.forRoot([ProductsEffects, CartEffects]),
-    RoutesModule
+    RoutesModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

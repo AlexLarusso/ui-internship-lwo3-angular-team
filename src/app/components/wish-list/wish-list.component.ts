@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../store/app.store';
@@ -12,7 +14,6 @@ import { map, switchMap } from 'rxjs/operators';
 import { ProductFormat } from '../../app.enum';
 import { ProductService } from '../../shared/services';
 import { IProductShortInfo } from '../../interfaces';
-import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @AutoUnsubscribe()
 @Component({
@@ -31,7 +32,7 @@ export class WishListComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private store: Store<IAppState>,
-    private notificationService: NotificationService
+    private toastrService: ToastrService
   ) { }
 
   public ngOnInit(): void {
@@ -56,7 +57,7 @@ export class WishListComponent implements OnInit, OnDestroy {
       this.productData = productArray;
 
       if (!this.productData.length) {
-        this.notificationService.info(this.wishListEmptyMsg);
+        this.toastrService.warning(this.wishListEmptyMsg);
       }
     });
   }
