@@ -4,12 +4,12 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
 
 .button {
   &_default {
-    margin: 10px;
-    border: 4px solid $accentColor;
+    border: 2px solid $accentColor;
     width: 150px;
     height: 35px;
     background-color: transparent;
     text-transform: uppercase;
+    font-size: 0.9rem;
 
     &:hover:enabled {
       background: $accentColor;
@@ -31,7 +31,7 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
   }
 
   &_navigation {
-    width: 110px;
+    width: 200px;
   }
 
   &_dark {
@@ -65,5 +65,28 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
     background: $accentColor;
     color: $fontColorLight;
     width: 300px;
+  }
+
+  &_success {
+    width: 70px;
+    border: 2px solid $accentColor;
+    margin: 10px;
+  }
+
+  &_warning {
+    width: 70px;
+    background: transparent;
+    border: 2px solid $saleTagColor;
+    margin: 10px;
+
+    &:hover:enabled {
+      background-color: $saleTagColor;
+      transform: scale(1.08);
+      transition: 0.1s ease-in-out;
+      color: $fontColorLight;
+    }
+  }
+  &_popular {
+    width: 250px;
   }
 }

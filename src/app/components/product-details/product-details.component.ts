@@ -14,7 +14,7 @@ export class ProductDetailsComponent implements OnInit {
     title: string;
     text: string;
   }[] = [];
-  public currentCurrency = 'UAH';
+  public currentCurrency = 'USD';
 
   public ngOnInit(): void {
     this.addDescriptionNote('Detail',

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { IAppState } from 'src/app/store/app.store';
+import { Store } from '@ngrx/store';
+import { FilterBySeason, FilterByGender } from 'src/app/store/actions/products.action';
 
 @Component({
   selector: 'app-category-menu',
@@ -7,15 +10,25 @@ import { Component } from '@angular/core';
 })
 
 export class CategoryMenuComponent {
+  constructor(private store: Store<IAppState>) { }
+
   public genders = [
-    {title: 'women', url: '/women'},
-    {title: 'men', url: '/men'},
-    {title: 'collection', url: '/collection'}
+    { title: 'women', url: 'category/women' },
+    { title: 'men', url: 'category/men' },
+    { title: 'collection', url: 'category/collection' },
+    {}
   ];
+
   public seasons = [
-    {title: 'winter', url: '/winter'},
-    {title: 'spring', url: '/spring'},
-    {title: 'summer', url: '/summer'},
-    {title: 'fall', url: '/fall'}
+    { title: 'spring', url: 'category/spring' },
+    { title: 'summer', url: 'category/summer' },
+    { title: 'autumn', url: 'category/autumn' },
+    { title: 'winter', url: 'category/winter' }
   ];
+
+  public filterProducts(filterCategory: string): void {
+    filterCategory === 'women' || filterCategory === 'men' ?
+      this.store.dispatch(new FilterByGender(filterCategory)) :
+      this.store.dispatch(new FilterBySeason(filterCategory));
+  }
 }

@@ -1,0 +1,51 @@
+.parallax {
+  &__container {
+    height: 500px;
+    background: url('../../../assets/img/beauty-casual-curly.jpg') top right / cover no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+.men {
+  background: url('../../../assets/img/men_fashion.jpg') bottom right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.women {
+  transform: translateZ(-1px) scale(1);
+  background: url('../../../assets/img/women_fashion.jpg') top right / cover no-repeat;;
+  background-attachment: fixed;
+}
+
+.spring {
+  background: url('../../../assets/img/spring_fashion.jpg') top right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.summer {
+  background: url('../../../assets/img/summer_fashion.jpg') top right / cover no-repeat;;
+  background-attachment: fixed;
+}
+
+.autumn {
+  background: url('../../../assets/img/fall_fashion.jpg') top right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.winter {
+  background: url('../../../assets/img/winter_fashion.jpg') top right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.shopping {
+  background: url('../../../assets/img/shopping.jpg') top right / cover no-repeat;
+  background-attachment: fixed;
+}
+
+@media screen and (max-width: 768px) {
+  .parallax {
+    &__container {
+      background-position: center;
+    }
+  }
+}

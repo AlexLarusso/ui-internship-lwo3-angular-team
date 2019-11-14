@@ -1,11 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
+import { Subscription, forkJoin} from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+import { IProductShortInfo } from 'src/app/interfaces';
 import { LocalStorageService } from '../../shared/services/web-storage/local-storage.service';
 import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
-import { Subscription, forkJoin} from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { IProductShortInfo } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Component({
@@ -14,13 +17,13 @@ import { IProductShortInfo } from 'src/app/interfaces';
   styleUrls: ['recently-viewed.scss']
 })
 export class RecentlyViewedComponent implements OnInit, OnDestroy {
+  public recentlyViewedProducts: Array<IProductShortInfo> = [];
+  public recentProductsSub: Subscription;
+
   constructor(
     private localStorageService: LocalStorageService,
     private productService: ProductService,
     ) { }
-
-  public recentlyViewedProducts: Array<IProductShortInfo> = [];
-  public recentProductsSub: Subscription;
 
   public ngOnInit(): void {
     this.checkIfExpired();
@@ -40,9 +43,11 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
       .subscribe(product => {
         this.recentlyViewedProducts = product.sort((a, b) => b.order - a.order);
        });
-}
+  }
 
-  public checkIfExpired(): void {
+  public ngOnDestroy(): void { }
+
+  private checkIfExpired(): void {
     const hours = 0.1; // 360 seconds
     const now = new Date().getTime();
     const hoursToMiliseconds = hours * 60 * 60 * 1000;
@@ -53,10 +58,9 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
     if (TimerForRecentItemsExpiry == null && recentlyViewExists) {
       localStorage.setItem('clearRecentlyViewed', JSON.stringify(now));
     } else if (timeDifference > hoursToMiliseconds) {
-        this.localStorageService.localStorageDelete('recentlyViewed');
-        this.localStorageService.localStorageDelete('clearRecentlyViewed');
-      }
-  }
+      this.localStorageService.localStorageDelete('recentlyViewed');
 
-  public ngOnDestroy() { }
+      this.localStorageService.localStorageDelete('clearRecentlyViewed');
+    }
+  }
 }

@@ -4,14 +4,32 @@
       <p class="col-6">{{ email }}</p>
       <p class="col-6">{{ telephone }}</p>
     </div>
-    <div class="col-5 login__container">
+    <div class="col-4 login__container">
       <div class="col-5 link__container">
         <fa-icon [icon]="faFacebookF" class="link__item"></fa-icon>
         <fa-icon [icon]="faTwitter" class="link__item"></fa-icon>
         <fa-icon [icon]="faGoogle" class="link__item"></fa-icon>
       </div>
-      <a class="bar__link">Login</a>
-      <a class="bar__link">Register</a>
+      <div *ngIf="isAuthenticated; then doSomething; else doSomethingElse;"></div>
+      <ng-template #doSomething>
+          <p class="bar__link"> Hello, {{ userName$ | async }}!</p>
+          <a class="bar__link" (click)="logOut()">Log out</a>
+        </ng-template>
+        <ng-template #doSomethingElse>
+          <a (click)="modalService.open('sign-up')" class="bar__link">Sign Up</a>
+          <a (click)="modalService.open('login')" class="bar__link">Login</a>
+          </ng-template>
+      <app-modal-window
+        id="login"
+        *ngIf="modalService.isLoginModalOpen">
+        <app-login></app-login>
+      </app-modal-window>
+      <app-modal-window
+        id="sign-up"
+        *ngIf="modalService.isSignUpModalOpen">
+        <app-sign-up></app-sign-up>
+      </app-modal-window>
+      
     </div>
   </div>
 </div>

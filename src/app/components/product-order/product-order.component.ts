@@ -1,23 +1,22 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
+
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Subscription } from 'rxjs';
-
-import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-
-import { IProduct } from 'src/app/interfaces/product.interface';
-import { IProductDetails } from 'src/app/interfaces/product-details.interface';
-import { IProductOptions } from 'src/app/interfaces/product-options.interface';
-import { IProductDescription } from 'src/app/interfaces/product-description.interface';
-import { IProductImage } from 'src/app/interfaces/product-image.interface';
-
+import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
-import { SelectColor } from 'src/app/store/actions/product-options.actions';
-import { NotificationService } from 'src/app/shared/services/notification.service';
+import { SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
+import { AddProductToCart } from 'src/app/store/actions/cart.actions';
+import { IProductCartItem } from 'src/app/interfaces';
+
+import { Subscription } from 'rxjs';
+
+import {
+  IProduct, IProductDetails, IProductOptions, IProductDescription, IProductImage
+} from 'src/app/interfaces';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -33,7 +32,6 @@ const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nis
 export class ProductOrderComponent implements OnInit, OnDestroy {
   @Input() private product: IProduct;
 
-  public iconWhishlistBtn: IconDefinition = faHeart;
   public productDetails: IProductDetails;
   public productImages: Array<IProductImage>;
   public selectedSizeSub: Subscription;
@@ -44,10 +42,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   private selectedColor: string;
   private selectedQty: number;
 
-  constructor(
-    private store: Store<IAppState>,
-    private notificationService: NotificationService
-  ) { }
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
     const productOptions: IProductOptions = {
@@ -62,20 +57,32 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
     };
     const initColor = productOptions.colors[0];
 
+    const {
+      productName: title,
+      price,
+      brand,
+      category,
+      gender,
+      seasons: season,
+      _id: productId
+    } = this.product;
+
     this.productDetails = {
-      title: this.product.productName,
-      price: this.product.price,
-      brand: this.product.brand,
-      category: this.product.category,
-      sex: this.product.sex,
-      season: this.product.season,
-      productId: this.product.id,
+      title,
+      price,
+      brand,
+      category,
+      gender,
+      season,
+      productId,
       options: productOptions,
       description: productDescription,
     };
+
     this.productImages = this.product.images;
 
     this.store.dispatch(new SelectColor(initColor));
+
     this.selectedQtySub = this.store.select(getProductQuantity)
       .subscribe(qty => this.selectedQty = qty);
     this.selectedColorSub = this.store.select(getProductSelectedColor)
@@ -84,15 +91,29 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       .subscribe(size => this.selectedSize = size);
   }
 
-  public ngOnDestroy(): void { }
+  public ngOnDestroy(): void {
+    this.store.dispatch(new ResetProductOptions());
+  }
 
   public onBuyClick(): void {
-    const title = `Added ${this.productDetails.title} to your cart.`;
-    const message = `Quantity: ${this.selectedQty}.
-      Size: ${this.selectedSize}.
-      Color: ${this.selectedColor}.
-      Full price: ${this.selectedQty * this.productDetails.price} uah.`;
+    const productCartItem: IProductCartItem = {
+      id: this.product._id,
+      title: this.product.productName,
+      price: this.product.price,
+      imageUrl: this.product.images.find(img =>
+        img.value === this.selectedColor).url[0],
+      color: this.selectedColor,
+      size: this.selectedSize,
+      quantity: this.selectedQty,
+      maxQty: this.product.quantity
+    };
 
-    this.notificationService.success(title, message);
+    this.store.dispatch(new AddProductToCart(productCartItem));
+  }
+
+  public handleQtyChange(newQty: number) {
+    newQty > this.selectedQty
+      ? this.store.dispatch(new IncrementQuantity())
+      : this.store.dispatch(new DecrementQuantity());
   }
 }

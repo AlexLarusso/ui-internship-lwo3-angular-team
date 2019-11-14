@@ -1,0 +1,25 @@
+@import 'src/app/styles/variables';
+
+$qty-select-height: 40px;
+$qty-select-spacing: 20px;
+$limit-color: red;
+
+.select-qty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $accentColor;
+  height: $qty-select-height;
+  width: 100%;
+  padding: 0 $qty-select-spacing;
+
+  &__icon {
+    color: $inputBorderColor;
+    font-size: 0.9rem;
+  }
+}
+
+.value-limit {
+  border: 1px solid $limit-color;
+  box-shadow: 0 0 2px 2px $limit-color;
+}

@@ -3,7 +3,7 @@ import {
   ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef
 } from '@angular/core';
 
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 
@@ -30,7 +30,7 @@ const BREAK_POINTS = {
   }
 };
 
-const MARGIN = 10;
+const MARGIN = 30;
 
 @Component({
   selector: 'app-product-carousel',
@@ -43,8 +43,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
 
-  public faArrowLeft = faArrowLeft;
-  public faArrowRight = faArrowRight;
+  public faArrowLeft = faChevronLeft;
+  public faArrowRight = faChevronRight;
   public canMoveToNext = true;
   public canMoveToPrev = false;
   public productContainer: HTMLElement;
@@ -108,13 +108,6 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.cd.detectChanges();
   }
 
-  public toggleButtonsState(): void {
-    const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
-
-    this.canMoveToPrev = this.position !== 0;
-    this.canMoveToNext = this.position !== maxPosition && this.productArray.length >= this.visibleNum;
-  }
-
   public moveToNext(): void {
     const newPosition = this.position - this.itemWidth * this.visibleNum;
     const possiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
@@ -135,7 +128,14 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
-  public indicateViewNumber(): void {
+  private toggleButtonsState(): void {
+    const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
+
+    this.canMoveToPrev = this.position !== 0;
+    this.canMoveToNext = this.position !== maxPosition && this.productArray.length >= this.visibleNum;
+  }
+
+  private indicateViewNumber(): void {
     switch (true) {
       case this.pageWidth > BREAK_POINTS.laptop_M.width:
         this.visibleNum = BREAK_POINTS.laptop_M.slideNum;
@@ -154,7 +154,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     }
   }
 
-  public resetPositionValue(): void {
+  private resetPositionValue(): void {
     this.position = 0;
     this.productContainer.style.marginLeft = 0 + 'px';
     this.productsContainer.nativeElement.scrollLeft = 0;

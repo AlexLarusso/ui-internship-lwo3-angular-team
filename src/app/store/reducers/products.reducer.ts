@@ -1,14 +1,19 @@
-import { SetProducts,  LoadProducts, ProductsActions, FilterByGender, FilterBySeason } from '../actions/products.action';
-import { IProductShortInfo } from '../../interfaces';
+import {
+  SetProducts,  LoadProducts, ProductsActions, FilterByGender, FilterBySeason, SetProductImages
+} from '../actions/products.action';
+import { IProduct, ICloudinaryImage } from '../../interfaces';
+import { URLs } from 'src/app/app.enum';
 
 export interface IState {
-  products: Array<IProductShortInfo>;
+  products: Array<IProduct>;
+  productImages: Array<ICloudinaryImage>;
   load: boolean;
-  filteredProducts: Array<IProductShortInfo>;
+  filteredProducts: Array<IProduct>;
 }
 
 export const initialState: IState = {
   products: [],
+  productImages: [],
   load: false,
   filteredProducts: []
 };
@@ -24,14 +29,52 @@ export function productsReducer(state = initialState, action: ProductsActions): 
         load: true
       };
 
-    case SetProducts.TYPE:
+    case SetProducts.TYPE: {
+      const [products, images] = [payload, state.productImages];
+      const productsWithImages = products.map(product => {
+        const productImages = images
+          .filter(image => image.productId === product._id)
+          .reduce((prodImages, image) => {
+            const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
+
+            if (isColorAlreadyExist) {
+              prodImages.forEach(el => {
+                if (el.value === image.productColor) {
+                  el.url.push(`${URLs.productImage}/${image.claudinaryId}`);
+                }
+              });
+            } else {
+              prodImages.push({
+                value: image.productColor,
+                url: [`${URLs.productImage}/${image.claudinaryId}`]
+              });
+            }
+
+            return prodImages;
+          }, []);
+
+        return {
+          ...product,
+          images: [...productImages]
+        };
+      });
+
       return {
         ...state,
-        products: [...payload]
+        products: [...productsWithImages]
       };
+    }
+
+
+    case SetProductImages.TYPE: {
+      return {
+        ...state,
+        productImages: [...payload]
+      };
+    }
 
     case FilterByGender.TYPE:
-      const filteredByGenderItems = currentItems.filter(item => item.sex === payload);
+      const filteredByGenderItems = currentItems.filter(item => item.gender === payload);
 
       return {
         ...state,
@@ -39,7 +82,7 @@ export function productsReducer(state = initialState, action: ProductsActions): 
       };
 
     case FilterBySeason.TYPE:
-      const filteredBySeasonItems = currentItems.filter(item => item.season.includes(payload));
+      const filteredBySeasonItems = currentItems.filter(item => item.seasons.includes(payload));
 
       return {
         ...state,

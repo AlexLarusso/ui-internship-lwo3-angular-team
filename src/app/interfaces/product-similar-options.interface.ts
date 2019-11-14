@@ -1,5 +1,5 @@
 export interface IProductSimilarOptions {
   category: string;
-  sex: string;
+  gender: string;
   id: string;
 }
