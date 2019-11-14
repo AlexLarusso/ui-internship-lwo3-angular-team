@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-product-filter',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class ProductFilterComponent implements OnInit {
-  @Input() public products;
+  @Input() public products: Array<IProduct>;
 
   public productCategory: Array<string> = [];
   public productColor: Array<string> = [];
@@ -29,7 +30,7 @@ export class ProductFilterComponent implements OnInit {
   public ngOnInit(): void {
     this.products.forEach(item => {
       this.productCategory.push(item.category);
-      this.productColor.push(item.color);
+      // this.productColor.push(item.colors);
       this.productBrand.push(item.brand);
     });
     this.productCategory = [...new Set(this.productCategory)];
@@ -37,14 +38,15 @@ export class ProductFilterComponent implements OnInit {
     this.productBrand = [...new Set(this.productBrand)];
   }
 
-  private onFilter() {
-    this.filterRequest.forEach((criteria) =>
-      this.products.forEach(product =>
-        product.forof((prop) =>
-          prop === criteria ?
-            this.selectedProducts.push(product) :
-            this.selectedProducts))
-    );
+  // private onFilter() {
+  //   this.filterRequest.forEach((criteria) =>
+  //     this.products.forEach(product =>
+  //       Object(product).forof((prop) =>
+  //         prop === criteria ?
+  //           this.selectedProducts.push(product) :
+  //           this.selectedProducts))
+  //   );
+  // }
     //   this.selectedProducts = this.products.filter(product =>
     //   (!this.filterRequest.category.length || this.filterRequest.category.includes(product.category))
     //   &&
@@ -52,5 +54,4 @@ export class ProductFilterComponent implements OnInit {
     //   &&
     //   (!this.filterRequest.color.length || this.filterRequest.color.includes(product.color))
     // );
-  }
 }

@@ -1,24 +1,26 @@
 <div class="menu">
+
   <div class="content__container">
     <div class="col-12 menu__wrapper">
-      <div class="col-9 menu__container">
-        <ul class="menu__list col-6">
+      <app-scroll class="col-4"></app-scroll>
+      <div class="col-8 menu__container">
+        <ul class="menu__list col-7">
           <li *ngFor="let item of menuItems" class="menu__list__item">
             <a [routerLink]="item.url">{{ item.title }}</a>
           </li>
         </ul>
-        <div class="col-5 menu__input__container">
-          <div class="col-7 menu__search__container">
+        <div class="col-7 menu__input__container">
+          <div class="col-6 menu__search__container">
             <input type="text" placeholder="Search" class="menu__search">
             <button class="menu__search__btn">
               <fa-icon [icon]="faSearch"></fa-icon>
             </button>
           </div>
-          <div class="col-4 menu__cart__container">
-            <a [routerLink]="menuItems[0].url" class="menu__cart__btn">
+          <div class="col-5 menu__cart__container">
+            <span class="menu__cart__qty"> ( {{ cartItemsQty$ | async }} )</span>
+            <a [routerLink]="menuItems[1].url" class="menu__cart__btn">
               <fa-icon [icon]="faCartArrowDown"></fa-icon>
             </a>
-            <span class="menu__cart__qty"> ( {{ cartItemsQty$ | async }} )</span>
           </div>
         </div>
       </div>

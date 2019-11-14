@@ -20,11 +20,11 @@
   <div class="filter-criteria" *ngFor="let product of productColor">
       <h2 class="filter-criteria__title">Color</h2>
       <input class="filter-criteria__option"
-      (change)="onCreateRequest($event)"
+      (checked)="onCreateRequest($event)"
       type="checkbox"
       name="color"
       value="product">
       <label>{{ product }}</label>
   </div>
-  <button (click)="onFilter()"></button>
 </div>
+<button (click)="onFilter()"></button>

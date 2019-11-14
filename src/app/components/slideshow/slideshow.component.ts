@@ -15,10 +15,10 @@ import {
 import { slideshowAnimation } from './slideshow.animations';
 
 const images: Array<string> = [
-  '../../assets/img/beauty-casual-curly.jpg',
-  '../../assets/img/blazers-daytime-dress.jpg',
-  '../../assets/img/bored-boredom-casual.jpg',
-  '../../assets/img/city-daylight-diversity.jpg'
+  '../../assets/img/city-daylight.jpg',
+  '../../assets/img/city-daylight-fashion.jpeg',
+  '../../assets/img/woman-fashion-street-photo.jpg',
+  '../../assets/img/bored-boredom-casual.jpg'
 ];
 
 @AutoUnsubscribe()

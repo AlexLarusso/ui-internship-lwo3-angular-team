@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faPlus, faMinus, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-accordeon',
@@ -10,8 +10,8 @@ export class AccordeonComponent implements OnInit {
   @Input() content: { title: string; text: string; }[];
 
   public selectedTopic: number;
-  public iconExpand: IconDefinition = faPlus;
-  public iconCollapse: IconDefinition = faMinus;
+  public iconExpand: IconDefinition = faChevronDown;
+  public iconCollapse: IconDefinition = faChevronUp;
 
   private collapsedAllIndex = -1;
 

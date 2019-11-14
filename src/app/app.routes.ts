@@ -7,7 +7,6 @@ import { NotFoundPageModule } from './pages/not-found-page/not-found-page.module
 import { ProductDetailsPageModule } from './pages/product-details-page/product-details-page.module';
 import { ProductListPageModule } from './pages/product-list-page/product-list-page.module';
 import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
-import { ErrorSampleModule } from './pages/error-sample/error-sample.module';
 import { ErrorPageModule } from './pages/error-page/error-page.module';
 import { CartPageModule } from './pages/cart-page/cart-page.module';
 
@@ -38,8 +37,8 @@ const routes: Routes = [
     loadChildren: () => ErrorPageModule
   },
   {
-    path: 'checkout',
-    loadChildren: () => ErrorSampleModule
+    path: 'shopping-cart',
+    loadChildren: () => CartPageModule
   },
   {
     path: 'shopping-cart',
@@ -57,7 +56,6 @@ const routes: Routes = [
     ProductListPageModule,
     WishListPageModule,
     SharedModule,
-    ErrorSampleModule,
     ErrorPageModule,
     CartPageModule,
   ],
@@ -68,7 +66,6 @@ const routes: Routes = [
     ProductListPageModule,
     WishListPageModule,
     SharedModule,
-    ErrorSampleModule,
     ErrorPageModule,
     CartPageModule,
   ]

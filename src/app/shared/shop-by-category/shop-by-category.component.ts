@@ -1,15 +1,17 @@
-import { Component, OnInit, OnDestroy, AfterViewChecked, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
 import { getFilteredProducts } from '../../store/selectors/products.selectors';
-import { LoadProducts, FilterByGender, FilterBySeason } from 'src/app/store/actions/products.action';
 
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IProductShortInfo } from 'src/app/interfaces';
-import { IAppState } from 'src/app/store/app.store';
+import { ProductService } from '../services';
+import { ProductFormat } from 'src/app/app.enum';
 
 @AutoUnsubscribe()
 @Component({
@@ -18,41 +20,35 @@ import { IAppState } from 'src/app/store/app.store';
   styleUrls: ['./shop-by-category.scss']
 })
 
-export class ShopByCategoryComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class ShopByCategoryComponent implements OnInit, OnDestroy {
   @Input() public filterCategory: string;
 
-  public filterGenderSub: Subscription;
-  public filteredItems: Array<IProductShortInfo>;
-  public filterItemsSub: Subscription;
+  public filteredItems$: Observable<Array<IProductShortInfo>>;
   public routeParamsSub: Subscription;
 
   constructor(
+    private productService: ProductService,
     private store: Store<IAppState>,
-    private cd: ChangeDetectorRef,
     private route: ActivatedRoute
   ) { }
-
-  public getProductsByCategory() {
-    this.store.dispatch(new LoadProducts());
-    this.filterGenderSub = this.store.select(getFilteredProducts).subscribe(items => this.filteredItems = items);
-  }
 
   public ngOnInit(): void {
     this.routeParamsSub = this.route.params.pipe()
       .subscribe(item => {
         this.filterCategory = item.category;
-
-        this.getProductsByCategory();
       });
-  }
 
-  public ngAfterViewChecked(): void {
-    this.filterCategory === 'women' || this.filterCategory === 'men' ?
-      this.store.dispatch(new FilterByGender(this.filterCategory)) :
-      this.store.dispatch(new FilterBySeason(this.filterCategory));
-
-    this.cd.detectChanges();
+    this.getProductsByCategory();
   }
 
   public ngOnDestroy(): void { }
+
+  private getProductsByCategory(): void {
+    this.filteredItems$ = this.store
+      .select(getFilteredProducts)
+      .pipe(
+        map(products =>
+          products.map(product =>
+            this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>));
+  }
 }
