@@ -28,6 +28,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     public modalService: ModalService,
+
     private store: Store<IAppState>
   ) {
     this.getState = this.store.select(selectAuthState);
