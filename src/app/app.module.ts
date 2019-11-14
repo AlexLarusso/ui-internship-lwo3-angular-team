@@ -12,9 +12,11 @@ import { RoutesModule } from './app.routes';
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
 import { ErrorsHandler } from './shared/services/errors.handler';
+import { CookieService } from 'ngx-cookie-service';
 
 import { appReducer } from './store/app.store';
 import { ProductsEffects } from './store/effects/products.effects';
+import { AuthEffects } from './store/effects/auth.effects';
 import { CartEffects } from './store/effects/cart.effects';
 
 import { LoaderComponent } from './shared/loader/loader.component';
@@ -36,14 +38,14 @@ import { CounterComponent } from './components/counter/counter.component';
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
-    EffectsModule.forRoot([ProductsEffects, CartEffects]),
+    EffectsModule.forRoot([ProductsEffects, CartEffects, AuthEffects]),
     RoutesModule,
     ToastrModule.forRoot()
-
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     // { provide: ErrorHandler, useClass: ErrorsHandler }
+    CookieService
   ],
   bootstrap: [
     AppComponent
