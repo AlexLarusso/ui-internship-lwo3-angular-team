@@ -6,10 +6,11 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { WishListComponent } from '../../components/wish-list/wish-list.component';
 
+
 const routes: Routes = [
   {
     path: 'wishlist',
-    component: WishListComponent
+    component: WishListComponent,
   }
 ];
 

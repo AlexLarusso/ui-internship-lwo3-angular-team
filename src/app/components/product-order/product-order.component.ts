@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
