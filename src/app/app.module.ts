@@ -22,7 +22,6 @@ import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.com
 import { CounterComponent } from './components/counter/counter.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ErrorSampleComponent } from './pages/error-sample/error-sample.component';
-import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 @NgModule({
   declarations: [

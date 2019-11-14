@@ -6,11 +6,11 @@ import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
-import { map } from 'rxjs/operators';
 
 @AutoUnsubscribe()
 @Component({

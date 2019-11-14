@@ -1,9 +1,14 @@
 @import '../../styles/variables';
 
+.content__title {
+  text-align: left;
+}
+
 .story {
   &__wrapper {
     display: flex;
-    height: 500px;
+    padding-top: 40px;
+    height: 550px;
   }
 
   &__picture {

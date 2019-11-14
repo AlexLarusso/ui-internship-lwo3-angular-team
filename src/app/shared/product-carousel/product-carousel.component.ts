@@ -3,7 +3,7 @@ import {
   ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef
 } from '@angular/core';
 
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 
@@ -30,7 +30,7 @@ const BREAK_POINTS = {
   }
 };
 
-const MARGIN = 10;
+const MARGIN = 30;
 
 @Component({
   selector: 'app-product-carousel',
@@ -43,8 +43,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
 
-  public faArrowLeft = faArrowLeft;
-  public faArrowRight = faArrowRight;
+  public faArrowLeft = faChevronLeft;
+  public faArrowRight = faChevronRight;
   public canMoveToNext = true;
   public canMoveToPrev = false;
   public productContainer: HTMLElement;
