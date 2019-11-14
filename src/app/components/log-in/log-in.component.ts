@@ -27,7 +27,7 @@ export class LogInComponent implements OnInit {
   private passwordRegExp = new RegExp(EnumRegExp.PASSWORD_REGEXP);
 
   constructor(
-    private modalService: ModalService,
+    public modalService: ModalService,
     private store: Store<IAppState>,
   ) {
     this.getState = this.store.select(selectAuthState);
