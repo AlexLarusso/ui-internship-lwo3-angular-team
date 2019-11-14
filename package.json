@@ -28,6 +28,7 @@
     "@ngrx/effects": "^8.3.0",
     "@ngrx/store": "^8.3.0",
     "ngx-auto-unsubscribe": "^3.0.1",
+    "ngx-cookie-service": "^2.2.0",
     "ngx-toastr": "^11.2.1",
     "puppeteer": "^2.0.0",
     "redux-devtools-extension": "^2.13.8",

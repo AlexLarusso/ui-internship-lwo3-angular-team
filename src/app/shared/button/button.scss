@@ -67,6 +67,25 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
     width: 300px;
   }
 
+  &_success {
+    width: 70px;
+    border: 2px solid $accentColor;
+    margin: 10px;
+  }
+
+  &_warning {
+    width: 70px;
+    background: transparent;
+    border: 2px solid $saleTagColor;
+    margin: 10px;
+
+    &:hover:enabled {
+      background-color: $saleTagColor;
+      transform: scale(1.08);
+      transition: 0.1s ease-in-out;
+      color: $fontColorLight;
+    }
+  }
   &_popular {
     width: 250px;
   }
