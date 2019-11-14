@@ -22,6 +22,7 @@ export class MainMenuComponent implements OnInit {
   constructor(private store: Store<IAppState>) { }
 
   public menuItems = [
+    {},
     {title: 'Shopping Cart', url: '/shopping-cart'},
     {title: 'Wish List', url: '/wishlist'},
     {title: 'My Account', url: '/myaccount'}

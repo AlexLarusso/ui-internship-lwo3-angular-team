@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
+import { ToastrService } from 'ngx-toastr';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
@@ -21,7 +22,10 @@ declare let paypal: any;
 export class PaypalCheckoutComponent implements OnInit, OnDestroy {
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(
+    private store: Store<IAppState>,
+    private toastrService: ToastrService
+  ) { }
 
   public cartTotalPriceSub: Subscription;
   public totalPrice: number;
@@ -50,14 +54,12 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
         onApprove: async (data, actions) => {
           await actions.order.capture();
           this.store.dispatch(new ConfirmOrder());
-          alert('Payment successful!');
-          // TODO: Add toastr notification
+
+          this.toastrService.success('Payment successful!');
           // TODO: use rxjs instead
         },
         onError: err => {
-          alert('Something went wrong, please try again');
-          // TODO: Add toastr notification
-        }
+          this.toastrService.warning('Something went wrong, please try again');       }
       })
       .render(this.paypalElement.nativeElement);
   }

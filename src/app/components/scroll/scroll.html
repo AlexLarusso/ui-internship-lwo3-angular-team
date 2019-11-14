@@ -1,28 +1,26 @@
 <nav class="scroll">
-  <ul>
-    <li
-      *ngFor="let component of pageComponents; let i = index"
-      class="menu"
-      (click)="onItemSelect(component)"
-      [ngSwitch]="component.title"
-    >
-      <fa-icon
-        *ngSwitchCase="'app-header'"
-        [icon]="toHeaderIcon"
-        class="icon"
-        [class.disabled]="i === activeElement"
-      ></fa-icon>
-      <fa-icon
-        *ngSwitchCase="'app-footer'"
-        [icon]="toFooterIcon"
-        class="icon"
-        [class.disabled]="i === activeElement"
-      ></fa-icon>
-      <span *ngSwitchDefault class="item"
-        [class.active]="i === activeElement"
-      >
-        <span class="item__text">{{ component.title }}</span>
-      </span>
-    </li>
-  </ul>
+    <ul class="col-12">
+      <li
+        *ngFor="let component of pageComponents; let i = index"
+        class="menu"
+        (click)="onItemSelect(component)"
+        [ngSwitch]="component.title">
+        <fa-icon
+          *ngSwitchCase="'app-header'"
+          [icon]="toHeaderIcon"
+          class="icon"
+          [class.disabled]="i === activeElement">
+        </fa-icon>
+        <fa-icon
+          *ngSwitchCase="'app-footer'"
+          [icon]="toFooterIcon"
+          class="icon"
+          [class.disabled]="i === activeElement">
+        </fa-icon>
+        <span *ngSwitchDefault class="item"
+          [class.active]="i === activeElement">
+          <span class="item__text">{{ component.title }}</span>
+        </span>
+      </li>
+    </ul>
 </nav>

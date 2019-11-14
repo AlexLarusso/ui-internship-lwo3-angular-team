@@ -14,13 +14,9 @@ import { IProductCartItem } from 'src/app/interfaces';
 
 import { Subscription } from 'rxjs';
 
-import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-
-import { IProduct } from 'src/app/interfaces/product.interface';
-import { IProductDetails } from 'src/app/interfaces/product-details.interface';
-import { IProductOptions } from 'src/app/interfaces/product-options.interface';
-import { IProductDescription } from 'src/app/interfaces/product-description.interface';
-import { IProductImage } from 'src/app/interfaces/product-image.interface';
+import {
+  IProduct, IProductDetails, IProductOptions, IProductDescription, IProductImage
+} from 'src/app/interfaces';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -36,7 +32,6 @@ const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nis
 export class ProductOrderComponent implements OnInit, OnDestroy {
   @Input() private product: IProduct;
 
-  public iconWhishlistBtn: IconDefinition = faHeart;
   public productDetails: IProductDetails;
   public productImages: Array<IProductImage>;
   public selectedSizeSub: Subscription;

@@ -4,24 +4,27 @@
   position: sticky;
   top: 0;
   z-index: 5;
-  height: 60px;
+  display: flex;
+  align-items: center;
+  height: 45px;
   background: rgba($color: $bgColorDark, $alpha: 0.9);
 
   &__wrapper {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
   }
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 45px;
   }
 
   &__list {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
     &__item {
@@ -37,8 +40,8 @@
   }
 
   &__search {
-    width: 80%;
     padding-left: 10px;
+    width: 80%;
 
     &__container {
       display: flex;
@@ -46,14 +49,13 @@
     }
 
     &__btn {
-      width: 20%;
       border: none;
+      width: 50px;
       background: $accentColor;
     }
   }
 
   &__cart {
-
     &__container {
       display: flex;
       height: 30px;
@@ -66,7 +68,7 @@
     }
     
     &__btn {
-      width: 30%;
+      width: 50px;
       background: $accentColor;
     }
 
@@ -79,25 +81,41 @@
 
   a {
     color: $fontColorLight;
+
+    &:hover {
+      color: $accentColor;
+    }
   }
 }
 
 @media screen and (max-width: 992px) {
   .menu {
+    height: 90px;
+
+    &__wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      height: 90px;
+    }
+
     &__container {
       width: 100%;
     }
+  }
+
+  app-scroll {
+    width: 60%;
   }
 }
 
 @media screen and (max-width: 768px) {
   .menu {
-    height: 100px;
+    height: 130px;
 
     &__container {
       flex-direction: column;
       justify-content: space-around;
-      height: 100px;
+      height: 130px;
     }
 
     &__input {
@@ -108,7 +126,13 @@
 
     &__list {
       width: 100%;
+      display: flex;
+      justify-content: space-around;
     }
+  }
+
+  app-scroll {
+    width: 100%;
   }
 }
 

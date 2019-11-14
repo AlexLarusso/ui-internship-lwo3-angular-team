@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -12,6 +12,25 @@ import { ProductService } from '../services';
 import { map } from 'rxjs/operators';
 import { ProductFormat } from 'src/app/app.enum';
 
+const BREAK_POINTS = {
+  mobile: {
+    width: 575,
+    visibleNumber: 4
+  },
+  tablet_S: {
+    width: 576,
+    visibleNumber: 6
+  },
+  tablet_M: {
+    width: 768,
+    visibleNumber: 8
+  },
+  laptop_L: {
+    width: 1201,
+    visibleNumber: 16
+  }
+};
+
 @AutoUnsubscribe()
 @Component({
   selector: 'app-product-list',
@@ -22,11 +41,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
   public aboutProductsText = `Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
     lacinia eget consectetur sed, convallis at tellus.`;
+  public pageWidth: number;
+  public stepNumber: number;
+  public visibleNumber: number;
   public products$: Observable<Array<IProductShortInfo>>;
   public productLength: number;
-  public stepNumber = 8;
-  public visibleNumber = 8;
   public isLoadMoreActive: boolean;
+
+  @HostListener('window:resize', [])
+  public onResize(): void {
+    this.indicateStepNumber();
+  }
 
   constructor(
     private productService: ProductService,
@@ -34,6 +59,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
+    this.pageWidth = window.innerWidth;
+
+    this.indicateStepNumber();
+
+    this.visibleNumber = this.stepNumber;
+
     this.products$ = this.store.select(getAllProducts)
      .pipe(
       map(products => {
@@ -42,8 +73,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.checkLoadMoreAbility();
 
       return products.map(product =>
-        this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
-     }));
+        this.productService.formatProduct(product, ProductFormat.short))
+        .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>;
+      })
+     );
   }
 
   public loadMore(): void {
@@ -56,5 +89,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private checkLoadMoreAbility(): void {
     this.isLoadMoreActive = this.visibleNumber < this.productLength;
+  }
+
+  private indicateStepNumber(): void {
+    switch (true) {
+      case this.pageWidth > BREAK_POINTS.laptop_L.width:
+        this.stepNumber = BREAK_POINTS.laptop_L.visibleNumber;
+        break;
+      case this.pageWidth > BREAK_POINTS.tablet_M.width:
+        this.stepNumber = BREAK_POINTS.tablet_M.visibleNumber;
+        break;
+      case this.pageWidth > BREAK_POINTS.tablet_S.width:
+        this.stepNumber = BREAK_POINTS.tablet_S.visibleNumber;
+        break;
+      default:
+        this.stepNumber = BREAK_POINTS.mobile.visibleNumber;
+    }
   }
 }

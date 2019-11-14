@@ -15,14 +15,15 @@ export class CategoryMenuComponent {
   public genders = [
     { title: 'women', url: 'category/women' },
     { title: 'men', url: 'category/men' },
-    { title: 'collection', url: 'category/collection' }
+    { title: 'collection', url: 'category/collection' },
+    {}
   ];
 
   public seasons = [
-    { title: 'winter', url: 'category/winter' },
     { title: 'spring', url: 'category/spring' },
     { title: 'summer', url: 'category/summer' },
-    { title: 'autumn', url: 'category/autumn' }
+    { title: 'autumn', url: 'category/autumn' },
+    { title: 'winter', url: 'category/winter' }
   ];
 
   public filterProducts(filterCategory: string): void {
