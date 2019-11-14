@@ -66,4 +66,3 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void { }
 }
-
