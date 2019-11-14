@@ -8,13 +8,6 @@ export enum ProductFormat {
   short = 'short'
 }
 
-export enum NotificationType {
-  success = 'success',
-  warning = 'warning',
-  error =  'error',
-  info = 'info'
-}
-
 export enum URLs {
   products = 'https://gaboo-project-server.herokuapp.com/products',
   images = 'https://gaboo-project-server.herokuapp.com/images',
@@ -22,5 +15,5 @@ export enum URLs {
 }
 
 export enum ImagePlaceholder {
-  IMAGE_NOT_FOUND = '../../../assets/img/image-not-found.png'
+  IMAGE_NOT_FOUND = 'src/assets/img/image-not-found.png'
 }

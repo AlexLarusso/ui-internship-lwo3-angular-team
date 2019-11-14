@@ -29,7 +29,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.products$ = this.store.select(getAllProducts)
       .pipe(map(products => products.map(product =>
-        this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>));
+        this.productService.formatProduct(product, ProductFormat.short))
+        .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>));
   }
 
   public ngOnDestroy(): void { }

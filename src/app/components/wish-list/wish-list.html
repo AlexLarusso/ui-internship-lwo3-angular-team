@@ -4,11 +4,12 @@
   </div>
   <div class="product__container">
     <app-product-item *ngFor="let product of productData"
-      class="product__item"
       [imgUrl]="product.imgUrl"
+      [imgUrlNext]="product.imgUrlNext"
       [productTitle]="product.productTitle"
       [productPrice]="product.productPrice"
       [productId]="product.productId">
     </app-product-item>
   </div>
 </div>
+<app-parallax parallaxClass="shopping"></app-parallax>

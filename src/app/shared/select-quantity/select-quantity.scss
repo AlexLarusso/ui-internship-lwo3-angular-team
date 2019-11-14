@@ -1,7 +1,7 @@
 @import 'src/app/styles/variables';
 
 $qty-select-height: 40px;
-$qty-select-spacing: 10px;
+$qty-select-spacing: 20px;
 $limit-color: red;
 
 .select-qty {
@@ -15,7 +15,7 @@ $limit-color: red;
 
   &__icon {
     color: $inputBorderColor;
-    font-size: 20px;
+    font-size: 0.9rem;
   }
 }
 

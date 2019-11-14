@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
 
@@ -15,7 +16,7 @@ export class CartEffects {
   constructor(
     private actions$: Actions,
     private productService: ProductService,
-    private router: Router
+    private toastrService: ToastrService
   ) { }
 
   @Effect({ dispatch: false })
@@ -32,6 +33,10 @@ export class CartEffects {
   public navigateToCartPage$: Observable<any> = this.actions$
     .pipe(
       ofType(AddProductToCart.TYPE),
-      tap(() => this.router.navigate(['/shopping-cart']))
+      tap((prod) => {
+        const buyMessage = `Product has been added to card`;
+
+        this.toastrService.success(buyMessage);
+      })
     );
 }

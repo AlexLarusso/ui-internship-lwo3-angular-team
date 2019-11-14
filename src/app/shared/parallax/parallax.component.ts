@@ -19,7 +19,9 @@ export class ParallaxComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
    this.routeSub = this.route.params.pipe()
-      .subscribe(item => this.parallaxClass = item.category);
+      .subscribe(item =>  item.category ?
+        this.parallaxClass = item.category :
+        this.parallaxClass);
   }
 
   public ngOnDestroy(): void { }
