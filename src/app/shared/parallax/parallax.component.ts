@@ -3,6 +3,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Subscription } from 'rxjs';
+import { skipWhile } from 'rxjs/operators';
 
 @AutoUnsubscribe()
 @Component({
@@ -18,10 +19,10 @@ export class ParallaxComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
   public ngOnInit(): void {
-   this.routeSub = this.route.params.pipe()
-      .subscribe(item =>  item.category ?
-        this.parallaxClass = item.category :
-        this.parallaxClass);
+    this.routeSub = this.route.params
+      .pipe(
+        skipWhile(item => !item.category))
+      .subscribe(item => this.parallaxClass = item.category);
   }
 
   public ngOnDestroy(): void { }

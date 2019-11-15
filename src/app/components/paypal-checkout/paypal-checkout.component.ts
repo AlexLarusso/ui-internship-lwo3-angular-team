@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { IAppState } from 'src/app/store/app.store';
 import { getCartTotalPrice } from 'src/app/store/selectors/cart.selector';
 import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
+import { ToastrMessage } from 'src/app/app.enum';
 
 declare let paypal: any;
 
@@ -55,15 +56,14 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
           await actions.order.capture();
           this.store.dispatch(new ConfirmOrder());
 
-          this.toastrService.success('Payment successful!');
+          this.toastrService.success(ToastrMessage.paymentSeccessfull);
           // TODO: use rxjs instead
         },
         onError: err => {
-          this.toastrService.warning('Something went wrong, please try again');       }
+          this.toastrService.warning(ToastrMessage.paymentFaild);       }
       })
       .render(this.paypalElement.nativeElement);
   }
 
   public ngOnDestroy(): void { }
 }
-

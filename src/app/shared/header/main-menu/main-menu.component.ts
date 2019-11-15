@@ -18,15 +18,14 @@ export class MainMenuComponent implements OnInit {
   public faSearch = faSearch;
   public faCartArrowDown = faCartArrowDown;
   public cartItemsQty$: Observable<number>;
-
-  constructor(private store: Store<IAppState>) { }
-
   public menuItems = [
-    {},
     {title: 'Shopping Cart', url: '/shopping-cart'},
     {title: 'Wish List', url: '/wishlist'},
     {title: 'My Account', url: '/myaccount'}
   ];
+  public shopingCartLink = this.menuItems[0].url;
+
+  constructor(private store: Store<IAppState>) { }
 
   public ngOnInit(): void {
     this.cartItemsQty$ = this.store.select(getCartTotalQty);

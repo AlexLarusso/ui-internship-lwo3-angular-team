@@ -10,6 +10,7 @@ import { tap } from 'rxjs/operators';
 import { AddProductToCart, RemoveProductFromCart,
   ChangeProductItemQty, ConfirmOrder } from '../actions/cart.actions';
 import { ProductService } from 'src/app/shared/services';
+import { ToastrMessage } from 'src/app/app.enum';
 
 @Injectable()
 export class CartEffects {
@@ -34,7 +35,7 @@ export class CartEffects {
     .pipe(
       ofType(AddProductToCart.TYPE),
       tap((prod) => {
-        const buyMessage = `Product has been added to card`;
+        const buyMessage = ToastrMessage.productAddedToCart;
 
         this.toastrService.success(buyMessage);
       })

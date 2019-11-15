@@ -11,7 +11,7 @@ import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 import { Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { ProductFormat } from '../../app.enum';
+import { ProductFormat, ToastrMessage } from '../../app.enum';
 import { ProductService } from '../../shared/services';
 import { IProductShortInfo } from '../../interfaces';
 
@@ -27,7 +27,6 @@ export class WishListComponent implements OnInit, OnDestroy {
   public getLikeSub: Subscription;
   public productData: Array<IProductShortInfo> = [];
   public likedArray: Array<string>;
-  public wishListEmptyMsg = 'Your Wishlist is currently empty';
 
   constructor(
     private productService: ProductService,
@@ -57,7 +56,7 @@ export class WishListComponent implements OnInit, OnDestroy {
       this.productData = productArray;
 
       if (!this.productData.length) {
-        this.toastrService.warning(this.wishListEmptyMsg);
+        this.toastrService.warning(ToastrMessage.emptyWishList);
       }
     });
   }

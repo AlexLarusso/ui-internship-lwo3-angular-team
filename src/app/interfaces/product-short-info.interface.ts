@@ -9,4 +9,5 @@ export interface IProductShortInfo {
   seasons: Array<string>;
   brand: string;
   category: string;
+  order?: number;
 }

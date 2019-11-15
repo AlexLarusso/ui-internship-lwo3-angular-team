@@ -9,7 +9,7 @@ import { IProduct } from 'src/app/interfaces';
 
 export class ProductFilterComponent implements OnInit {
   @Input() public products: Array<IProduct>;
-  @Output() dataChange = new EventEmitter();
+  @Output() public dataChange = new EventEmitter();
 
   public productCategory: Array<string> = [];
   public productBrand: Array<string> = [];
@@ -36,23 +36,26 @@ export class ProductFilterComponent implements OnInit {
     this.productBrand = [...new Set(this.productBrand)];
   }
 
-  private onFilter() {
-    if (this.filterRequest.length) {
+  public onFilter() {
+    this.filterRequest.length ?
+      this.checkForItems() :
+      this.dataChange.emit(this.products);
+
+  }
+
+  private checkForItems() {
     this.filterRequest.forEach((criteria) =>
-      this.products.every(product => {
+      this.products.forEach(product => {
+        // tslint:disable-next-line: forin
         for (const prop in product) {
-          if (product[prop] === criteria) {
-            this.selectedProducts.push(product);
-            this.selectedProducts = [...new Set(this.selectedProducts)];
-            this.dataChange.emit(this.selectedProducts);
-          }
+          product[prop] === criteria ?
+            this.selectedProducts.push(product) :
+            this.selectedProducts;
         }
       }
       )
     );
-    } else {
-      this.selectedProducts = this.products;
-      this.dataChange.emit(this.selectedProducts);
-    }
+    this.selectedProducts = [...new Set(this.selectedProducts)];
+    this.dataChange.emit(this.selectedProducts);
   }
 }
