@@ -158,9 +158,9 @@ export class ProductService implements OnDestroy {
   private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):
     Array<IProduct> {
       return products
-      .filter(product =>
-        product.category === similarOptions.category &&
-        product.gender === similarOptions.gender &&
-        product._id !== similarOptions.id);
+        .filter(product =>
+          product.category === similarOptions.category &&
+          product.gender === similarOptions.gender &&
+          product._id !== similarOptions.id);
   }
 }
