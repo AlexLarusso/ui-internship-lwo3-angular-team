@@ -30,7 +30,7 @@ const BREAK_POINTS = {
   }
 };
 
-const MARGIN = 30;
+const PRODUCT_ITEM_MARGIN = 30;
 
 @Component({
   selector: 'app-product-carousel',
@@ -100,7 +100,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     if (this.productArray.length) {
       this.toggleButtonsState();
 
-      this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + MARGIN;
+      this.itemWidth = [...this.products.nativeElement.childNodes][1].childNodes[0].offsetWidth + PRODUCT_ITEM_MARGIN;
     }
 
     this.productsContainer.nativeElement.style.width = this.itemWidth * this.visibleNum + 'px';

@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.store.dispatch(new LoadProducts());
+    window.onbeforeunload = () => window.scrollTo(0, 0);
 
     this.routerSub = this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
