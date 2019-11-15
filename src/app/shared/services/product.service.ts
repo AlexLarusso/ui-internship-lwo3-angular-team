@@ -96,21 +96,21 @@ export class ProductService implements OnDestroy {
   }
 
   public getProductById(id: string, format: string = ProductFormat.full):
-    Observable<any> {
+    Observable<IProduct | IProductShortInfo> {
       return this.httpService.getProductById(id).pipe(
         map(product => this.formatProduct(product, format)
       ));
   }
 
   public getProductsByIds(items: any, format: string = ProductFormat.full):
-    Array<Observable<any>>  {
+    Array<Observable<IProductShortInfo>>  {
       return items.map((item: { id: string; }) => this.httpService.getProductById(item.id).pipe(
         map(product => this.formatProduct(product, format)
       )));
   }
 
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
-    Observable<Array<any>> {
+    Observable<Array<IProduct | IProductShortInfo>>  {
       return this.getProductsByCategory(similarOptions.category)
         .pipe(map(data =>
           this.filterSimilarProducts(data, similarOptions)
@@ -145,21 +145,20 @@ export class ProductService implements OnDestroy {
 
   public ngOnDestroy(): void { }
 
-  private getProductsByCategory(category: string, format: string = ProductFormat.full):
-  Observable<Array<any>> {
+  private getProductsByCategory(category: string):
+  Observable<Array<IProduct>> {
     return this.store.select(getAllProducts)
       .pipe(map(
         products => products
         .filter(
           product => product.category === category)
-        .map(
-          product => this.formatProduct(product, format))
-      ));
+        ));
   }
 
   private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):
     Array<IProduct> {
-      return products.filter(product =>
+      return products
+      .filter(product =>
         product.category === similarOptions.category &&
         product.gender === similarOptions.gender &&
         product._id !== similarOptions.id);

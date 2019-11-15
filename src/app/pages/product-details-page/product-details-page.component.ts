@@ -26,7 +26,7 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.routerSub = this.route.params.subscribe(value =>
       this.productSource$ = this.productService
-        .getProductById(value.id)
+        .getProductById(value.id) as Observable<IProduct>
     );
   }
 

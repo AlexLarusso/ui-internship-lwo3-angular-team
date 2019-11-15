@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.store.dispatch(new LoadProducts());
+    window.onbeforeunload = () => window.scrollTo(0, 0);
 
     this.routerSub = this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
