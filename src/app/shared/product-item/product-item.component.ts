@@ -10,7 +10,7 @@ import { ImagePlaceholder } from '../../app.enum';
 })
 export class ProductItemComponent implements OnInit {
   public placeholderImage = ImagePlaceholder.IMAGE_NOT_FOUND;
-  public showImage = false;
+  public isImageShown = false;
   public isImgLoaded: boolean;
 
   @Input() public imgUrl = this.placeholderImage;
@@ -41,6 +41,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   public onShowImage(): void {
-    this.showImage = true;
+    this.isImageShown = true;
   }
 }

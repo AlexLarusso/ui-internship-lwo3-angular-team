@@ -7,7 +7,7 @@
 
   &__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     height: 100px;
   }
@@ -22,6 +22,10 @@ li {
   display: flex;
   align-self: center;
   justify-content: center;
+}
+
+.menu-item {
+  padding-right: 20px;
 }
 
 @media screen and (max-width: 992px) {

@@ -13,9 +13,9 @@
         </fa-icon>
         <fa-icon
           *ngSwitchCase="'app-footer'"
-          [icon]="toFooterIcon"
           class="icon"
-          [class.disabled]="i === activeElement">
+          [class.disabled]="i === activeElement"
+          [icon]="toFooterIcon">
         </fa-icon>
         <span *ngSwitchDefault class="item"
           [class.active]="i === activeElement">

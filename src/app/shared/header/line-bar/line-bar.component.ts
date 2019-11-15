@@ -27,7 +27,7 @@ export class LineBarComponent implements OnInit {
   public errorMessage = null;
 
   constructor(
-    private modalService: ModalService,
+    public modalService: ModalService,
     private store: Store<IAppState>,
     private authService: AuthService,
     private localStorageService: LocalStorageService

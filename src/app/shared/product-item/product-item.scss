@@ -15,27 +15,11 @@
 
 @keyframes imageScale {
   from {
-    transform: scale(0);
-    transform-origin: 50% 50%;
+    transform: scale(0.8);
   }
 
   to {
-    opacity: 1;
     transform: scale(1);
-    transform-origin: 50% 50%;
-  }
-}
-
-@keyframes imageScale {
-  from {
-    transform: scale(0);
-    transform-origin: 50% 50%;
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-    transform-origin: 50% 50%;
   }
 }
 
@@ -101,7 +85,7 @@
 
   &__picture {
     height: 340px;
-    animation: imageScale .4s ease-in-out 1 forwards;
+    animation: imageScale .3s ease-in-out 1 forwards;
 
     &__container {
       position: relative;

@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { ModalService } from '../services/modal-service';
 import { ToastrService } from 'ngx-toastr';
+import { ToastrMessage } from '../../app.enum'
 
 @Component({
   selector: 'app-modal-window',
@@ -21,7 +22,7 @@ constructor(
 public ngOnInit(): void {
   this.element = this.el.nativeElement;
   if (!this.id) {
-    this.toastrService.warning('modal must have an id');
+    this.toastrService.warning(ToastrMessage.invalidModal);
     return;
   }
   document.body.appendChild(this.element);

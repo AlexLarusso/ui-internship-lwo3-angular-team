@@ -1,34 +1,35 @@
 @import 'src/app/styles/variables';
-
 .authentication {
   &__wrapper { 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     margin: 0 auto;
     width: 75%;
+    height: 300px;
+    color: $fontColorDark;
   }
 
   &__title {
-    font-family: $mainFontBold;
-    font-size: 2rem;
     margin: 0 auto;
+    font-family: $mainFontBold;
+    font-size: 1.8rem;
   }
 
   &__error {
-    width: 70%;
-    font-family: $mainFontRegular;
-    font-size: 1.2rem;
-    padding: 5px 10px;
     margin: 10px auto;
+    padding: 5px 10px;
+    width: 70%;
     background-color: $saleTagColor;
     text-align: center;
+    font-family: $mainFontRegular;
+    font-size: 1.2rem;
     color: $fontColorLight;
   }
 
   &__form {
-    // width: 70%;
-    // margin: 0 auto;
+    margin: 0 auto;
+    width: 90%;
   }
 
   &__field {
@@ -43,32 +44,61 @@
 
   &__input {
     margin: 5px 0;
-    padding: 5px; 
     border: 2px solid #ccc; 
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    padding: 5px; 
     outline: none
   }
 
-  &__paragraph {
+  &__container {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    
   }
 
-  &__redirect {
-    color: brown;
-    width: 70%;
-    padding: 10px 0;
+button {
+  border: none;
+  font-size: 1rem;
+  }
+
+  &__login {
+    .sign-up__container {
+      border: 1px solid black;
+      border-bottom: none;
+    }
+    .login__container {
+      border-bottom: 1px solid black;
+    }
+  }
+  &__sign-up {
+    .sign-up__container {
+      border-bottom: 1px solid black;
+    }
+
+.login__container {
+  border: 1px solid black;
+  border-bottom: none;
+    }
+  }
+
+.sign-up__container,
+.sign-up__container {
+  display: flex;;
+  justify-content: center;
+  align-items: center;
+}
+
+&__redirect {
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 100%;
+  outline: none;
+  text-align: center;
+
+  &_active {
     margin: 0 auto;
-    border: 2px solid gray;
-    cursor: pointer;
+    padding: 10px 0;
+    width: 100%;
     outline: none;
     text-align: center;
-
-    &:active {
-     color: gray;
+    color: $accentColor;
     }
   }
 }
@@ -77,4 +107,11 @@
   border: 1px solid $inputWarningColor;
   border-radius: 2px;
   box-shadow: 0 0 1px 1px $inputWarningColor;
+}
+
+.modal-button {
+  &__container {
+    display: flex;
+    justify-content: space-around;
+  }
 }

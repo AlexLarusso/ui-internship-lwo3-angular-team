@@ -32,10 +32,7 @@ export class ProductService implements OnDestroy {
   constructor(
     private httpService: HttpService,
     private store: Store<IAppState>
-  ) {
-    this.imagesSub = this.store.select(getAllProductImages)
-      .subscribe(images => this.allProductImages = images);
-  }
+  ) { }
 
   public setCartItemsToLocalStorage(): void {
     this.store.select(getCartProductItems)
@@ -46,6 +43,9 @@ export class ProductService implements OnDestroy {
 
   public formatProduct(product: IProduct, format: string):
     IProduct | IProductShortInfo {
+    this.imagesSub = this.store.select(getAllProductImages)
+      .subscribe(images => this.allProductImages = images);
+
     switch (format) {
       case ProductFormat.full: {
         const productImages = this.allProductImages
@@ -69,14 +69,15 @@ export class ProductService implements OnDestroy {
             return prodImages;
         }, []);
 
-        return { ...product,
+        return {
+          ...product,
           images: [...productImages]
         };
       }
 
       case ProductFormat.short: {
         const firsProductImage = this.allProductImages
-          .filter(image => image.productId === product._id)[0].claudinaryId;
+          .find(image => image.productId === product._id).claudinaryId;
         const secondProductImage = this.allProductImages
           .filter(image => image.productId === product._id)[1].claudinaryId;
 
@@ -95,21 +96,21 @@ export class ProductService implements OnDestroy {
   }
 
   public getProductById(id: string, format: string = ProductFormat.full):
-    Observable<any> {
+    Observable<IProduct | IProductShortInfo> {
       return this.httpService.getProductById(id).pipe(
         map(product => this.formatProduct(product, format)
       ));
   }
 
   public getProductsByIds(items: any, format: string = ProductFormat.full):
-    Array<Observable<any>>  {
+    Array<Observable<IProductShortInfo>>  {
       return items.map((item: { id: string; }) => this.httpService.getProductById(item.id).pipe(
         map(product => this.formatProduct(product, format)
       )));
   }
 
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
-    Observable<Array<any>> {
+    Observable<Array<IProduct | IProductShortInfo>>  {
       return this.getProductsByCategory(similarOptions.category)
         .pipe(map(data =>
           this.filterSimilarProducts(data, similarOptions)
@@ -138,25 +139,28 @@ export class ProductService implements OnDestroy {
     this.addProductToLocalStorage({id, order});
   }
 
+  public randomSortProducts(products) {
+    return products.sort(() => Math.random() - 0.5);
+  }
+
   public ngOnDestroy(): void { }
 
-  private getProductsByCategory(category: string, format: string = ProductFormat.full):
-  Observable<Array<any>> {
+  private getProductsByCategory(category: string):
+  Observable<Array<IProduct>> {
     return this.store.select(getAllProducts)
       .pipe(map(
         products => products
         .filter(
           product => product.category === category)
-        .map(
-          product => this.formatProduct(product, format))
-      ));
+        ));
   }
 
   private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):
     Array<IProduct> {
-      return products.filter(product =>
-        product.category === similarOptions.category &&
-        product.gender === similarOptions.gender &&
-        product._id !== similarOptions.id);
+      return products
+        .filter(product =>
+          product.category === similarOptions.category &&
+          product.gender === similarOptions.gender &&
+          product._id !== similarOptions.id);
   }
 }

@@ -8,8 +8,8 @@
         class="product-item__image-wrapper"
         [ngClass]="status | lowercase"
         (downloadImage)="onShowImage()">
-        <img *ngIf="showImage && !isImgLoaded" class="placeholder-image" [src]="placeholderImage">
-        <img *ngIf="showImage"
+        <img *ngIf="isImageShown && !isImgLoaded" class="placeholder-image" [src]="placeholderImage">
+        <img *ngIf="isImageShown"
             (load)="isImgLoaded = true"
             class="product-item__picture"
             [alt]="productTitle"
@@ -17,7 +17,7 @@
       </div>
     </a>
     <app-wish-button
-      *ngIf="showImage"
+      *ngIf="isImageShown"
       class="wish__btn"
       [productId]="productId"
       wishClass="wish__product-item">

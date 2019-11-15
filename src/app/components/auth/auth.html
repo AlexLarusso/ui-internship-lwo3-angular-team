@@ -1,16 +1,21 @@
 <div class="authentication">
     <div class="authentication__wrapper">
-      <div class="authentication__paragraph">
-        <span 
-          class="authentication__redirect"
-          (click)="closeModal('login');openModal('sign-up')"
-          >Register new user
-        </span>
-        <span 
-          class="authentication__redirect"
-          (click)="closeModal('sign-up');openModal('login')"
-          >Login as an existing user
-        </span>
+      <div class="authentication__container"
+        [ngClass]="isLoginOpen ? 'authentication__login' : 'authentication__sign-up'">
+        <div class="col-6 login__container">
+          <button
+            [ngClass]="isLoginOpen ? 'authentication__redirect' : 'authentication__redirect_active'"
+            (click)="closeModal('login');openModal('sign-up')">
+            Register new user
+          </button>
+        </div>
+        <div class="col-6 sign-up__container">
+          <button
+            [ngClass]="isLoginOpen ? 'authentication__redirect_active' : 'authentication__redirect'"
+            (click)="closeModal('sign-up');openModal('login')">
+            Login as an existing user
+          </button>
+        </div>
       </div>
       <div *ngIf="isLoginOpen; then ShowLogin; else ShowSignUp;"></div>
         <ng-template #ShowLogin>
@@ -24,46 +29,54 @@
           {{ errorMessage }}
         </div>
       </div>
-      <form 
-          class="authentication__form"
-          (ngSubmit)="onSubmit()">
+      <form class="authentication__form" (ngSubmit)="onSubmit()">
         <div class="authentication__field">
-            <label
-              for="email"
-              class="authentication__label">Email</label>
-            <input
-              name="email"
-              type="email"
-              required
-              id="login-email"
-              class="authentication__input"
-              placeholder="enter your email"
-              [(ngModel)]="user.email"
-              [class.error]="!isEmailValid"
-              (input)="onValidateEmail()">
+          <label
+            for="email"
+            class="authentication__label">
+            Email
+          </label>
+          <input
+            name="email"
+            type="email"
+            required
+            id="login-email"
+            class="authentication__input"
+            placeholder="Please enter your email"
+            [(ngModel)]="user.email"
+            [class.error]="!isEmailValid"
+            (input)="onValidateEmail()" />
         </div>
         <div class="authentication__field">
-            <label 
-              for="password"
-              class="authentication__label">Password</label>
-            <input
-              name="password"
-              type="password"
-              required
-              id="login-password"
-              class="authentication__input"
-              placeholder="enter a password"
-              [(ngModel)]="user.password"
-              [class.error]="!isPasswordValid"
-              (input)="onValidatePassword()">
+          <label 
+            for="password"
+            class="authentication__label">
+            Password
+          </label>
+          <input
+            name="password"
+            type="password"
+            required
+            id="login-password"
+            class="authentication__input"
+            placeholder="Please enter your password"
+            [(ngModel)]="user.password"
+            [class.error]="!isPasswordValid"
+            (input)="onValidatePassword()">
         </div>
-        <app-button 
-        buttonClass="button_success" 
-          type="submit">Submit</app-button>
-        <app-button 
+      </form>
+      <div class="modal-button__container col-12">
+        <app-button class="col-5"
+          buttonClass="button_success" 
+          type="submit">
+          Submit
+        </app-button>
+        <app-button class="col-5"
           type="button"
           buttonClass="button_warning" 
-          (click)="this.modalService.isLoginModalOpen ? closeModal('login'): closeModal('sign-up')">Cancel</app-button>
-      </form>
+          (click)="this.modalService.isLoginModalOpen ? closeModal('login'): closeModal('sign-up')">
+          Cancel
+        </app-button>
+      </div>
     </div>
   </div>

@@ -67,16 +67,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     this.products$ = this.store.select(getAllProducts)
      .pipe(
-      map(products => {
-      this.productLength = products.length;
+        map(products => {
+          this.productLength = products.length;
+          const formattedProducts = products.map(product =>
+            this.productService.formatProduct(product, ProductFormat.short));
 
-      this.checkLoadMoreAbility();
+          this.checkLoadMoreAbility();
 
-      return products.map(product =>
-        this.productService.formatProduct(product, ProductFormat.short))
-        .sort(() => Math.random() - 0.5) as Array<IProductShortInfo>;
-      })
-     );
+          return this.productService.randomSortProducts(formattedProducts) as Array<IProductShortInfo>;
+        })
+      );
   }
 
   public loadMore(): void {

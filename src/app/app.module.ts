@@ -40,11 +40,14 @@ import { CounterComponent } from './components/counter/counter.component';
     StoreDevtoolsModule.instrument({}),
     EffectsModule.forRoot([ProductsEffects, CartEffects, AuthEffects]),
     RoutesModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+        preventDuplicates: true
+      }
+    )
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    // { provide: ErrorHandler, useClass: ErrorsHandler }
+    { provide: ErrorHandler, useClass: ErrorsHandler },
     CookieService
   ],
   bootstrap: [
