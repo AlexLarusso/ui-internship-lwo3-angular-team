@@ -88,6 +88,10 @@
   }
 }
 
+.menu-item {
+  padding-left: 20px;
+}
+
 @media screen and (max-width: 992px) {
   .menu {
     height: 90px;
@@ -103,7 +107,7 @@
     }
   }
 
-  app-scroll {
+  .scroll-bar {
     width: 60%;
   }
 }

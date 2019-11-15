@@ -32,10 +32,7 @@ export class ProductService implements OnDestroy {
   constructor(
     private httpService: HttpService,
     private store: Store<IAppState>
-  ) {
-    this.imagesSub = this.store.select(getAllProductImages)
-      .subscribe(images => this.allProductImages = images);
-  }
+  ) { }
 
   public setCartItemsToLocalStorage(): void {
     this.store.select(getCartProductItems)
@@ -46,6 +43,9 @@ export class ProductService implements OnDestroy {
 
   public formatProduct(product: IProduct, format: string):
     IProduct | IProductShortInfo {
+    this.imagesSub = this.store.select(getAllProductImages)
+      .subscribe(images => this.allProductImages = images);
+
     switch (format) {
       case ProductFormat.full: {
         const productImages = this.allProductImages
@@ -69,14 +69,15 @@ export class ProductService implements OnDestroy {
             return prodImages;
         }, []);
 
-        return { ...product,
+        return {
+          ...product,
           images: [...productImages]
         };
       }
 
       case ProductFormat.short: {
         const firsProductImage = this.allProductImages
-          .filter(image => image.productId === product._id)[0].claudinaryId;
+          .find(image => image.productId === product._id).claudinaryId;
         const secondProductImage = this.allProductImages
           .filter(image => image.productId === product._id)[1].claudinaryId;
 
@@ -136,6 +137,10 @@ export class ProductService implements OnDestroy {
     const order = this.recentItemOrder++;
 
     this.addProductToLocalStorage({id, order});
+  }
+
+  public randomSortProducts(products) {
+    return products.sort(() => Math.random() - 0.5);
   }
 
   public ngOnDestroy(): void { }
