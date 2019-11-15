@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { ModalService } from '../services/modal-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modal-window',
@@ -9,29 +10,31 @@ import { ModalService } from '../services/modal-service';
 })
 
 export class ModalComponent implements OnInit, OnDestroy {
-    @Input() id: string;
-    private element: any;
+  @Input() id: string;
+  private element: any;
 
-    constructor(private modalService: ModalService, private el: ElementRef) {
-        this.element = el.nativeElement;
-    }
+constructor(
+  private modalService: ModalService,
+  private el: ElementRef,
+  private toastrService: ToastrService) { }
 
-    ngOnInit(): void {
-        if (!this.id) {
-            console.error('modal must have an id');
-            return;
-        }
-        document.body.appendChild(this.element);
+public ngOnInit(): void {
+  this.element = this.el.nativeElement;
+  if (!this.id) {
+    this.toastrService.warning('modal must have an id');
+    return;
+  }
+  document.body.appendChild(this.element);
 
-        this.element.addEventListener('click', e => {
-            if (e.target.className === 'modal-window') {
-                this.modalService.isLoginModalOpen = false;
-                this.modalService.isSignUpModalOpen = false;
-            }
-        });
-    }
+  this.element.addEventListener('click', e => {
+    if (e.target.className === 'modal-window') {
+      this.modalService.isLoginModalOpen = false;
+      this.modalService.isSignUpModalOpen = false;
+      }
+  });
+}
 
-    ngOnDestroy(): void {
-        this.modalService.close(this.id);
-    }
+public ngOnDestroy(): void {
+  this.modalService.close(this.id);
+  }
 }
