@@ -23,7 +23,7 @@ import { ProductFormat } from 'src/app/app.enum';
 export class ShopByCategoryComponent implements OnInit, OnDestroy {
   @Input() public filterCategory: string;
 
-  public filteredItems$: Observable<Array<IProductShortInfo>>;
+  public filteredItems;
   public routeParamsSub: Subscription;
 
   constructor(
@@ -41,14 +41,19 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
     this.getProductsByCategory();
   }
 
+  public onDataChange(event): void {
+    this.filteredItems = event;
+  }
+
   public ngOnDestroy(): void { }
 
   private getProductsByCategory(): void {
-    this.filteredItems$ = this.store
+    this.store
       .select(getFilteredProducts)
       .pipe(
         map(products =>
           products.map(product =>
-            this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>));
+            this.productService.formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>))
+      .subscribe(items => this.filteredItems = items);
   }
 }

@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.filter-container {
+  margin: 20px;
+  width: 225px;
+  background-color: #fff;
+}
+
+.filter-criteria {
+   margin: 10px;
+
+  &__subtitle {
+    margin-left: 5px;
+  }
+};

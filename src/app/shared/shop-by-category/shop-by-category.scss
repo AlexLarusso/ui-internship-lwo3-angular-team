@@ -1,7 +1,10 @@
 @import '../../styles/variables';
 
 .product {
+  display: flex;
+
   background: $bgColorMedium;
+  box-shadow: -2px -16px 47px -19px rgba(255,255,255,0.8);
 
   &__wrapper {
     display: flex;
