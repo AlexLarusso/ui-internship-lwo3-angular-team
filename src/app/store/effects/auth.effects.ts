@@ -13,6 +13,8 @@ import {
   LogIn, LogInSuccess, LogInFailure, SignUp, SignUpSuccess, SignUpFailure, LogOut
 } from '../actions/auth.actions';
 import { ModalService } from 'src/app/shared/services/modal-service';
+import { LocalStorageService } from 'src/app/shared/services';
+import { getUserFirstName } from '../selectors/auth.selector';
 
 @Injectable()
 export class AuthEffects {
@@ -21,6 +23,7 @@ export class AuthEffects {
     private authService: AuthService,
     private router: Router,
     private modalService: ModalService,
+    private localStorageService: LocalStorageService,
     private cookieService: CookieService
   ) {}
 
@@ -34,7 +37,10 @@ export class AuthEffects {
           .pipe(
             map(user => {
               console.log(user);
-              return new LogInSuccess({token: user.token, email: payload.email, password: payload.password});
+              return new LogInSuccess({
+                token: user.token,
+                email: payload.email,
+                userName: payload.email.split('@')[0]});
             }),
             catchError(error => {
               console.log(error);
@@ -50,6 +56,7 @@ export class AuthEffects {
       ofType(AuthActionTypes.LOGIN_SUCCESS),
       tap(user => {
         this.cookieService.set('token', user.payload.token);
+        localStorage.setItem('userName', user.payload.userName);
         this.modalService.close('login');
       })
     );
@@ -64,7 +71,10 @@ export class AuthEffects {
           .pipe(
             map(user => {
               console.log(user);
-              return new SignUpSuccess({token: user.token, email: payload.email, password: payload.password});
+              return new SignUpSuccess({
+                token: user.token,
+                email: payload.email,
+              userName: payload.email.split('@')[0]});
             }),
             catchError(error => {
               console.log(error);

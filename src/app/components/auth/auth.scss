@@ -27,8 +27,8 @@
   }
 
   &__form {
-    width: 70%;
-    margin: 0 auto;
+    // width: 70%;
+    // margin: 0 auto;
   }
 
   &__field {
@@ -53,10 +53,23 @@
   &__paragraph {
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    
   }
 
   &__redirect {
-    color: $accentColor
+    color: brown;
+    width: 70%;
+    padding: 10px 0;
+    margin: 0 auto;
+    border: 2px solid gray;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+
+    &:active {
+     color: gray;
+    }
   }
 }
 

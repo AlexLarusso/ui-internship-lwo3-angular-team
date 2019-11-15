@@ -24,7 +24,6 @@ export function authReducer(state = initialState, action: All): IState {
         user: {
           token: action.payload.token,
           email: action.payload.email,
-          password: action.payload.password
         },
         errorMessage: null
       };
@@ -42,7 +41,6 @@ export function authReducer(state = initialState, action: All): IState {
         user: {
           token: action.payload.token,
           email: action.payload.email,
-          password: action.payload.password
         },
         errorMessage: null
       };
@@ -72,7 +70,9 @@ export function authReducer(state = initialState, action: All): IState {
       const nameSetter = action.payload.email.split('@')[0];
       return {
         ...state,
-        userName: nameSetter
+        user: {
+          userName : nameSetter
+        },
       };
     }
     default: {

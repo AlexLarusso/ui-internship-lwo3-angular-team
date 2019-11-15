@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, DoCheck, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   faFacebookF, faTwitter, faGoogle
 } from '@fortawesome/free-brands-svg-icons';
@@ -11,6 +11,8 @@ import { IAppState, selectAuthState } from 'src/app/store/app.store';
 import { LogOut, IsLoggedIn } from 'src/app/store/actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
 import { getUserFirstName } from 'src/app/store/selectors/auth.selector';
+import { LocalStorageService } from '../../services';
+import { tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-line-bar',
@@ -27,6 +29,7 @@ export class LineBarComponent implements OnInit {
     private modalService: ModalService,
     private store: Store<IAppState>,
     private authService: AuthService,
+    private localStorageService: LocalStorageService
   ) {
     this.getState = this.store.select(selectAuthState);
   }
@@ -41,7 +44,9 @@ export class LineBarComponent implements OnInit {
   public email = 'gaboo@gmail.com';
 
   public ngOnInit(): void {
-    this.userName$ = this.store.select(getUserFirstName);
+    this.userName$ = this.store.select(getUserFirstName)
+      .pipe(
+        map(name => name = this.localStorageService.getItem('userName')));
 
     if (this.authService.getToken()) {
       this.store.dispatch(new IsLoggedIn());

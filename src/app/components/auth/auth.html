@@ -1,0 +1,69 @@
+<div class="authentication">
+    <div class="authentication__wrapper">
+      <div class="authentication__paragraph">
+        <span 
+          class="authentication__redirect"
+          (click)="closeModal('login');openModal('sign-up')"
+          >Register new user
+        </span>
+        <span 
+          class="authentication__redirect"
+          (click)="closeModal('sign-up');openModal('login')"
+          >Login as an existing user
+        </span>
+      </div>
+      <div *ngIf="isLoginOpen; then ShowLogin; else ShowSignUp;"></div>
+        <ng-template #ShowLogin>
+          <div class="authentication__title">Log In</div>
+        </ng-template>
+        <ng-template #ShowSignUp>
+          <div class="authentication__title">Sign Up</div>
+        </ng-template>
+      <div *ngIf="errorMessage">
+        <div class="authentication__error">
+          {{ errorMessage }}
+        </div>
+      </div>
+      <form 
+          class="authentication__form"
+          (ngSubmit)="onSubmit()">
+        <div class="authentication__field">
+            <label
+              for="email"
+              class="authentication__label">Email</label>
+            <input
+              name="email"
+              type="email"
+              required
+              id="login-email"
+              class="authentication__input"
+              placeholder="enter your email"
+              [(ngModel)]="user.email"
+              [class.error]="!isEmailValid"
+              (input)="onValidateEmail()">
+        </div>
+        <div class="authentication__field">
+            <label 
+              for="password"
+              class="authentication__label">Password</label>
+            <input
+              name="password"
+              type="password"
+              required
+              id="login-password"
+              class="authentication__input"
+              placeholder="enter a password"
+              [(ngModel)]="user.password"
+              [class.error]="!isPasswordValid"
+              (input)="onValidatePassword()">
+        </div>
+        <app-button 
+        buttonClass="button_success" 
+          type="submit">Submit</app-button>
+        <app-button 
+          type="button"
+          buttonClass="button_warning" 
+          (click)="this.modalService.isLoginModalOpen ? closeModal('login'): closeModal('sign-up')">Cancel</app-button>
+      </form>
+    </div>
+  </div>
