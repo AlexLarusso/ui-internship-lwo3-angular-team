@@ -4,6 +4,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { ToastrService } from 'ngx-toastr';
 
+import { ToastrMessage } from 'src/app/app.enum';
+
 @Injectable()
 export class ErrorsHandler implements ErrorHandler {
   constructor(private injector: Injector) { }
@@ -14,12 +16,12 @@ export class ErrorsHandler implements ErrorHandler {
 
     if (error instanceof HttpErrorResponse) {
       if (!navigator.onLine) {
-        toastrService.info('No internet connection!');
+        toastrService.info(ToastrMessage.internetError);
       } else {
-        toastrService.error('Error');
+        toastrService.error(ToastrMessage.error);
       }
     } else {
-      toastrService.error(`An internal error ${error.name}`, error.message);
+      toastrService.error(`${ToastrMessage.internalError} ${error.name}`, error.message);
       router.navigate(['/error']);
     }
   }
