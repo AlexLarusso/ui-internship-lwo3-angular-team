@@ -8,7 +8,8 @@ import { User } from '../../interfaces/user';
 import { ModalService } from '../../shared/services/modal-service';
 import { IAppState, selectAuthState } from '../../store/app.store';
 import { LogIn, SignUp } from '../../store/actions/auth.actions';
-import { EnumRegExp } from '../../app.enum';
+import { EnumRegExp, ToastrMessage } from '../../app.enum';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-auth',
@@ -30,6 +31,7 @@ export class AuthComponent implements OnInit {
   constructor(
     private readonly modalService: ModalService,
     private readonly store: Store<IAppState>,
+    private readonly toastrService: ToastrService
   ) { }
 
   public ngOnInit(): void {
@@ -38,7 +40,7 @@ export class AuthComponent implements OnInit {
       .subscribe(state => {
       this.errorMessage = state.errorMessage;
     });
-    this.isLoginOpen = this.modalService.isLoginModalOpen;
+    this.isLoginOpen = this.modalService.isModalOpened.login;
   }
 
   public onValidateEmail(): void {
@@ -54,19 +56,18 @@ export class AuthComponent implements OnInit {
       const payload = {
         email: this.user.email,
         password: this.user.password
-      };
-
+    };
       this.isLoginOpen ?
         this.store.dispatch(new LogIn(payload)) :
         this.store.dispatch(new SignUp(payload));
     }
   }
 
-  public closeModal(id: string): void {
-    this.modalService.close(id);
+  public closeModal(modalName: string): void {
+    this.modalService.close(modalName);
   }
 
-  public openModal(id: string): void {
-    this.modalService.open(id);
+  public openModal(modalName: string): void {
+    this.modalService.open(modalName);
   }
 }

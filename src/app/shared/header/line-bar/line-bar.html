@@ -16,17 +16,17 @@
           <a class="bar__link" (click)="logOut()">Log out</a>
       </ng-template>
       <ng-template #LoggedOut>
-          <a (click)="openModal('sign-up')" class="bar__link">Sign Up</a>
+          <a (click)="openModal('signUp')" class="bar__link">Sign Up</a>
           <a (click)="openModal('login')" class="bar__link">Login</a>
       </ng-template>
       <app-modal-window
-        *ngIf="this.modalService.isLoginModalOpen"
-        id="login">
+        *ngIf="this.modalService.isModalOpened.login"
+        modalName="login">
         <app-auth></app-auth>
       </app-modal-window>
       <app-modal-window
-        *ngIf="this.modalService.isSignUpModalOpen"
-        id="sign-up">
+        *ngIf="this.modalService.isModalOpened.signUp"
+        modalName="signUp">
         <app-auth></app-auth>
       </app-modal-window>
       

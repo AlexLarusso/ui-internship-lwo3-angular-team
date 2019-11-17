@@ -26,6 +26,8 @@ export enum ToastrMessage {
   productAddedToCart = 'Product has been added to card',
   paymentSuccessful = 'Payment successful!',
   paymentFailed = 'Something went wrong, please try again',
-  invalidModal = 'modal must have an id'
-
+  invalidModal = 'modal must have an id',
+  loginFailed = 'Incorrect email and/or password.',
+  signUpFailed = 'That email is already in use.',
+  accessDenied = 'To see cart page, login first'
 }

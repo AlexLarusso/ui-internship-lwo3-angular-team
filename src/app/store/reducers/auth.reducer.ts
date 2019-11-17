@@ -1,5 +1,6 @@
 import { User } from '../../interfaces/user';
-import { All, AuthActionTypes } from '../actions/auth.actions';
+import { AuthActionTypes } from '../actions/auth.actions';
+import { ToastrMessage } from '../../app.enum';
 
 export interface IState {
   isAuthenticated: boolean;
@@ -15,15 +16,17 @@ export const initialState: IState = {
   userName: localStorage.getItem('userName') || ''
 };
 
-export function authReducer(state = initialState, action: All): IState {
-  switch (action.type) {
+export function authReducer(state = initialState, action: any): IState {
+  const { type, payload } = action;
+
+  switch (type) {
     case AuthActionTypes.LOGIN_SUCCESS: {
       return {
         ...state,
         isAuthenticated: true,
         user: {
-          token: action.payload.token,
-          email: action.payload.email,
+          token: payload.token,
+          email: payload.email,
         },
         errorMessage: null
       };
@@ -31,7 +34,7 @@ export function authReducer(state = initialState, action: All): IState {
     case AuthActionTypes.LOGIN_FAILURE: {
       return {
         ...state,
-        errorMessage: 'Incorrect email and/or password.'
+        errorMessage: ToastrMessage.loginFailed
       };
     }
     case AuthActionTypes.SIGNUP_SUCCESS: {
@@ -39,8 +42,8 @@ export function authReducer(state = initialState, action: All): IState {
         ...state,
         isAuthenticated: true,
         user: {
-          token: action.payload.token,
-          email: action.payload.email,
+          token: payload.token,
+          email: payload.email,
         },
         errorMessage: null
       };
@@ -48,7 +51,7 @@ export function authReducer(state = initialState, action: All): IState {
     case AuthActionTypes.SIGNUP_FAILURE: {
       return {
         ...state,
-        errorMessage: 'That email is already in use.'
+        errorMessage: ToastrMessage.signUpFailed
       };
     }
     case AuthActionTypes.LOG_OUT: {
@@ -63,11 +66,12 @@ export function authReducer(state = initialState, action: All): IState {
     case AuthActionTypes.ACCESS_DENIED: {
       return {
         ...state,
-        errorMessage: 'To see cart page, login first'
+        errorMessage: ToastrMessage.accessDenied
       };
     }
     case AuthActionTypes.SET_USER_NAME: {
       const nameSetter = action.payload.email.split('@')[0];
+
       return {
         ...state,
         user: {

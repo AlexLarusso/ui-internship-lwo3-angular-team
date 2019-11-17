@@ -5,14 +5,14 @@
         <div class="col-6 login__container">
           <button
             [ngClass]="isLoginOpen ? 'authentication__redirect' : 'authentication__redirect_active'"
-            (click)="closeModal('login');openModal('sign-up')">
+            (click)="closeModal('login');openModal('signUp')">
             Register new user
           </button>
         </div>
         <div class="col-6 sign-up__container">
           <button
             [ngClass]="isLoginOpen ? 'authentication__redirect_active' : 'authentication__redirect'"
-            (click)="closeModal('sign-up');openModal('login')">
+            (click)="closeModal('signUp');openModal('login')">
             Login as an existing user
           </button>
         </div>
@@ -24,12 +24,7 @@
         <ng-template #ShowSignUp>
           <div class="authentication__title">Sign Up</div>
         </ng-template>
-      <div *ngIf="errorMessage">
-        <div class="authentication__error">
-          {{ errorMessage }}
-        </div>
-      </div>
-      <form class="authentication__form" (ngSubmit)="onSubmit()">
+      <form class="authentication__form">
         <div class="authentication__field">
           <label
             for="email"
@@ -68,13 +63,14 @@
       <div class="modal-button__container col-12">
         <app-button class="col-5"
           buttonClass="button_success" 
-          type="submit">
+          type="submit"
+          (click)="onSubmit()">
           Submit
         </app-button>
         <app-button class="col-5"
           type="button"
           buttonClass="button_warning" 
-          (click)="this.modalService.isLoginModalOpen ? closeModal('login'): closeModal('sign-up')">
+          (click)="this.modalService.isModalOpened.login ? closeModal('login'): closeModal('signUp')">
           Cancel
         </app-button>
       </div>

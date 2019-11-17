@@ -57,21 +57,19 @@ export class LineBarComponent implements OnInit {
       this.errorMessage = state.errorMessage;
     });
 
-    this.isSignUpOpen = this.modalService.isSignUpModalOpen;
-    this.isLoginOpen = this.modalService.isLoginModalOpen;
-    console.log(this.isSignUpOpen, 'sign-up');
-    console.log(this.isLoginOpen, 'login');
+    this.isSignUpOpen = this.modalService.isModalOpened.signUp;
+    this.isLoginOpen = this.modalService.isModalOpened.login;
   }
 
   public logOut(): void {
     this.store.dispatch(new LogOut());
   }
 
-  public closeModal(id: string): void {
-    this.modalService.close(id);
+  public closeModal(modalName: string): void {
+    this.modalService.close(modalName);
   }
 
-  public openModal(id: string): void {
-    this.modalService.open(id);
+  public openModal(modalName: string): void {
+    this.modalService.open(modalName);
   }
 }
