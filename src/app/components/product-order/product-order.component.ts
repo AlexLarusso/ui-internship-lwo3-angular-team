@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
-import { ToastrService } from 'ngx-toastr';
-
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
@@ -17,6 +15,7 @@ import { Subscription } from 'rxjs';
 import {
   IProduct, IProductDetails, IProductOptions, IProductDescription, IProductImage
 } from 'src/app/interfaces';
+import { URLs } from 'src/app/app.enum';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -34,6 +33,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
 
   public productDetails: IProductDetails;
   public productImages: Array<IProductImage>;
+  public productVideo: string;
   public selectedSizeSub: Subscription;
   public selectedColorSub: Subscription;
   public selectedQtySub: Subscription;
@@ -80,7 +80,8 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
     };
 
     this.productImages = this.product.images;
-
+    console.log(this.product.video)
+    this.productVideo = URLs.productVideo + this.product.video;
     this.store.dispatch(new SelectColor(initColor));
 
     this.selectedQtySub = this.store.select(getProductQuantity)

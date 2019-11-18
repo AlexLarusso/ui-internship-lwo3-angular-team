@@ -8,6 +8,7 @@ import { getProductSelectedColor } from 'src/app/store/selectors/product-options
 import { Subscription } from 'rxjs';
 
 import { IProductImage } from 'src/app/interfaces/product-image.interface';
+import { IProductMedia } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Component({
@@ -18,8 +19,9 @@ import { IProductImage } from 'src/app/interfaces/product-image.interface';
 export class ProductPreviewComponent implements OnInit, OnDestroy {
   @Input() private productImages: Array<IProductImage>;
   @Input() public productTitle: string;
+  @Input() public productVideo: string;
 
-  public imagesSource: Array<string>;
+  public imagesSource: Array<IProductMedia>;
   public selectedImageID: number;
   public productSelectedColorSub: Subscription;
 
@@ -33,7 +35,12 @@ export class ProductPreviewComponent implements OnInit, OnDestroy {
         this.selectedImageID = 0;
         this.productSelectedColor = color;
         this.imagesSource = this.findImagesSource();
+        if (this.productVideo) {
+          this.imagesSource.push({ video: true, url: this.productVideo });
+          console.log(this.productVideo);
+        }
       });
+
   }
 
   public ngOnDestroy() { }
@@ -42,12 +49,13 @@ export class ProductPreviewComponent implements OnInit, OnDestroy {
     this.selectedImageID = index;
   }
 
-  private findImagesSource(): Array<string> {
+  private findImagesSource(): Array<IProductMedia> {
     const productImages = this.productSelectedColor
       ? this.productImages.find(images =>
           images.value === this.productSelectedColor)
       : this.productImages[0];
-
-    return productImages ? productImages.url : [];
+    return productImages ? productImages.url.map(image =>
+      ({ video: false, url: image })
+    ) : [];
   }
 }
