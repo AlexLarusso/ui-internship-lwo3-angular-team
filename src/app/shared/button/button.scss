@@ -1,4 +1,4 @@
-@import '../../styles/_variables.scss';
+@import "../../styles/_variables.scss";
 
 $itemShadowColor: rgba(100, 100, 100, 0.4);
 
@@ -68,16 +68,14 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
   }
 
   &_success {
-    width: 70px;
     border: 2px solid $accentColor;
-    margin: 10px;
+    width: 100%;
   }
 
   &_warning {
-    width: 70px;
-    background: transparent;
     border: 2px solid $saleTagColor;
-    margin: 10px;
+    width: 100%;
+    background: transparent;
 
     &:hover:enabled {
       background-color: $saleTagColor;
@@ -86,6 +84,7 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
       color: $fontColorLight;
     }
   }
+
   &_popular {
     width: 250px;
   }

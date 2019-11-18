@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
@@ -13,19 +13,21 @@ import {
   LogIn, LogInSuccess, LogInFailure, SignUp, SignUpSuccess, SignUpFailure, LogOut
 } from '../actions/auth.actions';
 import { ModalService } from 'src/app/shared/services/modal-service';
+import { ToastrMessage } from 'src/app/app.enum';
+
 
 @Injectable()
 export class AuthEffects {
   constructor(
-    private actions: Actions,
-    private authService: AuthService,
-    private router: Router,
-    private modalService: ModalService,
-    private cookieService: CookieService
+    private readonly actions$: Actions,
+    private readonly authService: AuthService,
+    private readonly modalService: ModalService,
+    private readonly cookieService: CookieService,
+    private readonly toastrService: ToastrService
   ) {}
 
 @Effect()
-  public LogIn: Observable<any> = this.actions
+  public LogIn: Observable<any> = this.actions$
     .pipe(
       ofType(AuthActionTypes.LOGIN),
       map((action: LogIn) => action.payload),
@@ -33,11 +35,12 @@ export class AuthEffects {
         return this.authService.logIn(payload.email, payload.password)
           .pipe(
             map(user => {
-              console.log(user);
-              return new LogInSuccess({token: user.token, email: payload.email, password: payload.password});
+              return new LogInSuccess({
+                token: user.token,
+                email: payload.email,
+                userName: payload.email.split('@')[0]});
             }),
             catchError(error => {
-              console.log(error);
               return of(new LogInFailure({ error }));
             })
           );
@@ -45,17 +48,18 @@ export class AuthEffects {
     );
 
 @Effect({ dispatch: false })
-  public LogInSuccess: Observable<any> = this.actions
+  public LogInSuccess: Observable<any> = this.actions$
     .pipe(
       ofType(AuthActionTypes.LOGIN_SUCCESS),
       tap(user => {
         this.cookieService.set('token', user.payload.token);
+        localStorage.setItem('userName', user.payload.userName);
         this.modalService.close('login');
       })
     );
 
 @Effect()
-  public SignUp: Observable<any> = this.actions
+  public SignUp: Observable<any> = this.actions$
     .pipe(
       ofType(AuthActionTypes.SIGNUP),
       map((action: SignUp) => action.payload),
@@ -63,11 +67,12 @@ export class AuthEffects {
         return this.authService.signUp(payload.email, payload.password)
           .pipe(
             map(user => {
-              console.log(user);
-              return new SignUpSuccess({token: user.token, email: payload.email, password: payload.password});
+              return new SignUpSuccess({
+                token: user.token,
+                email: payload.email,
+              userName: payload.email.split('@')[0]});
             }),
             catchError(error => {
-              console.log(error);
               return of(new SignUpFailure({ error }));
             })
           );
@@ -75,23 +80,31 @@ export class AuthEffects {
     );
 
 @Effect({ dispatch: false })
-  public SignUpSuccess: Observable<any> = this.actions
+  public SignUpSuccess: Observable<any> = this.actions$
     .pipe(
       ofType(AuthActionTypes.SIGNUP_SUCCESS),
       tap(user => {
         this.cookieService.set('token', user.payload.token);
-        this.modalService.close('sign-up');
+        this.modalService.close('signUp');
       })
     );
 
 @Effect({ dispatch: false })
-  public AuthFailure: Observable<any> = this.actions
-    .pipe(
-      ofType(AuthActionTypes.LOGIN_FAILURE, AuthActionTypes.SIGNUP_FAILURE)
-    );
+public LoginFailure: Observable<any> = this.actions$
+  .pipe(
+    ofType(AuthActionTypes.LOGIN_FAILURE),
+    tap(() => this.toastrService.error(ToastrMessage.loginFailed))
+  );
+
+@Effect({ dispatch: false })
+public SignUpFailure: Observable<any> = this.actions$
+  .pipe(
+    ofType(AuthActionTypes.SIGNUP_FAILURE),
+    tap(() => this.toastrService.error(ToastrMessage.signUpFailed))
+  );
 
 @Effect({ dispatch: false})
-  public LogOut: Observable<any> = this.actions
+  public LogOut: Observable<any> = this.actions$
     .pipe(
       ofType(AuthActionTypes.LOG_OUT),
       tap(() => {

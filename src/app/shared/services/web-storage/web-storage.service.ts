@@ -15,7 +15,7 @@ export class WebStorageService {
   public setValue(key: string, value: string): void {
     this.store.dispatch(new SetValueToStorage(key, value));
     this.store.select(getStorageStatus)
-      .subscribe(data => this.value = JSON.stringify(data[key]));
+      .subscribe(data => this.value = (data[key]));
   }
 
   public getValue(key: string): string {

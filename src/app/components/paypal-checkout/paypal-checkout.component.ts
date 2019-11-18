@@ -56,11 +56,12 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
           await actions.order.capture();
           this.store.dispatch(new ConfirmOrder());
 
-          this.toastrService.success(ToastrMessage.paymentSeccessfull);
+          this.toastrService.success(ToastrMessage.paymentSuccessful);
           // TODO: use rxjs instead
         },
         onError: err => {
-          this.toastrService.warning(ToastrMessage.paymentFaild);       }
+          this.toastrService.warning(ToastrMessage.paymentFailed);
+        }
       })
       .render(this.paypalElement.nativeElement);
   }

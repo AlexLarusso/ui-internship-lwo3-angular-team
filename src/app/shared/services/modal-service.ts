@@ -5,15 +5,17 @@ import { Injectable } from '@angular/core';
 })
 
 export class ModalService {
-  public isLoginModalOpen = false;
-  public isSignUpModalOpen = false;
 
+  public isModalOpened = {
+    login: false,
+    signUp: false
+  };
 
-  public open(id: string): void {
-    id === 'login' ? this.isLoginModalOpen = true : this.isSignUpModalOpen = true;
+  public open(modalName: string): void {
+    this.isModalOpened[modalName] = true;
   }
 
-  public close(id: string): void {
-    id === 'login' ? this.isLoginModalOpen = false : this.isSignUpModalOpen = false;
+  public close(modalName: string): void {
+    this.isModalOpened[modalName] = false;
   }
 }
