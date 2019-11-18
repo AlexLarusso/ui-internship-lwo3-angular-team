@@ -34,7 +34,7 @@ export class SimilarProductsComponent implements OnInit, OnDestroy {
 
     this.productServiceSub = this.productService
       .getSimilarProducts(this.productSimilarOptions, ProductFormat.short)
-        .subscribe(products => this.similarProducts = products);
+        .subscribe(products => this.similarProducts = products as Array<IProductShortInfo>);
   }
 
   public ngOnDestroy(): void { }

@@ -17,3 +17,17 @@ export enum URLs {
 export enum ImagePlaceholder {
   IMAGE_NOT_FOUND = 'src/assets/img/image-not-found.png'
 }
+
+export enum ToastrMessage {
+  error = 'Error',
+  internetError = 'No internet connection!',
+  internalError = 'An internal error',
+  emptyWishList = 'Your Wishlist is currently empty',
+  productAddedToCart = 'Product has been added to card',
+  paymentSuccessful = 'Payment successful!',
+  paymentFailed = 'Something went wrong, please try again',
+  invalidModal = 'modal must have an id',
+  loginFailed = 'Incorrect email and/or password.',
+  signUpFailed = 'That email is already in use.',
+  accessDenied = 'To see cart page, login first'
+}

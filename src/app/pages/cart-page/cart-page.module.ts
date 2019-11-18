@@ -26,7 +26,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   providers: [
-    AuthGuard
   ],
   exports: [
     CartPageComponent,
