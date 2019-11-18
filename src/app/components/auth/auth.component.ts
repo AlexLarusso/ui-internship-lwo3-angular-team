@@ -8,8 +8,7 @@ import { User } from '../../interfaces/user';
 import { ModalService } from '../../shared/services/modal-service';
 import { IAppState, selectAuthState } from '../../store/app.store';
 import { LogIn, SignUp } from '../../store/actions/auth.actions';
-import { EnumRegExp, ToastrMessage } from '../../app.enum';
-import { ToastrService } from 'ngx-toastr';
+import { EnumRegExp } from '../../app.enum';
 
 @Component({
   selector: 'app-auth',
@@ -30,8 +29,7 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private readonly modalService: ModalService,
-    private readonly store: Store<IAppState>,
-    private readonly toastrService: ToastrService
+    private readonly store: Store<IAppState>
   ) { }
 
   public ngOnInit(): void {
