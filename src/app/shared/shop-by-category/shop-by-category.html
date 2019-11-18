@@ -1,4 +1,10 @@
-<div class="product col-8">
+<div class="product-category col-12">
+  <app-product-filter
+  (dataChange)="onDataChange($event)"
+  [products]="filteredItems"
+  class="col-3">
+  </app-product-filter>
+<div class="product">
   <div class="content__container product__wrapper">
     <div>
       <h2 class="col-12 content__title">{{ filterCategory | titlecase }} Collection</h2>
@@ -17,8 +23,4 @@
     </div>
   </div>
 </div>
-<app-product-filter
-(dataChange)="onDataChange($event)"
-[products]="filteredItems"
-class="col-4">
-</app-product-filter>
+</div>

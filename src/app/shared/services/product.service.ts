@@ -91,7 +91,7 @@ export class ProductService implements OnDestroy {
           gender: product.gender,
           seasons: product.seasons,
           brand: product.brand,
-          category: product.brand,
+          category: product.category,
         };
       }
     }

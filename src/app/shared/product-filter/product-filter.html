@@ -1,19 +1,44 @@
+<div class="filter-wrapper">
 <div class="filter-container">
   <div class="filter-criteria__wrapper">
-    <h2 class="filter-criteria__title">Brand</h2>
+    <h2 class="filter-criteria__title content__title">Brand</h2>
     <div class="filter-criteria" *ngFor="let product of productBrand">
-      <input class="filter-criteria__option" (change)="onCreateRequest($event)" type="checkbox" name="brand"
+        <div class="center">
+          <label class="label">
+      <input class="filter-criteria__option label__checkbox" (change)="onCreateRequest($event)" type="checkbox" name="brand"
         value="{{ product }}">
+        <span class="label__text">
+            <span class="label__check">
+                <fa-icon
+                class="icon"
+                [icon]="checkboxIcon">
+              </fa-icon>
+            </span>
+          </span>
+        </label>
+      </div>
       <label class="filter-criteria__subtitle">{{ product }}</label>
     </div>
   </div>
   <div class="filter-criteria__wrapper">
-    <h2 class="filter-criteria__title">Category</h2>
+    <h2 class="filter-criteria__title content__title">Category</h2>
     <div class="filter-criteria" *ngFor="let product of productCategory">
-      <input class="filter-criteria__option" (change)="onCreateRequest($event)" type="checkbox" name="category"
+        <div class="center">
+            <label class="label">
+      <input class="filter-criteria__option label__checkbox" (change)="onCreateRequest($event)" type="checkbox" name="category"
         value="{{ product }}">
+        <span class="label__text">
+            <span class="label__check">
+                <fa-icon
+                class="icon"
+                [icon]="checkboxIcon">
+              </fa-icon>
+            </span>
+          </span>
+        </label>
+      </div>
       <label class="filter-criteria__subtitle">{{ product }}</label>
     </div>
   </div>
-  <app-button buttonClass="button_accent" (click)="onFilter()">Filter</app-button>
+</div>
 </div>

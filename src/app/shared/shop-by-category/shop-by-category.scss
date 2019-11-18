@@ -1,9 +1,13 @@
 @import '../../styles/variables';
 
-.product {
+.product-category {
   display: flex;
-
+  flex-direction: row;
   background: $bgColorMedium;
+}
+
+.product {
+  width: 80%;
   box-shadow: -2px -16px 47px -19px rgba(255,255,255,0.8);
 
   &__wrapper {
@@ -27,6 +31,10 @@ li {
 
 @media screen and (max-width: 992px) {
   .product {
+  &__container {
+  margin: 0;
+  }
+
     &__navigation {
       flex-wrap: wrap;
       justify-content: center;
@@ -43,6 +51,10 @@ li {
 
 @media screen and (max-width: 576px) {
   .product {
+    &__container {
+      margin: 0;
+      }
+
     &__navigation {
       height: 200px;
     }
@@ -50,6 +62,12 @@ li {
 }
 
 @media screen and (max-width: 576px) {
+  .product-category {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .product {
     &__navigation {
       height: 220px;

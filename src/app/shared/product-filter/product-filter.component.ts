@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { IProduct } from 'src/app/interfaces';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-filter',
@@ -15,19 +16,28 @@ export class ProductFilterComponent implements OnInit {
   public productBrand: Array<string> = [];
   public filterRequest = [];
   public selectedProducts = [];
+  public categoryItems = [];
   public checkedCriteria: string;
   public criteriaName: string;
   public criteriaIndex: number;
+  public checkboxIcon = faCheck;
+  public requestObj = {
+    brand: [],
+    category: []
+  };
 
-  public onCreateRequest(event) {
+  public onCreateRequest(event): void {
     this.criteriaName = event.target.value;
 
     this.filterRequest = event.target.checked ?
       [...this.filterRequest, this.criteriaName] :
       this.filterRequest.filter(item => this.criteriaName !== item);
+
+    this.onFilter();
   }
 
   public ngOnInit(): void {
+    this.categoryItems = this.products;
     this.products.forEach(item => {
       this.productCategory.push(item.category);
       this.productBrand.push(item.brand);
@@ -36,21 +46,21 @@ export class ProductFilterComponent implements OnInit {
     this.productBrand = [...new Set(this.productBrand)];
   }
 
-  public onFilter() {
+  private onFilter(): void {
     this.filterRequest.length ?
       this.checkForItems() :
-      this.dataChange.emit(this.products);
-
+      this.dataChange.emit(this.categoryItems);
   }
 
-  private checkForItems() {
-    this.filterRequest.forEach((criteria) =>
-      this.products.forEach(product => {
-        // tslint:disable-next-line: forin
+  private checkForItems(): void {
+    this.selectedProducts = [];
+
+    this.filterRequest.forEach(criteria =>
+      this.categoryItems.forEach(product => {
         for (const prop in product) {
-          product[prop] === criteria ?
-            this.selectedProducts.push(product) :
-            this.selectedProducts;
+          if (product[prop] === criteria) {
+            this.selectedProducts.push(product);
+          }
         }
       }
       )

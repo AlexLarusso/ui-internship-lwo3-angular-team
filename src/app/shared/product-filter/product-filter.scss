@@ -1,15 +1,147 @@
 @import '../../styles/variables';
 
+:host {
+  margin-left: 20px;
+  margin-right: auto;
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $bgColorMedium;
+}
+
 .filter-container {
-  margin: 20px;
-  width: 225px;
-  background-color: #fff;
+  margin-left: 20px;
 }
 
 .filter-criteria {
-   margin: 10px;
+  position: relative;
+   margin-top: 15px;
+
+  &__wrapper {
+    margin: 15px 0;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(33, 33, 33, 0.2);
+    width: 220px;
+    background-color: $bgColorLight;
+  }
+
+  &__title {
+    margin-top: 20px;
+    font-size: 2rem;
+    text-align: left;
+    color: $accentColor;
+  }
 
   &__subtitle {
-    margin-left: 5px;
+    margin-left: 30px;
   }
-};
+}
+
+.filter-button {
+  margin: 20px;
+  width: 10px;
+}
+
+.label__checkbox {
+  display: none;
+}
+
+.label__check {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.1);
+  vertical-align: middle;
+  margin-right: 20px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border .3s ease;
+
+  .icon {
+    opacity: 0.2;
+    font-size: 0.5rem;
+    color: transparent;
+    transition: opacity .3s .1s ease;
+    -webkit-text-stroke: 3px rgba(0,0,0,.5);
+    &:before {
+      width: 5px;
+    }
+  }
+
+  &:hover {
+    border: 5px solid rgba(0,0,0,0.2);
+  }
+}
+
+.label__checkbox:checked + .label__text .label__check {
+  animation: check .5s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
+
+  .icon {
+    opacity: 1;
+    transform: scale(0);
+    color: white;
+    -webkit-text-stroke: 0;
+    animation: icon .3s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+  }
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translate(-50%,-50%);
+}
+
+@keyframes icon {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+
+@keyframes check {
+  0% {
+    width: 8px;
+    height: 8px;
+    border-width: 2px;
+  }
+  10% {
+    width: 8px;
+    height: 8px;
+    opacity: 0.1;
+    background: rgba(0,0,0,0.2);
+    border-width: 15px;
+  }
+  12% {
+    width: 8px;
+    height: 8px;
+    opacity: 0.4;
+    background: rgba(0,0,0,0.1);
+    border-width: 0;
+  }
+  50% {
+    width: 16px;
+    height: 16px;
+    background: $accentColor;
+    border: 0;
+    opacity: 0.6;
+  }
+  100% {
+    width: 16px;
+    height: 16px;
+    background: $accentColor;
+    border: 0;
+    opacity: 1;
+  }
+}
