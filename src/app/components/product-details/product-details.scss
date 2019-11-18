@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+$spacing: 15px;
+
+.product-details {
+  &__title {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-family: $mainFontBold;
+  }
+
+  &__price {
+    display: block;
+    position: relative;
+    color: $accentColor;
+    margin: $spacing 0;
+    font-family: $mainFontBold;
+
+    &::before {
+      position: absolute;
+      width: 100px;
+      top: -$spacing;
+      border: 1px solid $accentColor;
+      content: '';
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import '../../styles/variables';
+
+.join-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 260px;
+  background-color: $bgColorLight;
+
+  &__title {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  &__collapse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+
+  &__wrapper {
+    margin: 40px 0;
+  }
+}
+
+.error {
+  border: 1px solid $inputWarningColor !important;
+  border-radius: 2px;
+  box-shadow: 0 0 1px 1px $inputWarningColor;
+}
+
+.email_input {
+  margin: 10px;
+  width: 30vw;
+  height: 35px;
+  border: 1px solid $accentColor;
+  padding: 0 10px;
+  outline: none;
+  font-size: 1rem;
+
+  &::placeholder {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .join-us {
+    &__title {
+      font-size: 1rem;
+    }
+
+    &__wrapper {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .email_input {
+      width: 150px;
+    }
+  }
+}

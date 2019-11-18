@@ -1,0 +1,24 @@
+<section class="popular">
+  <div class="content__container popular__wrapper">
+    <h2 class="content__title">Popular Now</h2>
+    <ul class="filter__panel col-8">
+      <li *ngFor="let item of filterItems">
+        <button class="filter__item" (click)="sortByTag(item)">
+          {{ item }}
+        </button>
+      </li>
+    </ul>
+    <div class="col-12 product__container">
+      <app-product-item
+        *ngFor="let product of products$ | async"
+        class="product__item"
+        [status]="product.status"
+        [imgUrl]="product.imgUrl"
+        [imgUrlNext]="product.imgUrlNext"
+        [productTitle]="product.productTitle"
+        [productPrice]="product.productPrice"
+        [productId]="product.productId">
+      </app-product-item>
+    </div>
+  </div>
+</section>

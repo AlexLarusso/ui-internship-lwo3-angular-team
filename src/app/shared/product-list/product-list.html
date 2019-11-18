@@ -1,0 +1,37 @@
+<div class="products">
+  <div class="content__container products__wrapper">
+    <div>
+      <h2 class="col-12 content__title">From Our Collection</h2>
+      <div class="products__navigation">
+        <p class="products__text">
+          {{ aboutProductsText }}
+        </p>
+        <div>
+          <div class="col-12 navigation__panel">
+            <app-button *ngFor="let item of filterItems" buttonClass="button_navigation">
+              {{ item }}
+            </app-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="products__container">
+      <app-product-item *ngFor="let product of (products$ | async) | slice:0:visibleNumber"
+        class="product__item"
+        [status]="product.status"
+        [imgUrl]="product.imgUrl"
+        [imgUrlNext]="product.imgUrlNext"
+        [productTitle]="product.productTitle"
+        [productPrice]="product.productPrice"
+        [productId]="product.productId">
+      </app-product-item>
+    </div>
+    <app-button
+      class="button_load"
+      buttonClass="button_load-more"
+      (click)="loadMore()"
+      [isDisabled]="!isLoadMoreActive">
+      Load more
+    </app-button>
+  </div>
+</div>

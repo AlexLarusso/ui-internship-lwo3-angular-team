@@ -1,0 +1,36 @@
+<div class="footer__container">
+  <div class="content__container footer__wrapper">
+    <div class="col-3">
+      <div class="footer__logo">
+        <app-main-logo logoColor="accent"></app-main-logo>
+      </div>
+      <p>Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget
+        consectetur sed, convallis at tellus.</p>
+      <p>Created by Graphberry, Belgrade, Serbia</p>
+    </div>
+    <div class="col-2">
+      <h4 class="footer__title">Links</h4>
+      <ul>
+        <li *ngFor="let link of links">
+          <a>{{ link }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-2">
+      <h4 class="footer__title">Shopping</h4>
+      <ul>
+        <li *ngFor="let category of shoppingCategories">
+          <a>{{ category }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-4">
+      <h4 class="footer__title">Contact Us</h4>
+      <p class="footer__contact-info">
+        Get in touch with us via mall phone. We are waiting for
+        your call or message
+      </p>
+      <app-button buttonClass="button_accent">Contact Us</app-button>
+    </div>
+  </div>
+</div>

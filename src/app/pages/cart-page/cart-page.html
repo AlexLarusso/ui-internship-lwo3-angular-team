@@ -1,0 +1,41 @@
+<div class="cart">
+  <div *ngIf="(cartProductList$ | async)?.length; else emptyCartBlock"
+    class="content__container cart-content">
+    <div class="cart-header">
+      <span *ngFor="let option of productOptions">{{ option }}</span>
+    </div>
+    <div *ngFor="let product of cartProductList$ | async; let lastItem = last">
+      <app-product-cart-item
+        [isLastItem]="lastItem"
+        [productItem]="product">
+      </app-product-cart-item>
+    </div>
+    <div class="cart-footer">
+      <app-paypal-checkout class="cart__confirm-btn"></app-paypal-checkout>
+      <span class="cart__total-price__label">
+        Total price
+      </span>
+      <span class="cart__total-price">
+        {{ cartTotalPrice$ | async }} {{ currentCurrency }}
+      </span>
+    </div>
+  </div>
+  <ng-template #emptyCartBlock>
+    <app-popular-list class="cart-empty"
+      *ngIf="isPopularListVisible; else emptyDefaultBlock">
+    </app-popular-list>
+    <ng-template #emptyDefaultBlock>
+      <div class="content__container cart-empty">
+        <h3 class="cart-empty__title">
+          Your cart is currently empty
+        </h3>
+        <div class="cart-empty__img__wrapper">
+          <img class="cart-empty__img" [src]="emptyCartUrl" alt="Your cart is empty gif"/>
+        </div>
+        <app-button buttonClass="button_popular" (click)="displayPopularList()">
+          See popular products
+        </app-button>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

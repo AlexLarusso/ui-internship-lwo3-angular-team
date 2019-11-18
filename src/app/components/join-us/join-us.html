@@ -1,0 +1,29 @@
+<section class="join-us">
+  <div class="join-us content__container">
+  <div class="join-us__wrapper" *ngIf="!isSubscribed">
+    <h4 class="join-us__title">{{ formText.message }}</h4>
+    <input
+      type="text"
+      class="email_input"
+      placeholder="Your email"
+      [(ngModel)]="inputText"
+      [class.error]="isInvalid"
+      (input)="onValidate()"
+      (blur)="onBlur()">
+    <app-button
+      buttonClass="button_accent"
+      [isDisabled]="buttonDisabled"
+      (click)="saveUser()">
+      {{ formText.subscribe }}
+    </app-button>
+  </div>
+  <div class="join-us__collapse" *ngIf="isSubscribed">
+    <h4 class="join-us__title">{{ formText.success }}</h4>
+    <app-button
+      buttonClass="button_accent"
+      (click)="deleteUser()">
+      {{ formText.unsubscribe }}
+    </app-button>
+  </div>
+</div>
+</section>

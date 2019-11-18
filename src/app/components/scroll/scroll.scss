@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+
+$item-size: 12px;
+$item-spacing: 5px;
+$item-hover-color: rgba(0, 0, 0, 0.2);
+$item-color: rgb(180, 180, 180);
+$item-shadow-color: rgb(100, 100, 100);
+$item-border-color: rgb(160, 160, 160);
+$item-active-color: $accentColor;
+$item-text-color: white;
+
+.scroll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+
+  .item {
+    position: relative;
+    display: block;
+    margin: $item-spacing 0;
+    width: $item-size;
+    height: $item-size;
+    list-style: none;
+    border-radius: $item-size / 2;
+    background-color: $item-color;
+    transition: all 600ms ease-in-out;
+    cursor: pointer;
+
+    &.active {
+      background-color: $item-active-color;
+
+      .item {
+        &__text {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+
+    &__text {
+      display: block;
+      position: absolute;
+      font-size: 0.6rem;
+      color: $item-text-color;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.6s;
+      transition-delay: 300ms;
+      visibility: hidden;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      background-color: $item-active-color;
+
+      .item__text {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  .icon {
+    display: block;
+    margin: $item-spacing auto;
+    font-size: $item-size * 1.2;
+    color: $item-color;
+
+    &:hover {
+      transform: scale(1.5);
+      color: $item-hover-color;
+    }
+
+    &.disabled {
+      visibility: hidden;
+    }
+  }
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+  .scroll {
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .scroll {
+    display: none;
+  }
+}

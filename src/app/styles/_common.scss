@@ -1,0 +1,100 @@
+@import './variables';
+
+body {
+  scroll-behavior: smooth;
+}
+
+.content {
+  &__container {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  &__title,
+  &__title_sale {
+    margin-top: 20px;
+    font-size: 2rem;
+    text-align: center;
+    color: $accentColor;
+
+    &__sale {
+      text-transform: uppercase;
+
+      &_message {
+        font-size: 3rem;
+        color: $fontColorLight;
+      }
+    }
+  }
+}
+
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+}
+
+@media screen and (max-width: 992px) {
+  .content {
+    &__title,
+    &__title_sale {
+      margin-top: 60px;
+      font-size: 1.7rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    &__container {
+      width: 85%;
+    }
+
+    &__title,
+    &__title_sale {
+      font-size: 1.7rem;
+
+      &__sale {
+        &_message {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .content {
+    &__container {
+      width: 90%;
+    }
+
+    &__title {
+      font-size: 1.6rem;
+
+      &__sale {
+        &_message {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .content {
+    &__container {
+      width: 95%;
+    }
+    
+    &__title {
+      font-size: 1.4rem;
+
+      &__sale {
+        &_message {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

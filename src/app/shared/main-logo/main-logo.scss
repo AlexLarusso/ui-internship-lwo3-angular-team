@@ -1,0 +1,32 @@
+@import '../../styles/_variables.scss';
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $bgColorDark;
+  padding: 5px;
+  width: 120px;
+  height: 45px;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  font-weight: bold;
+
+  &_dark {
+    border: 2px solid $bgColorDark;
+    color: $fontColorDark;
+  }
+
+  &_accent {
+    border: 2px solid $accentColor;
+    color: $accentColor;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid $accentColor;
+    transform: scale(1.08);
+    transition: 0.1s ease-in-out;
+    color: $accentColor;
+  }
+}

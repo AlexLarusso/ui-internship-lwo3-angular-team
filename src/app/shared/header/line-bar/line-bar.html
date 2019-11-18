@@ -1,0 +1,35 @@
+<div class="bar__container">
+  <div class="content__container col-12 bar">
+    <div class="col-5 contact__container">
+      <p class="col-6">{{ email }}</p>
+      <p class="col-6">{{ telephone }}</p>
+    </div>
+    <div class="col-4 login__container">
+      <div class="col-5 link__container">
+        <fa-icon [icon]="faFacebookF" class="link__item"></fa-icon>
+        <fa-icon [icon]="faTwitter" class="link__item"></fa-icon>
+        <fa-icon [icon]="faGoogle" class="link__item"></fa-icon>
+      </div>
+      <div *ngIf="isAuthenticated; then LoggedIn; else LoggedOut;"></div>
+      <ng-template #LoggedIn>
+          <p class="bar__link"> Hello, {{ userName$ | async }}!</p>
+          <a class="bar__link" (click)="logOut()">Log out</a>
+      </ng-template>
+      <ng-template #LoggedOut>
+          <a (click)="openModal('signUp')" class="bar__link">Sign Up</a>
+          <a (click)="openModal('login')" class="bar__link">Login</a>
+      </ng-template>
+      <app-modal-window
+        *ngIf="this.modalService.isModalOpened.login"
+        modalName="login">
+        <app-auth></app-auth>
+      </app-modal-window>
+      <app-modal-window
+        *ngIf="this.modalService.isModalOpened.signUp"
+        modalName="signUp">
+        <app-auth></app-auth>
+      </app-modal-window>
+      
+    </div>
+  </div>
+</div>

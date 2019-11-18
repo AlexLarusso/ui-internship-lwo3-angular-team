@@ -1,0 +1,72 @@
+@import '../../styles/variables';
+
+.products {
+  padding-top: 50px;
+  background: $bgColorMedium;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &__navigation {
+    margin: 10px 0;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}
+
+.navigation {
+  &__panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+li {
+  &:hover {
+    color: $accentColor;
+  }
+}
+
+app-button  {
+  margin: 10px;
+}
+
+.button_load {
+  padding: 30px 0;
+  align-self: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .products {
+    &__container {
+      justify-content: space-around;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .products {
+    &__navigation {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &>p,
+      >div {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}

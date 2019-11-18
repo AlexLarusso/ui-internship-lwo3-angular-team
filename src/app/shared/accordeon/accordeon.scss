@@ -1,0 +1,44 @@
+@import 'src/app/styles/variables';
+
+$accordeon-spacing: 15px;
+$text-number-of-lines: 5;
+$text-line-height: 1.4rem;
+
+.topic {
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: $accordeon-spacing 0;
+    padding: $accordeon-spacing 0;
+    border-bottom: 1px solid $accentColor;
+    cursor: pointer;
+  }
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__text {
+    display: none;
+    max-height: $text-line-height * $text-number-of-lines;
+    overflow-y: auto;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: $text-line-height;
+    white-space: pre-line;
+  }
+
+  &[aria-expanded="true"] {
+    .topic__text {
+      display: block;
+    }
+  }
+
+  .icon {
+    color: $bgColorDark;
+    opacity: 0.6;
+    font-size: 1rem;
+  }
+}

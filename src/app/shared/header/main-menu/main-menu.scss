@@ -1,0 +1,145 @@
+@import '../../../styles/variables';
+
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  height: 45px;
+  background: rgba($color: $bgColorDark, $alpha: 0.9);
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &__item {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__input {
+    &__container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__search {
+    padding-left: 10px;
+    width: 80%;
+
+    &__container {
+      display: flex;
+      height: 30px;
+    }
+
+    &__btn {
+      border: none;
+      width: 50px;
+      background: $accentColor;
+    }
+  }
+
+  &__cart {
+    &__container {
+      display: flex;
+      height: 30px;
+    }
+
+    &__btn, &__qty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    &__btn {
+      width: 50px;
+      background: $accentColor;
+    }
+
+    &__qty {
+      width: 70%;
+      height: 100%;
+      background: $bgColorLight;
+    }
+  }
+
+  a {
+    color: $fontColorLight;
+
+    &:hover {
+      color: $accentColor;
+    }
+  }
+}
+
+.menu-item {
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .menu {
+    height: 90px;
+
+    &__wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      height: 90px;
+    }
+
+    &__container {
+      width: 100%;
+    }
+  }
+
+  .scroll-bar {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    height: 130px;
+
+    &__container {
+      flex-direction: column;
+      justify-content: space-around;
+      height: 130px;
+    }
+
+    &__input {
+      &__container {
+        width: 100%;
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  app-scroll {
+    width: 100%;
+  }
+}
+
+fa-icon {
+  color: $fontColorLight;
+}

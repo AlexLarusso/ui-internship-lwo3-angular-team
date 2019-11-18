@@ -1,0 +1,85 @@
+@import '../../styles/variables';
+
+.promo {
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    background-color: $bgColorMedium;
+    overflow: hidden;
+  }
+
+  &__content {
+    position: absolute;
+    top: 10%;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-between;
+    height: 320px;
+    color: $fontColorLight;
+  }
+
+  &__header {
+    font-family: $mainFontBold;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+
+    &_accent {
+      font-size: 3rem;
+      color: $accentColor;
+    }
+  }
+}
+
+.image {
+  &__container {
+    position: relative;
+    height: inherit;
+    z-index: 3;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .promo {
+    &__content {
+      height: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    &__container {
+      height: 400px;
+    }
+
+    &__content {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .promo {
+    &__content {
+      width: 80%;
+      height: 250px;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .promo {
+    &__container {
+      height: 500px;
+    }
+
+    &__content {
+      width: 80%;
+      height: 250px;
+    }
+  }
+}

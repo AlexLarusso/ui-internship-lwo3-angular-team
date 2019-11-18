@@ -1,0 +1,15 @@
+<div class="content__container product__wrapper">
+  <div>
+    <h2 class="col-12 content__title">Wish List</h2>
+  </div>
+  <div class="product__container">
+    <app-product-item *ngFor="let product of productData"
+      [imgUrl]="product.imgUrl"
+      [imgUrlNext]="product.imgUrlNext"
+      [productTitle]="product.productTitle"
+      [productPrice]="product.productPrice"
+      [productId]="product.productId">
+    </app-product-item>
+  </div>
+</div>
+<app-parallax parallaxClass="shopping"></app-parallax>

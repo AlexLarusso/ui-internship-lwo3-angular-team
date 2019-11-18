@@ -1,0 +1,78 @@
+<div class="authentication">
+    <div class="authentication__wrapper">
+      <div class="authentication__container"
+        [ngClass]="isLoginOpen ? 'authentication__login' : 'authentication__sign-up'">
+        <div class="col-6 login__container">
+          <button
+            [ngClass]="isLoginOpen ? 'authentication__redirect' : 'authentication__redirect_active'"
+            (click)="closeModal('login');openModal('signUp')">
+            Register new user
+          </button>
+        </div>
+        <div class="col-6 sign-up__container">
+          <button
+            [ngClass]="isLoginOpen ? 'authentication__redirect_active' : 'authentication__redirect'"
+            (click)="closeModal('signUp');openModal('login')">
+            Login as an existing user
+          </button>
+        </div>
+      </div>
+      <div *ngIf="isLoginOpen; then ShowLogin; else ShowSignUp;"></div>
+        <ng-template #ShowLogin>
+          <div class="authentication__title">Log In</div>
+        </ng-template>
+        <ng-template #ShowSignUp>
+          <div class="authentication__title">Sign Up</div>
+        </ng-template>
+      <form class="authentication__form">
+        <div class="authentication__field">
+          <label
+            for="email"
+            class="authentication__label">
+            Email
+          </label>
+          <input
+            name="email"
+            type="email"
+            required
+            id="login-email"
+            class="authentication__input"
+            placeholder="Please enter your email"
+            [(ngModel)]="user.email"
+            [class.error]="!isEmailValid"
+            (input)="onValidateEmail()" />
+        </div>
+        <div class="authentication__field">
+          <label 
+            for="password"
+            class="authentication__label">
+            Password
+          </label>
+          <input
+            name="password"
+            type="password"
+            required
+            id="login-password"
+            class="authentication__input"
+            placeholder="Please enter your password"
+            [(ngModel)]="user.password"
+            [class.error]="!isPasswordValid"
+            (input)="onValidatePassword()">
+        </div>
+      </form>
+      <div class="modal-button__container col-12">
+        <app-button class="col-5"
+          buttonClass="button_success" 
+          type="submit"
+          (click)="onSubmit()">
+          Submit
+        </app-button>
+        <app-button class="col-5"
+          type="button"
+          buttonClass="button_warning" 
+          (click)="this.modalService.isModalOpened.login ? closeModal('login'): closeModal('signUp')">
+          Cancel
+        </app-button>
+      </div>
+    </div>
+  </div>
