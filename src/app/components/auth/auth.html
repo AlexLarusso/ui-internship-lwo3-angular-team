@@ -70,7 +70,7 @@
         <app-button class="col-5"
           type="button"
           buttonClass="button_warning" 
-          (click)="this.modalService.isModalOpened.login ? closeModal('login'): closeModal('signUp')">
+          (click)="this.isLoginOpen ? closeModal('login'): closeModal('signUp')">
           Cancel
         </app-button>
       </div>
