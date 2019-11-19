@@ -54,7 +54,6 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       delivery: DELIVERY_MOCK,
     };
     const initColor = productOptions.colors[0];
-
     const {
       productName: title,
       price,
@@ -76,9 +75,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       options: productOptions,
       description: productDescription,
     };
-
     this.store.dispatch(new SelectColor(initColor));
-
     this.selectedQtySub = this.store.select(getProductQuantity)
       .subscribe(qty => this.selectedQty = qty);
     this.selectedColorSub = this.store.select(getProductSelectedColor)

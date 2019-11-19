@@ -1,6 +1,6 @@
 <div *ngIf="productMedia$ | async as mediaSource" class="product-preview">
   <img
-    *ngIf="!mediaSource[selectedMediaIndex].video else videoPreview"
+    *ngIf="!mediaSource[selectedMediaIndex].video; else videoPreview"
     class="product-preview__full-view"
     alt="{{ productTitle }}"
     title="{{ productTitle }}"
@@ -14,7 +14,7 @@
   <div *ngFor="let media of mediaSource; let i = index"
     class="product-preview__small-view__container"
     (click)="onImageSelect(i)">
-    <img *ngIf="!media.video else videoSmall"
+    <img *ngIf="!media.video; else videoSmall"
       class="product-preview__small-view"
       alt="{{ productTitle }}"
       [src]="media.url"
