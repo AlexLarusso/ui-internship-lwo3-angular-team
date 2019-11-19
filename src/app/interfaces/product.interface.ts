@@ -1,4 +1,5 @@
 import { IProductImage } from './product-image.interface';
+import { ICloudinaryImage } from '.';
 
 export interface IProduct {
   productName: string;

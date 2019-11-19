@@ -9,8 +9,7 @@ export enum ProductFormat {
 }
 
 export enum URLs {
-  products = 'https://gaboo-project-server.herokuapp.com/products',
-  images = 'https://gaboo-project-server.herokuapp.com/images',
+  products = 'https://gaboo-project-server.herokuapp.com/products?limit=100',
   productImage = 'https://res.cloudinary.com/dr8z1kafr/image/upload/v1572252362/Interns/gaboo/products'
 }
 

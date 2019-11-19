@@ -3,7 +3,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
-import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
+import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
 import { Observable, Subscription } from 'rxjs';
@@ -21,8 +21,6 @@ import {
   providedIn: 'root'
 })
 export class ProductService implements OnDestroy {
-  public imagesSub: Subscription;
-  public allProductImages: Array<ICloudinaryImage>;
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
@@ -43,48 +41,43 @@ export class ProductService implements OnDestroy {
 
   public formatProduct(product: IProduct, format: string):
     IProduct | IProductShortInfo {
-    this.imagesSub = this.store.select(getAllProductImages)
-      .subscribe(images => this.allProductImages = images);
 
     switch (format) {
       case ProductFormat.full: {
-        const productImages = this.allProductImages
-          .filter(image => image.productId === product._id)
-          .reduce((prodImages, image) => {
-            const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
+        // const productImages = product.images
+        //   .reduce((prodImages, image) => {
+        //     const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
 
-            if (isColorAlreadyExist) {
-              prodImages.forEach(el => {
-                if (el.value === image.productColor) {
-                  el.url.push(`${URLs.productImage}/${image.claudinaryId}`);
-                }
-              });
-            } else {
-              prodImages.push({
-                value: image.productColor,
-                url: [`${URLs.productImage}/${image.claudinaryId}`]
-              });
-            }
+        //     if (isColorAlreadyExist) {
+        //       prodImages.forEach(el => {
+        //         if (el.value === image.productColor) {
+        //           el.url.push(`${URLs.productImage}/${image.claudinaryId}`);
+        //         }
+        //       });
+        //     } else {
+        //       prodImages.push({
+        //         value: image.productColor,
+        //         url: [`${URLs.productImage}/${image.claudinaryId}`]
+        //       });
+        //     }
 
-            return prodImages;
-        }, []);
+        //     return prodImages;
+        // }, []);
 
         return {
           ...product,
-          images: [...productImages]
+          // images: [...productImages]
         };
       }
 
       case ProductFormat.short: {
-        const firsProductImage = this.allProductImages
-          .find(image => image.productId === product._id).claudinaryId;
-        const secondProductImage = this.allProductImages
-          .filter(image => image.productId === product._id)[1].claudinaryId;
+        const firsProductImage = product.images[0].url[0];
+        const secondProductImage = product.images[0].url[1];
 
         return {
           productTitle: product.productName,
-          imgUrl: `${URLs.productImage}/${firsProductImage}`,
-          imgUrlNext: `${URLs.productImage}/${secondProductImage}`,
+          imgUrl: firsProductImage,
+          imgUrlNext: secondProductImage,
           productPrice: `${product.price} USD`,
           productId: product._id,
           status: product.status,
