@@ -2,6 +2,9 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
+
+import { Subscription } from 'rxjs';
+
 import { IAppState } from 'src/app/store/app.store';
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
@@ -10,12 +13,9 @@ import { SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity 
 import { AddProductToCart } from 'src/app/store/actions/cart.actions';
 import { IProductCartItem } from 'src/app/interfaces';
 
-import { Subscription } from 'rxjs';
-
 import {
-  IProduct, IProductDetails, IProductOptions, IProductDescription, IProductImage
+  IProduct, IProductDetails, IProductOptions, IProductDescription
 } from 'src/app/interfaces';
-import { URLs } from 'src/app/app.enum';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -32,8 +32,6 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   @Input() private product: IProduct;
 
   public productDetails: IProductDetails;
-  public productImages: Array<IProductImage>;
-  public productVideo: string;
   public selectedSizeSub: Subscription;
   public selectedColorSub: Subscription;
   public selectedQtySub: Subscription;
@@ -79,9 +77,6 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       description: productDescription,
     };
 
-    this.productImages = this.product.images;
-    console.log(this.product.video)
-    this.productVideo = URLs.productVideo + this.product.video;
     this.store.dispatch(new SelectColor(initColor));
 
     this.selectedQtySub = this.store.select(getProductQuantity)

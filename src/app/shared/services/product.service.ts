@@ -1,14 +1,15 @@
 import { Injectable, OnDestroy } from '@angular/core';
 
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
-import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+
+import { IAppState } from 'src/app/store/app.store';
+import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
+import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
 import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
@@ -68,11 +69,11 @@ export class ProductService implements OnDestroy {
 
             return prodImages;
         }, []);
+        const formattedProduct = product.video
+          ? { ...product, images: [...productImages], video: URLs.productVideo + product.video }
+          : { ...product, images: [...productImages] };
 
-        return {
-          ...product,
-          images: [...productImages]
-        };
+        return formattedProduct;
       }
 
       case ProductFormat.short: {
