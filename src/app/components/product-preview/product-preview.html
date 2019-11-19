@@ -1,29 +1,32 @@
-<div *ngIf="imagesSource?.length" class="product-preview">
+<div *ngIf="productMedia$ | async as mediaSource" class="product-preview">
   <img
-    class="img_preview"
+    *ngIf="!mediaSource[selectedMediaIndex].video else videoPreview"
+    class="product-preview__full-view"
     alt="{{ productTitle }}"
     title="{{ productTitle }}"
-    [src]="imagesSource[selectedImageID].url"
-    *ngIf="!imagesSource[selectedImageID].video else videoPreview"
+    [src]="mediaSource[selectedMediaIndex].url"
   >
   <ng-template #videoPreview>
-    <video controls loop autoplay class="img_preview">
-      <source [src]="imagesSource[selectedImageID].url" type="video/mp4">
+    <video controls loop autoplay class="product-preview__full-view">
+      <source [src]="mediaSource[selectedMediaIndex].url" type="video/mp4">
     </video>
   </ng-template>
-  <div *ngFor="let media of imagesSource; let i = index">
-    <img
-      *ngIf="!media.video else videoSmall"
-      class="img_small"
+  <div *ngFor="let media of mediaSource; let i = index"
+    class="product-preview__small-view__container"
+    (click)="onImageSelect(i)">
+    <img *ngIf="!media.video else videoSmall"
+      class="product-preview__small-view"
       alt="{{ productTitle }}"
       [src]="media.url"
-      [class.selected]="i === selectedImageID"
-      (click)="onImageSelect(i)"
+      [class.selected]="i === selectedMediaIndex"
     >
     <ng-template #videoSmall>
-      <video class="img_small" (click)="onImageSelect(i)" [class.selected]="i === selectedImageID">
-        <source [src]="media.url + '#t=0.1'" type="video/mp4">
+      <video
+        class="product-preview__small-view"
+        [class.selected]="i === selectedMediaIndex">
+        <source src="{{ media.url }}#t=0.1" type="video/mp4">
       </video>
+      <fa-icon class="video-icon" [icon]="videoPreviewIcon"></fa-icon>
     </ng-template>
   </div>
 </div>

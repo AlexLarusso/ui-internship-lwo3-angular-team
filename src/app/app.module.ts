@@ -47,7 +47,7 @@ import { CounterComponent } from './components/counter/counter.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    // { provide: ErrorHandler, useClass: ErrorsHandler },
+    { provide: ErrorHandler, useClass: ErrorsHandler },
     CookieService
   ],
   bootstrap: [
