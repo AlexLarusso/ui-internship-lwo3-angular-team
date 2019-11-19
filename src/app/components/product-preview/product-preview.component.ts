@@ -48,8 +48,8 @@ export class ProductPreviewComponent implements OnInit {
           images.value === productSelectedColor)
       : this.productImages[0];
 
-    return productImages ? productImages.url.map(image =>
-      ({ video: false, url: image })
-    ) : [];
+    return productImages
+      ? productImages.url.map(image => ({ video: false, url: image }))
+      : [];
   }
 }

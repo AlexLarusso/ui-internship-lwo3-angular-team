@@ -2,19 +2,19 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
-
-import { Subscription } from 'rxjs';
-
 import { IAppState } from 'src/app/store/app.store';
+import { AddProductToCart } from 'src/app/store/actions/cart.actions';
+import {
+  SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity
+} from 'src/app/store/actions/product-options.actions';
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
-import { SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
-import { AddProductToCart } from 'src/app/store/actions/cart.actions';
-import { IProductCartItem } from 'src/app/interfaces';
+
+import { Subscription } from 'rxjs';
 
 import {
-  IProduct, IProductDetails, IProductOptions, IProductDescription
+  IProduct, IProductDetails, IProductOptions, IProductDescription, IProductCartItem
 } from 'src/app/interfaces';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
