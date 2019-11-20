@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getFilteredProducts } from '../../store/selectors/products.selectors';
 
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IProductShortInfo } from 'src/app/interfaces';
@@ -37,7 +37,6 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
       .subscribe(item => {
         this.filterCategory = item.category;
       });
-
     this.getProductsByCategory();
   }
 
