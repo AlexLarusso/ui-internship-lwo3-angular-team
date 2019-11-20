@@ -7,16 +7,18 @@ import {
 } from '@angular/core';
 
 import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getFilteredProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Subscription } from 'rxjs';
 
+import { ToastrService } from 'ngx-toastr';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { IProduct, IProductShortInfo } from 'src/app/interfaces';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { IAppState } from 'src/app/store/app.store';
-import { getFilteredProducts } from 'src/app/store/selectors/products.selectors';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { ProductService } from '../services/product.service';
-import { ProductFormat } from 'src/app/app.enum';
+import { ProductFormat, ToastrMessage } from 'src/app/app.enum';
 
 @AutoUnsubscribe()
 @Component({
@@ -28,27 +30,23 @@ import { ProductFormat } from 'src/app/app.enum';
 export class ProductFilterComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<IAppState>,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private toastrService: ToastrService) { }
 
   @Output() public dataChange = new EventEmitter();
 
   public products: Array<IProduct>;
   public productCategory: Array<string> = [];
   public productBrand: Array<string> = [];
-  public filterRequest = [];
   public selectedProducts = [];
-  public categoryItems = [];
-  public checkedCriteria: string;
-  public criteriaName: string;
-  public criteriaIndex: number;
-  public checkboxIcon = faCheck;
-  public productSub: Subscription;
-  public formatedItems = [];
   public strictRequestItems = [];
+  public criteriaName: string;
+  public productSub: Subscription;
   public strictRequest = {
     brand: [],
     category: []
   };
+  public checkboxIcon = faCheck;
 
   public ngOnInit(): void {
     this.productSub = this.store
@@ -79,14 +77,16 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private onFilter(): void {
-    this.strictRequest.category.length || this.strictRequest.brand.length ?
+    this.strictRequest.category.length ||
+      this.strictRequest.brand.length ?
       this.checkForItems() :
       this.dataChange.emit(this.onFormatItem(this.products));
   }
 
-  private onSetFilters() {
+  private onSetFilters(): void {
     this.productCategory = [];
     this.productBrand = [];
+
     this.products.forEach(item => {
       this.productCategory.push(item.category);
       this.productBrand.push(item.brand);
@@ -98,34 +98,51 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
   private onFormatItem(unformatedItems) {
     return unformatedItems.map(product =>
       this.productService
-      .formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
+        .formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
   }
 
   private checkForItems(): void {
     this.selectedProducts = [];
     this.strictRequestItems = [];
 
-    this.strictRequest.brand.forEach(brand =>
-      this.products.forEach(product => {
-        if (product.brand === brand) {
-          this.selectedProducts.push(product);
-          if (this.strictRequest.category.length) {
-          this.strictRequest.category.forEach(category => {
-            if (product.category === category) {
-              this.strictRequestItems.push(product);
-            } else {
-              this.selectedProducts = [];
-            }
-          });
-          }
-        }
-      }
-      )
-    );
+    if (this.strictRequest.brand.length) {
+      this.strictRequest.brand.every(brand =>
+        this.products.forEach(product => {
+          if (product.brand === brand) {
+            this.selectedProducts.push(product);
 
+            this.onStrictRequest(product, this.strictRequest.category);
+          }
+        })
+      );
+    } else {
+      this.strictRequest.category.every(category =>
+        this.products.forEach(product => {
+          if (product.category === category) {
+            this.selectedProducts.push(product);
+
+            this.onStrictRequest(product, this.strictRequest.brand);
+          }
+        })
+      );
+    }
     this.strictRequestItems.length ?
       this.selectedProducts = [...new Set(this.strictRequestItems)] :
       this.selectedProducts = [...new Set(this.selectedProducts)];
+
     this.dataChange.emit(this.onFormatItem(this.selectedProducts));
+  }
+
+  private onStrictRequest(product: IProduct, strictRequest: Array<string>) {
+    if (strictRequest.length) {
+      strictRequest.forEach(category => {
+        if (product.category === category) {
+          this.strictRequestItems.push(product);
+        } else {
+          this.selectedProducts = [];
+          this.toastrService.warning(ToastrMessage.filterFail);
+        }
+      });
+    }
   }
 }
