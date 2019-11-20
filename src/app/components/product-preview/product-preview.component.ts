@@ -9,8 +9,7 @@ import { IconDefinition, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import { IAppState } from 'src/app/store/app.store';
 import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
 
-import { IProductImage } from 'src/app/interfaces/product-image.interface';
-import { IProductMedia } from 'src/app/interfaces';
+import { IProductMedia, IProductImage } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-product-preview',
@@ -19,7 +18,7 @@ import { IProductMedia } from 'src/app/interfaces';
 })
 export class ProductPreviewComponent implements OnInit {
   @Input() private productImages: Array<IProductImage>;
-  @Input() private productVideo: string;
+  @Input() private productVideoUrl: string;
   @Input() public productTitle: string;
 
   public productMedia$: Observable<Array<IProductMedia>>;
@@ -32,8 +31,8 @@ export class ProductPreviewComponent implements OnInit {
     this.productMedia$ = this.store.select(getProductSelectedColor).pipe(
       tap(() => this.selectedMediaIndex = 0),
       map(color => this.findImagesSource(color)),
-      map(media => this.productVideo
-          ? [...media, { video: true, url: this.productVideo }]
+      map(media => this.productVideoUrl
+          ? [...media, { video: true, url: this.productVideoUrl }]
           : media),
     );
   }
