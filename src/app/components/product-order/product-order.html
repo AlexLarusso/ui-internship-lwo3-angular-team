@@ -1,8 +1,9 @@
 <div *ngIf="productDetails" class="product-order content__container">
   <div class="product-order__image-preview">
     <app-product-preview
-      [productImages]="productImages"
-      [productTitle]="productDetails.title">
+      [productImages]="product.images"
+      [productTitle]="productDetails.title"
+      [productVideoUrl]="product.video">
     </app-product-preview>
   </div>
   <app-product-details [productDetails]="productDetails">
