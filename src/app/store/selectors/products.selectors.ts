@@ -11,8 +11,3 @@ export const getFilteredProducts = createSelector(
   getProducts,
   (state: IState) => state.filteredProducts
 );
-
-export const getAllProductImages = createSelector(
-  getProducts,
-  (state: IState) => state.productImages
-);

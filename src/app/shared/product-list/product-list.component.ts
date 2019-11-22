@@ -69,6 +69,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
      .pipe(
         map(products => {
           this.productLength = products.length;
+
           const formattedProducts = products.map(product =>
             this.productService.formatProduct(product, ProductFormat.short));
 
