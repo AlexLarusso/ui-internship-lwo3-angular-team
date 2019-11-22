@@ -134,7 +134,7 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
   }
 
   private onStrictRequest(product: IProduct, strictRequest: Array<string>) {
-    if (strictRequest.length) {
+    if (strictRequest.length === 1) {
       strictRequest.forEach(category => {
         if (product.category === category) {
           this.strictRequestItems.push(product);

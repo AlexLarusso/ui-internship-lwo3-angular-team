@@ -25,13 +25,12 @@ import { WishButtonComponent } from './wish-button/wish-button.component';
 import { ImageLoadDirective } from './directives/image-loader.directive';
 import { ShopByCategoryComponent } from './shop-by-category/shop-by-category.component';
 import { ModalComponent } from '../shared/modal-window/modal-window.component';
-import { LogInComponent } from '../components/log-in/log-in.component';
-import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { ScrollComponent } from '../components/scroll/scroll.component';
 import { PaypalCheckoutComponent } from '../components/paypal-checkout/paypal-checkout.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { AuthComponent } from '../components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -55,15 +54,14 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
     SelectSizeComponent,
     WishButtonComponent,
     ShopByCategoryComponent,
-    LogInComponent,
-    SignUpComponent,
     ModalComponent,
     ImageLoadDirective,
     ParallaxComponent,
     ScrollComponent,
     PaypalCheckoutComponent,
     SelectQuantityComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,
@@ -92,13 +90,12 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
     WishButtonComponent,
     ShopByCategoryComponent,
     ModalComponent,
-    LogInComponent,
-    SignUpComponent,
     ParallaxComponent,
     ScrollComponent,
     PaypalCheckoutComponent,
     SelectQuantityComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    AuthComponent
   ]
 })
 

@@ -10,8 +10,9 @@ export enum ProductFormat {
 
 export enum URLs {
   products = 'https://gaboo-project-server.herokuapp.com/products',
-  images = 'https://gaboo-project-server.herokuapp.com/images',
-  productImage = 'https://res.cloudinary.com/dr8z1kafr/image/upload/v1572252362/Interns/gaboo/products'
+  productImage = 'https://res.cloudinary.com/dr8z1kafr/image/upload/v1572252362/Interns/gaboo/products',
+  productVideo = 'https://res.cloudinary.com/dr8z1kafr/video/upload/v1572252362/Interns/gaboo/products/',
+  limitCondition = '?limit=100'
 }
 
 export enum ImagePlaceholder {
@@ -26,5 +27,11 @@ export enum ToastrMessage {
   productAddedToCart = 'Product has been added to card',
   paymentSeccessfull = 'Payment successful!',
   paymentFaild = 'Something went wrong, please try again',
-  filterFail = 'No products found for these requirements'
+  filterFail = 'No products found for these requirements',
+  paymentSuccessful = 'Payment successful!',
+  paymentFailed = 'Something went wrong, please try again',
+  invalidModal = 'modal must have an id',
+  loginFailed = 'Incorrect email and/or password.',
+  signUpFailed = 'That email is already in use.',
+  accessDenied = 'To see cart page, login first'
 }

@@ -38,11 +38,10 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
       .pipe(
         switchMap(ids => {
           return forkJoin(this.productService.getProductsByIds(ids, ProductFormat.short));
-        }),
+        })
       )
-      .subscribe(product => {
-        this.recentlyViewedProducts = product.sort((a, b) => b.order - a.order);
-       });
+      .subscribe(products =>
+        this.recentlyViewedProducts = products.sort((prev, next) => next.order - prev.order));
   }
 
   public ngOnDestroy(): void { }

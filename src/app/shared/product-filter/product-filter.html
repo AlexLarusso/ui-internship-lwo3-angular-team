@@ -1,7 +1,8 @@
 <div class="filter-wrapper">
 <div class="filter-container">
+  <div class="filter-container__align">
+  <h2 class="filter-criteria__title">Brand</h2>
   <div class="filter-criteria__wrapper">
-    <h2 class="filter-criteria__title content__title">Brand</h2>
     <div class="filter-criteria" *ngFor="let product of productBrand">
         <div class="center">
           <label class="label">
@@ -17,11 +18,13 @@
           </span>
         </label>
       </div>
-      <label class="filter-criteria__subtitle">{{ product }}</label>
+      <label class="filter-criteria__subtitle">{{ product | uppercase }}</label>
     </div>
   </div>
+</div>
+  <div class="filter-container__collapse">
+  <h2 class="filter-criteria__title">Category</h2>
   <div class="filter-criteria__wrapper">
-    <h2 class="filter-criteria__title content__title">Category</h2>
     <div class="filter-criteria" *ngFor="let product of productCategory">
         <div class="center">
             <label class="label">
@@ -37,8 +40,9 @@
           </span>
         </label>
       </div>
-      <label class="filter-criteria__subtitle">{{ product }}</label>
+      <label class="filter-criteria__subtitle">{{ product | uppercase }}</label>
     </div>
   </div>
+</div>
 </div>
 </div>

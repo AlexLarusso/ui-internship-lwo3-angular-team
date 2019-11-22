@@ -1,15 +1,15 @@
 @import '../../styles/variables';
 
 :host {
-  margin: 90px auto 0 20px;
+  margin: 0 auto 0 20px;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: $bgColorLight;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -29,32 +29,47 @@
 }
 
 .filter-container {
+  display: flex;
+  flex-direction: column;
   margin-left: 20px;
-}
 
-.filter-criteria {
-  position: relative;
-   margin-top: 15px;
-
-  &__wrapper {
-    margin: 15px 0;
-    width: 220px;
-    height: 220px;
-    padding: 15px;
-    overflow: scroll;
+  &__align {
+    margin-top: 20px;
     box-shadow: 0 0 10px rgba(33, 33, 33, 0.2);
     background-color: $bgColorLight;
   }
 
+  &__collapse {
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(33, 33, 33, 0.2);
+    background-color: $bgColorLight;
+  }
+}
+
+.filter-criteria {
+  position: relative;
+   margin: 10px 0;
+
+   &__wrapper {
+     min-width: 220px;
+     max-height: 415px;
+     padding: 14px 5px;
+     overflow: scroll;
+     overflow-x: hidden;
+    background-color: $bgColorLight;
+  }
+
   &__title {
-    margin-top: 20px;
     font-size: 2rem;
-    text-align: left;
+    text-align: center;
     color: $accentColor;
   }
 
   &__subtitle {
+    display: block;
+    text-align: left;
     margin-left: 30px;
+    font-size: 0.9rem;
   }
 }
 
@@ -78,13 +93,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border .3s ease;
+  transition: border .2s ease;
 
   .icon {
     opacity: 0.2;
     font-size: 0.5rem;
     color: transparent;
-    transition: opacity .3s .1s ease;
+    transition: opacity .2s .1s ease;
     -webkit-text-stroke: 3px $shadowDark;
 
     &:before {
@@ -98,14 +113,14 @@
 }
 
 .label__checkbox:checked + .label__text .label__check {
-  animation: check .5s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
+  animation: check .2s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
 
   .icon {
     opacity: 1;
     transform: scale(0);
     color: $bgColorLight;
     -webkit-text-stroke: 0;
-    animation: icon .3s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+    animation: icon .2s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
   }
 }
 
