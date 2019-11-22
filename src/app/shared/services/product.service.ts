@@ -6,15 +6,13 @@ import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
-import {
-  IProduct, IProductSimilarOptions, ICloudinaryImage, IProductShortInfo
-} from 'src/app/interfaces';
+import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Injectable({
@@ -34,49 +32,48 @@ export class ProductService implements OnDestroy {
 
   public setCartItemsToLocalStorage(): void {
     this.store.select(getCartProductItems)
-    .subscribe(products =>
-      localStorage.setItem(this.CART_KEY, JSON.stringify(products))
-      );
-    }
+      .subscribe(products =>
+        localStorage.setItem(this.CART_KEY, JSON.stringify(products))
+        );
+      }
 
-  public formatProduct(product: IProduct, format: string):
+  public formatProduct(product: any, format: string):
     IProduct | IProductShortInfo {
-
     switch (format) {
       case ProductFormat.full: {
-        // const productImages = product.images
-        //   .reduce((prodImages, image) => {
-        //     const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
+        const productImages = product.images
+          .reduce((prodImages, image) => {
+            const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
 
-        //     if (isColorAlreadyExist) {
-        //       prodImages.forEach(el => {
-        //         if (el.value === image.productColor) {
-        //           el.url.push(`${URLs.productImage}/${image.claudinaryId}`);
-        //         }
-        //       });
-        //     } else {
-        //       prodImages.push({
-        //         value: image.productColor,
-        //         url: [`${URLs.productImage}/${image.claudinaryId}`]
-        //       });
-        //     }
+            if (isColorAlreadyExist) {
+              prodImages.forEach(el => {
+                if (el.value === image.productColor) {
+                  el.url.push(`${URLs.productImage}/${image.claudinaryId}`);
+                }
+              });
+            } else {
+              prodImages.push({
+                value: image.productColor,
+                url: [`${URLs.productImage}/${image.claudinaryId}`]
+              });
+            }
 
-        //     return prodImages;
-        // }, []);
+            return prodImages;
+        }, []);
 
         return {
           ...product,
-          // images: [...productImages]
+          images: [...productImages]
         };
       }
 
       case ProductFormat.short: {
-        const firsProductImage = product.images[0].url[0];
+        const firstProductImage = product.images[0].url[0];
         const secondProductImage = product.images[0].url[1];
 
         return {
           productTitle: product.productName,
-          imgUrl: firsProductImage,
+          imgUrl: firstProductImage,
           imgUrlNext: secondProductImage,
           productPrice: `${product.price} USD`,
           productId: product._id,
@@ -90,16 +87,21 @@ export class ProductService implements OnDestroy {
 
   public getProductById(id: string, format: string = ProductFormat.full):
     Observable<IProduct | IProductShortInfo> {
-      return this.httpService.getProductById(id).pipe(
-        map(product => this.formatProduct(product, format)
+      return this.httpService.getProductById(id)
+        .pipe(map(product => this.formatProduct(product, format)
       ));
   }
 
   public getProductsByIds(items: any, format: string = ProductFormat.full):
     Array<Observable<IProductShortInfo>>  {
-      return items.map((item: { id: string; }) => this.httpService.getProductById(item.id).pipe(
-        map(product => this.formatProduct(product, format)
-      )));
+
+      return items.map((item: { id: string }) =>
+        this.httpService.getProductById(item.id)
+          .pipe(map(el => {
+            const full = this.formatProduct(el, ProductFormat.full);
+
+            return this.formatProduct(full, format);
+          })));
   }
 
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
@@ -111,7 +113,7 @@ export class ProductService implements OnDestroy {
         ));
   }
 
-  public addProductToLocalStorage({id, order}): void {
+  public addProductToLocalStorage(id): void {
     this.recentlyViewed =
       JSON.parse(localStorage.getItem('recentlyViewed')) || [];
 
@@ -119,7 +121,7 @@ export class ProductService implements OnDestroy {
       this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1) :
       false);
 
-    this.recentlyViewed.unshift({id, order});
+    this.recentlyViewed.unshift({id, order: this.recentItemOrder});
 
     localStorage.setItem('recentlyViewed', JSON.stringify(this.recentlyViewed));
 
@@ -127,9 +129,9 @@ export class ProductService implements OnDestroy {
   }
 
   public recentProductOrder(id: string): void {
-    const order = this.recentItemOrder++;
+    this.recentItemOrder++;
 
-    this.addProductToLocalStorage({id, order});
+    this.addProductToLocalStorage(id);
   }
 
   public randomSortProducts(products) {
@@ -143,9 +145,9 @@ export class ProductService implements OnDestroy {
     return this.store.select(getAllProducts)
       .pipe(map(
         products => products
-        .filter(
-          product => product.category === category)
-        ));
+          .filter(
+            product => product.category === category)
+          ));
   }
 
   private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):

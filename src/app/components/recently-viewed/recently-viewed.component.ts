@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { Subscription, forkJoin} from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { LocalStorageService } from '../../shared/services/web-storage/local-storage.service';
@@ -39,9 +39,12 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
         switchMap(ids => {
           return forkJoin(this.productService.getProductsByIds(ids, ProductFormat.short));
         }),
+        tap((product) => {console.log(product)})
       )
-      .subscribe(product => {
-        this.recentlyViewedProducts = product.sort((a, b) => b.order - a.order);
+      .subscribe(products => {
+        console.log(products, 'sub');
+
+        this.recentlyViewedProducts = products.sort((a, b) => b.order - a.order);
        });
   }
 

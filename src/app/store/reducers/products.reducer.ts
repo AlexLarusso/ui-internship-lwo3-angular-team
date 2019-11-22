@@ -1,7 +1,7 @@
 import {
   SetProducts,  LoadProducts, ProductsActions, FilterByGender, FilterBySeason, SetProductImages
 } from '../actions/products.action';
-import { IProduct, ICloudinaryImage } from '../../interfaces';
+import { IProduct } from '../../interfaces';
 import { URLs } from 'src/app/app.enum';
 
 export interface IState {
@@ -29,7 +29,7 @@ export function productsReducer(state = initialState, action: ProductsActions): 
 
     case SetProducts.TYPE: {
       const data = payload;
-      const productsWithImages = data.products.map(product => {
+      const productsWithSortedImages = data.products.map(product => {
         const productImages = product.images
           .reduce((prodImages, image) => {
             const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
@@ -50,8 +50,6 @@ export function productsReducer(state = initialState, action: ProductsActions): 
             return prodImages;
           }, []);
 
-        console.log(productImages);
-
         return {
           ...product,
           images: [...productImages]
@@ -60,7 +58,7 @@ export function productsReducer(state = initialState, action: ProductsActions): 
 
       return {
         ...state,
-        products: [...productsWithImages]
+        products: [...productsWithSortedImages]
       };
     }
 

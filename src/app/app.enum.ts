@@ -9,8 +9,9 @@ export enum ProductFormat {
 }
 
 export enum URLs {
-  products = 'https://gaboo-project-server.herokuapp.com/products?limit=100',
-  productImage = 'https://res.cloudinary.com/dr8z1kafr/image/upload/v1572252362/Interns/gaboo/products'
+  products = 'https://gaboo-project-server.herokuapp.com/products',
+  productImage = 'https://res.cloudinary.com/dr8z1kafr/image/upload/v1572252362/Interns/gaboo/products',
+  limitCondition = '?limit=100'
 }
 
 export enum ImagePlaceholder {
