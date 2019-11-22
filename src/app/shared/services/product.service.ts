@@ -1,6 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
 
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
@@ -14,7 +13,6 @@ import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
 import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
 
-@AutoUnsubscribe()
 @Injectable({
   providedIn: 'root'
 })
@@ -60,11 +58,11 @@ export class ProductService implements OnDestroy {
 
             return prodImages;
         }, []);
+        const formattedProduct = product.video
+          ? { ...product, images: [...productImages], video: URLs.productVideo + product.video }
+          : { ...product, images: [...productImages] };
 
-        return {
-          ...product,
-          images: [...productImages]
-        };
+        return formattedProduct;
       }
 
       case ProductFormat.short: {
