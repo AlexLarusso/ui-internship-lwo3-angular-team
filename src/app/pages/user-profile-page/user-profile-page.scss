@@ -1,0 +1,17 @@
+@import '../../styles//variables';
+
+.user-profile-page {
+  background-color: $bgColorLight;
+
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name {
+    width: 200px;
+    height: 40px;
+  }
+}

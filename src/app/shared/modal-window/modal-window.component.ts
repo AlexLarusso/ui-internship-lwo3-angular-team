@@ -43,6 +43,7 @@ public ngOnInit(): void {
     .subscribe(() => {
       this.modalService.isModalOpened.login = false;
       this.modalService.isModalOpened.signUp = false;
+      this.modalService.isModalOpened.userProfile = false;
     });
 }
 

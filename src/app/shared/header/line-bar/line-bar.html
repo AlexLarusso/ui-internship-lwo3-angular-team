@@ -6,16 +6,27 @@
     </div>
     <div class="col-4 login__container">
       <div class="col-5 link__container">
-        <fa-icon [icon]="faFacebookF" class="link__item"></fa-icon>
-        <fa-icon [icon]="faTwitter" class="link__item"></fa-icon>
-        <fa-icon [icon]="faGoogle" class="link__item"></fa-icon>
+        <a href="https://ru-ru.facebook.com/griddynamics">
+          <fa-icon [icon]="faFacebookF" class="link__item"></fa-icon>
+        </a>
+        <a href="https://twitter.com/griddynamics">
+          <fa-icon [icon]="faTwitter" class="link__item"></fa-icon>
+        </a>
+        <a href="https://www.google.com/">
+          <fa-icon [icon]="faGoogle" class="link__item"></fa-icon>
+        </a>
       </div>
       <div *ngIf="isAuthenticated; then LoggedIn; else LoggedOut;"></div>
       <ng-template #LoggedIn>
           <p class="bar__link"> Hello, {{ userName$ | async }}!</p>
           <a class="bar__link" (click)="logOut()">Log out</a>
-      </ng-template>
-      <ng-template #LoggedOut>
+        </ng-template>
+        <ng-template #LoggedOut>
+            <!-- USER PROFILE *START*-->
+            <a (click)="openModal('userProfile')">
+              <img class="bar__avatar" src="" alt="User image">
+            </a>
+            <!-- USER PROFILE *END*-->
           <a (click)="openModal('signUp')" class="bar__link">Sign Up</a>
           <a (click)="openModal('login')" class="bar__link">Login</a>
       </ng-template>
@@ -29,7 +40,13 @@
         modalName="signUp">
         <app-auth></app-auth>
       </app-modal-window>
-      
+      <!-- USER PROFILE *START*-->
+      <app-modal-window
+      *ngIf="this.modalService.isModalOpened.userProfile"
+      modalName="userProfile">
+      <app-user-profile></app-user-profile>
+    </app-modal-window>
+      <!-- USER PROFILE *END*-->
     </div>
   </div>
 </div>

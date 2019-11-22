@@ -9,6 +9,8 @@ import { ProductListPageModule } from './pages/product-list-page/product-list-pa
 import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
 import { ErrorPageModule } from './pages/error-page/error-page.module';
 import { CartPageModule } from './pages/cart-page/cart-page.module';
+import { UserShoppingHistoryPageModule } from './pages/user-shopping-history-page/user-shopping-history-page.module';
+import { UserProfilePageModule } from './pages/user-profile-page/user-profile-page.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -39,6 +41,14 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     loadChildren: () => CartPageModule
+  },
+  {
+    path: 'user-profile',
+    loadChildren: () => UserProfilePageModule
+  },
+  {
+    path: 'user-shopping-history',
+    loadChildren: () => UserShoppingHistoryPageModule
   },
   { path: '**', redirectTo: '/404' },
 ];
