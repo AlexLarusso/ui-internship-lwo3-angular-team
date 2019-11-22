@@ -1,24 +1,23 @@
 import {
-  SetProducts,  LoadProducts, ProductsActions, FilterByGender, FilterBySeason, SetProductImages
+  SetProducts,  LoadProducts, ProductsActions, SetFilterCriteria
 } from '../actions/products.action';
-import { IProduct } from '../../interfaces';
+import { IProduct, IFilterCriteria } from '../../interfaces';
 import { URLs } from 'src/app/app.enum';
 
 export interface IState {
   products: Array<IProduct>;
   load: boolean;
-  filteredProducts: Array<IProduct>;
+  filterCriteria: IFilterCriteria;
 }
 
 export const initialState: IState = {
   products: [],
   load: false,
-  filteredProducts: []
+  filterCriteria: null
 };
 
 export function productsReducer(state = initialState, action: ProductsActions): IState {
   const { type, payload } = action;
-  const currentItems = state.products;
 
   switch (type) {
     case LoadProducts.TYPE:
@@ -62,21 +61,19 @@ export function productsReducer(state = initialState, action: ProductsActions): 
       };
     }
 
-    case FilterByGender.TYPE:
-      const filteredByGenderItems = currentItems.filter(item => item.gender === payload);
+    case SetFilterCriteria.TYPE: {
+      const criteriaName = payload === 'women' || payload === 'men'
+      ? 'gender'
+      : 'seasons';
 
       return {
         ...state,
-        filteredProducts: [...filteredByGenderItems]
+        filterCriteria: {
+          criteriaName,
+          value: payload
+        }
       };
-
-    case FilterBySeason.TYPE:
-      const filteredBySeasonItems = currentItems.filter(item => item.seasons.includes(payload));
-
-      return {
-        ...state,
-        filteredProducts: [...filteredBySeasonItems]
-      };
+    }
 
     default:
       return state;
