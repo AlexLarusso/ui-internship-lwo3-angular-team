@@ -1,11 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
 
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
@@ -13,6 +14,7 @@ import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
 import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
 
+@AutoUnsubscribe()
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +22,7 @@ export class ProductService implements OnDestroy {
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
+  public localStorageSub: Subscription;
 
   private CART_KEY = 'Cart';
 
@@ -29,11 +32,11 @@ export class ProductService implements OnDestroy {
   ) { }
 
   public setCartItemsToLocalStorage(): void {
-    this.store.select(getCartProductItems)
+    this.localStorageSub = this.store.select(getCartProductItems)
       .subscribe(products =>
         localStorage.setItem(this.CART_KEY, JSON.stringify(products))
         );
-      }
+  }
 
   public formatProduct(product: any, format: string):
     IProduct | IProductShortInfo {
@@ -157,3 +160,4 @@ export class ProductService implements OnDestroy {
           product._id !== similarOptions.id);
   }
 }
+

@@ -41,7 +41,7 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe(products =>
-        this.recentlyViewedProducts = products.sort((a, b) => b.order - a.order));
+        this.recentlyViewedProducts = products.sort((prev, next) => next.order - prev.order));
   }
 
   public ngOnDestroy(): void { }
