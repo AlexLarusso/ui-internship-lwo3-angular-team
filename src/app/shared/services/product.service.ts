@@ -1,32 +1,28 @@
 import { Injectable, OnDestroy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getAllProducts } from 'src/app/store/selectors/products.selectors';
+import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-import { IAppState } from 'src/app/store/app.store';
-import { getAllProductImages, getAllProducts } from 'src/app/store/selectors/products.selectors';
-import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
-
 import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
-import {
-  IProduct, IProductSimilarOptions, ICloudinaryImage, IProductShortInfo
-} from 'src/app/interfaces';
+import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
 
 @AutoUnsubscribe()
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService implements OnDestroy {
-  public imagesSub: Subscription;
-  public allProductImages: Array<ICloudinaryImage>;
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
+  public localStorageSub: Subscription;
 
   private CART_KEY = 'Cart';
 
@@ -36,21 +32,17 @@ export class ProductService implements OnDestroy {
   ) { }
 
   public setCartItemsToLocalStorage(): void {
-    this.store.select(getCartProductItems)
-    .subscribe(products =>
-      localStorage.setItem(this.CART_KEY, JSON.stringify(products))
-      );
-    }
+    this.localStorageSub = this.store.select(getCartProductItems)
+      .subscribe(products =>
+        localStorage.setItem(this.CART_KEY, JSON.stringify(products))
+        );
+  }
 
-  public formatProduct(product: IProduct, format: string):
+  public formatProduct(product: any, format: string):
     IProduct | IProductShortInfo {
-    this.imagesSub = this.store.select(getAllProductImages)
-      .subscribe(images => this.allProductImages = images);
-
     switch (format) {
       case ProductFormat.full: {
-        const productImages = this.allProductImages
-          .filter(image => image.productId === product._id)
+        const productImages = product.images
           .reduce((prodImages, image) => {
             const isColorAlreadyExist = prodImages.some(el => el.value === image.productColor);
 
@@ -77,15 +69,13 @@ export class ProductService implements OnDestroy {
       }
 
       case ProductFormat.short: {
-        const firsProductImage = this.allProductImages
-          .find(image => image.productId === product._id).claudinaryId;
-        const secondProductImage = this.allProductImages
-          .filter(image => image.productId === product._id)[1].claudinaryId;
+        const firstProductImage = product.images[0].url[0];
+        const secondProductImage = product.images[0].url[1];
 
         return {
           productTitle: product.productName,
-          imgUrl: `${URLs.productImage}/${firsProductImage}`,
-          imgUrlNext: `${URLs.productImage}/${secondProductImage}`,
+          imgUrl: firstProductImage,
+          imgUrlNext: secondProductImage,
           productPrice: `${product.price} USD`,
           productId: product._id,
           status: product.status,
@@ -98,16 +88,21 @@ export class ProductService implements OnDestroy {
 
   public getProductById(id: string, format: string = ProductFormat.full):
     Observable<IProduct | IProductShortInfo> {
-      return this.httpService.getProductById(id).pipe(
-        map(product => this.formatProduct(product, format)
+      return this.httpService.getProductById(id)
+        .pipe(map(product => this.formatProduct(product, format)
       ));
   }
 
   public getProductsByIds(items: any, format: string = ProductFormat.full):
     Array<Observable<IProductShortInfo>>  {
-      return items.map((item: { id: string; }) => this.httpService.getProductById(item.id).pipe(
-        map(product => this.formatProduct(product, format)
-      )));
+
+      return items.map((item: { id: string }) =>
+        this.httpService.getProductById(item.id)
+          .pipe(map(el => {
+            const full = this.formatProduct(el, ProductFormat.full);
+
+            return this.formatProduct(full, format);
+          })));
   }
 
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
@@ -119,7 +114,7 @@ export class ProductService implements OnDestroy {
         ));
   }
 
-  public addProductToLocalStorage({id, order}): void {
+  public addProductToLocalStorage(id): void {
     this.recentlyViewed =
       JSON.parse(localStorage.getItem('recentlyViewed')) || [];
 
@@ -127,7 +122,7 @@ export class ProductService implements OnDestroy {
       this.recentlyViewed.splice(this.recentlyViewed.indexOf(el), 1) :
       false);
 
-    this.recentlyViewed.unshift({id, order});
+    this.recentlyViewed.unshift({id, order: this.recentItemOrder});
 
     localStorage.setItem('recentlyViewed', JSON.stringify(this.recentlyViewed));
 
@@ -135,9 +130,9 @@ export class ProductService implements OnDestroy {
   }
 
   public recentProductOrder(id: string): void {
-    const order = this.recentItemOrder++;
+    this.recentItemOrder++;
 
-    this.addProductToLocalStorage({id, order});
+    this.addProductToLocalStorage(id);
   }
 
   public randomSortProducts(products) {
@@ -151,9 +146,9 @@ export class ProductService implements OnDestroy {
     return this.store.select(getAllProducts)
       .pipe(map(
         products => products
-        .filter(
-          product => product.category === category)
-        ));
+          .filter(
+            product => product.category === category)
+          ));
   }
 
   private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):
@@ -165,3 +160,4 @@ export class ProductService implements OnDestroy {
           product._id !== similarOptions.id);
   }
 }
+

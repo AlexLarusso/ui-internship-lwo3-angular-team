@@ -17,9 +17,9 @@ import { IProductMedia, IProductImage } from 'src/app/interfaces';
   styleUrls: ['./product-preview.scss']
 })
 export class ProductPreviewComponent implements OnInit {
-  @Input() private productImages: Array<IProductImage>;
-  @Input() private productVideoUrl: string;
   @Input() public productTitle: string;
+  @Input() private productVideoUrl: string;
+  @Input() private productImages: Array<IProductImage>;
 
   public productMedia$: Observable<Array<IProductMedia>>;
   public videoPreviewIcon: IconDefinition = faPlayCircle;
