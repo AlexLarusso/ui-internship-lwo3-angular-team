@@ -40,10 +40,6 @@ const routes: Routes = [
     path: 'shopping-cart',
     loadChildren: () => CartPageModule
   },
-  {
-    path: 'shopping-cart',
-    loadChildren: () => CartPageModule
-  },
   { path: '**', redirectTo: '/404' },
 ];
 
