@@ -1,6 +1,6 @@
 import { IProductImage } from '.';
 
 export interface IProductMedia {
-  video: boolean; 
+  video: boolean;
   url: string;
 }

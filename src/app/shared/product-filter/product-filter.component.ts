@@ -106,22 +106,22 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
     this.strictRequestItems = [];
 
     if (this.strictRequest.brand.length) {
-      this.strictRequest.brand.every(brand =>
+      this.strictRequest.brand.forEach(brand =>
         this.products.forEach(product => {
           if (product.brand === brand) {
             this.selectedProducts.push(product);
 
-            this.onStrictRequest(product, this.strictRequest.category);
+            this.onStrictRequest(this.selectedProducts, this.strictRequest.category);
           }
         })
       );
     } else {
-      this.strictRequest.category.every(category =>
+      this.strictRequest.category.forEach(category =>
         this.products.forEach(product => {
           if (product.category === category) {
             this.selectedProducts.push(product);
 
-            this.onStrictRequest(product, this.strictRequest.brand);
+            this.onStrictRequest(this.selectedProducts, this.strictRequest.brand);
           }
         })
       );
@@ -130,18 +130,24 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
       this.selectedProducts = [...new Set(this.strictRequestItems)] :
       this.selectedProducts = [...new Set(this.selectedProducts)];
 
+    if (!this.selectedProducts.length) {
+      this.toastrService.warning(ToastrMessage.filterFail);
+    }
+
     this.dataChange.emit(this.onFormatItem(this.selectedProducts));
   }
 
-  private onStrictRequest(product: IProduct, strictRequest: Array<string>) {
-    if (strictRequest.length === 1) {
+  private onStrictRequest(selectedProducts, strictRequest: Array<string>) {
+    if (strictRequest.length) {
       strictRequest.forEach(category => {
-        if (product.category === category) {
-          this.strictRequestItems.push(product);
-        } else {
-          this.selectedProducts = [];
-          this.toastrService.warning(ToastrMessage.filterFail);
-        }
+        selectedProducts.forEach(product => {
+          if (product.category === category) {
+            this.strictRequestItems.push(product);
+          } else {
+            this.strictRequestItems.filter(item => item !== product);
+            this.selectedProducts = [];
+          }
+        });
       });
     }
   }
