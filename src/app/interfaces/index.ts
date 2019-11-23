@@ -9,6 +9,7 @@ import { IProductOptions } from 'src/app/interfaces/product-options.interface';
 import { IProductDescription } from 'src/app/interfaces/product-description.interface';
 import { IProductCartItem } from './product-cart-item.interface';
 import { IProductMedia } from './product-media.interface';
+import { IFilterCriteria } from './filter-criteria.interface';
 
 export {
   IProductShortInfo,
@@ -21,5 +22,6 @@ export {
   IProductOptions,
   IProductDescription,
   IProductCartItem,
-  IProductMedia
+  IProductMedia,
+  IFilterCriteria
 };
