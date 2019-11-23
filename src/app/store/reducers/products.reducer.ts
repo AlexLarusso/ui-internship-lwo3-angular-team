@@ -63,8 +63,8 @@ export function productsReducer(state = initialState, action: ProductsActions): 
 
     case SetFilterCriteria.TYPE: {
       const criteriaName = payload === 'women' || payload === 'men'
-      ? 'gender'
-      : 'seasons';
+        ? 'gender'
+        : 'seasons';
 
       return {
         ...state,

@@ -18,8 +18,6 @@ import { ProductFormat } from 'src/app/app.enum';
 })
 
 export class ShopByCategoryComponent implements OnInit {
-  @Input() public filterCategory: string;
-
   public filteredItems$: Observable<Array<IProductShortInfo>>;
   public routeParamsSub: Subscription;
 

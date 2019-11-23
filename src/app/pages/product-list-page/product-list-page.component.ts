@@ -30,5 +30,5 @@ export class ProductListPageComponent implements OnInit, OnDestroy {
       );
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy(): void { }
 }
