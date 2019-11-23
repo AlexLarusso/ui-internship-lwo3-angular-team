@@ -25,8 +25,6 @@ export enum ToastrMessage {
   internalError = 'An internal error',
   emptyWishList = 'Your Wishlist is currently empty',
   productAddedToCart = 'Product has been added to card',
-  paymentSeccessfull = 'Payment successful!',
-  paymentFaild = 'Something went wrong, please try again',
   filterFail = 'No products found for these requirements',
   paymentSuccessful = 'Payment successful!',
   paymentFailed = 'Something went wrong, please try again',

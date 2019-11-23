@@ -95,7 +95,7 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
     this.productBrand = [...new Set(this.productBrand)];
   }
 
-  private onFormatItem(unformatedItems) {
+  private onFormatItem(unformatedItems): Array<IProductShortInfo> {
     return unformatedItems.map(product =>
       this.productService
         .formatProduct(product, ProductFormat.short)) as Array<IProductShortInfo>;
@@ -137,7 +137,7 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
     this.dataChange.emit(this.onFormatItem(this.selectedProducts));
   }
 
-  private onStrictRequest(selectedProducts, strictRequest: Array<string>) {
+  private onStrictRequest(selectedProducts, strictRequest: Array<string>): void {
     if (strictRequest.length) {
       strictRequest.forEach(category => {
         selectedProducts.forEach(product => {

@@ -25,6 +25,7 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
 
   public filteredItems;
   public routeParamsSub: Subscription;
+  public storeSub: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -47,7 +48,7 @@ export class ShopByCategoryComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private getProductsByCategory(): void {
-    this.store
+    this.storeSub = this.store
       .select(getFilteredProducts)
       .pipe(
         map(products =>
