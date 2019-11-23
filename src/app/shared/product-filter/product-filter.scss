@@ -116,7 +116,7 @@
   }
 
 
-  &__checkbox:checked+&__text &__check {
+  &__checkbox:checked + &__text &__check {
     animation: check .2s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
 
     .icon {
