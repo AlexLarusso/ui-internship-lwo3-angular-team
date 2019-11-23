@@ -3,11 +3,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { SetFilterCriteria } from 'src/app/store/actions/products.action';
 
 import { Subscription } from 'rxjs';
+
+import { IAppState } from 'src/app/store/app.store';
+import { SetFilterCriteria } from 'src/app/store/actions/products.action';
 
 @AutoUnsubscribe()
 @Component({
