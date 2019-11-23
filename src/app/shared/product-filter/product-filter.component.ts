@@ -29,9 +29,10 @@ import { ProductFormat, ToastrMessage } from 'src/app/app.enum';
 
 export class ProductFilterComponent implements OnInit, OnDestroy {
   constructor(
-    private store: Store<IAppState>,
-    private productService: ProductService,
-    private toastrService: ToastrService) { }
+    private readonly store: Store<IAppState>,
+    private readonly productService: ProductService,
+    private readonly toastrService: ToastrService
+    ) { }
 
   @Output() public dataChange = new EventEmitter();
 
@@ -71,6 +72,7 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
         this.strictRequest.brand = this.strictRequest.brand
           .filter(criteria => criteria !== this.criteriaName);
     }
+
     this.onFilter();
   }
 
@@ -91,6 +93,7 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
       this.productCategory.push(item.category);
       this.productBrand.push(item.brand);
     });
+
     this.productCategory = [...new Set(this.productCategory)];
     this.productBrand = [...new Set(this.productBrand)];
   }
@@ -126,6 +129,7 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
         })
       );
     }
+
     this.strictRequestItems.length ?
       this.selectedProducts = [...new Set(this.strictRequestItems)] :
       this.selectedProducts = [...new Set(this.selectedProducts)];

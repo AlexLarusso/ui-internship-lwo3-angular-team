@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -18,7 +18,7 @@ import { ProductFormat } from 'src/app/app.enum';
   styleUrls: ['./shop-by-category.scss']
 })
 
-export class ShopByCategoryComponent implements OnInit {
+export class ShopByCategoryComponent implements OnInit, OnDestroy {
   @Input() public filterCategory: string;
 
   public filteredItems: Array<IProductShortInfo>;
@@ -30,11 +30,9 @@ export class ShopByCategoryComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    console.log(this.filterCategory);
-    
     this.filteredProductsSub = this.store.select(getFilteredProducts)
-        .subscribe(products => this.filteredItems = products.map(
-          product =>
+        .subscribe(products =>
+          this.filteredItems = products.map(product =>
             this.productService.formatProduct(product, ProductFormat.short) as IProductShortInfo
           ));
   }
