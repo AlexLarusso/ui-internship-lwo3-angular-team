@@ -1,0 +1,54 @@
+@import "../../../styles//variables";
+
+.feedback {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-family: $mainFontBold;
+    font-size: 1rem;
+  }
+}
+
+.user {
+  &__details {
+    display: flex;
+    align-items: center;
+  }
+
+  &__avatar {
+    margin: 10px 10px 10px 0;
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px $accentColor, 0 0 13px $bgColorMedium;
+  }
+
+  &__name {
+
+  }
+}
+
+.details {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50px;
+  }
+}
+
+.feedback {
+  &__details {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid $accentColor;
+  }
+
+  &__message {
+
+  }
+}

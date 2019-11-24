@@ -1,0 +1,10 @@
+<h3 class="feedback__title">Review</h3>
+<div class="feedback__wrapper">
+  <textarea #feedback
+    class="feedback__text"
+    maxLength="{{ maxCharNum }}"
+    (keyup)="charCount($event)">
+  </textarea>
+  <span class="characters_left">({{ charLeft }})</span>
+  <app-button (click)="sendFeedback()">Leave Feedback</app-button>
+</div>

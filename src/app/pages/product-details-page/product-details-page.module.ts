@@ -10,6 +10,9 @@ import { ProductPreviewComponent } from 'src/app/components/product-preview/prod
 import { SimilarProductsComponent } from 'src/app/components/similar-products/similar-products.component';
 import { ProductResolver } from 'src/app/shared/services/product.resolver';
 import { ProductDetailsPageComponent } from './product-details-page.component';
+import { ProductFeedbackComponent } from '../../components/product-feedback/product-feedback.component';
+import { LeaveFeedbackComponent } from '../../components/product-feedback/leave-feedback/leave-feedback.component';
+import { ReviewFeedbackComponent } from '../../components/product-feedback/review-feedback/review-feedback.component';
 
 const routes: Routes = [
   {
@@ -25,7 +28,10 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductOrderComponent,
     ProductPreviewComponent,
-    ProductDetailsPageComponent
+    ProductDetailsPageComponent,
+    ProductFeedbackComponent,
+    LeaveFeedbackComponent,
+    ReviewFeedbackComponent
   ],
   imports: [
     SharedModule,
@@ -39,6 +45,8 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductOrderComponent,
     ProductPreviewComponent,
+    LeaveFeedbackComponent,
+    ReviewFeedbackComponent,
     RouterModule
   ]
 })
