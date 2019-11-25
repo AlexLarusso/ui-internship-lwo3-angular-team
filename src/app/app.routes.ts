@@ -9,8 +9,9 @@ import { ProductListPageModule } from './pages/product-list-page/product-list-pa
 import { WishListPageModule } from './pages/wish-list-page/wish-list-page.module';
 import { ErrorPageModule } from './pages/error-page/error-page.module';
 import { CartPageModule } from './pages/cart-page/cart-page.module';
-import { UserShoppingHistoryPageModule } from './pages/user-shopping-history-page/user-shopping-history-page.module';
 import { UserProfilePageModule } from './pages/user-profile-page/user-profile-page.module';
+import { UserShoppingHistoryPageModule } from './pages/user-shopping-history-page/user-shopping-history-page.module';
+import { UserWishListPageModule } from './pages/user-wish-list-page/user-wish-list-page.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -50,6 +51,10 @@ const routes: Routes = [
     path: 'user-shopping-history',
     loadChildren: () => UserShoppingHistoryPageModule
   },
+  {
+    path: 'user-wishlist',
+    loadChildren: () => UserWishListPageModule
+  },
   { path: '**', redirectTo: '/404' },
 ];
 
@@ -64,6 +69,9 @@ const routes: Routes = [
     SharedModule,
     ErrorPageModule,
     CartPageModule,
+    UserProfilePageModule,
+    UserShoppingHistoryPageModule,
+    UserWishListPageModule
   ],
   exports: [
     HomePageModule,
@@ -74,6 +82,9 @@ const routes: Routes = [
     SharedModule,
     ErrorPageModule,
     CartPageModule,
+    UserProfilePageModule,
+    UserShoppingHistoryPageModule,
+    UserWishListPageModule
   ]
 })
 
