@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -35,6 +36,7 @@ import { CounterComponent } from './components/counter/counter.component';
   ],
   imports: [
     SharedModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),

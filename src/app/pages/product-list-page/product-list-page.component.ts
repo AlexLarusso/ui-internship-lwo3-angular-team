@@ -19,6 +19,7 @@ import { SetFilterCriteria } from 'src/app/store/actions/products.action';
 
 export class ProductListPageComponent implements OnInit, OnDestroy {
   public routerSub: Subscription;
+  public category: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,9 +28,10 @@ export class ProductListPageComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.routerSub = this.route.params
-      .subscribe(item =>
-        this.store.dispatch(new SetFilterCriteria(item.category))
-      );
+      .subscribe(item => {
+        this.category = item.category;
+        this.store.dispatch(new SetFilterCriteria(item.category));
+      });
   }
 
   public ngOnDestroy(): void { }
