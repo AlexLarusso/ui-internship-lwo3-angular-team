@@ -17,15 +17,10 @@ ngx-image-zoom {
   }
 }
 
-::ng-deep .ngxImageZoomContainer > div { 
-  width: auto;
-  height: auto;
-}
-
 ::ng-deep .ngxImageZoomContainer > img {
-    height: auto;
-    width: 100%;
-  }
+  height: auto;
+  width: 100%;
+}
 
 .product-preview {
   display: grid;

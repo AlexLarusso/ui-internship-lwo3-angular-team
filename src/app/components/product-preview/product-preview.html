@@ -3,33 +3,30 @@
     *ngIf="!mediaSource[selectedMediaIndex].video; else videoPreview"
     [thumbImage]="mediaSource[selectedMediaIndex].url" 
     [fullImage]="mediaSource[selectedMediaIndex].url"
-    [magnification]="1.2"
-    >
+    [magnification]="1.2">
   </ngx-image-zoom>
   <ng-template #videoPreview>
     <video controls loop autoplay
       class="product-preview__full-view" 
       [src]="mediaSource[selectedMediaIndex].url" 
-      #productVideo> // TODO: Remove video flickering
+      #productVideo> 
+      <!-- TODO: Remove video flickering -->
     </video>
   </ng-template>
   <div
     *ngFor="let media of mediaSource; let i = index"
     class="product-preview__small-view__container"
-    (click)="onImageSelect(i);"
-  >
+    (click)="onImageSelect(i);">
     <img
       *ngIf="!media.video; else videoSmall"
       class="product-preview__small-view"
       alt="{{ productTitle }}"
       [src]="media.url"
-      [class.selected]="i === selectedMediaIndex"
-    />
+      [class.selected]="i === selectedMediaIndex"/>
     <ng-template #videoSmall>
       <video
         class="product-preview__small-view"
-        [class.selected]="i === selectedMediaIndex"
-      >
+        [class.selected]="i === selectedMediaIndex">
         <source src="{{ media.url }}#t=0.1" type="video/mp4" />
       </video>
       <fa-icon class="video-icon" [icon]="videoPreviewIcon"></fa-icon>

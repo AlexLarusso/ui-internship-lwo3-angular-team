@@ -1,16 +1,21 @@
-import { Component, Input, OnInit, HostListener, ViewChild, ElementRef, DoCheck } from '@angular/core';
+import {
+    Component,
+    Input,
+    OnInit,
+    HostListener,
+    ViewChild
+  } from '@angular/core';
 
 import { NgxImageZoomComponent } from 'ngx-image-zoom';
 
 import { Store } from '@ngrx/store';
+import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
+import { IAppState } from 'src/app/store/app.store';
 
-import { Observable, fromEvent } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { IconDefinition, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
-
-import { IAppState } from 'src/app/store/app.store';
-import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
 
 import { IProductMedia, IProductImage } from 'src/app/interfaces';
 import { ImagePlaceholder } from 'src/app/app.enum';
