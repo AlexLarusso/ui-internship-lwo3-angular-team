@@ -1,6 +1,6 @@
 <div class="carousel__wrapper content__container">
   <div class="carousel">
-    <button (click)="moveToPrev()" class="left" [disabled]="!canMoveToPrev">
+    <button class="prev" [disabled]="!canMoveToPrev" #prevButton>
       <fa-icon [icon]="faArrowLeft" class="arrow-icon"></fa-icon>
     </button>
     <div class="products__container" #productsContainer>
@@ -15,7 +15,7 @@
         </app-product-item>
       </div>
     </div>
-    <button (click)="moveToNext()" class="right" [disabled]="!canMoveToNext">
+    <button class="next" [disabled]="!canMoveToNext" #nextButton>
       <fa-icon [icon]="faArrowRight" class="arrow-icon"></fa-icon>
     </button>
   </div>
