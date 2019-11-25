@@ -1,0 +1,15 @@
+.in-dev {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__icon {
+    height: inherit;
+
+    &__wrapper {
+      height: 450px;
+    }
+  }
+}
