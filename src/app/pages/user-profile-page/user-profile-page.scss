@@ -1,17 +1,39 @@
 @import '../../styles//variables';
 
 .user-profile-page {
-  background-color: $bgColorLight;
+  background-color: $bgColorMedium;
 
   &__user-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &__title {
+      margin: 15px 0;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__name {
+    margin-top: 15px;
+  }
+
+  &__button {
+    margin: 30px 0;
+  }
+
+  &__picture {
+    overflow: hidden;
+    margin: 30px;
+    width: 300px;
+    height: 350px;
   }
 
   &__name {
     width: 200px;
     height: 40px;
+    font-size: 1rem;
   }
 }
