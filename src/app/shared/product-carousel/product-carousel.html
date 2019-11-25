@@ -1,7 +1,7 @@
 <div class="carousel__wrapper content__container">
   <div class="carousel">
     <button class="prev" [disabled]="!canMoveToPrev" #prevButton>
-      <fa-icon [icon]="faArrowLeft" class="arrow-icon"></fa-icon>
+      <fa-icon class="arrow-icon" [icon]="faArrowLeft"></fa-icon>
     </button>
     <div class="products__container" #productsContainer>
       <div class="products" #products>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <button class="next" [disabled]="!canMoveToNext" #nextButton>
-      <fa-icon [icon]="faArrowRight" class="arrow-icon"></fa-icon>
+      <fa-icon class="arrow-icon" [icon]="faArrowRight" ></fa-icon>
     </button>
   </div>
 </div>

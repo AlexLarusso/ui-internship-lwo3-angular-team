@@ -1,6 +1,7 @@
 import {
   Component, OnInit, AfterViewInit, AfterViewChecked,
-  ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef, OnDestroy
+  ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef,
+  OnDestroy
 } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -91,7 +92,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor(private readonly cd: ChangeDetectorRef) { }
 
   public ngOnInit(): void {
     this.pageWidth = window.innerWidth;
