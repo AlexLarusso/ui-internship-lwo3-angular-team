@@ -4,6 +4,9 @@
     [thumbImage]="mediaSource[selectedMediaIndex].url" 
     [fullImage]="mediaSource[selectedMediaIndex].url"
     [magnification]="1.3"
+    [isInsideStaticContainer]="true"
+    height="100px"
+    width="100px"
     >
   </ngx-image-zoom>
   <!-- <img
@@ -14,8 +17,10 @@
     [src]="mediaSource[selectedMediaIndex].url"
   /> -->
   <ng-template #videoPreview>
-    <video controls loop autoplay class="product-preview__full-view">
+    <video controls loop autoplay class="product-preview__full-view"
+    poster="">
       <source [src]="mediaSource[selectedMediaIndex].url" type="video/mp4" />
+
     </video>
   </ng-template>
   <div
