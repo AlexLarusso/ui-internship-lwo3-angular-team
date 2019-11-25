@@ -2,6 +2,26 @@
 
 $spacing: 15px;
 
+ngx-image-zoom {
+  display: block;
+  grid-column: 2;
+  grid-template-columns: 15% 1fr;
+  grid-auto-rows: 1fr;
+  grid-gap: $spacing;
+  grid-row: 1 / 6;
+  max-width: 100%;
+  max-height: 100%;
+
+  &:hover {
+    cursor: zoom-in;
+  }
+}
+
+::ng-deep .ngxImageZoomContainer > img {
+  height: auto;
+  width: 100%;
+}
+
 .product-preview {
   display: grid;
   grid-template-columns: 15% 1fr;
@@ -14,6 +34,7 @@ $spacing: 15px;
     grid-row: 1 / 6;
     max-width: 100%;
     max-height: 100%;
+    outline: none;
   }
 
   &__small-view {

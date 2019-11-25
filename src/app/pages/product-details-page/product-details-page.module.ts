@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ProductDetailsComponent } from 'src/app/components/product-details/product-details.component';
@@ -30,7 +32,8 @@ const routes: Routes = [
   imports: [
     SharedModule,
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgxImageZoomModule.forRoot()
   ],
   providers: [
   ],
