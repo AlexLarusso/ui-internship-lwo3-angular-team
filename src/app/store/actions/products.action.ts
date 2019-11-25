@@ -5,8 +5,7 @@ export enum ProductsActionTypes {
   SetProducts = '[Products] Set products',
   SetProductImages = '[Products] Set product images',
   LoadProducts = '[Products] Load data',
-  FilterByGender = '[ShopCategory] FilterByGender',
-  FilterBySeason = '[ShopCategory] FilterBySeason'
+  SetFilterCriteria = '[Products] Set filter criteria '
 }
 
 export class LoadProducts implements Action {
@@ -30,20 +29,11 @@ export class SetProductImages implements Action {
 
 }
 
-export class FilterByGender implements Action {
+export class SetFilterCriteria implements Action {
   constructor(public payload: string) { }
 
-  public static readonly TYPE = ProductsActionTypes.FilterByGender;
-  public type = FilterByGender.TYPE;
-
-}
-
-export class FilterBySeason implements Action {
-  constructor(public payload: string) { }
-
-  public static readonly TYPE = ProductsActionTypes.FilterBySeason;
-  public type = FilterBySeason.TYPE;
-
+  public static readonly TYPE = ProductsActionTypes.SetFilterCriteria;
+  public type = SetFilterCriteria.TYPE;
 }
 
 export type ProductsActions = any;

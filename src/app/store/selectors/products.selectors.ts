@@ -9,5 +9,13 @@ export const getAllProducts = createSelector(
 
 export const getFilteredProducts = createSelector(
   getProducts,
-  (state: IState) => state.filteredProducts
+  (state: IState) => state.products.filter(
+    product => {
+      const { criteriaName, value } = state.filterCriteria;
+
+      return Array.isArray(product[criteriaName])
+        ? product[criteriaName].includes(value)
+        : product[criteriaName] === value;
+    }
+  )
 );

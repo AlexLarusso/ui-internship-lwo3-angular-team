@@ -3,8 +3,7 @@
     <ul class="col-4 menu__container">
       <li *ngFor="let gender of genders">
         <a class="menu-item"
-          [routerLink]="gender.url"
-          (click)="filterProducts(gender.title)">
+          [routerLink]="gender.url">
           {{ gender.title }}
         </a>
       </li>
@@ -13,8 +12,9 @@
     <ul class="col-4 menu__container">
       <li *ngFor="let season of seasons">
         <a class="menu-item"
-          [routerLink]="season.url"
-          (click)="filterProducts(season.title)">{{ season.title }}</a>
+          [routerLink]="season.url">
+          {{ season.title }}
+        </a>
       </li>
     </ul>
   </div>
