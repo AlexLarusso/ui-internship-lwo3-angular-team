@@ -6,13 +6,14 @@ import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
 import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
+import { HttpClient } from '@angular/common/http';
 
 @AutoUnsubscribe()
 @Injectable({
@@ -28,6 +29,7 @@ export class ProductService implements OnDestroy {
 
   constructor(
     private httpService: HttpService,
+    private http: HttpClient,
     private store: Store<IAppState>
   ) { }
 
@@ -141,6 +143,14 @@ export class ProductService implements OnDestroy {
     return products.sort(() => Math.random() - 0.5);
   }
 
+  public searchContacts(term: string): Observable<IProduct[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    // console.log(this.httpService.getAllProducts())
+    // return this.http.get<IProduct[]>(`${URLs.products}/${id}`
+  }
+
   public ngOnDestroy(): void { }
 
   private getProductsByCategory(category: string):
@@ -161,5 +171,6 @@ export class ProductService implements OnDestroy {
           product.gender === similarOptions.gender &&
           product._id !== similarOptions.id);
   }
+
 }
 

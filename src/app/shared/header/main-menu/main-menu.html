@@ -10,10 +10,11 @@
         </ul>
         <div class="col-7 menu__input__container">
           <div class="col-6 menu__search__container">
-            <input type="text" placeholder="Search" class="menu__search">
+            <app-search-bar></app-search-bar>
+            <!-- <input type="text" placeholder="Search" class="menu__search">
             <button class="menu__search__btn">
               <fa-icon [icon]="faSearch"></fa-icon>
-            </button>
+            </button> -->
           </div>
           <div class="col-5 menu__cart__container">
             <span class="menu__cart__qty"> ( {{ cartItemsQty$ | async }} )</span>
