@@ -30,7 +30,7 @@ const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nis
   styleUrls: ['./product-order.scss']
 })
 export class ProductOrderComponent implements OnInit, OnDestroy {
-  @Input() private product: IProduct;
+  @Input() public product: IProduct;
 
   public productDetails: IProductDetails;
   public selectedSizeSub: Subscription;

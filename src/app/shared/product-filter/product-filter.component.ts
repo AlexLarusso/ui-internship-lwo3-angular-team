@@ -10,13 +10,13 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getFilteredProducts } from 'src/app/store/selectors/products.selectors';
 
-import { Subscription } from 'rxjs';
-
 import { ToastrService } from 'ngx-toastr';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
+import { Subscription } from 'rxjs';
 
 import { IProduct, IProductShortInfo } from 'src/app/interfaces';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../services/product.service';
 import { ProductFormat, ToastrMessage } from 'src/app/app.enum';
 

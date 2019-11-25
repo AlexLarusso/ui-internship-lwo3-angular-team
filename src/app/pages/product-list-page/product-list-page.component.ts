@@ -30,7 +30,7 @@ export class ProductListPageComponent implements OnInit, OnDestroy {
     this.routerSub = this.route.params
       .subscribe(item => {
         this.category = item.category;
-        this.store.dispatch(new SetFilterCriteria(item.category))
+        this.store.dispatch(new SetFilterCriteria(item.category));
       });
   }
 
