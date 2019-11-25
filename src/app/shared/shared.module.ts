@@ -29,6 +29,7 @@ import { ParallaxComponent } from './parallax/parallax.component';
 import { ScrollComponent } from '../components/scroll/scroll.component';
 import { PaypalCheckoutComponent } from '../components/paypal-checkout/paypal-checkout.component';
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { AuthComponent } from '../components/auth/auth.component';
 
 @NgModule({
@@ -59,6 +60,7 @@ import { AuthComponent } from '../components/auth/auth.component';
     ScrollComponent,
     PaypalCheckoutComponent,
     SelectQuantityComponent,
+    ProductFilterComponent,
     AuthComponent
   ],
   imports: [
@@ -92,6 +94,7 @@ import { AuthComponent } from '../components/auth/auth.component';
     ScrollComponent,
     PaypalCheckoutComponent,
     SelectQuantityComponent,
+    ProductFilterComponent,
     AuthComponent
   ]
 })

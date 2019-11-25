@@ -1,18 +1,25 @@
+<div class="product-category col-12">
+  <app-product-filter
+    (dataChange)="onDataChange($event)"
+    class="col-3">
+  </app-product-filter>
 <div class="product">
   <div class="content__container product__wrapper">
     <div>
       <h2 class="col-12 content__title">{{ filterCategory | titlecase }} Collection</h2>
     </div>
     <div class="product__container">
-      <app-product-item *ngFor="let product of filteredItems$ | async"
-        class="product__item"
+      <app-product-item
+        *ngFor="let product of filteredItems"
         [status]="product.status"
         [imgUrl]="product.imgUrl"
         [imgUrlNext]="product.imgUrlNext"
         [productTitle]="product.productTitle"
         [productPrice]="product.productPrice"
-        [productId]="product.productId">
+        [productId]="product.productId"
+        class="product__item">
       </app-product-item>
     </div>
   </div>
+</div>
 </div>
