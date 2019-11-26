@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { RatingModule } from 'ng-starrating';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -12,9 +13,9 @@ import { ProductPreviewComponent } from 'src/app/components/product-preview/prod
 import { SimilarProductsComponent } from 'src/app/components/similar-products/similar-products.component';
 import { ProductResolver } from 'src/app/shared/services/product.resolver';
 import { ProductDetailsPageComponent } from './product-details-page.component';
-import { ProductFeedbackComponent } from '../../components/product-feedback/product-feedback.component';
-import { LeaveFeedbackComponent } from '../../components/product-feedback/leave-feedback/leave-feedback.component';
-import { ReviewFeedbackComponent } from '../../components/product-feedback/review-feedback/review-feedback.component';
+import { ProductReviewComponent } from '../../components/product-review/review.component';
+import { LeaveReviewComponent } from '../../components/product-review/leave-review/leave-review.component';
+import { ReviewComponent } from '../../components/product-review/review/review.component';
 
 const routes: Routes = [
   {
@@ -31,15 +32,16 @@ const routes: Routes = [
     ProductOrderComponent,
     ProductPreviewComponent,
     ProductDetailsPageComponent,
-    ProductFeedbackComponent,
-    LeaveFeedbackComponent,
-    ReviewFeedbackComponent
+    ProductReviewComponent,
+    LeaveReviewComponent,
+    ReviewComponent
   ],
   imports: [
     SharedModule,
     CommonModule,
     RouterModule.forChild(routes),
-    NgxImageZoomModule.forRoot()
+    NgxImageZoomModule.forRoot(),
+    RatingModule
   ],
   providers: [
   ],
@@ -48,8 +50,8 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductOrderComponent,
     ProductPreviewComponent,
-    LeaveFeedbackComponent,
-    ReviewFeedbackComponent,
+    LeaveReviewComponent,
+    ReviewComponent,
     RouterModule
   ]
 })
