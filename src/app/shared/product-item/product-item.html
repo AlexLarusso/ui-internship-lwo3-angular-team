@@ -9,7 +9,7 @@
         [ngClass]="status | lowercase"
         (downloadImage)="onShowImage()">
         <img *ngIf="isImageShown && !isImgLoaded"
-          class="placeholder-image" 
+          class="placeholder-image"
           [src]="placeholderImage" />
         <img *ngIf="isImageShown"
           (load)="isImgLoaded = true"
@@ -22,9 +22,11 @@
       *ngIf="isImageShown"
       class="wish__btn"
       [productId]="productId"
-      wishClass="wish__product-item">
+      [wishClass]="hartScaled ? 'wish__product-view-scaled' : 'wish__product-item'">
     </app-wish-button>
   </div>
-  <h4 class="product-item__title">{{ productTitle }}</h4>
-  <p class="product-item__price">{{ productPrice }}</p>
+  <div class="item-labels">
+    <h4 class="item-labels__title">{{ productTitle }}</h4>
+    <span class="item-labels__price">{{ productPrice }}</span>
+  </div>
 </div>
