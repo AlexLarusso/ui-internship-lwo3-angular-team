@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -29,7 +30,7 @@ const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nis
   styleUrls: ['./product-order.scss']
 })
 export class ProductOrderComponent implements OnInit, OnDestroy {
-  @Input() private product: IProduct;
+  @Input() public product: IProduct;
 
   public productDetails: IProductDetails;
   public selectedSizeSub: Subscription;

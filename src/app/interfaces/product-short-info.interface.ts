@@ -7,5 +7,7 @@ export interface IProductShortInfo {
   status: string;
   gender: string;
   seasons: Array<string>;
+  brand: string;
+  category: string;
   order?: number;
 }

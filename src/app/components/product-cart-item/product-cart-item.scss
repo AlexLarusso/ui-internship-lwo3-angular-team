@@ -4,13 +4,13 @@ $item-shadow-color: rgba(100, 100, 100, .4);
 
 .product-cart-item {
   display: grid;
-  grid-template-columns: 140px 1fr 25% 15% 10% 10%;
+  grid-template-columns: 120px 1fr 25% 15% 10% 10%;
   grid-auto-rows: 25%;
   grid-gap: 10px;
   position: relative;
-  width: 100%;
-  padding: 25px 0;
   border-top: 1px solid $item-shadow-color;
+  padding: 20px 0;
+  width: 100%;
 
   &.last-cart-item {
     border-bottom: 1px solid $item-shadow-color;

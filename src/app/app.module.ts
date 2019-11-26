@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -11,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { RoutesModule } from './app.routes';
 
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
-import { ErrorsHandler } from './shared/services/errors.handler';
+// import { ErrorsHandler } from './shared/services/errors.handler';
 import { CookieService } from 'ngx-cookie-service';
 
 import { appReducer } from './store/app.store';
@@ -35,6 +36,7 @@ import { CounterComponent } from './components/counter/counter.component';
   ],
   imports: [
     SharedModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),
