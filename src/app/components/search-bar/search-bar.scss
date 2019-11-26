@@ -9,7 +9,7 @@
   height: 100%;
 
   &__input {
-    border: 1px solid gray;
+    border: 1px solid $scrollBarThumb;
     width: 100%;
     height: 100%;
     padding-left: 10px;
@@ -34,20 +34,20 @@
   &__result {
     display: flex;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid $scrollBarThumb;
     border-top: none;
     height: 45px;
     padding: 5px;
-    background-color: white;
+    background-color: $bgColorLight;
     list-style-type: none;
     cursor: pointer;
     outline: none;
 
     &:hover {
       a {
-        color: white;
+        color: $bgColorLight;
       }
-      background-color: #607D8B;
+      background-color: $bgColorSearchTab;
     }
   }
 
@@ -55,8 +55,7 @@
     display: block;
     text-align: left;
     font-size: 0.8rem;
-    color: #888;
+    color: $scrollBarThumb;
     text-decoration: none;
   }
-
 }

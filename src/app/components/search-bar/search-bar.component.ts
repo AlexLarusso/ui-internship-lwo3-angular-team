@@ -6,43 +6,47 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { SearchByProductName } from 'src/app/store/actions/products.action';
 
-import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { Observable, fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { getSearchByNameResult } from '../../store/selectors/products.selectors';
 
 import { IProduct } from '../../interfaces/product.interface';
 import { ProductService } from 'src/app/shared/services';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.html',
   styleUrls: ['./search-bar.scss']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent implements OnInit, OnDestroy {
   @ViewChild('searchBox', {static: true}) searchBox: ElementRef;
   @ViewChild('searchWrapper', {static: true}) searchWrapper: ElementRef;
 
   public products$: Observable<Array<IProduct>>;
 
   constructor(
-    private store: Store<IAppState>,
-    private productService: ProductService,
-    private el: ElementRef
+    private readonly store: Store<IAppState>,
+    private readonly productService: ProductService,
   ) { }
 
   public ngOnInit(): void {
-    this.products$ = this.store.select(getSearchByNameResult).pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    );
+    this.products$ = this.store.select(getSearchByNameResult)
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      );
 
-    document.addEventListener('click', (e) => {
-      if (!this.searchWrapper.nativeElement.contains(e.target)) {
-        this.searchBox.nativeElement.value = '';
-      }
-    }); // TODO: Refactor to fromEvent
+    fromEvent(document, 'click')
+    .subscribe(el => {
+      !this.searchWrapper.nativeElement.contains(el.target) ?
+        this.searchBox.nativeElement.value = '' :
+        false;
+    });
   }
+
+  public ngOnDestroy(): void { }
 
   public search(term: string): void {
     this.store.dispatch(new SearchByProductName(term));
