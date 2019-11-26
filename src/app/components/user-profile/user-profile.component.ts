@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { ModalService } from '../../shared/services/modal-service';
+import { IProduct } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,9 +14,8 @@ export class UserProfileComponent {
     private readonly modalService: ModalService
   ) { }
 
-  @Input() userAvatar: string;
-  @Input() userShoppingHistory;
-  @Input() userWishList;
+  @Input() userShoppingHistory: Array<IProduct>;
+  @Input() userWishList: Array<IProduct>;
 
   public onCloseModal(userProfile): void {
     this.modalService.close(userProfile);

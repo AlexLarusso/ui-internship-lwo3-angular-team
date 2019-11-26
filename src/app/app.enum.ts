@@ -31,5 +31,6 @@ export enum ToastrMessage {
   invalidModal = 'modal must have an id',
   loginFailed = 'Incorrect email and/or password.',
   signUpFailed = 'That email is already in use.',
-  accessDenied = 'To see cart page, login first'
+  accessDenied = 'To see cart page, login first',
+  userNameError = 'Enter your name'
 }

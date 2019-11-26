@@ -5,13 +5,15 @@ export interface IState {
   userEmail: string;
   recently: Array<string>;
   liked: Array<string>;
+  userFullName: string;
 }
 
 export const initialState: IState = {
   count: 0,
   userEmail: '',
   recently: [],
-  liked: []
+  liked: [],
+  userFullName: ''
 };
 
 export function webStorageReducer(state = initialState, action: StorageAction): IState {

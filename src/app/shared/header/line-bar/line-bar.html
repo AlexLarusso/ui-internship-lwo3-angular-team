@@ -24,7 +24,7 @@
         <ng-template #LoggedOut>
             <!-- USER PROFILE *START*-->
             <a (click)="openModal('userProfile')">
-              <img class="bar__avatar" src="" alt="User image">
+              <img class="bar__avatar" [src]="userAvatarUrl" alt="User avatar">
             </a>
             <!-- USER PROFILE *END*-->
           <a (click)="openModal('signUp')" class="bar__link">Sign Up</a>

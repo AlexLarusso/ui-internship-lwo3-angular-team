@@ -19,8 +19,8 @@ export class LocalStorageService extends WebStorageService {
     return localStorage.getItem(property);
   }
 
-  public localStorageAdd(key: string): void {
-    localStorage.setItem(key, this.value);
+  public localStorageAdd(key: string, value?: string): void {
+    localStorage.setItem(key, this.value || value);
   }
 
   public localStorageDelete(key: string): void {
