@@ -19,3 +19,15 @@ export const getFilteredProducts = createSelector(
     }
   )
 );
+
+export const getSearchByNameResult = createSelector(
+  getProducts,
+  (state: IState) => state.products.filter(
+    product => {
+      const { searchInput } = state;
+      if (searchInput) {
+      return product.productName.toLowerCase().includes(searchInput.toLowerCase());
+      }
+    }
+  )
+);

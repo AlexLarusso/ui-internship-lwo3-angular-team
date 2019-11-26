@@ -143,14 +143,6 @@ export class ProductService implements OnDestroy {
     return products.sort(() => Math.random() - 0.5);
   }
 
-  public searchContacts(term: string): Observable<IProduct[]> {
-    if (!term.trim()) {
-      return of([]);
-    }
-    // console.log(this.httpService.getAllProducts())
-    // return this.http.get<IProduct[]>(`${URLs.products}/${id}`
-  }
-
   public ngOnDestroy(): void { }
 
   private getProductsByCategory(category: string):

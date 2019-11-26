@@ -1,13 +1,25 @@
-<div id="search-component">
-    <h4><label for="search-box">Search by Name</label></h4>
-  
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-  
-    <ul class="search-result">
-      <li *ngFor="let contact of contacts$ | async" >
-        <a routerLink="/details/{{contact.id}}">
-          {{contact.firstName}}
-        </a>
-      </li>
-    </ul>
-  </div>
+<div
+#searchWrapper
+class="search">
+  <input 
+    type="text" 
+    placeholder="Search"
+    class="search__input"
+    (input)="search(searchBox.value)"
+    #searchBox
+    >
+  <ul 
+    *ngIf="searchBox.value" 
+    class="search__dropdown">
+    <li 
+      class="search__result" 
+      *ngFor="let product of products$ | async">
+      <a 
+        class="search__product" 
+        routerLink="/products/{{product._id}}"
+        (click)="searchBox.value=''">
+        {{product.productName}}
+      </a>
+    </li>
+  </ul>
+</div>

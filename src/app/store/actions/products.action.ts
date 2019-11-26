@@ -5,7 +5,8 @@ export enum ProductsActionTypes {
   SetProducts = '[Products] Set products',
   SetProductImages = '[Products] Set product images',
   LoadProducts = '[Products] Load data',
-  SetFilterCriteria = '[Products] Set filter criteria '
+  SetFilterCriteria = '[Products] Set filter criteria',
+  SearchByProductName = '[Products] Search by Product Name'
 }
 
 export class LoadProducts implements Action {
@@ -34,6 +35,13 @@ export class SetFilterCriteria implements Action {
 
   public static readonly TYPE = ProductsActionTypes.SetFilterCriteria;
   public type = SetFilterCriteria.TYPE;
+}
+
+export class SearchByProductName implements Action {
+  constructor(public payload: string) { }
+
+  public static readonly TYPE = ProductsActionTypes.SearchByProductName;
+  public type = SearchByProductName.TYPE;
 }
 
 export type ProductsActions = any;
