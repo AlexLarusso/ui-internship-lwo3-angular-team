@@ -9,7 +9,6 @@ export class ModalService {
   public isModalOpened = {
     login: false,
     signUp: false,
-    //USER PROFILE
     userProfile: false
   };
 

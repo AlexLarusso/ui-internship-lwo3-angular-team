@@ -7,13 +7,13 @@
     <div class="col-4 login__container">
       <div class="col-5 link__container">
         <a href="https://ru-ru.facebook.com/griddynamics">
-          <fa-icon [icon]="faFacebookF" class="link__item"></fa-icon>
+          <fa-icon class="link__item" [icon]="faFacebookF"></fa-icon>
         </a>
         <a href="https://twitter.com/griddynamics">
-          <fa-icon [icon]="faTwitter" class="link__item"></fa-icon>
+          <fa-icon class="link__item" [icon]="faTwitter"></fa-icon>
         </a>
         <a href="https://www.google.com/">
-          <fa-icon [icon]="faGoogle" class="link__item"></fa-icon>
+          <fa-icon class="link__item" [icon]="faGoogle"></fa-icon>
         </a>
       </div>
       <div *ngIf="isAuthenticated; then LoggedIn; else LoggedOut;"></div>
@@ -21,15 +21,15 @@
           <p class="bar__link"> Hello, {{ userName$ | async }}!</p>
           <a class="bar__avatar" (click)="openModal('userProfile')">
             <img
-            class="bar__avatar__item"
-            alt="User avatar"
-            [src]="userAvatarUrl">
+              class="bar__avatar__item"
+              alt="User avatar"
+              [src]="userAvatarUrl">
           </a>
           <a class="bar__link" (click)="logOut()">Log out</a>
         </ng-template>
         <ng-template #LoggedOut>
-          <a (click)="openModal('signUp')" class="bar__link">Sign Up</a>
-          <a (click)="openModal('login')" class="bar__link">Login</a>
+          <a class="bar__link" (click)="openModal('signUp')">Sign Up</a>
+          <a class="bar__link" (click)="openModal('login')">Login</a>
       </ng-template>
       <app-modal-window
         *ngIf="this.modalService.isModalOpened.login"
@@ -42,9 +42,9 @@
         <app-auth></app-auth>
       </app-modal-window>
       <app-modal-window
-      *ngIf="this.modalService.isModalOpened.userProfile"
-      modalName="userProfile">
-      <app-user-profile></app-user-profile>
+        *ngIf="this.modalService.isModalOpened.userProfile"
+        modalName="userProfile">
+        <app-user-profile></app-user-profile>
     </app-modal-window>
     </div>
   </div>

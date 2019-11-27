@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
-  faFacebookF, faTwitter, faGoogle
+  faFacebookF,
+  faTwitter,
+  faGoogle
 } from '@fortawesome/free-brands-svg-icons';
 
 import { Store } from '@ngrx/store';
@@ -62,8 +64,6 @@ export class LineBarComponent implements OnInit {
       this.isAuthenticated = state.isAuthenticated;
       this.errorMessage = state.errorMessage;
     });
-
-
 
     this.isSignUpOpen = this.modalService.isModalOpened.signUp;
     this.isLoginOpen = this.modalService.isModalOpened.login;
