@@ -67,10 +67,10 @@
   }
 
   &__avatar {
-    margin: 10px 10px 10px 0;
-    height: 50px;
     border-radius: 50px;
     box-shadow: 0 0 0 3px $accentColor, 0 0 13px $bgColorMedium;
+    margin: 10px 10px 10px 0;
+    height: 50px;
   }
 
   &__name {

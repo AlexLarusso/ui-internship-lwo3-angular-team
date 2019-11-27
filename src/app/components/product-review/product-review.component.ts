@@ -27,7 +27,7 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
 
   public maxCharNum = 200;
   public charLeft: number;
-  public userIconSrc = '../../../../assets/img/vlad.png';
+  public userIconSrc = '/assets/img/vlad.png';
   public currentProductReviews$: Observable<Array<IReview>>;
   public reviewSub: Subscription;
   public authSub: Subscription;
@@ -54,8 +54,9 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
 
   public charCount(): void {
     const enteredCharNum = this.feedbackField.nativeElement.value.length;
+    const isCharAvaliable = this.maxCharNum - enteredCharNum >= 0;
 
-    if ( this.maxCharNum - enteredCharNum >= 0) {
+    if (isCharAvaliable) {
       this.charLeft = this.maxCharNum - enteredCharNum;
     }
   }
@@ -63,10 +64,11 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
   public sendFeedback(): void {
     this.setUserData();
 
-    this.reviewSub = this.reviewService.leaveReview(this.userReview).subscribe(() => {
-      this.toastrService.success(ToastrMessage.successfulFeedback);
+    this.reviewSub = this.reviewService.leaveReview(this.userReview)
+      .subscribe(() => {
+        this.toastrService.success(ToastrMessage.successfulFeedback);
     }, () => {
-      this.toastrService.warning(ToastrMessage.uncorrectFeedback);
+      this.toastrService.warning(ToastrMessage.incorrectFeedback);
     }, () => {
       this.getProductReview();
     });
@@ -89,7 +91,8 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
     this.userReview.message = this.feedbackField.nativeElement.value.trimStart();
 
     if (this.checkUserAuth()) {
-      this.nameSub = this.store.select(getUserFirstName).subscribe(name => this.userReview.createdBy = name);
+      this.nameSub = this.store.select(getUserFirstName)
+        .subscribe(name => this.userReview.createdBy = name);
     }
   }
 
@@ -100,7 +103,8 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
   private checkUserAuth(): boolean {
     let isAuth: boolean;
 
-    this.authSub = this.store.select(getAuthState).subscribe(state => isAuth = state);
+    this.authSub = this.store.select(getAuthState)
+      .subscribe(state => isAuth = state);
 
     return isAuth;
   }
@@ -110,11 +114,7 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
       .pipe(map(reviews =>
         reviews
           .filter(review => review.productId === this.productId)
-          .map(review => {
-            review.createdAt = new Date(review.createdAt);
-
-            return review;
-          })
-      ));
+          .map(review => ({...review, createdAt: new Date(review.createdAt)})
+      )));
   }
 }

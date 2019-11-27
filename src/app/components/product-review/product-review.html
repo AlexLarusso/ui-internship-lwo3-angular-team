@@ -12,8 +12,7 @@
     <textarea #feedback
       class="feedback__text"
       maxLength="{{ maxCharNum }}"
-      (keyup)="charCount($event)">
-    </textarea>
+      (keyup)="charCount($event)"></textarea>
     <span class="characters_left">({{ charLeft }})</span>
     <app-button (click)="sendFeedback()">Leave Feedback</app-button>
   </div>
@@ -21,7 +20,7 @@
   <div class="feedback__review">
     <div *ngIf="currentProductReviews$ | async as reviews">
       <div *ngIf="reviews?.length; else noReviews">
-        <div class="feedback" *ngFor="let review of reviews">
+        <div *ngFor="let review of reviews" class="feedback">
           <div class="user__details">
             <img alt="user avatar"
               class="user__avatar"

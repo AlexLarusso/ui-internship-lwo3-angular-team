@@ -34,5 +34,5 @@ export enum ToastrMessage {
   signUpFailed = 'That email is already in use.',
   accessDenied = 'To see cart page, login first',
   successfulFeedback = 'Your feedback has been sent successfully',
-  uncorrectFeedback = 'Please enter message or rate product'
+  incorrectFeedback = 'Please enter message or rate product'
 }
