@@ -14,8 +14,10 @@ export class UserProfileComponent {
     private readonly modalService: ModalService
   ) { }
 
-  @Input() userShoppingHistory: Array<IProduct>;
-  @Input() userWishList: Array<IProduct>;
+  @Input() public userShoppingHistory: Array<IProduct>;
+  @Input() public userWishList: Array<IProduct>;
+
+  public userAvataUrl = '/assets//img/spring_fashion.jpg';
 
   public onCloseModal(userProfile): void {
     this.modalService.close(userProfile);

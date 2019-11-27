@@ -1,8 +1,5 @@
 import {
-  Component,
-  OnInit,
-  ViewChild,
-  ElementRef
+  Component, OnInit, ViewChild, ElementRef
 } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
@@ -26,7 +23,7 @@ export class UserProfilePageComponent implements OnInit {
     private readonly localStorageService: LocalStorageService,
     private readonly store: Store<IAppState>,
     private readonly toastrService: ToastrService,
-    ) { }
+  ) { }
 
   @ViewChild('userFirstName', {static: false}) userFirstName: ElementRef;
   @ViewChild('userLastName', {static: false}) userLastName: ElementRef;
@@ -35,7 +32,7 @@ export class UserProfilePageComponent implements OnInit {
   public changeUserPassword = false;
   public changeUserEmail = false;
   public userName: string;
-  public userAvatarUrl = '../../../assets/img/bored-boredom-casual.jpg';
+  public userAvatarUrl = '/assets/img/bored-boredom-casual.jpg';
 
   public ngOnInit(): void {
     this.userName = this.localStorageService.getItem('userFullName');
@@ -63,11 +60,13 @@ export class UserProfilePageComponent implements OnInit {
 
   public onUpdateUserName(): void {
     // UPDATE UserName
-    this.userFirstName.nativeElement.value ||
-    this.userLastName.nativeElement.value ?
+    if (this.userFirstName.nativeElement.value ||
+    this.userLastName.nativeElement.value) {
     this.userName = `${this.userFirstName.nativeElement.value} ${
-      this.userLastName.nativeElement.value}` :
+      this.userLastName.nativeElement.value}`;
+    } else {
     this.toastrService.error(ToastrMessage.userNameError);
+    }
 
     this.localStorageService
       .localStorageAdd('userFullName', this.userName);
