@@ -23,8 +23,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  providers: [
-  ],
   exports: [
     RouterModule,
     UserProfilePageComponent

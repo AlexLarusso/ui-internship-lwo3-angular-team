@@ -1,5 +1,5 @@
 import {
-  SetProducts,  LoadProducts, ProductsActions, SetFilterCriteria
+  SetProducts,  LoadProducts, ProductsActions, SetFilterCriteria, SearchByProductName
 } from '../actions/products.action';
 import { IProduct, IFilterCriteria } from '../../interfaces';
 import { URLs } from 'src/app/app.enum';
@@ -8,12 +8,14 @@ export interface IState {
   products: Array<IProduct>;
   load: boolean;
   filterCriteria: IFilterCriteria;
+  searchInput: string;
 }
 
 export const initialState: IState = {
   products: [],
   load: false,
-  filterCriteria: null
+  filterCriteria: null,
+  searchInput: null
 };
 
 export function productsReducer(state = initialState, action: ProductsActions): IState {
@@ -72,6 +74,13 @@ export function productsReducer(state = initialState, action: ProductsActions): 
           criteriaName,
           value: payload
         }
+      };
+    }
+
+    case SearchByProductName.TYPE: {
+      return {
+        ...state,
+        searchInput: payload
       };
     }
 

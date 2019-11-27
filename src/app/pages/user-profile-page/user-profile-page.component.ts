@@ -25,8 +25,8 @@ export class UserProfilePageComponent implements OnInit {
     private readonly toastrService: ToastrService,
   ) { }
 
-  @ViewChild('userFirstName', {static: false}) userFirstName: ElementRef;
-  @ViewChild('userLastName', {static: false}) userLastName: ElementRef;
+  @ViewChild('userFirstName', { static: false }) public userFirstName: ElementRef;
+  @ViewChild('userLastName', { static: false }) public userLastName: ElementRef;
 
   public changeUserName = false;
   public changeUserPassword = false;
@@ -61,11 +61,11 @@ export class UserProfilePageComponent implements OnInit {
   public onUpdateUserName(): void {
     // UPDATE UserName
     if (this.userFirstName.nativeElement.value ||
-    this.userLastName.nativeElement.value) {
-    this.userName = `${this.userFirstName.nativeElement.value} ${
-      this.userLastName.nativeElement.value}`;
+      this.userLastName.nativeElement.value) {
+      this.userName = `${this.userFirstName.nativeElement.value} ${
+        this.userLastName.nativeElement.value}`;
     } else {
-    this.toastrService.error(ToastrMessage.userNameError);
+      this.toastrService.error(ToastrMessage.userNameError);
     }
 
     this.localStorageService

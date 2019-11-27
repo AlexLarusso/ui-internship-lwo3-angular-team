@@ -19,8 +19,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes)
   ],
-  providers: [
-  ],
   exports: [
     RouterModule,
     UserWishListPageComponent

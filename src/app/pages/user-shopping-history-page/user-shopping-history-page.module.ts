@@ -21,8 +21,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  providers: [
-  ],
   exports: [
     RouterModule,
     UserShoppingHistoryPageComponent
