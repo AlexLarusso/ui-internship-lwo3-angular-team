@@ -32,7 +32,7 @@ export class UserProfilePageComponent implements OnInit {
   public changeUserPassword = false;
   public changeUserEmail = false;
   public userName: string;
-  public userAvatarUrl = '/assets/img/bored-boredom-casual.jpg';
+  public userAvatarUrl = '/assets/img/vlad.png';
 
   public ngOnInit(): void {
     this.userName = this.localStorageService.getItem('userFullName');

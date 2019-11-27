@@ -17,7 +17,7 @@ export class UserProfileComponent {
   @Input() public userShoppingHistory: Array<IProduct>;
   @Input() public userWishList: Array<IProduct>;
 
-  public userAvataUrl = '/assets//img/spring_fashion.jpg';
+  public userAvataUrl = '/assets/img/vlad.png';
 
   public onCloseModal(userProfile): void {
     this.modalService.close(userProfile);

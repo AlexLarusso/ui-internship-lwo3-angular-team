@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
@@ -52,8 +52,9 @@ export class LineBarComponent implements OnInit {
 
     this.userName$ = this.store.select(getUserFirstName)
       .pipe(
-        map(name => name = this.localStorageService.getItem('userFullName') ||
-          this.localStorageService.getItem('userName')));
+        map(name => name = this.localStorageService.getItem('userFullName').split(' ')[0] ||
+          this.localStorageService.getItem('userName'))),
+          tap((a) => console.log(a));
 
     if (this.authService.getToken()) {
       this.store.dispatch(new IsLoggedIn());
