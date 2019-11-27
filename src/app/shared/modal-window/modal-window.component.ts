@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { takeWhile } from 'rxjs/operators';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 
 import { ToastrMessage } from '../../app.enum';
 import { ModalService } from '../services/modal-service';
@@ -16,10 +16,6 @@ import { ModalService } from '../services/modal-service';
 })
 
 export class ModalComponent implements OnInit, OnDestroy {
-  @Input() modalName: string;
-
-  private element: any;
-
   constructor(
     private readonly modalService: ModalService,
     private readonly el: ElementRef,
@@ -27,26 +23,34 @@ export class ModalComponent implements OnInit, OnDestroy {
     private readonly renderer: Renderer2
   ) { }
 
-public ngOnInit(): void {
-  this.element = this.el.nativeElement;
+  @Input() public modalName: string;
 
-  if (!this.modalName) {
-    this.toastrService.warning(ToastrMessage.invalidModal);
-    return;
+  public modalWindowSub: Subscription;
+
+  private element: any;
+
+  public ngOnInit(): void {
+    this.element = this.el.nativeElement;
+
+    if (!this.modalName) {
+      this.toastrService.warning(ToastrMessage.invalidModal);
+
+      return;
+    }
+
+    this.renderer.appendChild(document.body, this.element);
+
+    this.modalWindowSub = fromEvent(this.element, 'click')
+      .subscribe((el: any) => {
+        if (el.target.className === 'modal-window') {
+          this.modalService.isModalOpened = {
+            login: false, signUp: false, userProfile: false
+          };
+        }
+      });
   }
 
-  this.renderer.appendChild(document.body, this.element);
-
-  fromEvent(this.element, 'click')
-    .pipe(
-      takeWhile((el: any) => el.target.className === 'modal-window'))
-    .subscribe(() => {
-      this.modalService.isModalOpened.login = false;
-      this.modalService.isModalOpened.signUp = false;
-    });
-}
-
-public ngOnDestroy(): void {
-  this.modalService.close(this.modalName);
+  public ngOnDestroy(): void {
+    this.modalService.close(this.modalName);
   }
 }

@@ -8,7 +8,8 @@ export class ModalService {
 
   public isModalOpened = {
     login: false,
-    signUp: false
+    signUp: false,
+    userProfile: false
   };
 
   public open(modalName: string): void {
