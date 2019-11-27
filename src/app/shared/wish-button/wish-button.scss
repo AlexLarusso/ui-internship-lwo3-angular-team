@@ -4,7 +4,7 @@
   &__btn {
     background: inherit;
   }
-  
+
   &__product {
     &-item {
       font-size: 1.8rem;
@@ -12,16 +12,25 @@
     }
 
     &-details {
+      opacity: 0.5;
       font-size: 2rem;
       color: $fontColorDark;
-      opacity: 0.5;
+    }
+
+    &-view-scaled {
+      color: $fontColorLight;
+      font-size: 2.5rem;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1.8rem;
+      }
     }
   }
 
   &-icon{
     &_active {
-      color: $wishHeartColor;
       opacity: 1;
+      color: $wishHeartColor;
     }
   }
 }

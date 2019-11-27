@@ -54,11 +54,6 @@
     display: flex;
   }
 
-button {
-  border: none;
-  font-size: 1rem;
-  }
-
   &__login {
     .sign-up__container {
       border: 1px solid black;
@@ -69,22 +64,27 @@ button {
       border-bottom: 1px solid black;
     }
   }
+
   &__sign-up {
     .sign-up__container {
       border-bottom: 1px solid black;
     }
 
-.login__container {
-  border: 1px solid black;
-  border-bottom: none;
-    }
+  .login__container {
+    border: 1px solid black;
+    border-bottom: none;
   }
 
-.sign-up__container,
+  button {
+    border: none;
+  }
+}
+
 .sign-up__container {
   display: flex;;
   justify-content: center;
   align-items: center;
+  background: $bgColorLight;
 }
 
 &__redirect {
