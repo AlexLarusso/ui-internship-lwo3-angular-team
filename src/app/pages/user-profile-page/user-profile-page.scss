@@ -31,7 +31,7 @@
       justify-content: space-around;
       margin: 15px;
       height: 444px;
-      box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+      box-shadow: 0 0 11px $shadowMedium;
       background-color: $bgColorLight;
     }
 
@@ -58,7 +58,7 @@
     @include flex-align;
 
     margin: 15px;
-    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    box-shadow: 0 0 11px $shadowMedium;
     background-color: $bgColorLight;
   }
 

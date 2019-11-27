@@ -12,6 +12,7 @@ import { CartPageModule } from './pages/cart-page/cart-page.module';
 import { UserProfilePageModule } from './pages/user-profile-page/user-profile-page.module';
 import { UserShoppingHistoryPageModule } from './pages/user-shopping-history-page/user-shopping-history-page.module';
 import { UserWishListPageModule } from './pages/user-wish-list-page/user-wish-list-page.module';
+import { InDevelopmentPageModule } from './pages/in-development-page/in-development.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'error',
     loadChildren: () => ErrorPageModule
+  },
+  {
+    path: 'in-development',
+    loadChildren: () => InDevelopmentPageModule
   },
   {
     path: 'shopping-cart',
@@ -71,7 +76,8 @@ const routes: Routes = [
     CartPageModule,
     UserProfilePageModule,
     UserShoppingHistoryPageModule,
-    UserWishListPageModule
+    UserWishListPageModule,
+    InDevelopmentPageModule
   ],
   exports: [
     HomePageModule,
@@ -84,7 +90,8 @@ const routes: Routes = [
     CartPageModule,
     UserProfilePageModule,
     UserShoppingHistoryPageModule,
-    UserWishListPageModule
+    UserWishListPageModule,
+    InDevelopmentPageModule
   ]
 })
 

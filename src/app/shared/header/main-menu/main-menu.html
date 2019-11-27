@@ -5,7 +5,7 @@
       <div class="col-8 menu__container">
         <ul class="menu__list col-7">
           <li *ngFor="let item of menuItems" class="menu__list__item">
-            <a [routerLink]="item.url" class="menu-item">{{ item.title }}</a>
+            <a class="menu-item" [routerLink]="item.url">{{ item.title }}</a>
           </li>
         </ul>
         <div class="col-7 menu__input__container">
@@ -17,7 +17,7 @@
           </div>
           <div class="col-5 menu__cart__container">
             <span class="menu__cart__qty"> ( {{ cartItemsQty$ | async }} )</span>
-            <a [routerLink]="shopingCartLink" class="menu__cart__btn">
+            <a class="menu__cart__btn" [routerLink]="shopingCartLink">
               <fa-icon [icon]="faCartArrowDown"></fa-icon>
             </a>
           </div>

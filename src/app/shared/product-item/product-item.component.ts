@@ -19,6 +19,7 @@ export class ProductItemComponent implements OnInit {
   @Input() public productPrice = 0;
   @Input() public productId: string;
   @Input() public status = '';
+  @Input() public hartScaled = false;
 
   public currentImageUrl: string;
 

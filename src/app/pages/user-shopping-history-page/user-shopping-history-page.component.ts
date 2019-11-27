@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-user-shopping-history-page',
@@ -6,6 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-shopping-history-page.scss']
 })
 
-export class UserShoppingHistoryPageComponent {
-
-}
+export class UserShoppingHistoryPageComponent { }

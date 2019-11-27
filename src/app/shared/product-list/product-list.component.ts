@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import {
+  Component, OnInit, OnDestroy, HostListener, Input
+} from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -38,9 +40,8 @@ const BREAK_POINTS = {
   styleUrls: ['./product-list.scss'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];
-  public aboutProductsText = `Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo,
-    lacinia eget consectetur sed, convallis at tellus.`;
+  @Input() public listTitle = 'From Our Collection';
+
   public pageWidth: number;
   public stepNumber: number;
   public visibleNumber: number;

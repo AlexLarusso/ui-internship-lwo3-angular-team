@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['user-wish-list-page.scss']
 })
 
-export class UserWishListPageComponent {
-
-}
+export class UserWishListPageComponent { }

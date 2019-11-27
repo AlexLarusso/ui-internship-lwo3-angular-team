@@ -32,6 +32,7 @@ import { SelectQuantityComponent } from './select-quantity/select-quantity.compo
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { AuthComponent } from '../components/auth/auth.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
+import { ProductsViewComponent } from './products-view/products-view.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { UserProfileComponent } from '../components/user-profile/user-profile.co
     ProductFilterComponent,
     AuthComponent,
     UserProfileComponent,
+    ProductsViewComponent
   ],
   imports: [
     CommonModule,
@@ -99,6 +101,7 @@ import { UserProfileComponent } from '../components/user-profile/user-profile.co
     ProductFilterComponent,
     AuthComponent,
     UserProfileComponent,
+    ProductsViewComponent
   ]
 })
 

@@ -1,11 +1,10 @@
 <div class="user-profile-page">
   <div class="user-profile-page__container content__container">
     <div class="user-profile-page__image-wrapper">
-      <!-- TODO: Change to dynamic -->
       <img
-        src="../../../assets/img/bored-boredom-casual.jpg"
-        class="user-profile-page__picture"
-        alt="User avatar">
+      class="user-profile-page__picture"
+      alt="User avatar"
+      [src]="userAvatarUrl">
       <h3 class="user-profile-page__title">{{ userName }}</h3>
       <span class="user-profile-page__status"></span>
     </div>

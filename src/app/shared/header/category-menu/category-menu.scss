@@ -7,14 +7,14 @@
 
   &__container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     height: 100px;
   }
 }
 
 li {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
 }
 
@@ -24,13 +24,9 @@ li {
   justify-content: center;
 }
 
-.menu-item {
-  padding-right: 20px;
-}
-
 @media screen and (max-width: 992px) {
   li {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -41,6 +37,10 @@ li {
     &__container {
       width: 100%;
     }
+  }
+
+  li {
+    font-size: 0.9rem;
   }
 
   .logo {
