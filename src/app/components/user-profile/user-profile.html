@@ -1,13 +1,31 @@
 <div class="user-profile">
   <div class="user-profile__image-wrapper">
     <a routerLink="user-profile">
-      <img src="../../../assets//img/spring_fashion.jpg" alt="User avatar" class="user-profile__picture">
+      <img
+        src="../../../assets//img/spring_fashion.jpg"
+        alt="User avatar"
+        class="user-profile__picture">
     </a>
     <span class="user-profile__status"></span>
   </div>
   <div class="user-profile__pages">
-    <a routerLink="user-profile" (click)="closeModal('userProfile')" class="user-profile__item">Profile</a>
-    <a routerLink="user-shopping-history" (click)="closeModal('userProfile')" class="user-profile__item">Shopping history</a>
-    <a routerLink="user-wishlist" (click)="closeModal('userProfile')" class="user-profile__item">Wish list</a>
+    <a
+      class="user-profile__item"
+      routerLink="user-profile"
+      (click)="closeModal('userProfile')">
+      Profile
+  </a>
+    <a
+      class="user-profile__item"
+      routerLink="user-shopping-history"
+      (click)="closeModal('userProfile')">
+      Shopping history
+  </a>
+    <a
+      class="user-profile__item"
+      routerLink="user-wishlist"
+      (click)="closeModal('userProfile')">
+      Wish list
+  </a>
   </div>
 </div>

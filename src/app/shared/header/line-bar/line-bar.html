@@ -19,14 +19,15 @@
       <div *ngIf="isAuthenticated; then LoggedIn; else LoggedOut;"></div>
       <ng-template #LoggedIn>
           <p class="bar__link"> Hello, {{ userName$ | async }}!</p>
+          <a class="bar__avatar" (click)="openModal('userProfile')">
+            <img
+            class="bar__avatar__item"
+            alt="User avatar"
+            [src]="userAvatarUrl">
+          </a>
           <a class="bar__link" (click)="logOut()">Log out</a>
         </ng-template>
         <ng-template #LoggedOut>
-            <!-- USER PROFILE *START*-->
-            <a (click)="openModal('userProfile')">
-              <img class="bar__avatar" [src]="userAvatarUrl" alt="User avatar">
-            </a>
-            <!-- USER PROFILE *END*-->
           <a (click)="openModal('signUp')" class="bar__link">Sign Up</a>
           <a (click)="openModal('login')" class="bar__link">Login</a>
       </ng-template>
@@ -40,13 +41,11 @@
         modalName="signUp">
         <app-auth></app-auth>
       </app-modal-window>
-      <!-- USER PROFILE *START*-->
       <app-modal-window
       *ngIf="this.modalService.isModalOpened.userProfile"
       modalName="userProfile">
       <app-user-profile></app-user-profile>
     </app-modal-window>
-      <!-- USER PROFILE *END*-->
     </div>
   </div>
 </div>
