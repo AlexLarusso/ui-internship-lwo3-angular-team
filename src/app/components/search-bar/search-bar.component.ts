@@ -1,18 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { SearchByProductName } from 'src/app/store/actions/products.action';
-
-import { Observable, fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-
 import { getSearchByNameResult } from '../../store/selectors/products.selectors';
 
+import { Observable, fromEvent, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
 import { IProduct } from '../../interfaces/product.interface';
-import { ProductService } from 'src/app/shared/services';
 
 @AutoUnsubscribe()
 @Component({
@@ -25,10 +28,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   @ViewChild('searchWrapper', {static: true}) searchWrapper: ElementRef;
 
   public products$: Observable<Array<IProduct>>;
+  public onBlurSub: Subscription;
+  public searchValue: string;
 
   constructor(
     private readonly store: Store<IAppState>,
-    private readonly productService: ProductService,
   ) { }
 
   public ngOnInit(): void {
@@ -38,23 +42,18 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         distinctUntilChanged()
       );
 
-    fromEvent(document, 'click')
-    .subscribe(el => {
-      !this.searchWrapper.nativeElement.contains(el.target) ?
-        this.searchBox.nativeElement.value = '' :
-        false;
+    this.onBlurSub = fromEvent(document, 'click')
+      .subscribe(el => {
+        if (!this.searchWrapper.nativeElement.contains(el.target)) {
+          this.searchValue = '';
+        }
     });
   }
 
   public ngOnDestroy(): void { }
 
-  public search(term: string): void {
-    this.store.dispatch(new SearchByProductName(term));
+  public search(): void {
+    this.store.dispatch(new SearchByProductName(this.searchValue));
   }
-
-  public addIdToLocalStorage(id: string): void {
-    this.productService.recentProductOrder(id);
-  }
-
 }
 

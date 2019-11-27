@@ -25,8 +25,10 @@ export const getSearchByNameResult = createSelector(
   (state: IState) => state.products.filter(
     product => {
       const { searchInput } = state;
+
       if (searchInput) {
-      return product.productName.toLowerCase().includes(searchInput.toLowerCase());
+
+        return product.productName.toLowerCase().includes(searchInput.toLowerCase());
       }
     }
   )

@@ -1,23 +1,22 @@
 <div
-  class="search"
-  #searchWrapper>
+  #searchWrapper
+  class="search">
   <input 
-    type="text" 
-    placeholder="Search"
     class="search__input"
-    (input)="search(searchBox.value)"
-    #searchBox>
+    placeholder="Search"
+    type="text" 
+    (input)="search()"
+    [(ngModel)]="searchValue">
   <ul 
-    *ngIf="searchBox.value" 
+    *ngIf="searchValue" 
     class="search__dropdown">
     <li 
-      class="search__result" 
-      *ngFor="let product of products$ | async">
-      <a 
-        class="search__product" 
-        routerLink="/products/{{product._id}}"
-        (click)="searchBox.value=''; addIdToLocalStorage(product._id)">
-        {{product.productName}}
+      *ngFor="let product of products$ | async"
+      class="search__result"
+      routerLink="/products/{{product._id}}"
+      (click)="searchValue=''">
+      <a class="search__product">
+        {{ product.productName }}
       </a>
     </li>
   </ul>

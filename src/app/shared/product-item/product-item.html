@@ -2,8 +2,7 @@
   (mouseover)="changeImageToNext()"
   (mouseout)="changeImageToPrev()">
   <div class="product-item__picture__container">
-    <a routerLink="/products/{{ productId }}"
-       (click)="addIdToLocalStorage(productId)">
+    <a routerLink="/products/{{ productId }}">
       <div
         class="product-item__image-wrapper"
         [ngClass]="status | lowercase"

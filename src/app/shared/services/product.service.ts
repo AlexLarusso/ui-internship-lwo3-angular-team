@@ -6,14 +6,13 @@ import { IAppState } from 'src/app/store/app.store';
 import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
-import { Observable, Subscription, of } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
 import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
-import { HttpClient } from '@angular/common/http';
 
 @AutoUnsubscribe()
 @Injectable({
@@ -28,9 +27,8 @@ export class ProductService implements OnDestroy {
   private CART_KEY = 'Cart';
 
   constructor(
-    private httpService: HttpService,
-    private http: HttpClient,
-    private store: Store<IAppState>
+    private readonly httpService: HttpService,
+    private readonly store: Store<IAppState>
   ) { }
 
   public setCartItemsToLocalStorage(): void {
@@ -163,6 +161,4 @@ export class ProductService implements OnDestroy {
           product.gender === similarOptions.gender &&
           product._id !== similarOptions.id);
   }
-
 }
-
