@@ -1,30 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { IReview } from '../../interfaces';
-import { URLs, ToastrMessage } from 'src/app/app.enum';
-import { ToastrService } from 'ngx-toastr';
-import { tap } from 'rxjs/operators';
+import { URLs } from 'src/app/app.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
   constructor(
-    private readonly http: HttpClient,
-    private readonly toastrService: ToastrService
+    private readonly http: HttpClient
   ) { }
 
-  public leaveReview(userReview: IReview): Subscription {
-    return this.http.post<IReview>(URLs.productReview, userReview).subscribe(res => {
-      this.toastrService.success(ToastrMessage.successfulFeedback);
-
-      this.getReview();
-    }, error => {
-      this.toastrService.warning(ToastrMessage.uncorrectFeedback);
-    });
+  public leaveReview(userReview: IReview): Observable<IReview> {
+    return this.http.post<IReview>(URLs.productReview, userReview);
   }
 
   public getReview(): Observable<Array<IReview>> {

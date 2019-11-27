@@ -1,25 +1,32 @@
 import { Component, ViewChild, Input, OnInit, ElementRef } from '@angular/core';
 
+import { ToastrService } from 'ngx-toastr';
 import { StarRatingComponent } from 'ng-starrating';
 
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getUserFirstName, getAuthState } from 'src/app/store/selectors/auth.selector';
 
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { IReview } from 'src/app/interfaces';
 import { ReviewService } from 'src/app/shared/services';
+import { ToastrMessage } from 'src/app/app.enum';
 
 @Component({
-  selector: 'app-leave-review',
-  templateUrl: './leave-review.html',
-  styleUrls: ['./leave-review.scss']
+  selector: 'app-product-review',
+  templateUrl: './product-review.html',
+  styleUrls: ['./product-review.scss']
 })
-export class LeaveReviewComponent implements OnInit {
+export class ProductReviewComponent implements OnInit {
   @ViewChild('feedback', { static: false }) private feedbackField: ElementRef;
   @Input() productId: string;
 
   public maxCharNum = 200;
   public charLeft: number;
+  public userIconSrc = '../../../../assets/img/vlad.png';
+  public currentProductReviews$: Observable<Array<IReview>>;
 
   public userReview: IReview = {
     productId: null,
@@ -30,11 +37,14 @@ export class LeaveReviewComponent implements OnInit {
 
   constructor(
     private readonly reviewService: ReviewService,
-    private readonly store: Store<IAppState>
+    private readonly store: Store<IAppState>,
+    private readonly toastrService: ToastrService
   ) { }
 
   public ngOnInit(): void {
     this.charLeft = this.maxCharNum;
+
+    this.getProductReview();
   }
 
   public charCount(): void {
@@ -48,7 +58,13 @@ export class LeaveReviewComponent implements OnInit {
   public sendFeedback(): void {
     this.setUserData();
 
-    this.reviewService.leaveReview(this.userReview);
+    this.reviewService.leaveReview(this.userReview).subscribe(() => {
+      this.toastrService.success(ToastrMessage.successfulFeedback);
+    }, () => {
+      this.toastrService.warning(ToastrMessage.uncorrectFeedback);
+    }, () => {
+      this.getProductReview();
+    });
 
     this.clearTextArea();
   }
@@ -80,5 +96,18 @@ export class LeaveReviewComponent implements OnInit {
     this.store.select(getAuthState).subscribe(state => isAuth = state);
 
     return isAuth;
+  }
+
+  private getProductReview(): void {
+    this.currentProductReviews$ = this.reviewService.getReview()
+      .pipe(map(reviews =>
+        reviews
+          .filter(review => review.productId === this.productId)
+          .map(review => {
+            review.createdAt = new Date(review.createdAt);
+
+            return review;
+          })
+      ));
   }
 }
