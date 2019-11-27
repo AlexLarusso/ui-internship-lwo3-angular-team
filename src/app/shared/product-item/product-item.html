@@ -4,18 +4,17 @@
   <div class="product-item__picture__container">
     <a routerLink="/products/{{ productId }}"
        (click)="addIdToLocalStorage(productId)">
-      <div
-        class="product-item__image-wrapper"
+      <div class="product-item__image-wrapper"
         [ngClass]="status | lowercase"
         (downloadImage)="onShowImage()">
         <img *ngIf="isImageShown && !isImgLoaded"
           class="placeholder-image"
           [src]="placeholderImage" />
         <img *ngIf="isImageShown"
-          (load)="isImgLoaded = true"
           class="product-item__picture"
           [alt]="productTitle"
-          [src]="currentImageUrl" />
+          [src]="currentImageUrl"
+          (load)="isImgLoaded = true"/>
       </div>
     </a>
     <app-wish-button
@@ -26,7 +25,11 @@
     </app-wish-button>
   </div>
   <div class="item-labels">
-    <h4 class="item-labels__title">{{ productTitle }}</h4>
-    <span class="item-labels__price">{{ productPrice }}</span>
+    <h4 class="item-labels__title">
+      {{ productTitle }}
+    </h4>
+    <span class="item-labels__price">
+      {{ productPrice }}
+    </span>
   </div>
 </div>

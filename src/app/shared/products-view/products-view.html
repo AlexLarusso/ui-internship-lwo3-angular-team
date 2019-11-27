@@ -2,21 +2,21 @@
   <fa-icon class="choose-view__icon" [icon]="viewsIcon"></fa-icon>
   <app-button
     buttonClass="button_views"
-    (click)="productsViewCount = null"
-    [attr.selected]="productsViewCount === null">
+    [attr.selected]="productsViewCount === null"
+    (click)="productsViewCount = null">
     default
   </app-button>
   <app-button
     buttonClass="button_views"
-    (click)="productsViewCount = 2"
-    [attr.selected]="productsViewCount === 2">
+    [attr.selected]="productsViewCount === 2"
+    (click)="productsViewCount = 2">
     2
   </app-button>
   <app-button
     class="button-four"
     buttonClass="button_views"
-    (click)="productsViewCount = 4"
-    [attr.selected]="productsViewCount === 4">
+    [attr.selected]="productsViewCount === 4"
+    (click)="productsViewCount = 4">
     4
   </app-button>
 </div>

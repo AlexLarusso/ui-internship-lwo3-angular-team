@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy, HostListener, Input } from '@angular/core';
+import {
+  Component, OnInit, OnDestroy, HostListener, Input
+} from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
