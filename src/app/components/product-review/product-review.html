@@ -1,11 +1,12 @@
 <div class="review__wrapper">
   <h3 class="feedback__title">Review</h3>
   <div class="feedback__left">
-    <star-rating [value]="0"
+    <star-rating
       checkedcolor="orange"
       uncheckedcolor="gray"
       size="24px"
       readonly="false"
+      [value]="0"
       (rate)="onRate($event)">
     </star-rating>
     <textarea #feedback
@@ -26,11 +27,12 @@
               class="user__avatar"
               [src]="userIconSrc" />
             <div class="details__wrapper">
-              <star-rating [value]="review.rating"
+              <star-rating
                 checkedcolor="orange"
                 uncheckedcolor="gray"
                 size="12px"
-                readonly="true">
+                readonly="true"
+                [value]="review.rating">
               </star-rating>
               <h4 class="user__name">{{ review.createdBy }}</h4>
               <p class="feedback__data">{{ review.createdAt | date:'medium' }}</p>

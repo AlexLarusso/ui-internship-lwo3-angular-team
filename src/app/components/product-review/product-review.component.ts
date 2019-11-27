@@ -1,5 +1,6 @@
-import { Component, ViewChild, Input, OnInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, Input, OnInit, ElementRef, OnDestroy } from '@angular/core';
 
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { ToastrService } from 'ngx-toastr';
 import { StarRatingComponent } from 'ng-starrating';
 
@@ -7,19 +8,20 @@ import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
 import { getUserFirstName, getAuthState } from 'src/app/store/selectors/auth.selector';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IReview } from 'src/app/interfaces';
 import { ReviewService } from 'src/app/shared/services';
 import { ToastrMessage } from 'src/app/app.enum';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-product-review',
   templateUrl: './product-review.html',
   styleUrls: ['./product-review.scss']
 })
-export class ProductReviewComponent implements OnInit {
+export class ProductReviewComponent implements OnInit, OnDestroy {
   @ViewChild('feedback', { static: false }) private feedbackField: ElementRef;
   @Input() productId: string;
 
@@ -27,6 +29,9 @@ export class ProductReviewComponent implements OnInit {
   public charLeft: number;
   public userIconSrc = '../../../../assets/img/vlad.png';
   public currentProductReviews$: Observable<Array<IReview>>;
+  public reviewSub: Subscription;
+  public authSub: Subscription;
+  public nameSub: Subscription;
 
   public userReview: IReview = {
     productId: null,
@@ -58,7 +63,7 @@ export class ProductReviewComponent implements OnInit {
   public sendFeedback(): void {
     this.setUserData();
 
-    this.reviewService.leaveReview(this.userReview).subscribe(() => {
+    this.reviewSub = this.reviewService.leaveReview(this.userReview).subscribe(() => {
       this.toastrService.success(ToastrMessage.successfulFeedback);
     }, () => {
       this.toastrService.warning(ToastrMessage.uncorrectFeedback);
@@ -77,12 +82,14 @@ export class ProductReviewComponent implements OnInit {
     this.userReview.rating = $event.newValue;
   }
 
+  public ngOnDestroy(): void { }
+
   private setUserData(): void {
     this.userReview.productId = this.productId;
     this.userReview.message = this.feedbackField.nativeElement.value.trimStart();
 
     if (this.checkUserAuth()) {
-      this.store.select(getUserFirstName).subscribe(name => this.userReview.createdBy = name);
+      this.nameSub = this.store.select(getUserFirstName).subscribe(name => this.userReview.createdBy = name);
     }
   }
 
@@ -93,7 +100,7 @@ export class ProductReviewComponent implements OnInit {
   private checkUserAuth(): boolean {
     let isAuth: boolean;
 
-    this.store.select(getAuthState).subscribe(state => isAuth = state);
+    this.authSub = this.store.select(getAuthState).subscribe(state => isAuth = state);
 
     return isAuth;
   }
