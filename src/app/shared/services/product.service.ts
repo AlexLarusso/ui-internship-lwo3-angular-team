@@ -27,8 +27,8 @@ export class ProductService implements OnDestroy {
   private CART_KEY = 'Cart';
 
   constructor(
-    private httpService: HttpService,
-    private store: Store<IAppState>
+    private readonly httpService: HttpService,
+    private readonly store: Store<IAppState>
   ) { }
 
   public setCartItemsToLocalStorage(): void {
@@ -162,4 +162,3 @@ export class ProductService implements OnDestroy {
           product._id !== similarOptions.id);
   }
 }
-

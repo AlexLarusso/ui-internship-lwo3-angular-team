@@ -20,13 +20,15 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy {
   public routerSub: Subscription;
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   public ngOnInit(): void {
-    this.routerSub = this.route.params.subscribe(value =>
+    this.routerSub = this.route.params.subscribe(value => {
+      this.productService.recentProductOrder(value.id);
       this.productSource$ = this.productService
-        .getProductById(value.id) as Observable<IProduct>
+         .getProductById(value.id) as Observable<IProduct>;
+        }
     );
   }
 

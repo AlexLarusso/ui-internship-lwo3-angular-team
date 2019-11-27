@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  faFacebookF, faTwitter, faGoogle
+  faFacebookF,
+  faTwitter,
+  faGoogle
 } from '@fortawesome/free-brands-svg-icons';
 
 import { Observable } from 'rxjs';
@@ -15,6 +17,7 @@ import { ModalService } from '../../../shared/services/modal-service';
 import { AuthService } from '../../services/auth.service';
 import { getUserFirstName } from 'src/app/store/selectors/auth.selector';
 import { LocalStorageService } from '../../services';
+import { getStorageStatus } from 'src/app/store/selectors/web-storage.selectors';
 
 @Component({
   selector: 'app-line-bar',
@@ -34,6 +37,7 @@ export class LineBarComponent implements OnInit {
   public userName$: Observable<string>;
   public isSignUpOpen: boolean;
   public isLoginOpen: boolean;
+  public userAvatarUrl: string;
 
   constructor(
     public modalService: ModalService,
@@ -43,9 +47,13 @@ export class LineBarComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.store.select(getStorageStatus).subscribe(state =>
+      this.userAvatarUrl = state.userFullName);
+
     this.userName$ = this.store.select(getUserFirstName)
       .pipe(
-        map(name => name = this.localStorageService.getItem('userName')));
+        map(name => name = this.localStorageService.getItem('userFullName') ||
+          this.localStorageService.getItem('userName')));
 
     if (this.authService.getToken()) {
       this.store.dispatch(new IsLoggedIn());
