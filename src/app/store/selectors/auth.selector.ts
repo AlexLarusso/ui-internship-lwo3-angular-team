@@ -1,8 +1,14 @@
 import { createSelector } from '@ngrx/store';
-import { getUserName } from './app.selectors';
+import { getAuth } from './app.selectors';
 import { IState } from '../reducers/auth.reducer';
 
 export const getUserFirstName = createSelector(
-  getUserName,
+  getAuth,
   (state: IState) => state.userName
 );
+
+export const getAuthState = createSelector(
+  getAuth,
+  (state: IState) => state.isAuthenticated
+);
+

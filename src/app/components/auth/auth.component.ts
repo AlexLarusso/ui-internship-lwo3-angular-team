@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-
 import { Observable } from 'rxjs';
 
+import { Store } from '@ngrx/store';
+import { IAppState } from '../../store/app.store';
+import { getAuth } from 'src/app/store/selectors/app.selectors';
+import { LogIn, SignUp } from '../../store/actions/auth.actions';
+
+import { EnumRegExp } from '../../app.enum';
 import { User } from '../../interfaces/user';
 import { ModalService } from '../../shared/services/modal-service';
-import { IAppState, selectAuthState } from '../../store/app.store';
-import { LogIn, SignUp } from '../../store/actions/auth.actions';
-import { EnumRegExp } from '../../app.enum';
 
 @Component({
   selector: 'app-auth',
@@ -33,7 +34,7 @@ export class AuthComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.currentState$ = this.store.select(selectAuthState);
+    this.currentState$ = this.store.select(getAuth);
     this.currentState$
       .subscribe(state => {
       this.errorMessage = state.errorMessage;

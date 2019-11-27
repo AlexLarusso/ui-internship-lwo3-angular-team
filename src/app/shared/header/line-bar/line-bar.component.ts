@@ -5,14 +5,15 @@ import {
   faGoogle
 } from '@fortawesome/free-brands-svg-icons';
 
-import { Store } from '@ngrx/store';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ModalService } from '../../../shared/services/modal-service';
-import { IAppState, selectAuthState } from 'src/app/store/app.store';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.store';
+import { getAuth } from 'src/app/store/selectors/app.selectors';
 import { LogOut, IsLoggedIn } from 'src/app/store/actions/auth.actions';
+
+import { ModalService } from '../../../shared/services/modal-service';
 import { AuthService } from '../../services/auth.service';
 import { getUserFirstName } from 'src/app/store/selectors/auth.selector';
 import { LocalStorageService } from '../../services';
@@ -28,14 +29,6 @@ export class LineBarComponent implements OnInit {
   public isAuthenticated: false;
   public user = null;
   public errorMessage = null;
-
-  constructor(
-    public modalService: ModalService,
-    private store: Store<IAppState>,
-    private authService: AuthService,
-    private localStorageService: LocalStorageService
-  ) { }
-
   public faFacebookF = faFacebookF;
   public faTwitter = faTwitter;
   public faGoogle = faGoogle;
@@ -45,6 +38,13 @@ export class LineBarComponent implements OnInit {
   public isSignUpOpen: boolean;
   public isLoginOpen: boolean;
   public userAvatarUrl: string;
+
+  constructor(
+    public modalService: ModalService,
+    private store: Store<IAppState>,
+    private authService: AuthService,
+    private localStorageService: LocalStorageService
+  ) { }
 
   public ngOnInit(): void {
     this.store.select(getStorageStatus).subscribe(state =>
@@ -59,7 +59,8 @@ export class LineBarComponent implements OnInit {
       this.store.dispatch(new IsLoggedIn());
     }
 
-    this.getState = this.store.select(selectAuthState);
+    this.getState = this.store.select(getAuth);
+
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       this.errorMessage = state.errorMessage;
