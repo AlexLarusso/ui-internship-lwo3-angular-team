@@ -28,10 +28,9 @@
   &-container {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
     box-shadow: 0 0 10px rgba(33, 33, 33, 0.2);
     background-color: $bgColorLight;
-    margin: 20px 0 10px 10px;
+    margin: 35px 0 10px 10px;
   }
 
   &-criteria {
@@ -177,6 +176,7 @@
 @media screen and (max-width: 992px) {
   .filter {
     &-container {
+      margin-top: 15px;
       width: 90%;
       padding: 15px;
     }
