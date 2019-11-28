@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     component: CartPageComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   }
 ];
 

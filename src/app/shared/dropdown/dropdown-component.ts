@@ -1,10 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, OnInit, Input,
+  Output, EventEmitter, ChangeDetectionStrategy
+} from '@angular/core';
 import { faCaretDown, faCaretUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.html',
-  styleUrls: ['./dropdown.scss']
+  styleUrls: ['./dropdown.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent implements OnInit {
   @Input() options: Array<string>;
