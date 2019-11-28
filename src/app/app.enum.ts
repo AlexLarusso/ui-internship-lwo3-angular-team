@@ -13,7 +13,8 @@ export enum URLs {
   productImage = 'https://res.cloudinary.com/dr8z1kafr/image/upload/v1572252362/Interns/gaboo/products',
   productVideo = 'https://res.cloudinary.com/dr8z1kafr/video/upload/v1572252362/Interns/gaboo/products/',
   limitCondition = '?limit=100',
-  productReview = 'https://gaboo-project-server.herokuapp.com/reviews'
+  productReview = 'https://gaboo-project-server.herokuapp.com/reviews',
+  authorization = 'https://gaboo-project-server.herokuapp.com'
 }
 
 export enum ImagePlaceholder {
