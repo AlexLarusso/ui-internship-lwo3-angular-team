@@ -44,6 +44,8 @@
 
   &__name {
     margin-top: 15px;
+    box-shadow: 0 0 11px $shadowMedium;
+    border: 1px solid $bgColorMedium;
     padding-left: 10px;
     outline: none;
     width: 150px;

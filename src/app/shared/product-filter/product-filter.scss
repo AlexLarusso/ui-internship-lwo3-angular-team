@@ -28,10 +28,10 @@
   &-container {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    margin: 30px 0 10px 10px;
+    margin-left: 15px;
     box-shadow: 0 0 10px rgba(33, 33, 33, 0.2);
     background-color: $bgColorLight;
-    margin: 20px 0 10px 10px;
   }
 
   &-criteria {
@@ -39,11 +39,14 @@
     margin: 10px 0;
 
     &__wrapper {
+      margin: 5px;
+      margin-bottom: 10px;
       min-width: 220px;
       max-height: 415px;
-      padding: 14px 5px;
+      padding: 13px 0;
       overflow: scroll;
       overflow-x: hidden;
+      scroll-behavior: smooth;
       background-color: $bgColorLight;
     }
 
@@ -55,8 +58,10 @@
 
     &__subtitle {
       display: block;
-      text-align: left;
+      margin: 10px 0;
       margin-left: 30px;
+      width: 170px;
+      text-align: left;
       font-size: 0.9rem;
     }
   }
@@ -73,16 +78,15 @@
   }
 
   &__check {
-    display: inline-block;
-    border: 2px solid $shadowStyle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     vertical-align: middle;
     margin-right: 20px;
+    border: 2px solid $shadowStyle;
     width: 18px;
     height: 18px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: border .2s ease;
 
     .icon {
@@ -151,27 +155,27 @@
   }
 
   12% {
+    opacity: 0.4;
+    border-width: 0;
     width: 8px;
     height: 8px;
-    opacity: 0.4;
     background: $shadowStyle;
-    border-width: 0;
   }
 
   50% {
+    border: 0;
+    opacity: 0.6;
     width: 16px;
     height: 16px;
     background: $accentColor;
-    border: 0;
-    opacity: 0.6;
   }
 
   100% {
+    border: 0;
+    opacity: 1;
     width: 16px;
     height: 16px;
     background: $accentColor;
-    border: 0;
-    opacity: 1;
   }
 }
 
@@ -184,7 +188,7 @@
 
     &-criteria {
       display: inline-block;
-      margin: 15px;
+      margin: 12px;
 
       &__wrapper {
         flex-direction: row;

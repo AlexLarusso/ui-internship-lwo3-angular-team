@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'user-profile',
     component: UserProfilePageComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   }
 ];
 
