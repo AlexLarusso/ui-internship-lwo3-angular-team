@@ -11,7 +11,7 @@ import { User } from '../../interfaces/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private BASE_URL = 'http://localhost:1337';
+  private BASE_URL = 'https://gaboo-project-server.herokuapp.com';
 
   constructor(
     private readonly http: HttpClient,
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   public signUp(email: string, password: string): Observable<User> {
-    const url = `${this.BASE_URL}/register`;
+    const url = `${this.BASE_URL}/signup`;
 
     return this.http.post<User>(url, {email, password});
   }
