@@ -19,10 +19,10 @@
       <div *ngIf="isAuthenticated; then LoggedIn; else LoggedOut;"></div>
       <ng-template #LoggedIn>
           <p class="bar__link"> Hello, {{ userName$ | async }}!</p>
-          <a class="bar__avatar" (click)="openModal('userProfile')">
+          <a (click)="openModal('userProfile')">
             <img
-              class="bar__avatar__item"
-              alt="User avatar"
+              class="bar__avatar"
+              alt="User"
               [src]="userAvatarUrl">
           </a>
           <a 

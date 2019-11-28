@@ -10,6 +10,7 @@ import { SetValueToStorage } from '../../store/actions/web-storage.actions';
 
 import { LocalStorageService } from 'src/app/shared/services/web-storage/local-storage.service';
 import { ToastrMessage } from '../../app.enum';
+import { SetUserFullName } from 'src/app/store/actions/auth.actions';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -32,12 +33,10 @@ export class UserProfilePageComponent implements OnInit {
   public changeUserPassword = false;
   public changeUserEmail = false;
   public userName: string;
-  public userAvatarUrl = '/assets/img/bored-boredom-casual.jpg';
+  public userAvatarUrl = '/assets/img/vlad.png';
 
   public ngOnInit(): void {
     this.userName = this.localStorageService.getItem('userFullName');
-
-    this.store.dispatch(new SetValueToStorage('userFullName', this.userAvatarUrl));
   }
 
   public onChangeUserName(): void {
@@ -64,12 +63,15 @@ export class UserProfilePageComponent implements OnInit {
       this.userLastName.nativeElement.value) {
       this.userName = `${this.userFirstName.nativeElement.value} ${
         this.userLastName.nativeElement.value}`;
+
     } else {
       this.toastrService.error(ToastrMessage.userNameError);
     }
 
     this.localStorageService
       .localStorageAdd('userFullName', this.userName);
+
+    this.store.dispatch(new SetUserFullName(this.userName));
 
     this.onChangeUserName();
   }
