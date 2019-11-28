@@ -14,7 +14,7 @@ import { ProductFormat } from 'src/app/app.enum';
 @Component({
   selector: 'app-recently-viewed',
   templateUrl: 'recently-viewed.html',
-  styleUrls: ['recently-viewed.scss']
+  styleUrls: ['recently-viewed.scss'],
 })
 export class RecentlyViewedComponent implements OnInit, OnDestroy {
   public recentlyViewedProducts: Array<IProductShortInfo> = [];
