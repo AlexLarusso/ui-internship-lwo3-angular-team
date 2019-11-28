@@ -121,7 +121,7 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
     return isAuth;
   }
 
-  private getProductReview() {
+  private getProductReview(): void {
     this.currentProductReviews$ = this.reviewService.getReview()
       .pipe(map(reviews =>
         reviews

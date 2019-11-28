@@ -11,7 +11,6 @@ import { skipWhile } from 'rxjs/operators';
   templateUrl: './parallax.html',
   styleUrls: ['./parallax.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class ParallaxComponent implements OnInit, OnDestroy {
   @Input() public parallaxClass: string;
