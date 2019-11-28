@@ -24,7 +24,7 @@ import { ToastrMessage } from 'src/app/app.enum';
 })
 export class ProductReviewComponent implements OnInit, OnDestroy {
   @ViewChild('feedback', { static: false }) private feedbackField: ElementRef;
-  @ViewChild('star', { static: false }) private star: StarRatingComponent;
+  @ViewChild('starRatingRef', { static: false }) private star: StarRatingComponent;
 
   @Input() productId: string;
 
