@@ -88,4 +88,18 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
   &_popular {
     width: 250px;
   }
+
+  &_views {
+    padding: 5px 10px;
+    height: auto;
+    width: auto;
+    border: none;
+    text-transform: capitalize;
+  }
+}
+
+:host([selected="true"]) {
+  background-color: $inputBorderColor;
+  box-shadow: 0 0 2px 2px $itemShadowColor;
+  cursor: not-allowed;
 }

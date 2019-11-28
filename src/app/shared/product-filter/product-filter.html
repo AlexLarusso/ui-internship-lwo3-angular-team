@@ -1,0 +1,52 @@
+<div class="filter-wrapper">
+  <div class="filter-container">
+    <h2 class="filter-criteria__title">
+      Brand
+    </h2>
+    <div class="filter-criteria__wrapper">
+      <div class="filter-criteria" *ngFor="let product of productBrand">
+        <div class="center">
+          <label class="label">
+            <input class="filter-criteria__option label__checkbox"
+              (change)="onCreateRequest($event)"
+              type="checkbox"
+              name="brand" value="{{ product }}">
+            <span class="label__text">
+              <span class="label__check">
+                <fa-icon class="icon" [icon]="checkboxIcon"></fa-icon>
+              </span>
+            </span>
+          </label>
+        </div>
+        <label class="filter-criteria__subtitle">
+          {{ product | uppercase }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="filter-container">
+    <h2 class="filter-criteria__title">
+      Category
+    </h2>
+    <div class="filter-criteria__wrapper">
+      <div class="filter-criteria" *ngFor="let product of productCategory">
+        <div class="center">
+          <label class="label">
+            <input class="filter-criteria__option label__checkbox"
+              (change)="onCreateRequest($event)"
+              type="checkbox"
+              name="category" value="{{ product }}">
+            <span class="label__text">
+              <span class="label__check">
+                <fa-icon class="icon" [icon]="checkboxIcon"></fa-icon>
+              </span>
+            </span>
+          </label>
+        </div>
+        <label class="filter-criteria__subtitle">
+          {{ product | uppercase }}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

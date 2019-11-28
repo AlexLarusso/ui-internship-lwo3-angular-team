@@ -1,0 +1,72 @@
+@import '../../styles/_variables';
+
+:host {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.search {
+  height: 100%;
+
+  &__input {
+    border: 1px solid $scrollBarThumb;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    outline: none;
+    font-size: 0.8rem;
+    font-family: $mainFontRegular;
+
+    &::placeholder {
+      font-size: 0.8rem;
+      font-family: $mainFontRegular;
+    }
+  }
+
+  &__dropdown {
+    max-height: 180px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      -webkit-appearance: none;
+
+      &-track {
+        background: $bgColorLight;
+      }
+
+      &-thumb {
+        border-radius: 20px;
+        height: 45px;
+        background-color: $accentColor;
+      }
+    }
+  }
+
+  &__result {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    padding: 10px;
+    background-color: $bgColorLight;
+    list-style-type: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lightgrey;
+
+      a {
+        color: $bgColorLight;
+      }
+    }
+  }
+
+  &__product {
+    display: block;
+    text-align: left;
+    font-size: 0.8rem;
+    color: $scrollBarThumb;
+    text-decoration: none;
+  }
+}

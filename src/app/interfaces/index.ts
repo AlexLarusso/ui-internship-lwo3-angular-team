@@ -8,6 +8,9 @@ import { IProductDetails } from 'src/app/interfaces/product-details.interface';
 import { IProductOptions } from 'src/app/interfaces/product-options.interface';
 import { IProductDescription } from 'src/app/interfaces/product-description.interface';
 import { IProductCartItem } from './product-cart-item.interface';
+import { IProductMedia } from './product-media.interface';
+import { IFilterCriteria } from './filter-criteria.interface';
+import { IReview } from './review.interface';
 
 export {
   IProductShortInfo,
@@ -19,5 +22,8 @@ export {
   IProductDetails,
   IProductOptions,
   IProductDescription,
-  IProductCartItem
+  IProductCartItem,
+  IProductMedia,
+  IFilterCriteria,
+  IReview
 };

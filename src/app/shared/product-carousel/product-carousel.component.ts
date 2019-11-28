@@ -1,9 +1,15 @@
 import {
   Component, OnInit, AfterViewInit, AfterViewChecked,
-  ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef
+  ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef,
+  OnDestroy, ChangeDetectionStrategy
 } from '@angular/core';
 
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
+import { fromEvent, Subscription } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 
@@ -32,16 +38,20 @@ const BREAK_POINTS = {
 
 const PRODUCT_ITEM_MARGIN = 30;
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.html',
-  styleUrls: ['./product-carousel.scss']
+  styleUrls: ['./product-carousel.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   @Input() public productData: Array<IProductShortInfo>;
 
   @ViewChild('products', {static: false}) products: ElementRef;
   @ViewChild('productsContainer', {static: false}) productsContainer: ElementRef;
+  @ViewChild('prevButton', {static: true}) prevButton: ElementRef;
+  @ViewChild('nextButton', {static: true}) nextButton: ElementRef;
 
   public faArrowLeft = faChevronLeft;
   public faArrowRight = faChevronRight;
@@ -55,6 +65,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
   public position = 0;
   public additionalScroll = 0;
   public containerScroll = 0;
+  public prevSub: Subscription;
+  public nextSub: Subscription;
 
   @HostListener('window:resize', [])
   public onResize(): void {
@@ -72,8 +84,8 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
 
     if (this.additionalScroll) {
       this.productsContainer.nativeElement.scrollLeft > this.containerScroll
-      ? this.moveToNext()
-      : this.moveToPrev();
+        ? this.moveToNext()
+        : this.moveToPrev();
     }
 
     this.containerScroll = this.productsContainer.nativeElement.scrollLeft;
@@ -81,10 +93,18 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private readonly cd: ChangeDetectorRef) { }
 
   public ngOnInit(): void {
     this.pageWidth = window.innerWidth;
+
+    this.prevSub = fromEvent(this.prevButton.nativeElement, 'click').pipe(
+      throttleTime(500))
+      .subscribe(() => this.moveToPrev());
+
+    this.nextSub = fromEvent(this.nextButton.nativeElement, 'click').pipe(
+      throttleTime(500))
+      .subscribe(() => this.moveToNext());
   }
 
   public ngAfterViewInit(): void {
@@ -108,7 +128,16 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.cd.detectChanges();
   }
 
-  public moveToNext(): void {
+  public ngOnDestroy(): void { }
+
+  private toggleButtonsState(): void {
+    const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
+
+    this.canMoveToPrev = this.position !== 0;
+    this.canMoveToNext = this.position !== maxPosition && this.productArray.length >= this.visibleNum;
+  }
+
+  private moveToNext(): void {
     const newPosition = this.position - this.itemWidth * this.visibleNum;
     const possiblePosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
 
@@ -118,7 +147,7 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.toggleButtonsState();
   }
 
-  public moveToPrev(): void {
+  private moveToPrev(): void {
     const newPosition = this.position + this.itemWidth * this.visibleNum;
     const possiblePosition = 0;
 
@@ -126,13 +155,6 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterVie
     this.productContainer.style.marginLeft = this.position + this.additionalScroll + 'px';
 
     this.toggleButtonsState();
-  }
-
-  private toggleButtonsState(): void {
-    const maxPosition = -this.itemWidth * (this.productArray.length - this.visibleNum);
-
-    this.canMoveToPrev = this.position !== 0;
-    this.canMoveToNext = this.position !== maxPosition && this.productArray.length >= this.visibleNum;
   }
 
   private indicateViewNumber(): void {

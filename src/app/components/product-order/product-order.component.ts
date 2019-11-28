@@ -1,21 +1,21 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-
-import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
+import { AddProductToCart } from 'src/app/store/actions/cart.actions';
+import {
+  SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity
+} from 'src/app/store/actions/product-options.actions';
 import {
   getProductQuantity, getProductSelectedColor, getProductSelectedSize
 } from 'src/app/store/selectors/product-options.selector';
-import { SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity } from 'src/app/store/actions/product-options.actions';
-import { AddProductToCart } from 'src/app/store/actions/cart.actions';
-import { IProductCartItem } from 'src/app/interfaces';
 
 import { Subscription } from 'rxjs';
 
 import {
-  IProduct, IProductDetails, IProductOptions, IProductDescription, IProductImage
+  IProduct, IProductDetails, IProductOptions, IProductDescription, IProductCartItem
 } from 'src/app/interfaces';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
@@ -30,10 +30,9 @@ const STYLE_MOCK = 'Ullamco eu ut consequat eu sit nostrud occaecat ad nulla nis
   styleUrls: ['./product-order.scss']
 })
 export class ProductOrderComponent implements OnInit, OnDestroy {
-  @Input() private product: IProduct;
+  @Input() public product: IProduct;
 
   public productDetails: IProductDetails;
-  public productImages: Array<IProductImage>;
   public selectedSizeSub: Subscription;
   public selectedColorSub: Subscription;
   public selectedQtySub: Subscription;
@@ -56,7 +55,6 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       delivery: DELIVERY_MOCK,
     };
     const initColor = productOptions.colors[0];
-
     const {
       productName: title,
       price,
@@ -78,11 +76,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       options: productOptions,
       description: productDescription,
     };
-
-    this.productImages = this.product.images;
-
     this.store.dispatch(new SelectColor(initColor));
-
     this.selectedQtySub = this.store.select(getProductQuantity)
       .subscribe(qty => this.selectedQty = qty);
     this.selectedColorSub = this.store.select(getProductSelectedColor)

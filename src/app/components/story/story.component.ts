@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-story',
   templateUrl: './story.html',
-  styleUrls: ['./story.scss']
+  styleUrls: ['./story.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StoryComponent {
   public storyText = `Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ac diam

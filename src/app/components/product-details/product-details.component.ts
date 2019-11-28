@@ -1,11 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { IProductDetails } from 'src/app/interfaces/product-details.interface';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.html',
-  styleUrls: ['./product-details.scss']
+  styleUrls: ['./product-details.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() public productDetails: IProductDetails;

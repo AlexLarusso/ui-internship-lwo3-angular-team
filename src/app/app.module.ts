@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -23,18 +24,17 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
 import { WishListPageComponent } from './pages/wish-list-page/wish-list-page.component';
-import { CounterComponent } from './components/counter/counter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListPageComponent,
     WishListPageComponent,
-    LoaderComponent,
-    CounterComponent
+    LoaderComponent
   ],
   imports: [
     SharedModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({}),

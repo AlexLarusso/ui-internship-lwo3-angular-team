@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { CanActivate } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
@@ -20,7 +20,7 @@ export class AuthGuardService implements CanActivate {
     private readonly modalService: ModalService,
     private readonly store: Store<IAppState>,
     private readonly toastrService: ToastrService
-  ) {}
+  ) { }
 
   public canActivate(): boolean {
     if (!this.auth.getToken()) {

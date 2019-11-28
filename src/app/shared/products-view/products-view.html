@@ -1,0 +1,35 @@
+<div class="choose-view">
+  <fa-icon class="choose-view__icon" [icon]="viewsIcon"></fa-icon>
+  <app-button
+    buttonClass="button_views"
+    [attr.selected]="productsViewCount === null"
+    (click)="productsViewCount = null">
+    default
+  </app-button>
+  <app-button
+    buttonClass="button_views"
+    [attr.selected]="productsViewCount === 2"
+    (click)="productsViewCount = 2">
+    2
+  </app-button>
+  <app-button
+    class="button-four"
+    buttonClass="button_views"
+    [attr.selected]="productsViewCount === 4"
+    (click)="productsViewCount = 4">
+    4
+  </app-button>
+</div>
+<div class="products-view">
+  <app-product-item *ngFor="let product of products"
+    class="product__item"
+    [status]="product.status"
+    [imgUrl]="product.imgUrl"
+    [imgUrlNext]="product.imgUrlNext"
+    [productTitle]="product.productTitle"
+    [productPrice]="product.productPrice"
+    [productId]="product.productId"
+    [attr.display-count]="productsViewCount"
+    [hartScaled]="productsViewCount === 2">
+  </app-product-item>
+</div>

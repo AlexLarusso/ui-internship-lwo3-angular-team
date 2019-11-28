@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -11,15 +11,16 @@ import { SelectColor } from 'src/app/store/actions/product-options.actions';
 @Component({
   selector: 'app-select-color',
   templateUrl: './select-color.html',
-  styleUrls: ['./select-color.scss']
+  styleUrls: ['./select-color.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectColorComponent implements OnInit, OnDestroy {
-  @Input() colors: Array<string>;
+  @Input() public colors: Array<string>;
 
   public selectedColor: string;
   public selectedColorSub: Subscription;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(private readonly store: Store<IAppState>) { }
 
   public ngOnInit(): void {
     this.selectedColorSub = this.store.select(getProductSelectedColor)

@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.html',
-  styleUrls: ['./button.scss']
+  styleUrls: ['./button.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ButtonComponent {

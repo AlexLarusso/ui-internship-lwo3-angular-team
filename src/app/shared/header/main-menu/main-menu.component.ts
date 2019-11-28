@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -12,7 +12,8 @@ import { getCartTotalQty } from 'src/app/store/selectors/cart.selector';
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.html',
-  styleUrls: ['./main-menu.scss']
+  styleUrls: ['./main-menu.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainMenuComponent implements OnInit {
   public faSearch = faSearch;
