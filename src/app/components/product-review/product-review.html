@@ -12,7 +12,7 @@
     <textarea #feedback
       class="feedback__text"
       maxLength="{{ maxCharNum }}"
-      (keyup)="charCount($event)"></textarea>
+      (keyup)="charCount()"></textarea>
     <span class="characters_left">({{ charLeft }})</span>
     <app-button (click)="sendFeedback()">Leave Feedback</app-button>
   </div>
