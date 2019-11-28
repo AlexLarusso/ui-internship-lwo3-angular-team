@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.store';
-import { SetValueToStorage } from '../../store/actions/web-storage.actions';
 
 import { LocalStorageService } from 'src/app/shared/services/web-storage/local-storage.service';
 import { ToastrMessage } from '../../app.enum';
