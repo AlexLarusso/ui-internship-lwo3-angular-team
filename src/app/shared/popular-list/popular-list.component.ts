@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -16,7 +16,8 @@ import { ProductFormat } from 'src/app/app.enum';
 @Component({
   selector: 'app-popular-list',
   templateUrl: './popular-list.html',
-  styleUrls: ['./popular-list.scss']
+  styleUrls: ['./popular-list.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PopularListComponent implements OnInit, OnDestroy {
   public filterItems = ['Trending', 'Bestsellers', 'New', 'On Sale'];

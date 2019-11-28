@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, OnInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, ViewChild, Input, OnInit, ElementRef, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { ToastrService } from 'ngx-toastr';
@@ -19,13 +19,17 @@ import { ToastrMessage } from 'src/app/app.enum';
 @Component({
   selector: 'app-product-review',
   templateUrl: './product-review.html',
-  styleUrls: ['./product-review.scss']
+  styleUrls: ['./product-review.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductReviewComponent implements OnInit, OnDestroy {
   @ViewChild('feedback', { static: false }) private feedbackField: ElementRef;
+  @ViewChild('starRatingRef', { static: false }) private star: StarRatingComponent;
+
   @Input() productId: string;
 
   public maxCharNum = 200;
+  public defaultValue = 0;
   public charLeft: number;
   public userIconSrc = '/assets/img/vlad.png';
   public currentProductReviews$: Observable<Array<IReview>>;
@@ -43,7 +47,8 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
   constructor(
     private readonly reviewService: ReviewService,
     private readonly store: Store<IAppState>,
-    private readonly toastrService: ToastrService
+    private readonly toastrService: ToastrService,
+    private readonly cdr: ChangeDetectorRef
   ) { }
 
   public ngOnInit(): void {
@@ -71,9 +76,11 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
       this.toastrService.warning(ToastrMessage.incorrectFeedback);
     }, () => {
       this.getProductReview();
+
+      this.cdr.detectChanges();
     });
 
-    this.clearTextArea();
+    this.clearAllField();
   }
 
   public onRate($event: {
@@ -81,7 +88,10 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
     newValue: number,
     starRating: StarRatingComponent
   }): void {
-    this.userReview.rating = $event.newValue;
+    this.userReview = {
+      ...this.userReview,
+      rating: $event.newValue
+    };
   }
 
   public ngOnDestroy(): void { }
@@ -96,8 +106,10 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
     }
   }
 
-  private clearTextArea(): void {
+  private clearAllField(): void {
     this.feedbackField.nativeElement.value = '';
+    this.charLeft = this.maxCharNum;
+    this.star.value = this.defaultValue;
   }
 
   private checkUserAuth(): boolean {

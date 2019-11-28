@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -10,7 +10,8 @@ import { getLoadingStatus } from 'src/app/store/selectors/loader.selectors';
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.html',
-  styleUrls: ['./loader.scss']
+  styleUrls: ['./loader.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoaderComponent implements OnInit {
   public bulletsArray = new Array(12).fill('');
