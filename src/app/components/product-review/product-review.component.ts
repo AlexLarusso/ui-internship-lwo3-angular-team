@@ -102,7 +102,11 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
 
     if (this.checkUserAuth()) {
       this.nameSub = this.store.select(getUserFirstName)
-        .subscribe(name => this.userReview.createdBy = name);
+        .subscribe(name => {
+          this.userReview.createdBy = name;
+
+          this.cdr.detectChanges();
+        });
     }
   }
 
@@ -116,7 +120,11 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
     let isAuth: boolean;
 
     this.authSub = this.store.select(getAuthState)
-      .subscribe(state => isAuth = state);
+      .subscribe(state => {
+        isAuth = state;
+
+        this.cdr.detectChanges();
+      });
 
     return isAuth;
   }
