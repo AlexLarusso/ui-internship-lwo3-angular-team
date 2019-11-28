@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy
+} from '@angular/core';
 
 import { of, Observable, merge } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -8,7 +10,8 @@ import { IconDefinition, faPlusSquare, faMinusSquare } from '@fortawesome/free-s
 @Component({
   selector: 'app-select-quantity',
   templateUrl: './select-quantity.html',
-  styleUrls: ['./select-quantity.scss']
+  styleUrls: ['./select-quantity.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectQuantityComponent implements OnInit {
   @Input() public maxNumber: number;
