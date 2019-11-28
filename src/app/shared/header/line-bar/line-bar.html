@@ -25,7 +25,12 @@
               alt="User avatar"
               [src]="userAvatarUrl">
           </a>
-          <a class="bar__link" (click)="logOut()">Log out</a>
+          <a 
+            class="bar__link" 
+            routerLink="home"
+            (click)="logOut()">
+            Log out
+          </a>
         </ng-template>
         <ng-template #LoggedOut>
           <a class="bar__link" (click)="openModal('signUp')">Sign Up</a>
