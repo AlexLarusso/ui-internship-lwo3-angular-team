@@ -12,3 +12,7 @@ export const getAuthState = createSelector(
   (state: IState) => state.isAuthenticated
 );
 
+export const getUserFullName = createSelector(
+  getAuth,
+  (state: IState) => state.userFullName.split(' ')[0]
+);

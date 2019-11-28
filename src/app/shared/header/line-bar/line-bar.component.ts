@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   faFacebookF,
   faTwitter,
   faGoogle
 } from '@fortawesome/free-brands-svg-icons';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -15,16 +15,18 @@ import { LogOut, IsLoggedIn } from 'src/app/store/actions/auth.actions';
 
 import { ModalService } from '../../../shared/services/modal-service';
 import { AuthService } from '../../services/auth.service';
-import { getUserFirstName } from 'src/app/store/selectors/auth.selector';
+import { getUserFirstName, getUserFullName } from 'src/app/store/selectors/auth.selector';
 import { LocalStorageService } from '../../services';
 import { getStorageStatus } from 'src/app/store/selectors/web-storage.selectors';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-line-bar',
   templateUrl: './line-bar.html',
   styleUrls: ['./line-bar.scss']
 })
-export class LineBarComponent implements OnInit {
+export class LineBarComponent implements OnInit, OnDestroy {
   public getState: Observable<any>;
   public isAuthenticated: false;
   public user = null;
@@ -37,7 +39,9 @@ export class LineBarComponent implements OnInit {
   public userName$: Observable<string>;
   public isSignUpOpen: boolean;
   public isLoginOpen: boolean;
-  public userAvatarUrl: string;
+  public userFullName: string;
+  public userAvatarUrl = '/assets/img/vlad.png';
+  public storeSub: Subscription;
 
   constructor(
     public modalService: ModalService,
@@ -47,14 +51,16 @@ export class LineBarComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.store.select(getStorageStatus).subscribe(state =>
-      this.userAvatarUrl = state.userFullName);
 
     this.userName$ = this.store.select(getUserFirstName)
       .pipe(
-        map(name => name = this.localStorageService.getItem('userFullName').split(' ')[0] ||
-          this.localStorageService.getItem('userName'))),
-          tap((a) => console.log(a));
+        map(() =>
+          this.localStorageService.getItem('userFullName') ?
+            this.localStorageService.getItem('userFullName').split(' ')[0] :
+            this.localStorageService.getItem('userName')));
+
+    this.userName$ = this.store.select(getUserFullName).pipe(map(state =>
+      state || this.localStorageService.getItem('userName')));
 
     if (this.authService.getToken()) {
       this.store.dispatch(new IsLoggedIn());
@@ -82,4 +88,6 @@ export class LineBarComponent implements OnInit {
   public openModal(modalName: string): void {
     this.modalService.open(modalName);
   }
+
+  public ngOnDestroy(): void { }
 }

@@ -101,15 +101,17 @@
     }
   }
 
-  &__checkbox:checked+&__text &__check {
-    animation: check .2s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
+  &__checkbox {
+    &:checked + .label__text .label__check {
+      animation: check .2s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
 
-    .icon {
-      opacity: 1;
-      transform: scale(0);
-      color: $bgColorLight;
-      -webkit-text-stroke: 0;
-      animation: icon .2s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+      .icon {
+        opacity: 1;
+        transform: scale(0);
+        color: $bgColorLight;
+        -webkit-text-stroke: 0;
+        animation: icon .2s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+      }
     }
   }
 }
