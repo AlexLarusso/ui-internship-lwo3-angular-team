@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,12 +15,8 @@ import { switchMap, map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollComponent implements OnInit {
-  public pageComponents: IPageAnchor[] = [];
-  public activeElement: number;
   public toHeaderIcon: IconDefinition = faChevronUp;
   public toFooterIcon: IconDefinition = faChevronDown;
-  public anchorsSub: Subscription;
-  public activeAnchorSub: Subscription;
   public anchors$: Observable<Array<IPageAnchor>>;
   public activeAnchor$: Observable<IPageAnchor>;
 
