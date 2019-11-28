@@ -24,7 +24,7 @@ export class AuthEffects {
     private readonly modalService: ModalService,
     private readonly cookieService: CookieService,
     private readonly toastrService: ToastrService
-  ) {}
+  ) { }
 
 @Effect()
   public LogIn: Observable<any> = this.actions$
@@ -85,6 +85,7 @@ export class AuthEffects {
       ofType(AuthActionTypes.SIGNUP_SUCCESS),
       tap(user => {
         this.cookieService.set('token', user.payload.token);
+        localStorage.setItem('userName', user.payload.userName);
         this.modalService.close('signUp');
       })
     );
@@ -109,6 +110,7 @@ public SignUpFailure: Observable<any> = this.actions$
       ofType(AuthActionTypes.LOG_OUT),
       tap(() => {
         this.cookieService.delete('token');
+        localStorage.removeItem('userName');
       })
     );
 }

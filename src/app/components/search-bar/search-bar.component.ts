@@ -3,7 +3,9 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  OnDestroy } from '@angular/core';
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef} from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
@@ -21,7 +23,8 @@ import { IProduct } from '../../interfaces/product.interface';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.html',
-  styleUrls: ['./search-bar.scss']
+  styleUrls: ['./search-bar.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchBarComponent implements OnInit, OnDestroy {
   @ViewChild('searchBox', {static: true}) searchBox: ElementRef;
@@ -33,6 +36,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly store: Store<IAppState>,
+    private readonly cdr: ChangeDetectorRef
   ) { }
 
   public ngOnInit(): void {
@@ -47,6 +51,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         if (!this.searchWrapper.nativeElement.contains(el.target)) {
           this.searchValue = '';
         }
+        this.cdr.detectChanges();
     });
   }
 

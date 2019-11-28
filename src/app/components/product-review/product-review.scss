@@ -24,6 +24,7 @@
     height: 130px;
     font-size: 1rem;
     color: $fontColorDark;
+    resize: none;
 
     &:focus {
       outline: none;

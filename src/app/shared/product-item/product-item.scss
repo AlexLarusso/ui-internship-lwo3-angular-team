@@ -13,16 +13,6 @@
   font-size: 0.8rem;
 }
 
-@keyframes imageScale {
-  from {
-    transform: scale(0.9);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
 .new {
   &::after {
     @include tagStyle;
@@ -85,7 +75,6 @@
 
   &__picture {
     height: 340px;
-    animation: imageScale .5s ease-in-out 1 forwards;
 
     &__container {
       position: relative;
