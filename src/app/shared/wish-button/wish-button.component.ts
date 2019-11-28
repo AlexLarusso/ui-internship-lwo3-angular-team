@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,8 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-wish-button',
   templateUrl: './wish-button.html',
-  styleUrls: ['./wish-button.scss']
+  styleUrls: ['./wish-button.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishButtonComponent implements OnInit, OnDestroy {
   @Input() public productId: string;

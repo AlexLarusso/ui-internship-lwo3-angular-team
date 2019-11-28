@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -9,7 +9,9 @@ import { skipWhile } from 'rxjs/operators';
 @Component({
   selector: 'app-parallax',
   templateUrl: './parallax.html',
-  styleUrls: ['./parallax.scss']
+  styleUrls: ['./parallax.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ParallaxComponent implements OnInit, OnDestroy {
   @Input() public parallaxClass: string;

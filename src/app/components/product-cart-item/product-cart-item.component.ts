@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 

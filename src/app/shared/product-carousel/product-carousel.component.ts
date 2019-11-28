@@ -1,7 +1,7 @@
 import {
   Component, OnInit, AfterViewInit, AfterViewChecked,
   ViewChild, HostListener, ElementRef, Input, ChangeDetectorRef,
-  OnDestroy
+  OnDestroy, ChangeDetectionStrategy
 } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -42,7 +42,8 @@ const PRODUCT_ITEM_MARGIN = 30;
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.html',
-  styleUrls: ['./product-carousel.scss']
+  styleUrls: ['./product-carousel.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   @Input() public productData: Array<IProductShortInfo>;

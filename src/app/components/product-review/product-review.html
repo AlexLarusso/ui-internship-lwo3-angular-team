@@ -1,12 +1,12 @@
 <div class="review__wrapper">
   <h3 class="feedback__title">Review</h3>
   <div class="feedback__left">
-    <star-rating
+    <star-rating #star
       checkedcolor="orange"
       uncheckedcolor="gray"
       size="24px"
       readonly="false"
-      [value]="0"
+      [value]="defaultValue"
       (rate)="onRate($event)">
     </star-rating>
     <textarea #feedback
