@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ProductService } from '../services/product.service';
 import { ImagePlaceholder } from '../../app.enum';
@@ -6,7 +6,8 @@ import { ImagePlaceholder } from '../../app.enum';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.html',
-  styleUrls: ['./product-item.scss']
+  styleUrls: ['./product-item.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductItemComponent implements OnInit {
   public placeholderImage = ImagePlaceholder.IMAGE_NOT_FOUND;
@@ -19,6 +20,7 @@ export class ProductItemComponent implements OnInit {
   @Input() public productPrice = 0;
   @Input() public productId: string;
   @Input() public status = '';
+  @Input() public hartScaled = false;
 
   public currentImageUrl: string;
 

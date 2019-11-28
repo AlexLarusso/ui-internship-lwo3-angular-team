@@ -9,10 +9,27 @@ export const getAllProducts = createSelector(
 
 export const getFilteredProducts = createSelector(
   getProducts,
-  (state: IState) => state.filteredProducts
+  (state: IState) => state.products.filter(
+    product => {
+      const { criteriaName, value } = state.filterCriteria;
+
+      return Array.isArray(product[criteriaName])
+        ? product[criteriaName].includes(value)
+        : product[criteriaName] === value;
+    }
+  )
 );
 
-export const getAllProductImages = createSelector(
+export const getSearchByNameResult = createSelector(
   getProducts,
-  (state: IState) => state.productImages
+  (state: IState) => state.products.filter(
+    product => {
+      const { searchInput } = state;
+
+      if (searchInput) {
+
+        return product.productName.toLowerCase().includes(searchInput.toLowerCase());
+      }
+    }
+  )
 );

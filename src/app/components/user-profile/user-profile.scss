@@ -1,0 +1,42 @@
+@import '../../styles/_variables.scss';
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    margin: 10px;
+  }
+
+  &__picture {
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 11px $shadowMedium;
+    border: 1px solid $bgColorLight;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-profile__pages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+  }
+}

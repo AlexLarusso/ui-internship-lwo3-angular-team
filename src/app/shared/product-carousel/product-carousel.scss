@@ -37,13 +37,13 @@ button {
   color: $fontColorLight;
 }
 
-.left {
+.prev {
   position: absolute;
   top: 42%;
   left: 5%;
 }
 
-.right {
+.next {
   position: absolute;
   top: 42%;
   right: 5%;
@@ -60,8 +60,8 @@ button {
     }
   }
 
-  .right,
-  .left {
+  .prev,
+  .next {
     display: none;
   }
 }

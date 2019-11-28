@@ -10,7 +10,8 @@ export enum AuthActionTypes {
   LOG_OUT = '[Auth] Logout',
   IS_LOGGED_IN = '[Auth] Is Logged In',
   ACCESS_DENIED = '[Auth] Access Denied',
-  SET_USER_NAME = '[Auth] Get User Name'
+  SET_USER_NAME = '[Auth] Get User Name',
+  SET_USER_FULL_NAME = '[Auth] Set User Full Name'
 }
 
 export class LogIn implements Action {
@@ -58,4 +59,9 @@ export class AccessDenied implements Action {
 export class SetUserName implements Action {
   constructor(public payload: any) {}
   readonly type = AuthActionTypes.SET_USER_NAME;
+}
+
+export class SetUserFullName implements Action {
+  constructor(public payload: any) {}
+  readonly type = AuthActionTypes.SET_USER_FULL_NAME;
 }

@@ -1,27 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { ScrollService } from 'src/app/shared/services';
 import { IPageAnchor } from 'src/app/interfaces';
+import { switchMap, map } from 'rxjs/operators';
 
-@AutoUnsubscribe()
 @Component({
   selector: 'app-scroll',
   templateUrl: './scroll.html',
-  styleUrls: ['./scroll.scss']
+  styleUrls: ['./scroll.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScrollComponent implements OnInit, OnDestroy {
-  public pageComponents: IPageAnchor[] = [];
-  public activeElement: number;
+export class ScrollComponent implements OnInit {
   public toHeaderIcon: IconDefinition = faChevronUp;
   public toFooterIcon: IconDefinition = faChevronDown;
-  public anchorsSub: Subscription;
-  public activeAnchorSub: Subscription;
+  public anchors$: Observable<Array<IPageAnchor>>;
+  public activeAnchor$: Observable<IPageAnchor>;
 
   constructor(private scrollService: ScrollService) { }
 
@@ -30,13 +27,11 @@ export class ScrollComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.anchorsSub = this.scrollService.anchors
-      .subscribe((anchors: IPageAnchor[]) =>
-        this.pageComponents = anchors);
-    this.activeAnchorSub = this.scrollService.activeAnchor
-      .subscribe((index: number) =>
-        this.activeElement = index);
+    this.anchors$ = this.scrollService.anchors;
+    this.activeAnchor$ = this.anchors$.pipe(
+      switchMap(anchors => this.scrollService.activeAnchor.pipe(
+        map(index => anchors[index])
+      ))
+    );
   }
-
-  public ngOnDestroy(): void { }
 }

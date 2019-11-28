@@ -1,0 +1,50 @@
+<div class="review__wrapper">
+  <h3 class="feedback__title">Review</h3>
+  <div class="feedback__left">
+    <star-rating #starRatingRef
+      checkedcolor="orange"
+      uncheckedcolor="gray"
+      size="24px"
+      readonly="false"
+      [value]="defaultValue"
+      (rate)="onRate($event)">
+    </star-rating>
+    <textarea #feedback
+      class="feedback__text"
+      maxLength="{{ maxCharNum }}"
+      (keyup)="charCount()"></textarea>
+    <span class="characters_left">({{ charLeft }})</span>
+    <app-button (click)="sendFeedback()">Leave Feedback</app-button>
+  </div>
+  <h3 class="feedback__title">Custom feedbacks</h3>
+  <div class="feedback__review">
+    <div *ngIf="currentProductReviews$ | async as reviews">
+      <div *ngIf="reviews?.length; else noReviews">
+        <div *ngFor="let review of reviews" class="feedback">
+          <div class="user__details">
+            <img alt="user avatar"
+              class="user__avatar"
+              [src]="userIconSrc" />
+            <div class="details__wrapper">
+              <star-rating
+                checkedcolor="orange"
+                uncheckedcolor="gray"
+                size="12px"
+                readonly="true"
+                [value]="review.rating">
+              </star-rating>
+              <h4 class="user__name">{{ review.createdBy }}</h4>
+              <p class="feedback__data">{{ review.createdAt | date:'medium' }}</p>
+            </div>
+          </div>
+          <div class="feedback__details">
+            <p class="feedback__message">{{ review.message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noReviews>
+      <p class="feedback_empty">No one left a feedback yet. Be the first!</p>
+    </ng-template>
+  </div>
+</div>

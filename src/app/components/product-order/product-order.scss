@@ -1,6 +1,6 @@
 @import 'src/app/styles/variables';
 
-$section-spacing: 25px;
+$section-spacing: 10px;
 $itemShadowColor: rgba(100, 100, 100, 0.4);
 
 .product-order {
@@ -57,7 +57,7 @@ $itemShadowColor: rgba(100, 100, 100, 0.4);
     grid-template-columns: 1fr;
 
     &__image-preview {
-      grid-row-start: 2;
+      grid-row-start: 1;
     }
   }
 }

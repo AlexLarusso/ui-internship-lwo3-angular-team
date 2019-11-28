@@ -1,53 +1,75 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import {
+    Component,
+    Input,
+    OnInit,
+    HostListener,
+    ViewChild
+  } from '@angular/core';
+
+import { NgxImageZoomComponent } from 'ngx-image-zoom';
 
 import { Store } from '@ngrx/store';
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { IAppState } from 'src/app/store/app.store';
 import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
+import { IAppState } from 'src/app/store/app.store';
 
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
-import { IProductImage } from 'src/app/interfaces/product-image.interface';
+import { IconDefinition, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
-@AutoUnsubscribe()
+import { IProductMedia, IProductImage } from 'src/app/interfaces';
+import { ImagePlaceholder } from 'src/app/app.enum';
+
 @Component({
   selector: 'app-product-preview',
   templateUrl: './product-preview.html',
   styleUrls: ['./product-preview.scss']
 })
-export class ProductPreviewComponent implements OnInit, OnDestroy {
-  @Input() private productImages: Array<IProductImage>;
+export class ProductPreviewComponent implements OnInit {
   @Input() public productTitle: string;
+  @Input() private productVideoUrl: string;
+  @Input() private productImages: Array<IProductImage>;
 
-  public imagesSource: Array<string>;
-  public selectedImageID: number;
-  public productSelectedColorSub: Subscription;
+  @ViewChild(NgxImageZoomComponent, {static: false}) zoomComponent: any;
 
-  private productSelectedColor: string;
+  public productMedia$: Observable<Array<IProductMedia>>;
+  public videoPreviewIcon: IconDefinition = faPlayCircle;
+  public selectedMediaIndex: number;
+  public videoPlaceholder = ImagePlaceholder.IMAGE_NOT_FOUND;
 
   constructor(private store: Store<IAppState>) { }
 
-  public ngOnInit(): void {
-    this.productSelectedColorSub = this.store.select(getProductSelectedColor)
-      .subscribe(color => {
-        this.selectedImageID = 0;
-        this.productSelectedColor = color;
-        this.imagesSource = this.findImagesSource();
-      });
-  }
+  @HostListener('window:resize', [])
+  public onResize(): void {
+    if (this.zoomComponent) {
+      const container = this.zoomComponent.zoomContainer.nativeElement;
 
-  public ngOnDestroy() { }
+      container.style.width = '100%';
+      container.style.height = '100%';
+  }}
+
+  public ngOnInit(): void {
+    this.productMedia$ = this.store.select(getProductSelectedColor).pipe(
+      tap(() => this.selectedMediaIndex = 0),
+      map(color => this.findImagesSource(color)),
+      map(media => this.productVideoUrl
+          ? [...media, { video: true, url: this.productVideoUrl }]
+          : media),
+    );
+  }
 
   public onImageSelect(index: number): void {
-    this.selectedImageID = index;
+    this.selectedMediaIndex = index;
   }
 
-  private findImagesSource(): Array<string> {
-    const productImages = this.productSelectedColor
+  private findImagesSource(productSelectedColor: string): Array<IProductMedia> {
+    const productImages = productSelectedColor
       ? this.productImages.find(images =>
-          images.value === this.productSelectedColor)
+          images.value === productSelectedColor)
       : this.productImages[0];
 
-    return productImages ? productImages.url : [];
+    return productImages
+      ? productImages.url.map(image => ({ video: false, url: image }))
+      : [];
   }
 }

@@ -1,15 +1,35 @@
-<div *ngIf="imagesSource?.length" class="product-preview">
-  <img
-    class="img_preview"
-    alt="{{ productTitle }}"
-    title="{{ productTitle }}"
-    [src]="imagesSource[selectedImageID]"
-  >
-  <img *ngFor="let url of imagesSource; let i = index"
-    class="img_small"
-    alt="{{ productTitle }}"
-    [src]="url"
-    [class.selected]="i === selectedImageID"
-    (click)="onImageSelect(i)"
-  >
+<div *ngIf="productMedia$ | async as mediaSource" class="product-preview">
+  <ngx-image-zoom #zoomContainer
+    *ngIf="!mediaSource[selectedMediaIndex].video; else videoPreview"
+    [thumbImage]="mediaSource[selectedMediaIndex].url" 
+    [fullImage]="mediaSource[selectedMediaIndex].url"
+    [magnification]="1.2">
+  </ngx-image-zoom>
+  <ng-template #videoPreview>
+    <video controls loop autoplay
+      class="product-preview__full-view" 
+      [src]="mediaSource[selectedMediaIndex].url" 
+      #productVideo> 
+      <!-- TODO: Remove video flickering -->
+    </video>
+  </ng-template>
+  <div
+    *ngFor="let media of mediaSource; let i = index"
+    class="product-preview__small-view__container"
+    (click)="onImageSelect(i);">
+    <img
+      *ngIf="!media.video; else videoSmall"
+      class="product-preview__small-view"
+      alt="{{ productTitle }}"
+      [src]="media.url"
+      [class.selected]="i === selectedMediaIndex"/>
+    <ng-template #videoSmall>
+      <video
+        class="product-preview__small-view"
+        [class.selected]="i === selectedMediaIndex">
+        <source src="{{ media.url }}#t=0.1" type="video/mp4" />
+      </video>
+      <fa-icon class="video-icon" [icon]="videoPreviewIcon"></fa-icon>
+    </ng-template>
+  </div>
 </div>

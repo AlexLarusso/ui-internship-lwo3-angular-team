@@ -17,21 +17,9 @@ export class ProductsEffects {
   }
 
   @Effect()
-  public loadProductImages$ = this.actions$
-  .pipe(
-    ofType(LoadProducts.TYPE),
-    switchMap(() =>
-      this.httpService.getImages()
-        .pipe(
-          map(images => new SetProductImages(images))
-        )
-    )
-  );
-
-  @Effect()
   public loadProducts$ = this.actions$
   .pipe(
-    ofType(SetProductImages.TYPE),
+    ofType(LoadProducts.TYPE),
     switchMap(() =>
       this.httpService.getAllProducts()
         .pipe(

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -19,7 +19,8 @@ import { IProductShortInfo } from '../../interfaces';
 @Component({
   selector: 'app-wish-list',
   templateUrl: './wish-list.html',
-  styleUrls: ['./wish-list.scss']
+  styleUrls: ['./wish-list.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishListComponent implements OnInit, OnDestroy {
   public liked$: Observable<Array<string>>;

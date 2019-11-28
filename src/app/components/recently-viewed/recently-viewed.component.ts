@@ -14,7 +14,7 @@ import { ProductFormat } from 'src/app/app.enum';
 @Component({
   selector: 'app-recently-viewed',
   templateUrl: 'recently-viewed.html',
-  styleUrls: ['recently-viewed.scss']
+  styleUrls: ['recently-viewed.scss'],
 })
 export class RecentlyViewedComponent implements OnInit, OnDestroy {
   public recentlyViewedProducts: Array<IProductShortInfo> = [];
@@ -38,11 +38,10 @@ export class RecentlyViewedComponent implements OnInit, OnDestroy {
       .pipe(
         switchMap(ids => {
           return forkJoin(this.productService.getProductsByIds(ids, ProductFormat.short));
-        }),
+        })
       )
-      .subscribe(product => {
-        this.recentlyViewedProducts = product.sort((a, b) => b.order - a.order);
-       });
+      .subscribe(products =>
+        this.recentlyViewedProducts = products.sort((prev, next) => next.order - prev.order));
   }
 
   public ngOnDestroy(): void { }
