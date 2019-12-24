@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  chatUrl: 'http://localhost:4200'
 };
 
 /*
