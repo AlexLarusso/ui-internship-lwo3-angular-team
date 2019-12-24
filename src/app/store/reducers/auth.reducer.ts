@@ -7,13 +7,15 @@ export interface IState {
   user: User | null;
   errorMessage: string | null;
   userName: string | null;
+  userFullName: string | null;
 }
 
 export const initialState: IState = {
   isAuthenticated: false,
   user: null,
   errorMessage: null,
-  userName: localStorage.getItem('userName') || ''
+  userName: localStorage.getItem('userName') || '',
+  userFullName: localStorage.getItem('userFullName') || '',
 };
 
 export function authReducer(state = initialState, action: any): IState {
@@ -77,6 +79,13 @@ export function authReducer(state = initialState, action: any): IState {
         user: {
           userName : nameSetter
         },
+      };
+    }
+    case AuthActionTypes.SET_USER_FULL_NAME: {
+
+      return {
+        ...state,
+          userFullName : payload
       };
     }
     default: {

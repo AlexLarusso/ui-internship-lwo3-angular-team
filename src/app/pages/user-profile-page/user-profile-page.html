@@ -1,0 +1,84 @@
+<div class="user-profile-page">
+  <div class="user-profile-page__container content__container">
+    <div class="user-profile-page__image-wrapper">
+      <img
+        class="user-profile-page__picture"
+        alt="User avatar"
+        [src]="userAvatarUrl">
+      <h3 class="user-profile-page__title">{{ userName }}</h3>
+      <span class="user-profile-page__status"></span>
+    </div>
+    <div class="user-profile-page__user-info__wrapper">
+      <div class="user-profile-page__options">
+        <app-button
+          *ngIf="!changeUserName"
+          buttonClass="button_accent button_navigation"
+          class="user-profile-page__button"
+          (click)="onChangeUserName()">
+          Change name
+        </app-button>
+        <app-button
+          *ngIf="!changeUserEmail"
+          buttonClass="button_accent button_navigation"
+          class="user-profile-page__button"
+          (click)="onChangeUserEmail()">
+          Change email
+        </app-button>
+          <app-button
+          *ngIf="!changeUserPassword"
+          buttonClass="button_accent button_navigation"
+          class="user-profile-page__button"
+          (click)="onChangeUserPassword()">
+          Change password
+        </app-button>
+        </div>
+        <div class="user-profile-page__field">
+          <div *ngIf="changeUserName" class="user-profile-page__user-info">
+          <span class="user-profile-page__user-info__title">Change name</span>
+          <input
+            #userFirstName
+            type="text"
+            class="user-profile-page__name"
+            placeholder="First name">
+          <input
+            #userLastName
+            type="text"
+            class="user-profile-page__name"
+            placeholder="Last name">
+          <app-button
+            class="user-profile-page__button"
+            buttonClass="button_navigation"
+            (click)="onUpdateUserName()">
+            Apply
+          </app-button>
+        </div>
+        <div *ngIf="changeUserEmail" class="user-profile-page__user-info">
+          <span class="user-profile-page__user-info__title">Change email</span>
+          <input type="text" class="user-profile-page__name"
+            placeholder="New email">
+          <app-button
+            class="user-profile-page__button"
+            buttonClass="button_navigation"
+            (click)="onUpdateUserEmail()">
+            Apply
+          </app-button>
+        </div>
+        <div *ngIf="changeUserPassword" class="user-profile-page__user-info">
+          <span class="user-profile-page__user-info__title">
+            Change password
+          </span>
+          <input type="text" class="user-profile-page__name"
+            placeholder="Current password">
+          <input type="text" class="user-profile-page__name"
+            placeholder="New password">
+          <app-button
+            class="user-profile-page__button"
+            buttonClass="button_navigation"
+            (click)="onUpdatePassword()">
+            Apply
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

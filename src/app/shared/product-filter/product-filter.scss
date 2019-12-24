@@ -28,10 +28,9 @@
   &-container {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
     box-shadow: 0 0 10px rgba(33, 33, 33, 0.2);
     background-color: $bgColorLight;
-    margin: 20px 0 10px 10px;
+    margin: 35px 0 10px 10px;
   }
 
   &-criteria {
@@ -102,16 +101,17 @@
     }
   }
 
+  &__checkbox {
+    &:checked + .label__text .label__check {
+      animation: check .2s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
 
-  &__checkbox:checked + &__text &__check {
-    animation: check .2s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
-
-    .icon {
-      opacity: 1;
-      transform: scale(0);
-      color: $bgColorLight;
-      -webkit-text-stroke: 0;
-      animation: icon .2s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+      .icon {
+        opacity: 1;
+        transform: scale(0);
+        color: $bgColorLight;
+        -webkit-text-stroke: 0;
+        animation: icon .2s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+      }
     }
   }
 }
@@ -178,6 +178,7 @@
 @media screen and (max-width: 992px) {
   .filter {
     &-container {
+      margin-top: 15px;
       width: 90%;
       padding: 15px;
     }
@@ -198,6 +199,7 @@
       }
 
       &__subtitle {
+        width: 150px;
         font-size: 0.8rem;
       }
     }

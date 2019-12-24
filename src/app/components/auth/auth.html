@@ -4,15 +4,15 @@
       [ngClass]="isLoginOpen ? 'authentication__login' : 'authentication__sign-up'">
       <div class="col-6 login__container">
         <button
-          [ngClass]="isLoginOpen ? 'authentication__redirect' : 'authentication__redirect_active'"
-          (click)="closeModal('login');openModal('signUp')">
+          (click)="closeModal('login');openModal('signUp')"
+          [ngClass]="isLoginOpen ? 'authentication__redirect' : 'authentication__redirect_active'">
           Register new user
         </button>
       </div>
       <div class="col-6 sign-up__container">
         <button
-          [ngClass]="isLoginOpen ? 'authentication__redirect_active' : 'authentication__redirect'"
-          (click)="closeModal('signUp');openModal('login')">
+          (click)="closeModal('signUp');openModal('login')"
+          [ngClass]="isLoginOpen ? 'authentication__redirect_active' : 'authentication__redirect'">
           Login as an existing user
         </button>
       </div>
@@ -38,9 +38,9 @@
           id="login-email"
           class="authentication__input"
           placeholder="Please enter your email"
-          [(ngModel)]="user.email"
+          (input)="onValidateEmail()"
           [class.error]="!isEmailValid"
-          (input)="onValidateEmail()" />
+          [(ngModel)]="user.email">
       </div>
       <div class="authentication__field">
         <label 
@@ -55,9 +55,10 @@
           id="login-password"
           class="authentication__input"
           placeholder="Please enter your password"
-          [(ngModel)]="user.password"
+          autocomplete="current-password"
+          (input)="onValidatePassword()"
           [class.error]="!isPasswordValid"
-          (input)="onValidatePassword()">
+          [(ngModel)]="user.password">
       </div>
     </form>
     <div class="modal-button__container col-12">

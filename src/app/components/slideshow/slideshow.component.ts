@@ -1,6 +1,6 @@
 import {
   Component, OnInit, ViewChild, EventEmitter, ElementRef,
-  AfterViewInit, HostListener, OnDestroy
+  AfterViewInit, HostListener, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
@@ -26,7 +26,8 @@ const images: Array<string> = [
   selector: 'app-slideshow',
   templateUrl: './slideshow.html',
   styleUrls: ['./slideshow.scss'],
-  animations: [slideshowAnimation]
+  animations: [slideshowAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('previous', { static: true }) previousEl: ElementRef;
@@ -51,11 +52,13 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
     this.deviceCheck();
   }
 
+  constructor(private cdr: ChangeDetectorRef) { }
+
   public ngOnInit(): void {
     const prevModified$ = fromEvent(this.previousEl.nativeElement, 'click').pipe(
       throttleTime(500),
       tap(() => this.stopTimer()),
-      map(() => ({ shift: -1, direction: 'right' })),
+      map(() => ({ shift: -1, direction: 'right' }))
     );
 
     const nextModified$ = fromEvent(this.nextEl.nativeElement, 'click').pipe(
@@ -99,6 +102,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(event => {
         this.currentIndex = event.index;
         this.currentDirection = event.direction;
+        this.cdr.detectChanges();
       });
   }
 

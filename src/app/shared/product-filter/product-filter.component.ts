@@ -53,6 +53,7 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
     this.productSub = this.store
       .select(getFilteredProducts).subscribe(filteredProducts => {
         this.products = filteredProducts;
+
         this.onSetFilters();
       });
   }

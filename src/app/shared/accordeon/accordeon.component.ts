@@ -1,13 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { faChevronDown, faChevronUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-accordeon',
   templateUrl: './accordeon.html',
-  styleUrls: ['./accordeon.scss']
+  styleUrls: ['./accordeon.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccordeonComponent implements OnInit {
-  @Input() content: { title: string; text: string; }[];
+  @Input() public content: { title: string; text: string; }[];
 
   public selectedTopic: number;
   public iconExpand: IconDefinition = faChevronDown;

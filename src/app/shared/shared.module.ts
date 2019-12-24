@@ -31,6 +31,8 @@ import { PaypalCheckoutComponent } from '../components/paypal-checkout/paypal-ch
 import { SelectQuantityComponent } from './select-quantity/select-quantity.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { AuthComponent } from '../components/auth/auth.component';
+import { UserProfileComponent } from '../components/user-profile/user-profile.component';
+import { SearchBarComponent } from '../components/search-bar/search-bar.component';
 import { ProductsViewComponent } from './products-view/products-view.component';
 
 @NgModule({
@@ -63,7 +65,10 @@ import { ProductsViewComponent } from './products-view/products-view.component';
     SelectQuantityComponent,
     ProductFilterComponent,
     AuthComponent,
-    ProductsViewComponent
+    UserProfileComponent,
+    ProductsViewComponent,
+    SearchBarComponent,
+    ProductsViewComponent,
   ],
   imports: [
     CommonModule,
@@ -98,7 +103,10 @@ import { ProductsViewComponent } from './products-view/products-view.component';
     SelectQuantityComponent,
     ProductFilterComponent,
     AuthComponent,
-    ProductsViewComponent
+    UserProfileComponent,
+    ProductsViewComponent,
+    SearchBarComponent,
+    ProductsViewComponent,
   ]
 })
 

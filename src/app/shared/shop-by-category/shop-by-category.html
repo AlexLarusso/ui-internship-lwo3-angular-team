@@ -1,11 +1,13 @@
-<div class="shop-by-category content__container">
-  <app-product-filter
-    (dataChange)="onDataChange($event)">
-  </app-product-filter>
-  <div class="products__wrapper">
-    <h2 class="content__title">{{ filterCategory | titlecase }} Collection</h2>
-    <app-products-view
-      [products]="filteredItems">
-    </app-products-view>
+<div class="shop-by-category__wrapper">
+  <div class="shop-by-category content__container">
+    <app-product-filter (dataChange)="onDataChange($event)">
+    </app-product-filter>
+    <div class="products__wrapper">
+      <h2 class="content__title">
+        {{ filterCategory | titlecase }} Collection
+      </h2>
+      <app-products-view [products]="filteredItems">
+      </app-products-view>
+    </div>
   </div>
 </div>

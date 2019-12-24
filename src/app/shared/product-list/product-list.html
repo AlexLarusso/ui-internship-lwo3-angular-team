@@ -1,14 +1,16 @@
 <div class="products">
   <div class="content__container products__wrapper">
-    <h2 class="col-12 content__title">{{ listTitle }}</h2>
+    <h2 class="col-12 content__title">
+      {{ listTitle }}
+    </h2>
     <app-products-view
       [products]="(products$ | async) | slice:0:visibleNumber">
     </app-products-view>
     <app-button
       class="button_load"
       buttonClass="button_load-more"
-      (click)="loadMore()"
-      [isDisabled]="!isLoadMoreActive">
+      [isDisabled]="!isLoadMoreActive"
+      (click)="loadMore()">
       Load more
     </app-button>
   </div>

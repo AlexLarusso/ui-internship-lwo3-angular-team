@@ -2,12 +2,12 @@
 
 $buttons-spacing: 15px;
 $button-size: 22px;
-$select-color-height: 40px;
+$select-color-height: 30px;
 $item-shadow-color: rgba(100, 100, 100, .4);
 
 .select-color {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: white;
   height: $select-color-height;

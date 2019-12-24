@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+
+@mixin flex-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-profile-page {
+  background-color: $bgColorMedium;
+
+  &__title {
+    margin: 15px;
+    font-size: 1.5rem;
+  }
+
+  &__field {
+    @include flex-align;
+  }
+
+  &__options,
+  &__user-info {
+    @include flex-align;
+
+    margin: 0 25px;
+
+    &__wrapper {
+      @include flex-align;
+
+      justify-content: space-around;
+      margin: 15px;
+      height: 444px;
+      box-shadow: 0 0 11px $shadowMedium;
+      background-color: $bgColorLight;
+    }
+
+    &__title {
+      margin: 15px 0;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__name {
+    margin-top: 15px;
+    box-shadow: 0 0 11px $shadowMedium;
+    border: 1px solid $bgColorMedium;
+    padding-left: 10px;
+    outline: none;
+    width: 150px;
+  }
+
+  &__button {
+    margin: 30px 0;
+    width: 200px;
+  }
+
+  &__image-wrapper {
+    @include flex-align;
+
+    margin: 15px;
+    box-shadow: 0 0 11px $shadowMedium;
+    background-color: $bgColorLight;
+  }
+
+  &__picture {
+    overflow: hidden;
+    margin: 30px;
+    margin-bottom: 15px;
+    width: 300px;
+    height: 320px;
+  }
+
+  &__name {
+    width: 200px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-profile-page {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__image-wrapper {
+      overflow: hidden;
+      text-align: center;
+    }
+
+    &__picture {
+      margin: 15px;
+      width: 250px;
+      height: 260px;
+    }
+  }
+}

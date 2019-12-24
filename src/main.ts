@@ -22,7 +22,6 @@ if (chatUrl) {
 
   window.addEventListener('message', (message) => {
     if (message.origin === chatUrl) {
-      console.log(message)
       chatik.setAttribute('chat-opened', message.data.chatOpened);
     }
   });

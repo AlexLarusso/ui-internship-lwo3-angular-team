@@ -1,0 +1,23 @@
+<div
+  #searchWrapper
+  class="search">
+  <input 
+    class="search__input"
+    placeholder="Search"
+    type="text" 
+    (input)="search()"
+    [(ngModel)]="searchValue">
+  <ul 
+    *ngIf="searchValue" 
+    class="search__dropdown">
+    <li 
+      *ngFor="let product of products$ | async"
+      class="search__result"
+      routerLink="/products/{{product._id}}"
+      (click)="searchValue=''">
+      <a class="search__product">
+        {{ product.productName }}
+      </a>
+    </li>
+  </ul>
+</div>

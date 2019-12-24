@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy, HostListener, Input } from '@angular/core';
+import {
+  Component, OnInit, OnDestroy, HostListener, Input, ChangeDetectionStrategy
+} from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { Store } from '@ngrx/store';
@@ -36,6 +38,7 @@ const BREAK_POINTS = {
   selector: 'app-product-list',
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   @Input() public listTitle = 'From Our Collection';

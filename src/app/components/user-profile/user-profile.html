@@ -1,0 +1,31 @@
+<div class="user-profile">
+  <div class="user-profile__image-wrapper">
+    <a routerLink="user-profile" (click)="onCloseModal('userProfile')">
+      <img
+      alt="User avatar"
+      class="user-profile__picture"
+      [src]="userAvataUrl">
+    </a>
+    <span class="user-profile__status"></span>
+  </div>
+  <div class="user-profile__pages">
+    <a
+      class="user-profile__item"
+      routerLink="user-profile"
+      (click)="onCloseModal('userProfile')">
+      Profile
+    </a>
+    <a
+      class="user-profile__item"
+      routerLink="in-development"
+      (click)="onCloseModal('userProfile')">
+      Shopping history
+    </a>
+    <a
+      class="user-profile__item"
+      routerLink="in-development"
+      (click)="onCloseModal('userProfile')">
+      Wish list
+    </a>
+  </div>
+</div>
