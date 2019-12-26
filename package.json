@@ -1,6 +1,6 @@
 {
   "name": "ui-internship-lwo3-angular-team",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "npm i && ng serve",
