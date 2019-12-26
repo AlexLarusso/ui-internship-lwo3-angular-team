@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  chatUrl: 'http://localhost:4200'
+  chatUrl: 'http://chat:80'
 };
 
 /*
