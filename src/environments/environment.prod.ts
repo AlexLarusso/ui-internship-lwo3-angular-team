@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  chatUrl: 'http://chat:80'
+  chatUrl: 'http://35.198.130.252'
 };

@@ -21,7 +21,12 @@ if (chatUrl) {
   document.body.appendChild(chatik);
 
   window.addEventListener('message', (message) => {
+    console.log(message.origin, message.data.chatOpened);
+    
     if (message.origin === chatUrl) {
+      console.log(message.data.chatOpened);
+      
+      // document.querySelector('iframe').setAttribute('chat-opened', message.data.chatOpened);
       chatik.setAttribute('chat-opened', message.data.chatOpened);
     }
   });
