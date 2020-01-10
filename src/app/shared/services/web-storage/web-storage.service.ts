@@ -7,8 +7,9 @@ import { WebStorageFacade } from 'src/app/store/web-storage/web-storage.facade';
 })
 
 export class WebStorageService {
-  constructor(public webStorageFacade: WebStorageFacade) { }
   public value: string;
+
+  constructor(public webStorageFacade: WebStorageFacade) { }
 
   public setValue(key: string, value: string): void {
     this.webStorageFacade.setValue(key, value);
@@ -18,7 +19,8 @@ export class WebStorageService {
   }
 
   public getValue(key: string): string {
-    this.webStorageFacade.getValue(key, this.value)
+    this.webStorageFacade.getValue(key, this.value);
+
     this.webStorageFacade.storageStatus$
       .subscribe(data => this.value = JSON.parse(data[key]));
 

@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { ToastrService } from 'ngx-toastr';
-
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import {
-  AddProductToCart,
-  RemoveProductFromCart,
-  ChangeProductItemQty,
-  ConfirmOrder } from './cart.actions';
+import { AddProductToCart, RemoveProductFromCart,
+  ChangeProductItemQty, ConfirmOrder } from './cart.actions';
 
 import { Observable } from 'rxjs';
 import { tap, pluck } from 'rxjs/operators';

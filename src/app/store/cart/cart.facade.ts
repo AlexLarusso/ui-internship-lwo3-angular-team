@@ -5,16 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../app.store';
-import {
-  RemoveProductFromCart,
-  ChangeProductItemQty,
-  ConfirmOrder
-} from './cart.actions';
-import {
-  getCartProductItems,
-  getCartTotalPrice,
-  getCartTotalQty
-} from 'src/app/store/cart/cart.selector';
+import { RemoveProductFromCart, ChangeProductItemQty, ConfirmOrder } from './cart.actions';
+import { getCartProductItems, getCartTotalPrice, getCartTotalQty } from 'src/app/store/cart/cart.selector';
 
 
 import { Subscription } from 'rxjs';

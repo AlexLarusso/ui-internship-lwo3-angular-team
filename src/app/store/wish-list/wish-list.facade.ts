@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-
 import { IAppState } from '../../app.store';
 import { getLiked } from './wish-list.selectors';
-
 import { AddToWishList, RemoveFromWishList } from '../../store/wish-list/wish-list.actions';
 
 @Injectable({

@@ -13,8 +13,7 @@ export class ProductsEffects {
   constructor(
     private actions$: Actions,
     public productsFacade: ProductsFacade
-  ) {
-  }
+  ) { }
 
   @Effect()
   public loadProducts$ = this.actions$

@@ -6,21 +6,14 @@ import { ToastrService } from 'ngx-toastr';
 import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/app.store';
 import { getAuth } from 'src/app/app.selector';
-import {
-  LogIn,
-  SignUp,
-  SetUserFullName,
-  LogOut,
-  IsLoggedIn,
-  AccessDenied,
-  LogInSuccess,
-  LogInFailure,
-  SignUpSuccess,
-  SignUpFailure} from './auth.actions';
+import { LogIn, SignUp, SetUserFullName,
+  LogOut, IsLoggedIn, AccessDenied,
+  LogInSuccess, LogInFailure,
+  SignUpSuccess, SignUpFailure } from './auth.actions';
 import { getUserFirstName, getAuthState, getUserFullName } from './auth.selector';
 
-import { of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 import { AuthService, ModalService } from 'src/app/shared/services';
 
@@ -35,7 +28,7 @@ export class AuthFacade {
 
   constructor(
     private store: Store<IAppState>,
-    private authService: AuthService,
+    private readonly authService: AuthService,
     private readonly modalService: ModalService,
     private readonly cookieService: CookieService,
     private readonly toastrService: ToastrService,
@@ -49,7 +42,7 @@ export class AuthFacade {
     this.store.dispatch(new SignUp(payload));
   }
 
-  public setUserFullName(payload) {
+  public setUserFullName(payload): void {
     this.store.dispatch(new SetUserFullName(payload));
   }
 
@@ -65,7 +58,7 @@ export class AuthFacade {
     this.store.dispatch(new AccessDenied());
   }
 
-  public loginAttempt(email, password): any {
+  public loginAttempt(email, password): Observable<LogInSuccess | LogInFailure> {
     return this.authService.logIn(email, password)
       .pipe(
         map(user => {
@@ -80,7 +73,7 @@ export class AuthFacade {
       );
   }
 
-  public signUpAttempt(email, password): any {
+  public signUpAttempt(email, password): Observable<SignUpSuccess | SignUpFailure> {
     return this.authService.signUp(email, password)
       .pipe(
         map(user => {
