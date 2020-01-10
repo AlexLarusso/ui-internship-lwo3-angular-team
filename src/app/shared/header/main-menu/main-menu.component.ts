@@ -1,13 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import {
-  faSearch, faCartArrowDown
-} from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-import { IAppState } from 'src/app/store/app.store';
-import { getCartTotalQty } from 'src/app/store/selectors/cart.selector';
+import { Observable } from 'rxjs';
+
+import { CartFacade } from 'src/app/store/cart/cart.facade';
 
 @Component({
   selector: 'app-main-menu',
@@ -26,9 +23,9 @@ export class MainMenuComponent implements OnInit {
   ];
   public shopingCartLink = this.menuItems[0].url;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(public cartFacade: CartFacade) { }
 
   public ngOnInit(): void {
-    this.cartItemsQty$ = this.store.select(getCartTotalQty);
+    this.cartItemsQty$ = this.cartFacade.cartItemsQty$;
   }
 }

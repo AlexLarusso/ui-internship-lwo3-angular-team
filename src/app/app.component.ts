@@ -2,14 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
-import { IAppState } from './store/app.store';
-import { LoadProducts } from './store/actions/products.action';
 
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { ScrollService } from './shared/services';
+import { ProductsFacade } from './store/products/products.facade';
 
 @AutoUnsubscribe()
 @Component({
@@ -23,11 +21,11 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private scrollService: ScrollService,
     private router: Router,
-    private store: Store<IAppState>
+    public productsFacade: ProductsFacade
   ) { }
 
   public ngOnInit(): void {
-    this.store.dispatch(new LoadProducts());
+    this.productsFacade.loadProducts();
     window.onbeforeunload = () => window.scrollTo(0, 0);
 
     this.routerSub = this.router.events.pipe(filter(event => event instanceof NavigationEnd))

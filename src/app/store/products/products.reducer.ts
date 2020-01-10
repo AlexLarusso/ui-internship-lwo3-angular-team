@@ -1,6 +1,6 @@
 import {
   SetProducts,  LoadProducts, ProductsActions, SetFilterCriteria, SearchByProductName
-} from '../actions/products.action';
+} from './products.action';
 import { IProduct, IFilterCriteria } from '../../interfaces';
 import { URLs } from 'src/app/app.enum';
 

@@ -5,20 +5,13 @@ import {
   faGoogle
 } from '@fortawesome/free-brands-svg-icons';
 
-import { Observable, Subscription } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { getAuth } from 'src/app/store/selectors/app.selectors';
-import { LogOut, IsLoggedIn } from 'src/app/store/actions/auth.actions';
-
-import { ModalService } from '../../../shared/services/modal-service';
-import { AuthService } from '../../services/auth.service';
-import { getUserFirstName, getUserFullName } from 'src/app/store/selectors/auth.selector';
-import { LocalStorageService } from '../../services';
-import { getStorageStatus } from 'src/app/store/selectors/web-storage.selectors';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { AuthFacade } from 'src/app/store/auth/auth.facade';
+import { ModalService, LocalStorageService, AuthService  } from '../../../shared/services';
 
 @AutoUnsubscribe()
 @Component({
@@ -45,32 +38,31 @@ export class LineBarComponent implements OnInit, OnDestroy {
 
   constructor(
     public modalService: ModalService,
-    private store: Store<IAppState>,
     private authService: AuthService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    public authFacade: AuthFacade
   ) { }
 
   public ngOnInit(): void {
 
-    this.userName$ = this.store.select(getUserFirstName)
+    this.userName$ = this.authFacade.userFirstName$
       .pipe(
         map(() =>
           this.localStorageService.getItem('userFullName') ?
             this.localStorageService.getItem('userFullName').split(' ')[0] :
             this.localStorageService.getItem('userName')));
 
-    this.userName$ = this.store.select(getUserFullName).pipe(map(state =>
+    this.userName$ = this.authFacade.userFullName$.pipe(map(state =>
       state || this.localStorageService.getItem('userName')));
 
     if (this.authService.getToken()) {
-      this.store.dispatch(new IsLoggedIn());
+      this.authFacade.isLoggedIn();
     }
 
-    this.getState = this.store.select(getAuth);
+    this.getState = this.authFacade.authState$;
 
     this.getState.subscribe((state) => {
-      this.isAuthenticated = state.isAuthenticated;
-      this.errorMessage = state.errorMessage;
+      this.isAuthenticated = state;
     });
 
     this.isSignUpOpen = this.modalService.isModalOpened.signUp;
@@ -78,7 +70,7 @@ export class LineBarComponent implements OnInit, OnDestroy {
   }
 
   public logOut(): void {
-    this.store.dispatch(new LogOut());
+    this.authFacade.logOut();
   }
 
   public closeModal(modalName: string): void {

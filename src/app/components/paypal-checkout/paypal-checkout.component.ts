@@ -2,14 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 
 import { ToastrService } from 'ngx-toastr';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
 
-import { IAppState } from 'src/app/store/app.store';
-import { getCartTotalPrice } from 'src/app/store/selectors/cart.selector';
-import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
 import { ToastrMessage } from 'src/app/app.enum';
+import { CartFacade } from 'src/app/store/cart/cart.facade';
 
 declare let paypal: any;
 
@@ -24,15 +21,15 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
 
   constructor(
-    private store: Store<IAppState>,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    public cartFacade: CartFacade
   ) { }
 
   public cartTotalPriceSub: Subscription;
   public totalPrice: number;
 
   public ngOnInit(): void {
-    this.cartTotalPriceSub = this.store.select(getCartTotalPrice)
+    this.cartTotalPriceSub = this.cartFacade.cartTotalPrice$
       .subscribe(price => this.totalPrice = price);
 
     paypal
@@ -54,7 +51,7 @@ export class PaypalCheckoutComponent implements OnInit, OnDestroy {
         },
         onApprove: async (data, actions) => {
           await actions.order.capture();
-          this.store.dispatch(new ConfirmOrder());
+          this.cartFacade.confirmOrder();
 
           this.toastrService.success(ToastrMessage.paymentSuccessful);
           // TODO: use rxjs instead

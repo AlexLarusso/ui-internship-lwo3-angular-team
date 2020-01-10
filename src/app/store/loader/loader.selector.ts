@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { getLoader } from './app.selectors';
-import { IState } from '../reducers/loader.reducer';
+import { getLoader } from '../../app.selector';
+import { IState } from './loader.reducer';
 
 export const getLoadingStatus = createSelector(
   getLoader,

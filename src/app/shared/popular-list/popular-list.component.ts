@@ -1,9 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from 'src/app/shared/services';
 import { ProductFormat } from 'src/app/app.enum';
+import { ProductsFacade } from 'src/app/store/products/products.facade';
 
 @AutoUnsubscribe()
 @Component({
@@ -26,7 +24,7 @@ export class PopularListComponent implements OnInit, OnDestroy {
 
   constructor(
     private productService: ProductService,
-    private store: Store<IAppState>
+    public productsFacade: ProductsFacade
   ) { }
 
   public ngOnInit(): void {
@@ -40,7 +38,7 @@ export class PopularListComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private productListRefresh(item?: string): void {
-    this.products$ = this.store.select(getAllProducts)
+    this.products$ = this.productsFacade.products$
       .pipe(map(data =>
         data
           .filter(product => item === product.status)

@@ -8,15 +8,12 @@ import {
 
 import { NgxImageZoomComponent } from 'ngx-image-zoom';
 
-import { Store } from '@ngrx/store';
-import { getProductSelectedColor } from 'src/app/store/selectors/product-options.selector';
-import { IAppState } from 'src/app/store/app.store';
-
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { IconDefinition, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
+import { ProductOptionsFacade } from 'src/app/store/product-options/product-options.facade';
 import { IProductMedia, IProductImage } from 'src/app/interfaces';
 import { ImagePlaceholder } from 'src/app/app.enum';
 
@@ -37,7 +34,7 @@ export class ProductPreviewComponent implements OnInit {
   public selectedMediaIndex: number;
   public videoPlaceholder = ImagePlaceholder.IMAGE_NOT_FOUND;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(public productOptionsFacade: ProductOptionsFacade) { }
 
   @HostListener('window:resize', [])
   public onResize(): void {
@@ -49,13 +46,14 @@ export class ProductPreviewComponent implements OnInit {
   }}
 
   public ngOnInit(): void {
-    this.productMedia$ = this.store.select(getProductSelectedColor).pipe(
-      tap(() => this.selectedMediaIndex = 0),
-      map(color => this.findImagesSource(color)),
-      map(media => this.productVideoUrl
+    this.productMedia$ = this.productOptionsFacade.productMedia$
+      .pipe(
+        tap(() => this.selectedMediaIndex = 0),
+        map(color => this.findImagesSource(color)),
+        map(media => this.productVideoUrl
           ? [...media, { video: true, url: this.productVideoUrl }]
           : media),
-    );
+      );
   }
 
   public onImageSelect(index: number): void {

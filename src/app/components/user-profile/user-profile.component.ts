@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ModalService } from '../../shared/services/modal-service';
+import { ModalService } from '../../shared/services';
 import { IProduct } from 'src/app/interfaces';
 
 @Component({

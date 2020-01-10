@@ -2,8 +2,8 @@ import { CartPageComponent } from './cart-page.component';
 
 import {
   getCartProductItems, getCartTotalPrice
-} from 'src/app/store/selectors/cart.selector';
-import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
+} from 'src/app/store/cart/cart.selector';
+import { ConfirmOrder } from 'src/app/store/cart/cart.actions';
 
 
 describe('CartPageComponent: ', () => {

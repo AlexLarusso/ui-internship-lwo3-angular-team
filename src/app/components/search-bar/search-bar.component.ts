@@ -5,19 +5,16 @@ import {
   ElementRef,
   OnDestroy,
   ChangeDetectionStrategy,
-  ChangeDetectorRef} from '@angular/core';
+  ChangeDetectorRef
+} from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { SearchByProductName } from 'src/app/store/actions/products.action';
-import { getSearchByNameResult } from '../../store/selectors/products.selectors';
 
 import { Observable, fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { IProduct } from '../../interfaces/product.interface';
+import { ProductsFacade } from 'src/app/store/products/products.facade';
 
 @AutoUnsubscribe()
 @Component({
@@ -35,12 +32,12 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   public searchValue: string;
 
   constructor(
-    private readonly store: Store<IAppState>,
-    private readonly cdr: ChangeDetectorRef
+    private readonly cdr: ChangeDetectorRef,
+    public productsFacade: ProductsFacade
   ) { }
 
   public ngOnInit(): void {
-    this.products$ = this.store.select(getSearchByNameResult)
+    this.products$ = this.productsFacade.searchByProductName$
       .pipe(
         debounceTime(500),
         distinctUntilChanged()
@@ -58,7 +55,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   public search(): void {
-    this.store.dispatch(new SearchByProductName(this.searchValue));
+    this.productsFacade.onSearchByProductName(this.searchValue);
   }
 }
 

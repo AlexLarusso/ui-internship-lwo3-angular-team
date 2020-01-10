@@ -1,6 +1,6 @@
-import { User } from '../../interfaces/user';
-import { AuthActionTypes } from '../actions/auth.actions';
-import { ToastrMessage } from '../../app.enum';
+import { User } from 'src/app/interfaces/user';
+import { AuthActionTypes } from './auth.actions';
+import { ToastrMessage } from 'src/app/app.enum';
 
 export interface IState {
   isAuthenticated: boolean;

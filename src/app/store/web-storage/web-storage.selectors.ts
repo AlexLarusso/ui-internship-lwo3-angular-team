@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { getStorage } from './app.selectors';
-import { IState } from '../reducers/web-storage.reducer';
+import { getStorage } from '../../app.selector';
+import { IState } from './web-storage.reducer';
 
 export const getStorageStatus = createSelector(
   getStorage,

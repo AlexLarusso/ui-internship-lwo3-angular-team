@@ -1,4 +1,4 @@
-import { WishListActions, AddToWishList, RemoveFromWishList, SetToWishList } from '../actions/wish-list.actions';
+import { WishListActions, AddToWishList, RemoveFromWishList } from './wish-list.actions';
 
 export interface IState {
   likedProducts: Array<string>;
@@ -29,12 +29,6 @@ export function wishListReducer(state = initialState, action: WishListActions): 
       return {
         ...state,
         likedProducts: newProductArray
-      };
-
-    case SetToWishList.TYPE:
-      return {
-        ...state,
-        likedProducts: [...payload]
       };
 
     default:

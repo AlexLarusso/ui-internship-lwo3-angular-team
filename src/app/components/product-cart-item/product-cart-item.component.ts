@@ -1,11 +1,9 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { CartFacade } from 'src/app/store/cart/cart.facade';
 
 import { faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-
 import { IProductCartItem } from 'src/app/interfaces';
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { RemoveProductFromCart, ChangeProductItemQty } from 'src/app/store/actions/cart.actions';
 
 @Component({
   selector: 'app-product-cart-item',
@@ -20,19 +18,19 @@ export class ProductCartItemComponent implements OnInit {
   public currentCurrency = 'USD';
   public productRouterLink: string;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(public cartFacade: CartFacade) { }
 
   public ngOnInit(): void {
     this.productRouterLink = `/products/${this.productItem.id}`;
   }
 
   public removeItemFromCart(): void {
-    this.store.dispatch(new RemoveProductFromCart(this.productItem));
+    this.cartFacade.removeItemFromCart(this.productItem);
   }
 
   public handleQtyChange(qty: number): void {
-    this.store.dispatch(new ChangeProductItemQty(
+    this.cartFacade.handleQtyChange(
       { product: this.productItem, newQty: qty }
-    ));
+    );
   }
 }

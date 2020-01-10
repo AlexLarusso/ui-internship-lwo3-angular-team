@@ -1,15 +1,13 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
-
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
-import { IAppState } from '../../store/app.store';
-import { getLiked } from '../../store/selectors/wish-list.selectors';
-import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Observable, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+
+import { WishlistFacade } from 'src/app/store/wish-list/wish-list.facade';
+import { ProductsFacade } from 'src/app/store/products/products.facade';
 
 import { ProductFormat, ToastrMessage } from '../../app.enum';
 import { ProductService } from '../../shared/services';
@@ -31,14 +29,15 @@ export class WishListComponent implements OnInit, OnDestroy {
 
   constructor(
     private productService: ProductService,
-    private store: Store<IAppState>,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    public wishlistFacade: WishlistFacade,
+    public productsFacade: ProductsFacade
   ) { }
 
   public ngOnInit(): void {
-    this.liked$ = this.store.select(getLiked);
+    this.liked$ = this.wishlistFacade.liked$;
 
-    this.products$ = this.store.select(getAllProducts);
+    this.products$ = this.productsFacade.products$;
 
     this.getLikeSub = this.liked$.pipe(switchMap(
       likedProducts => {

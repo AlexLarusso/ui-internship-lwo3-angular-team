@@ -4,9 +4,7 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { ToastrService } from 'ngx-toastr';
 import { StarRatingComponent } from 'ng-starrating';
 
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { getUserFirstName, getAuthState } from 'src/app/store/selectors/auth.selector';
+import { AuthFacade } from 'src/app/store/auth/auth.facade';
 
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -46,9 +44,9 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly reviewService: ReviewService,
-    private readonly store: Store<IAppState>,
     private readonly toastrService: ToastrService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly cdr: ChangeDetectorRef,
+    public authFacade: AuthFacade
   ) { }
 
   public ngOnInit(): void {
@@ -101,7 +99,7 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
     this.userReview.message = this.feedbackField.nativeElement.value.trimStart();
 
     if (this.checkUserAuth()) {
-      this.nameSub = this.store.select(getUserFirstName)
+      this.nameSub = this.authFacade.userFirstName$
         .subscribe(name => this.userReview.createdBy = name);
     }
   }
@@ -115,7 +113,7 @@ export class ProductReviewComponent implements OnInit, OnDestroy {
   private checkUserAuth(): boolean {
     let isAuth: boolean;
 
-    this.authSub = this.store.select(getAuthState)
+    this.authSub = this.authFacade.authState$
       .subscribe(state => isAuth = state);
 
     return isAuth;

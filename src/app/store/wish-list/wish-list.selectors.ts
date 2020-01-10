@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { getWishList } from './app.selectors';
-import { IState } from '../../store/reducers/wish-list.reducer';
+import { getWishList } from '../../app.selector';
+import { IState } from './wish-list.reducer';
 
 export const getLiked = createSelector(
   getWishList,

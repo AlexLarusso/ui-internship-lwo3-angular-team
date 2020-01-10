@@ -4,13 +4,9 @@ import {
 
 import { ToastrService } from 'ngx-toastr';
 
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { SetValueToStorage } from '../../store/actions/web-storage.actions';
-
 import { LocalStorageService } from 'src/app/shared/services/web-storage/local-storage.service';
 import { ToastrMessage } from '../../app.enum';
-import { SetUserFullName } from 'src/app/store/actions/auth.actions';
+import { AuthFacade } from 'src/app/store/auth/auth.facade';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -22,8 +18,8 @@ export class UserProfilePageComponent implements OnInit {
 
   constructor(
     private readonly localStorageService: LocalStorageService,
-    private readonly store: Store<IAppState>,
     private readonly toastrService: ToastrService,
+    public authFacade: AuthFacade
   ) { }
 
   @ViewChild('userFirstName', { static: false }) public userFirstName: ElementRef;
@@ -71,7 +67,7 @@ export class UserProfilePageComponent implements OnInit {
     this.localStorageService
       .localStorageAdd('userFullName', this.userName);
 
-    this.store.dispatch(new SetUserFullName(this.userName));
+    this.authFacade.setUserFullName(this.userName);
 
     this.onChangeUserName();
   }
