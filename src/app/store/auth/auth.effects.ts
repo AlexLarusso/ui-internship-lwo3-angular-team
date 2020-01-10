@@ -9,7 +9,7 @@ import { tap, switchMap, pluck } from 'rxjs/operators';
 import { ToastrMessage } from 'src/app/app.enum';
 import { AuthFacade } from './auth.facade';
 
-function action$(observer, ...actions): Observable<any> {
+function onCurrentActions$(observer, ...actions): Observable<any> {
   return observer.pipe(
     ofType(...actions),
     pluck('payload'),
@@ -24,7 +24,7 @@ export class AuthEffects {
   ) { }
 
 @Effect()
-  public LogIn: Observable<any> = action$(this.actions$, AuthActionTypes.LOGIN)
+  public LogIn: Observable<any> = onCurrentActions$(this.actions$, AuthActionTypes.LOGIN)
     .pipe(
       switchMap(({ email, password }) => {
         return this.authFacade.loginAttempt(email, password);
@@ -32,7 +32,7 @@ export class AuthEffects {
     );
 
 @Effect({ dispatch: false })
-  public LogInSuccess: Observable<any> = action$(this.actions$, AuthActionTypes.LOGIN_SUCCESS)
+  public LogInSuccess: Observable<any> = onCurrentActions$(this.actions$, AuthActionTypes.LOGIN_SUCCESS)
     .pipe(
       tap(user => {
         this.authFacade.loginSuccess(user);
@@ -40,7 +40,7 @@ export class AuthEffects {
     );
 
 @Effect()
-  public SignUp: Observable<any> = action$(this.actions$, AuthActionTypes.SIGNUP)
+  public SignUp: Observable<any> = onCurrentActions$(this.actions$, AuthActionTypes.SIGNUP)
     .pipe(
       switchMap(({ email, password }) => {
         return this.authFacade.signUpAttempt(email, password);
@@ -48,7 +48,7 @@ export class AuthEffects {
     );
 
 @Effect({ dispatch: false })
-  public SignUpSuccess: Observable<any> = action$(this.actions$, AuthActionTypes.SIGNUP_SUCCESS)
+  public SignUpSuccess: Observable<any> = onCurrentActions$(this.actions$, AuthActionTypes.SIGNUP_SUCCESS)
     .pipe(
       tap(user => {
         console.log(user);
@@ -57,7 +57,7 @@ export class AuthEffects {
     );
 
 @Effect({ dispatch: false })
-public LogInFailure: Observable<any> = action$(this.actions$, AuthActionTypes.LOGIN_FAILURE)
+public LogInFailure: Observable<any> = onCurrentActions$(this.actions$, AuthActionTypes.LOGIN_FAILURE)
   .pipe(
     tap(() => {
       this.authFacade.errorMessage(ToastrMessage.loginFailed);
@@ -65,7 +65,7 @@ public LogInFailure: Observable<any> = action$(this.actions$, AuthActionTypes.LO
   );
 
 @Effect({ dispatch: false })
-public SignUpFailure: Observable<any> = action$(this.actions$, AuthActionTypes.SIGNUP_FAILURE)
+public SignUpFailure: Observable<any> = onCurrentActions$(this.actions$, AuthActionTypes.SIGNUP_FAILURE)
   .pipe(
     tap(() => {
       this.authFacade.errorMessage(ToastrMessage.signUpFailed);
@@ -73,7 +73,7 @@ public SignUpFailure: Observable<any> = action$(this.actions$, AuthActionTypes.S
   );
 
 @Effect({ dispatch: false})
-  public LogOut: Observable<any> = action$(this.actions$, AuthActionTypes.LOG_OUT)
+  public LogOut: Observable<any> = onCurrentActions$(this.actions$, AuthActionTypes.LOG_OUT)
     .pipe(
       tap(() => {
         this.authFacade.logOutSideEffects();
