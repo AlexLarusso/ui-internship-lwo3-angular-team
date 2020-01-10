@@ -6,10 +6,6 @@ import {
   OnDestroy
 } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { getFilteredProducts } from 'src/app/store/selectors/products.selectors';
-
 import { ToastrService } from 'ngx-toastr';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +15,7 @@ import { Subscription } from 'rxjs';
 import { IProduct, IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from '../services/product.service';
 import { ProductFormat, ToastrMessage } from 'src/app/app.enum';
+import { ProductsFacade } from 'src/app/store/products/products.facade';
 
 @AutoUnsubscribe()
 @Component({
@@ -29,9 +26,9 @@ import { ProductFormat, ToastrMessage } from 'src/app/app.enum';
 
 export class ProductFilterComponent implements OnInit, OnDestroy {
   constructor(
-    private readonly store: Store<IAppState>,
     private readonly productService: ProductService,
-    private readonly toastrService: ToastrService
+    private readonly toastrService: ToastrService,
+    public productsFacade: ProductsFacade
     ) { }
 
   @Output() public dataChange = new EventEmitter();
@@ -50,8 +47,8 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
   public checkboxIcon = faCheck;
 
   public ngOnInit(): void {
-    this.productSub = this.store
-      .select(getFilteredProducts).subscribe(filteredProducts => {
+    this.productSub = this.productsFacade.filteredProducts$
+      .subscribe(filteredProducts => {
         this.products = filteredProducts;
 
         this.onSetFilters();

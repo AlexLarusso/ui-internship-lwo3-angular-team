@@ -4,12 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-import { Store } from '@ngrx/store';
-
 import { Subscription } from 'rxjs';
 
-import { IAppState } from 'src/app/store/app.store';
-import { SetFilterCriteria } from 'src/app/store/actions/products.action';
+import { ProductsFacade } from 'src/app/store/products/products.facade';
 
 @AutoUnsubscribe()
 @Component({
@@ -23,14 +20,14 @@ export class ProductListPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<IAppState>
+    public productsFacade: ProductsFacade
   ) { }
 
   public ngOnInit(): void {
     this.routerSub = this.route.params
       .subscribe(item => {
         this.category = item.category;
-        this.store.dispatch(new SetFilterCriteria(item.category));
+        this.productsFacade.onSetFilterCriteria(item.category);
       });
   }
 

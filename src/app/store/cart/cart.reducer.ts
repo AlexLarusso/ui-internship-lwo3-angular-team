@@ -1,7 +1,7 @@
 import {
   AddProductToCart, RemoveProductFromCart,
   ConfirmOrder, ChangeProductItemQty, LoadProductItems
-} from '../actions/cart.actions';
+} from './cart.actions';
 import { IProductCartItem } from 'src/app/interfaces';
 
 export interface IState {

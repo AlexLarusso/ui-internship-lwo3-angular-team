@@ -20,11 +20,5 @@ export class RemoveFromWishList implements Action {
   public type = RemoveFromWishList.TYPE;
 }
 
-export class SetToWishList implements Action {
-  constructor(public payload: Array<string>) { }
 
-  public static readonly TYPE = WishListActionTypes.SetAll;
-  public type = SetToWishList.TYPE;
-}
-
-export type WishListActions = AddToWishList | RemoveFromWishList | SetToWishList;
+export type WishListActions = AddToWishList | RemoveFromWishList;

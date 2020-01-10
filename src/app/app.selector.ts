@@ -1,4 +1,4 @@
-import { IAppState } from '../app.store';
+import { IAppState } from './app.store';
 
 export const getLoader = (state: IAppState) => state.loader;
 export const getProductOptions = (state: IAppState) => state.productOptions;

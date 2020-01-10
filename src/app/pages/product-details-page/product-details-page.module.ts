@@ -11,7 +11,7 @@ import { ProductDetailsComponent } from 'src/app/components/product-details/prod
 import { ProductOrderComponent } from 'src/app/components/product-order/product-order.component';
 import { ProductPreviewComponent } from 'src/app/components/product-preview/product-preview.component';
 import { SimilarProductsComponent } from 'src/app/components/similar-products/similar-products.component';
-import { ProductResolver } from 'src/app/shared/services/product.resolver';
+import { ProductResolver } from 'src/app/shared/services';
 import { ProductDetailsPageComponent } from './product-details-page.component';
 import { ProductReviewComponent } from '../../components/product-review/product-review.component';
 

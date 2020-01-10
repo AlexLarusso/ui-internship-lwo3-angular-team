@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { SetValueToStorage, GetValueFromStorage } from '../../../store/actions/web-storage.actions';
-import { getStorageStatus } from 'src/app/store/selectors/web-storage.selectors';
+
+import { WebStorageFacade } from 'src/app/store/web-storage/web-storage.facade';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class WebStorageService {
-  constructor(private store: Store<IAppState>) { }
   public value: string;
 
+  constructor(public webStorageFacade: WebStorageFacade) { }
+
   public setValue(key: string, value: string): void {
-    this.store.dispatch(new SetValueToStorage(key, value));
-    this.store.select(getStorageStatus)
+    this.webStorageFacade.setValue(key, value);
+
+    this.webStorageFacade.storageStatus$
       .subscribe(data => this.value = (data[key]));
   }
 
   public getValue(key: string): string {
-    this.store.dispatch(new GetValueFromStorage(key, this.value));
-    this.store.select(getStorageStatus)
+    this.webStorageFacade.getValue(key, this.value);
+
+    this.webStorageFacade.storageStatus$
       .subscribe(data => this.value = JSON.parse(data[key]));
 
     return this.value;

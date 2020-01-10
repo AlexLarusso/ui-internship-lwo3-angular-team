@@ -1,12 +1,12 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import * as fromLoader from './reducers/loader.reducer';
-import * as fromProductOptions from './reducers/product-options.reducer';
-import * as fromWishList from './reducers/wish-list.reducer';
-import * as fromWebStorage from './reducers/web-storage.reducer';
-import * as fromProducts from './reducers/products.reducer';
-import * as fromAuth from './reducers/auth.reducer';
-import * as fromCart from './reducers/cart.reducer';
+import * as fromLoader from './store/loader/loader.reducer';
+import * as fromProductOptions from './store/product-options/product-options.reducer';
+import * as fromWishList from './store/wish-list/wish-list.reducer';
+import * as fromWebStorage from './store/web-storage/web-storage.reducer';
+import * as fromProducts from './store/products/products.reducer';
+import * as fromAuth from './store/auth/auth.reducer';
+import * as fromCart from './store/cart/cart.reducer';
 
 export interface IAppState {
   loader: fromLoader.IState;

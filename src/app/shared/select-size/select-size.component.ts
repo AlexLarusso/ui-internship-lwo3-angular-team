@@ -1,9 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-
-import { IAppState } from 'src/app/store/app.store';
-import { SelectSize } from 'src/app/store/actions/product-options.actions';
+import { ProductOptionsFacade } from 'src/app/store/product-options/product-options.facade';
 
 @Component({
   selector: 'app-select-size',
@@ -14,9 +11,9 @@ import { SelectSize } from 'src/app/store/actions/product-options.actions';
 export class SelectSizeComponent {
   @Input() public sizes: Array<string>;
 
-  constructor(private readonly store: Store<IAppState>) { }
+  constructor(public productsOptionsFacade: ProductOptionsFacade) { }
 
   public handleSizeSelect(size: string): void {
-    this.store.dispatch(new SelectSize(size));
+    this.productsOptionsFacade.onSelectSize(size);
   }
 }

@@ -1,22 +1,13 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { AddProductToCart } from 'src/app/store/actions/cart.actions';
-import {
-  SelectColor, ResetProductOptions, IncrementQuantity, DecrementQuantity
-} from 'src/app/store/actions/product-options.actions';
-import {
-  getProductQuantity, getProductSelectedColor, getProductSelectedSize
-} from 'src/app/store/selectors/product-options.selector';
 
 import { Subscription } from 'rxjs';
 
 import {
   IProduct, IProductDetails, IProductOptions, IProductDescription, IProductCartItem
 } from 'src/app/interfaces';
+import { ProductOptionsFacade} from 'src/app/store/product-options/product-options.facade';
 
 const DELIVERY_MOCK = `Officia sint Lorem do officia velit voluptate. Dolor commodo pariatur
   irure do excepteur ullamco commodo pariatur et. Esse velit incididunt qui incididunt consectetur
@@ -41,7 +32,7 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
   private selectedColor: string;
   private selectedQty: number;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(public productOptionsFacade: ProductOptionsFacade) { }
 
   public ngOnInit(): void {
     const productOptions: IProductOptions = {
@@ -76,17 +67,17 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       options: productOptions,
       description: productDescription,
     };
-    this.store.dispatch(new SelectColor(initColor));
-    this.selectedQtySub = this.store.select(getProductQuantity)
+    this.productOptionsFacade.onSelectColor(initColor);
+    this.selectedQtySub = this.productOptionsFacade.productQuantity$
       .subscribe(qty => this.selectedQty = qty);
-    this.selectedColorSub = this.store.select(getProductSelectedColor)
+    this.selectedColorSub = this.productOptionsFacade.productSelectedColor$
       .subscribe(color => this.selectedColor = color);
-    this.selectedSizeSub = this.store.select(getProductSelectedSize)
+    this.selectedSizeSub = this.productOptionsFacade.productSelectedSize$
       .subscribe(size => this.selectedSize = size);
   }
 
   public ngOnDestroy(): void {
-    this.store.dispatch(new ResetProductOptions());
+    this.productOptionsFacade.onResetProducts();
   }
 
   public onBuyClick(): void {
@@ -102,12 +93,12 @@ export class ProductOrderComponent implements OnInit, OnDestroy {
       maxQty: this.product.quantity
     };
 
-    this.store.dispatch(new AddProductToCart(productCartItem));
+    this.productOptionsFacade.onAddProduct(productCartItem);
   }
 
   public handleQtyChange(newQty: number) {
     newQty > this.selectedQty
-      ? this.store.dispatch(new IncrementQuantity())
-      : this.store.dispatch(new DecrementQuantity());
+      ? this.productOptionsFacade.onIncrementQuantity()
+      : this.productOptionsFacade.onDecrementQuantity();
   }
 }

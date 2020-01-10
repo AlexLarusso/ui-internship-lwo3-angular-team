@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { getProducts } from './app.selectors';
-import { IState } from '../reducers/products.reducer';
+import { getProducts } from '../../app.selector';
+import { IState } from './products.reducer';
 
 export const getAllProducts = createSelector(
   getProducts,

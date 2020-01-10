@@ -1,5 +1,5 @@
 import { ProductCartItemComponent } from './product-cart-item.component';
-import { RemoveProductFromCart, ChangeProductItemQty } from 'src/app/store/actions/cart.actions';
+import { RemoveProductFromCart, ChangeProductItemQty } from 'src/app/store/cart/cart.actions';
 
 describe('ProductCartItemComponent: ', () => {
   const qtyMock = 10;

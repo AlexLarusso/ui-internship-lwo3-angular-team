@@ -11,14 +11,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { RoutesModule } from './app.routes';
 
-import { LoaderInterceptor } from './shared/services/loader.interceptor';
-import { ErrorsHandler } from './shared/services/errors.handler';
+import { LoaderInterceptor, ErrorsHandler } from './shared/services';
 import { CookieService } from 'ngx-cookie-service';
 
-import { appReducer } from './store/app.store';
-import { ProductsEffects } from './store/effects/products.effects';
-import { AuthEffects } from './store/effects/auth.effects';
-import { CartEffects } from './store/effects/cart.effects';
+import { appReducer } from './app.store';
+import { ProductsEffects } from './store/products/products.effects';
+import { AuthEffects } from './store/auth/auth.effects';
+import { CartEffects } from './store/cart/cart.effects';
 
 import { LoaderComponent } from './shared/loader/loader.component';
 import { AppComponent } from './app.component';

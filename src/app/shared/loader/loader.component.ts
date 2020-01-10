@@ -1,11 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-
 import { Observable } from 'rxjs';
 
-import { IAppState } from 'src/app/store/app.store';
-import { getLoadingStatus } from 'src/app/store/selectors/loader.selectors';
+import { LoaderFacade } from 'src/app/store/loader/loader.facade';
 
 @Component({
   selector: 'app-loader',
@@ -17,9 +14,9 @@ export class LoaderComponent implements OnInit {
   public bulletsArray = new Array(12).fill('');
   public loader$: Observable<boolean>;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(public loaderFacade: LoaderFacade) { }
 
   public ngOnInit() {
-    this.loader$ = this.store.select(getLoadingStatus);
+    this.loader$ = this.loaderFacade.loader$;
   }
 }

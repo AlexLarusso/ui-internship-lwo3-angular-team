@@ -2,11 +2,10 @@ import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@ang
 import { ToastrService } from 'ngx-toastr';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-import { takeWhile } from 'rxjs/operators';
 import { fromEvent, Subscription } from 'rxjs';
 
 import { ToastrMessage } from '../../app.enum';
-import { ModalService } from '../services/modal-service';
+import { ModalService } from '../services';
 
 @AutoUnsubscribe()
 @Component({

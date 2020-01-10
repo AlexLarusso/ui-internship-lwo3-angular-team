@@ -1,14 +1,17 @@
-import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
-import { IAppState } from '../../store/app.store';
-import { AddToWishList, RemoveFromWishList, SetToWishList } from '../../store/actions/wish-list.actions';
-import { getLiked } from '../../store/selectors/wish-list.selectors';
 
 import { Observable } from 'rxjs';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { WishlistFacade } from 'src/app/store/wish-list/wish-list.facade';
 
 @AutoUnsubscribe()
 @Component({
@@ -25,7 +28,7 @@ export class WishButtonComponent implements OnInit, OnDestroy {
   public isLiked: boolean;
   public liked$: Observable<Array<string>>;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(public wishlistFacade: WishlistFacade) { }
 
   public ngOnInit(): void {
     const localStorageLiked = JSON.parse(localStorage.getItem('liked'));
@@ -39,8 +42,8 @@ export class WishButtonComponent implements OnInit, OnDestroy {
     this.isLiked = !this.isLiked;
 
     this.isLiked
-      ? this.store.dispatch(new AddToWishList(this.productId))
-      : this.store.dispatch(new RemoveFromWishList(this.productId));
+      ? this.wishlistFacade.addToWishList(this.productId)
+      : this.wishlistFacade.removeFromWishList(this.productId);
 
     this.setAllToLocalStorage();
   }
@@ -48,7 +51,7 @@ export class WishButtonComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void { }
 
   private setAllToLocalStorage(): void {
-    this.liked$ = this.store.select(getLiked);
+    this.liked$ = this.wishlistFacade.liked$;
     let stringifyData: string;
 
     this.liked$.subscribe(data => stringifyData = JSON.stringify(data));

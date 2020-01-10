@@ -1,6 +1,6 @@
 import {
   LoaderActions, LoaderShow, LoaderHide
-} from '../actions/loader.actions';
+} from './loader.actions';
 
 export interface IState {
   isLoading: boolean;

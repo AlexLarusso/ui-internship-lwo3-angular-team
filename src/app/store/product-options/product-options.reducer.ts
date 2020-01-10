@@ -1,7 +1,7 @@
 import {
   IncrementQuantity, DecrementQuantity,
   SelectColor, SelectSize, ResetProductOptions
-} from '../actions/product-options.actions';
+} from './product-options.actions';
 
 export interface IState {
   quantity: number;

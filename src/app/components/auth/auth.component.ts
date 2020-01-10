@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { AuthFacade } from 'src/app/store/auth/auth.facade';
 
-import { Store } from '@ngrx/store';
-import { IAppState } from '../../store/app.store';
-import { getAuth } from 'src/app/store/selectors/app.selectors';
-import { LogIn, SignUp } from '../../store/actions/auth.actions';
+import { Observable } from 'rxjs';
 
 import { EnumRegExp } from '../../app.enum';
 import { User } from '../../interfaces/user';
-import { ModalService } from '../../shared/services/modal-service';
+import { ModalService } from '../../shared/services';
 
 @Component({
   selector: 'app-auth',
@@ -30,11 +27,11 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private readonly modalService: ModalService,
-    private readonly store: Store<IAppState>
+    public authFacade: AuthFacade
   ) { }
 
   public ngOnInit(): void {
-    this.currentState$ = this.store.select(getAuth);
+    this.currentState$ = this.authFacade.currentState$;
     this.currentState$
       .subscribe(state => {
       this.errorMessage = state.errorMessage;
@@ -57,8 +54,8 @@ export class AuthComponent implements OnInit {
         password: this.user.password
     };
       this.isLoginOpen ?
-        this.store.dispatch(new LogIn(payload)) :
-        this.store.dispatch(new SignUp(payload));
+        this.authFacade.logIn(payload) :
+        this.authFacade.signUp(payload);
     }
   }
 

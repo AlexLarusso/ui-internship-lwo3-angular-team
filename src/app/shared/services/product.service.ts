@@ -1,15 +1,13 @@
 import { Injectable, OnDestroy } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { getAllProducts } from 'src/app/store/selectors/products.selectors';
-import { getCartProductItems } from 'src/app/store/selectors/cart.selector';
 
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
+import { CartFacade } from 'src/app/store/cart/cart.facade';
+import { ProductsFacade } from 'src/app/store/products/products.facade';
 import { HttpService } from './http.service';
 import { ProductFormat, URLs } from 'src/app/app.enum';
 import { IProduct, IProductSimilarOptions, IProductShortInfo } from 'src/app/interfaces';
@@ -22,21 +20,12 @@ export class ProductService implements OnDestroy {
   public recentlyViewed: Array<{}> = [];
   public storageSubject = new BehaviorSubject([]);
   public recentItemOrder = 0;
-  public localStorageSub: Subscription;
-
-  private CART_KEY = 'Cart';
 
   constructor(
     private readonly httpService: HttpService,
-    private readonly store: Store<IAppState>
+    public cartFacade: CartFacade,
+    public productsFacade: ProductsFacade
   ) { }
-
-  public setCartItemsToLocalStorage(): void {
-    this.localStorageSub = this.store.select(getCartProductItems)
-      .subscribe(products =>
-        localStorage.setItem(this.CART_KEY, JSON.stringify(products))
-        );
-  }
 
   public formatProduct(product: any, format: string):
     IProduct | IProductShortInfo {
@@ -109,7 +98,7 @@ export class ProductService implements OnDestroy {
 
   public getSimilarProducts(similarOptions: IProductSimilarOptions, format: string):
     Observable<Array<IProduct | IProductShortInfo>>  {
-      return this.getProductsByCategory(similarOptions.category)
+      return this.productsFacade.getProductsByCategory(similarOptions.category)
         .pipe(map(data =>
           this.filterSimilarProducts(data, similarOptions)
             .map(product => this.formatProduct(product, format))
@@ -142,16 +131,6 @@ export class ProductService implements OnDestroy {
   }
 
   public ngOnDestroy(): void { }
-
-  private getProductsByCategory(category: string):
-  Observable<Array<IProduct>> {
-    return this.store.select(getAllProducts)
-      .pipe(map(
-        products => products
-          .filter(
-            product => product.category === category)
-          ));
-  }
 
   private filterSimilarProducts(products: Array<IProduct>, similarOptions: IProductSimilarOptions):
     Array<IProduct> {

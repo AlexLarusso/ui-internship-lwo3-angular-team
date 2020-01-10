@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import {
-  getCartProductItems, getCartTotalPrice
-} from 'src/app/store/selectors/cart.selector';
-
+import { CartFacade } from '../../store/cart/cart.facade';
 import { IProductCartItem } from 'src/app/interfaces';
-import { IAppState } from 'src/app/store/app.store';
-import { ConfirmOrder } from 'src/app/store/actions/cart.actions';
 
 @Component({
   selector: 'app-cart-page',
@@ -24,11 +18,11 @@ export class CartPageComponent implements OnInit {
   public cartProductList$: Observable<Array<IProductCartItem>>;
   public cartTotalPrice$: Observable<number>;
 
-  constructor(private store: Store<IAppState>) { }
+  constructor(public cartFacade: CartFacade) { }
 
   public ngOnInit(): void {
-    this.cartProductList$ = this.store.select(getCartProductItems);
-    this.cartTotalPrice$ = this.store.select(getCartTotalPrice);
+    this.cartProductList$ = this.cartFacade.cartProductList$;
+    this.cartTotalPrice$ = this.cartFacade.cartTotalPrice$;
   }
 
   public displayPopularList(): void {
@@ -36,6 +30,6 @@ export class CartPageComponent implements OnInit {
   }
 
   public confirmOrder(): void {
-    this.store.dispatch(new ConfirmOrder());
+    this.cartFacade.confirmOrder();
   }
 }

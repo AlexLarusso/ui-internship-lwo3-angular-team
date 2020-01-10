@@ -3,16 +3,14 @@ import {
 } from '@angular/core';
 
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/app.store';
-import { getAllProducts } from 'src/app/store/selectors/products.selectors';
 
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IProductShortInfo } from 'src/app/interfaces';
 import { ProductService } from '../services';
-import { map } from 'rxjs/operators';
 import { ProductFormat } from 'src/app/app.enum';
+import { ProductsFacade } from 'src/app/store/products/products.facade';
 
 const BREAK_POINTS = {
   mobile: {
@@ -57,7 +55,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   constructor(
     private productService: ProductService,
-    private store: Store<IAppState>
+    private productsFacade: ProductsFacade
   ) { }
 
   public ngOnInit(): void {
@@ -67,7 +65,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     this.visibleNumber = this.stepNumber;
 
-    this.products$ = this.store.select(getAllProducts)
+    this.products$ = this.productsFacade.products$
      .pipe(
         map(products => {
           this.productLength = products.length;

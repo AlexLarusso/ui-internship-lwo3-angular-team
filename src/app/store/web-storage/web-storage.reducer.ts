@@ -1,4 +1,4 @@
-import { SetValueToStorage, StorageAction } from '../actions/web-storage.actions';
+import { SetValueToStorage, StorageAction } from './web-storage.actions';
 
 export interface IState {
   count: number;
